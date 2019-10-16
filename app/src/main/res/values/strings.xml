@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">TrabalhoCS</string>
+    <string name="app_name">TrabalhoAs</string>
+    <string name="action_settings">Settings</string>
+    <string name="AdicionarReceita">AdicionarReceita</string>
+    <string name="GerenciarReceita">GerenciarReceita</string>
+    <string name="menuprincipal">Menu Principal</string>
+    <string name="title_activity_gerenciar_despesas">GerenciarDespesas</string>
+    <string name="gerenciargastos">Gerenciar Gastos</string>
+    <string name="lixo" />
+    <string name="editar" />
+    <string name="adicionardestino" />
+    <string name="gerenciarreceita">Gerenciar Receita</string>
+    <string name="digite_o_nome_da_fonte">Digite o nome da fonte</string>
+    <string name="idfonte">idfonte</string>
+    <string name="descricaofonte">descricaofonte</string>
+    <string name="Cancel">Cancelar</string>
+    <string name="Ok">Ok</string>
+    <string name="inserirfonte">Insira o nome da @string/digite_o_nome_da_fonte</string>
+    <string name="addreceita">addreceita</string>
 </resources>
