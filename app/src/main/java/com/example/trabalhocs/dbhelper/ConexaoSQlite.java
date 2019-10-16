@@ -41,8 +41,9 @@ public class ConexaoSQlite extends SQLiteOpenHelper {
                 "CREATE TABLE IF NOT EXISTS receita" +
                         "(" +
                         "cod_grupo INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        "cod_destino FLOAT, " +
-                        "nome TEXT NOT NULL);";
+                        "cod_destino INTEGER, " +
+                        "nome TEXT NOT NULL," +
+                        "CONSTRAINT fk_cod_destino FOREIGN KEY (cod_destino) REFERENCES destino (cod_destino));";
         sqLiteDatabase.execSQL(sqlTabelaFonte);
         sqLiteDatabase.execSQL(sqlTabelaReceita);
         sqLiteDatabase.execSQL(sqlTabelaGrupo);
