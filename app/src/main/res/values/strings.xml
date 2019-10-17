@@ -18,4 +18,6 @@
     <string name="inserirfonte">Insira o nome da @string/digite_o_nome_da_fonte</string>
     <string name="addreceita">addreceita</string>
     <string name="title_activity_view_gasto">view_gasto</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_gerenciar_receita">GerenciarReceita</string>
 </resources>
