@@ -1,7 +1,8 @@
-package com.example.trabalhocs
+package com.example.trabalhocs.View
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.trabalhocs.R
 
 class MainActivity : AppCompatActivity() {
 
