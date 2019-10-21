@@ -10,11 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".View.GerenciarReceita"
-            android:label="@string/title_activity_gerenciar_receita"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".View.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -24,8 +20,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".View.view_gasto"
-            android:label="@string/title_activity_view_gasto"
+            android:name=".View.GerenciarReceita"
+            android:label="@string/title_activity_gerenciar_receita"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".View.GerenciarGrupo"
+            android:label="@string/title_activity_gerenciargrupo"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

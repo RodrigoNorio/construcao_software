@@ -38,7 +38,7 @@ public class ConexaoSQlite extends SQLiteOpenHelper {
                         "cod_fonte INTEGER," +
                         "CONSTRAINT fk_cod_fonte FOREIGN KEY (cod_fonte) REFERENCES fonte (cod_fonte));";
         String sqlTabelaGrupo =
-                "CREATE TABLE IF NOT EXISTS receita" +
+                "CREATE TABLE IF NOT EXISTS grupos" +
                         "(" +
                         "cod_grupo INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         "cod_destino INTEGER, " +

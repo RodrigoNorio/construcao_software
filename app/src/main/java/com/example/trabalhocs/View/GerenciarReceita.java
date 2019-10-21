@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GerenciarReceita extends AppCompatActivity {
-
+/*
     private ListView lsvFontes;
     private List<ModeloFonte> fonteList;
     private AdapterListaFonte adapterListaFonte;
@@ -44,7 +44,7 @@ public class GerenciarReceita extends AppCompatActivity {
 
         ConexaoSQlite conexaoSQlite = ConexaoSQlite.getInstanciaConexao(this);
 
-        listarfontes();
+        //listarfontes();
         Button btnfonte = (Button) findViewById(R.id.adicionarfonte);
         btnfonte.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,135 +114,6 @@ public class GerenciarReceita extends AppCompatActivity {
         fontetxt.setText("");
     }
 
-    private void alertdialogeeditarfonte(final int cod_fonte) {
-        final FonteCtrl fonteCtrl = new FonteCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarReceita.this));
-        final EditText fontetxt;
-        AlertDialog.Builder builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
-        builder.setMessage("Digite o novo nome da fonte: ");
-        fontetxt = new EditText(this);
-        builder.setView(fontetxt);
-
-        //OK
-        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                ModeloFonte fonteACadastrar = new ModeloFonte();
-                fonteACadastrar.setCodfonte(cod_fonte);
-                fonteACadastrar.setDescricao(fontetxt.getText().toString());
-                if (fontetxt.getText().length() != 0){
-                    fonteCtrl.atualizarFonteCtrl(fonteACadastrar);
-                    Toast.makeText(GerenciarReceita.this, "Fonte alterada com sucesso!", Toast.LENGTH_SHORT).show();
-                    listarfontes();
-                }
-                else {
-                    Toast.makeText(GerenciarReceita.this, "Preencha o campo corretamente!", Toast.LENGTH_SHORT).show();
-                    alertdialogeeditarfonte(cod_fonte);
-                }
-            }
-        });
-
-        //CANCEL
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-
-        //CRIAR DIALOG
-        final AlertDialog ad = builder.create();
-        ad.show();
-        fontetxt.setText("");
-    }
-
-    private void alertdialogexcluirfonte(final int cod_fonte) {
-        final FonteCtrl fonteCtrl = new FonteCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarReceita.this));
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setMessage("Deseja realmente exluir esta fonte?");
-        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                fonteCtrl.excluirFonteCtrl(cod_fonte);
-                Toast.makeText(GerenciarReceita.this, "Fonte removida com sucesso!",Toast.LENGTH_SHORT).show();;
-                listarfontes();
-            }
-        });
-        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        alert.create().show();
-    }
-
-    private void alertdialogverificardin(final int cod_fonte){
-        selecionarfonte = cod_fonte;
-        //Intent it = new Intent (GerenciarReceita.this, GerenciarValores.class);
-        //startActivity(it);
-    }
-
-    public void listarfontes(){
-
-        //BUSCAR TODOS AS FONTES DO BANCO
-
-        final FonteCtrl fonteCtrl = new FonteCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarReceita.this));
-
-        this.fonteList = new ArrayList<>();
-        fonteList = fonteCtrl.getListaFontesCtrl();
-
-        this.lsvFontes = (ListView) findViewById(R.id.listarfontes);
-
-        this.adapterListaFonte = new AdapterListaFonte(GerenciarReceita.this, fonteList);
-
-        this.lsvFontes.setAdapter(this.adapterListaFonte);
-
-        this.lsvFontes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, final int posicao, long id) {
-
-                adapterListaFonte.select(posicao);
-
-                ModeloFonte fonteSelecionada = (ModeloFonte) adapterListaFonte.getItem(posicao);
-                final int cod_fonte = fonteSelecionada.getCodfonte();
-
-                Button btnexcluir = findViewById(R.id.excluirfonte);
-                Button btneditar = findViewById(R.id.editarfonte);
-                Button btnverificar = findViewById(R.id.verificardin);
-
-                btnexcluir.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        alertdialogexcluirfonte(cod_fonte);
-                    }
-                });
-                btneditar.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        alertdialogeeditarfonte(cod_fonte);
-                    }
-                });
-                btnverificar.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        alertdialogverificardin(cod_fonte);
-                    }
-                });
-            }
-        });
-    }
-
-    private void searchContact(String keyword) {
-        final FonteCtrl fonteCtrl = new FonteCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarReceita.this));
-        List<ModeloFonte> fontes = (List<ModeloFonte>) fonteCtrl.procurarControler(keyword);
-        if (fontes != null) {
-            this.lsvFontes = (ListView) findViewById(R.id.listarfontes);
-            lsvFontes.setAdapter(new AdapterListaFonte(getApplicationContext(),fontes));
-        }
-        else {
-            this.lsvFontes = (ListView) findViewById(R.id.listarfontes);
-            lsvFontes.setAdapter(null);
-        }
-    }
+*/
 
 }

@@ -36,7 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/adicionarfonte"
+        android:id="@+id/adicionargrupo"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="332dp"
