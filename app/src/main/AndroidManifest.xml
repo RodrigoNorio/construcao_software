@@ -27,13 +27,6 @@
             android:name=".View.view_gasto"
             android:label="@string/title_activity_view_gasto"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".View.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>
