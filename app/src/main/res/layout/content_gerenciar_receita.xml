@@ -36,7 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/adicionargrupo"
+        android:id="@+id/adicionarfonte"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="332dp"
@@ -108,5 +108,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/buscarfontes" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
