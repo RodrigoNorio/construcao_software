@@ -32,8 +32,8 @@ public class FonteCtrl {
         return this.fonteDAO.atualizarFonteDAO(f);
     }
 
-    public List<ModeloFonte> procurarControler(String keyword){
+    /*public List<ModeloFonte> procurarControler(String keyword){
         return this.fonteDAO.search(keyword);
     }
-
+*/
 }
