@@ -17,13 +17,11 @@
         android:layout_marginTop="44dp"
         android:layout_marginEnd="85dp"
         android:layout_marginRight="85dp"
-        android:layout_marginBottom="292dp"
         android:text="@string/gerenciar_grupo"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="@android:color/background_dark"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/listargrupos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -50,8 +48,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="200dp"
-        android:layout_marginBottom="151dp"
-        app:layout_constraintBottom_toTopOf="@+id/listargrupos"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -66,4 +62,5 @@
         android:text="@string/adicionardestino"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
