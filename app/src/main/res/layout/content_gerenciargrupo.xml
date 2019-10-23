@@ -63,4 +63,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+
+    <Button
+        android:id="@+id/excluirgrupo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="273dp"
+        android:layout_marginLeft="273dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="52dp"
+        android:background="@mipmap/ic_lixo_foreground"
+        android:text="@string/lixo"
+        app:layout_constraintBottom_toTopOf="@+id/listargrupos"
+        app:layout_constraintEnd_toStartOf="@+id/editarfonte"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

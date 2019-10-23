@@ -29,6 +29,7 @@ public class GrupoCtrl {
     public boolean excluirFonteCtrl(long fcodFonte){
         return this.grupoDAO.excluirFonteDAO(fcodFonte);
     }
+    /*
 
     public boolean atualizarFonteCtrl (ModeloFonte f){
         return this.grupoDAO.atualizarFonteDAO(f);

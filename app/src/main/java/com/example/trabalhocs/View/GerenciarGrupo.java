@@ -19,7 +19,10 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class GerenciarGrupo extends AppCompatActivity {
 
@@ -30,6 +33,7 @@ public class GerenciarGrupo extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //listargrupos();
         Button btngrupo = (Button) findViewById(R.id.adicionargrupo);
         btngrupo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +43,8 @@ public class GerenciarGrupo extends AppCompatActivity {
         });
 
     }
+
+
 
     public void addgruponome(){
         final EditText fontetxt;
@@ -81,7 +87,56 @@ public class GerenciarGrupo extends AppCompatActivity {
         ad.show();
         fontetxt.setText("");
     }
+/*
+    private void listargrupos() {
+        //BUSCAR TODOS OS GRUPOS DO BANCO
 
+        final GrupoCtrl grupoCtrl = new GrupoCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarGrupo.this));
+
+        this.grupoList = new ArrayList<>();
+        grupoList = grupoCtrl.getListaFontesCtrl();
+
+        this.lsvFontes = (ListView) findViewById(R.id.listarfontes);
+
+        this.adapterListaFonte = new AdapterListaFonte(GerenciarReceita.this, fonteList);
+
+        this.lsvFontes.setAdapter(this.adapterListaFonte);
+
+        this.lsvFontes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, final int posicao, long id) {
+
+                adapterListaFonte.select(posicao);
+
+                ModeloFonte fonteSelecionada = (ModeloFonte) adapterListaFonte.getItem(posicao);
+                final int cod_fonte = fonteSelecionada.getCodfonte();
+
+                Button btnexcluir = findViewById(R.id.excluirfonte);
+                Button btneditar = findViewById(R.id.editarfonte);
+                Button btnverificar = findViewById(R.id.verificardin);
+
+                btnexcluir.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertdialogexcluirfonte(cod_fonte);
+                    }
+                });
+                btneditar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertdialogeeditarfonte(cod_fonte);
+                    }
+                });
+                btnverificar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertdialogverificardin(cod_fonte);
+                    }
+                });
+            }
+        });
+    }
+*/
 
 
 
