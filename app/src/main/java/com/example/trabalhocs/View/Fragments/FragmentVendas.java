@@ -28,8 +28,6 @@ public class FragmentVendas extends Fragment {
         View view = inflater.inflate(R.layout.fragment_vendas, container, false);
         ButterKnife.bind(this, view);
 
-
-
         return view;
     }
 
