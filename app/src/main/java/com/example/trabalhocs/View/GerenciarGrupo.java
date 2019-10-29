@@ -23,6 +23,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -48,6 +49,22 @@ public class GerenciarGrupo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addgruponome();
+            }
+        });
+
+        SearchView searchView = (SearchView) findViewById(R.id.buscargrupo);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                searchContact(query);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searchContact(newText);
+                return true;
             }
         });
 
@@ -173,7 +190,17 @@ public class GerenciarGrupo extends AppCompatActivity {
     }
 
 
-
-
+    private void searchContact(String keyword) {
+        final GrupoCtrl grupoCtrl = new GrupoCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarGrupo.this));
+        List<ModeloGrupo> grupos = (List<ModeloGrupo>) grupoCtrl.procurarControler(keyword);
+        if (grupos != null) {
+            this.lsvGrupo = (ListView) findViewById(R.id.listargrupos);
+            lsvGrupo.setAdapter(new AdapterListaGrupo(getApplicationContext(),grupos));
+        }
+        else {
+            this.lsvGrupo = (ListView) findViewById(R.id.listargrupos);
+            lsvGrupo.setAdapter(null);
+        }
+    }
 
 }

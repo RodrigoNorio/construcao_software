@@ -6,8 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.example.trabalhocs.Model.ModeloFonte;
+
 import com.example.trabalhocs.Model.ModeloGrupo;
+import com.example.trabalhocs.Model.ModeloReceita;
 import com.example.trabalhocs.dbhelper.ConexaoSQlite;
 
 import java.util.ArrayList;
@@ -108,5 +109,27 @@ public class GruposDAO {
         }
         return true;
     }
+
+    public List<ModeloGrupo> search(String keyword) {
+        List<ModeloGrupo> contacts = null;
+        try {
+            SQLiteDatabase sqLiteDatabase = this.conexaoSQlite.getReadableDatabase();
+
+            Cursor cursor = sqLiteDatabase.rawQuery("select * from grupos where nome like ?", new String[] { "%" + keyword + "%" });
+            if (cursor.moveToFirst()) {
+                contacts = new ArrayList<ModeloGrupo>();
+                do {
+                    ModeloGrupo contact = new ModeloGrupo();
+                    //contact.setNome(cursor.getFloat(2));
+                    contact.setNome(cursor.getString(2));
+                    contacts.add(contact);
+                } while (cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            contacts = null;
+        }
+        return contacts;
+    }
+
 
 }

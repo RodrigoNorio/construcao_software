@@ -31,7 +31,7 @@ public class GrupoCtrl {
     }
 
 
-    public List<ModeloFonte> procurarControler(String keyword){
+    public List<ModeloGrupo> procurarControler(String keyword){
         return this.grupoDAO.search(keyword);
     }
 
