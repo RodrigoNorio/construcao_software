@@ -157,13 +157,27 @@ public class GerenciarReceita extends AppCompatActivity {
     private void alertdialogexcluirfonte(final int cod_fonte) {
         final FonteCtrl fonteCtrl = new FonteCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarReceita.this));
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        AlertDialog.Builder alert2 = new AlertDialog.Builder(this);
         alert.setMessage("Deseja realmente exluir esta fonte?");
         alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                fonteCtrl.excluirFonteCtrl(cod_fonte);
-                Toast.makeText(GerenciarReceita.this, "Fonte removida com sucesso!",Toast.LENGTH_SHORT).show();;
-                listarfontes();
+                alert2.setMessage("Se você excluir esta fonte, todas as receitas relacionadas irão ser excluidas, REALMENTE DESEJA EXCLUIR ESTA FONTE?");
+                alert2.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        fonteCtrl.excluirFonteCtrl(cod_fonte);
+                        Toast.makeText(GerenciarReceita.this, "Fonte removida com sucesso!",Toast.LENGTH_SHORT).show();;
+                        listarfontes();
+                    }
+                });
+                alert2.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                alert2.create().show();
             }
         });
         alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
