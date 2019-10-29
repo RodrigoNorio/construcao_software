@@ -24,5 +24,8 @@
     <string name="nav_financeiro">financeiro</string>
     <string name="nav_vendas">vendas</string>
     <string name="vendas_titulo">Gerenciamento de vendas!</string>
+    <string name="cadastrar_produto">Cadastrar novo Produto</string>
+    <string name="cadastrar_novo_recurso">Cadastrar novo Recurso</string>
+    <string name="cadastrar">cadastrar</string>
 
 </resources>
