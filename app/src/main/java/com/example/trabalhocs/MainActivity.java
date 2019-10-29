@@ -1,14 +1,25 @@
 package com.example.trabalhocs;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.trabalhocs.Model.ModeloReceita;
 import com.example.trabalhocs.View.Fragments.FragmentHome;
 import com.example.trabalhocs.View.Fragments.FragmentVendas;
+import com.example.trabalhocs.View.ListarFontesAdd;
+import com.example.trabalhocs.View.GerenciarReceita;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import butterknife.BindView;
@@ -27,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     private final FragmentHome fragmentHome = new FragmentHome();
     private final FragmentVendas fragmentVendas = new FragmentVendas();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         // O fragment principal é exibido inicialmente
         navigationView.setSelectedItemId(R.id.nav_home);
+
     }
 
     /**
@@ -73,6 +86,11 @@ public class MainActivity extends AppCompatActivity {
     private void switchFragment(Fragment fragment) {
         fragmentManager.beginTransaction().hide(fragmentAtivo).show(fragment).commit();
         fragmentAtivo = fragment;
+    }
+
+    public void gerenciarreceitas (View view){
+        Intent it = new Intent (MainActivity.this, GerenciarReceita.class);
+        startActivity(it);
     }
 
 }
