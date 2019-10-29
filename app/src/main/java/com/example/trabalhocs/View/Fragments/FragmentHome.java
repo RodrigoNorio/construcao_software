@@ -47,10 +47,7 @@ public class FragmentHome extends Fragment {
         ButterKnife.bind(this, view);
 
 
-        /*btn.setOnClickListener(v -> {
-            Intent intent = new Intent(getContext(), GerenciarGrupo.class);
-            startActivity(intent);
-        });*/
+
         addreceita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

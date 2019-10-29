@@ -59,4 +59,21 @@
         app:layout_constraintTop_toBottomOf="@+id/menuprincipal" />
 
 
+    <Button
+        android:id="@+id/gerenciargrupo"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="240dp"
+        android:layout_marginLeft="180dp"
+        android:layout_marginTop="114dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:onClick="gerenciargrupos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addreceita" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

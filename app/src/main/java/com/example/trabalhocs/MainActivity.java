@@ -18,6 +18,7 @@ import androidx.fragment.app.FragmentManager;
 import com.example.trabalhocs.Model.ModeloReceita;
 import com.example.trabalhocs.View.Fragments.FragmentHome;
 import com.example.trabalhocs.View.Fragments.FragmentVendas;
+import com.example.trabalhocs.View.GerenciarGrupo;
 import com.example.trabalhocs.View.ListarFontesAdd;
 import com.example.trabalhocs.View.GerenciarReceita;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -90,6 +91,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void gerenciarreceitas (View view){
         Intent it = new Intent (MainActivity.this, GerenciarReceita.class);
+        startActivity(it);
+    }
+
+    public void gerenciargrupos (View view){
+        Intent it = new Intent (MainActivity.this, GerenciarGrupo.class);
         startActivity(it);
     }
 

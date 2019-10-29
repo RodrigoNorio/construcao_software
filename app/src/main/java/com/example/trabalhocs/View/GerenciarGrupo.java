@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 
+import com.example.trabalhocs.Adapter.AdapterListaFonte;
+import com.example.trabalhocs.Adapter.AdapterListaGrupo;
 import com.example.trabalhocs.Controller.FonteCtrl;
 import com.example.trabalhocs.Controller.GrupoCtrl;
 import com.example.trabalhocs.Model.ModeloFonte;
@@ -17,14 +19,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class GerenciarGrupo extends AppCompatActivity {
+
+    private ListView lsvGrupo;
+    private List<ModeloGrupo> grupoList;
+    private AdapterListaGrupo adapterListaGrupo;
+    public static int selecionargrupo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +42,7 @@ public class GerenciarGrupo extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //listargrupos();
+        listargrupos();
         Button btngrupo = (Button) findViewById(R.id.adicionargrupo);
         btngrupo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,16 +51,17 @@ public class GerenciarGrupo extends AppCompatActivity {
             }
         });
 
+
     }
 
 
 
     public void addgruponome(){
-        final EditText fontetxt;
+        final EditText grupo_nome;
         AlertDialog.Builder builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
         builder.setMessage("Digite o nome do grupo: ");
-        fontetxt = new EditText(this);
-        builder.setView(fontetxt);
+        grupo_nome = new EditText(this);
+        builder.setView(grupo_nome);
 
         //OK
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -59,13 +69,13 @@ public class GerenciarGrupo extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 ModeloGrupo grupocadastrar = new ModeloGrupo();
 
-                grupocadastrar.setNome(fontetxt.getText().toString());
+                grupocadastrar.setNome(grupo_nome.getText().toString());
 
-                if (fontetxt.getText().length() != 0){
+                if (grupo_nome.getText().length() != 0){
                     GrupoCtrl grupoCtrl = new GrupoCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarGrupo.this));
                     grupoCtrl.salvarGruposDAOCtrl(grupocadastrar);
                     Toast.makeText(GerenciarGrupo.this, "Grupo cadastrada com sucesso!", Toast.LENGTH_SHORT).show();
-                    //listarfontes();
+                    listargrupos();
                 }
                 else {
                     Toast.makeText(GerenciarGrupo.this, "Preencha o campo corretamente!", Toast.LENGTH_SHORT).show();
@@ -85,58 +95,83 @@ public class GerenciarGrupo extends AppCompatActivity {
         //CRIAR DIALOG
         final AlertDialog ad = builder.create();
         ad.show();
-        fontetxt.setText("");
+        grupo_nome.setText("");
     }
-/*
+
     private void listargrupos() {
         //BUSCAR TODOS OS GRUPOS DO BANCO
 
         final GrupoCtrl grupoCtrl = new GrupoCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarGrupo.this));
 
         this.grupoList = new ArrayList<>();
-        grupoList = grupoCtrl.getListaFontesCtrl();
+        grupoList = grupoCtrl.getListaGruposCtrl();
 
-        this.lsvFontes = (ListView) findViewById(R.id.listarfontes);
+        this.lsvGrupo = (ListView) findViewById(R.id.listargrupos);
 
-        this.adapterListaFonte = new AdapterListaFonte(GerenciarReceita.this, fonteList);
+        this.adapterListaGrupo = new AdapterListaGrupo(GerenciarGrupo.this, grupoList);
 
-        this.lsvFontes.setAdapter(this.adapterListaFonte);
+        this.lsvGrupo.setAdapter(this.adapterListaGrupo);
 
-        this.lsvFontes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        this.lsvGrupo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, final int posicao, long id) {
 
-                adapterListaFonte.select(posicao);
+                adapterListaGrupo.select(posicao);
 
-                ModeloFonte fonteSelecionada = (ModeloFonte) adapterListaFonte.getItem(posicao);
-                final int cod_fonte = fonteSelecionada.getCodfonte();
+                ModeloGrupo grupoSelecionado = (ModeloGrupo) adapterListaGrupo.getItem(posicao);
+                final int cod_grupo = grupoSelecionado.getCod_grupo();
 
-                Button btnexcluir = findViewById(R.id.excluirfonte);
-                Button btneditar = findViewById(R.id.editarfonte);
-                Button btnverificar = findViewById(R.id.verificardin);
+                Button btnexcluir = findViewById(R.id.excluirgrupo);
+
+
 
                 btnexcluir.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        alertdialogexcluirfonte(cod_fonte);
+                        alertdialogexcluirgrupo(cod_grupo);
                     }
                 });
-                btneditar.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        alertdialogeeditarfonte(cod_fonte);
-                    }
-                });
-                btnverificar.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        alertdialogverificardin(cod_fonte);
-                    }
-                });
+
             }
         });
     }
-*/
+
+
+    private void alertdialogexcluirgrupo(final int cod_grupo) {
+        final GrupoCtrl grupoCtrl = new GrupoCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarGrupo.this));
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        final AlertDialog.Builder alert2 = new AlertDialog.Builder(this);
+        alert.setMessage("Deseja exluir este Grupo?");
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                alert2.setMessage("Se você excluir este grupo, todas as suas informações serão removidas, REALMENTE DESEJA EXCLUIR ESTE GRUPO?");
+                alert2.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        grupoCtrl.excluirGrupoCtrl(cod_grupo);
+                        Toast.makeText(GerenciarGrupo.this, "Fonte removida com sucesso!",Toast.LENGTH_SHORT).show();;
+                        listargrupos();
+                    }
+                });
+                alert2.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                alert2.create().show();
+            }
+        });
+        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        alert.create().show();
+    }
+
 
 
 

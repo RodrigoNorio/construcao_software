@@ -21,22 +21,18 @@ public class GrupoCtrl {
     public long salvarGruposDAOCtrl(ModeloGrupo f){
         return this.grupoDAO.salvarGruposDAO(f);
     }
-/*
-    public List<ModeloFonte> getListaFontesCtrl(){
-        return this.grupoDAO.getListaFontesDAO();
+
+    public List<ModeloGrupo> getListaGruposCtrl(){
+        return this.grupoDAO.getListaGrupoDAO();
     }
 
-    public boolean excluirFonteCtrl(long fcodFonte){
-        return this.grupoDAO.excluirFonteDAO(fcodFonte);
+    public boolean excluirGrupoCtrl(long fcodGrupo){
+        return this.grupoDAO.excluirGrupoDAO(fcodGrupo);
     }
-    /*
 
-    public boolean atualizarFonteCtrl (ModeloFonte f){
-        return this.grupoDAO.atualizarFonteDAO(f);
-    }
 
     public List<ModeloFonte> procurarControler(String keyword){
         return this.grupoDAO.search(keyword);
     }
-*/
+
 }
