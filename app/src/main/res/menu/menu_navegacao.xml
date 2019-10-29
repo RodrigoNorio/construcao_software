@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home"
+        android:title="@string/nav_financeiro" />
+
+    <item
+        android:id="@+id/nav_vendas"
+        android:icon="@drawable/ic_cofrinho"
+        android:title="@string/nav_vendas" />
+
+</menu>

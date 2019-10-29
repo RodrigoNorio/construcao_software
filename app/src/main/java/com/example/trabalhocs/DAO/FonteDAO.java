@@ -76,6 +76,7 @@ public class FonteDAO {
     }
 
     public boolean excluirFonteDAO (long fcodFonte){
+        exluirDadosReceitaDAO(fcodFonte);
         SQLiteDatabase db = null;
 
         try{
@@ -89,6 +90,30 @@ public class FonteDAO {
 
         }catch(Exception e){
             Log.d("FONTEDAO", "Não foi possivel deletar fonte");
+            return false;
+        }
+        finally {
+            if(db != null){
+                db.close();
+            }
+        }
+        return true;
+    }
+
+    public boolean exluirDadosReceitaDAO (long fcodFonte){
+        SQLiteDatabase db = null;
+
+        try{
+            db = this.conexaoSQlite.getWritableDatabase();
+
+            db.delete(
+                    "receita",
+                    "cod_fonte = ?",
+                    new String[]{String.valueOf(fcodFonte)}
+            );
+
+        }catch(Exception e){
+            Log.d("FONTEDAO", "Não foi possivel deletar receita");
             return false;
         }
         finally {
@@ -138,7 +163,7 @@ public class FonteDAO {
         }
         return listaFontes;
     }
-/*
+
     public List<ModeloFonte> search(String keyword) {
         List<ModeloFonte> contacts = null;
         try {
@@ -157,5 +182,5 @@ public class FonteDAO {
         }
         return contacts;
     }
-*/
+
 }
