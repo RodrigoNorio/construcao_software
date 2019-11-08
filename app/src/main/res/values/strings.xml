@@ -22,10 +22,23 @@
     <string name="title_activity_gerenciar_receita">GerenciarReceita</string>
     <string name="gerenciar_grupo">Gerenciar Grupo</string>
     <string name="nav_financeiro">financeiro</string>
+
+
+
     <string name="nav_vendas">vendas</string>
     <string name="vendas_titulo">Gerenciamento de vendas!</string>
-    <string name="cadastrar_produto">Cadastrar novo Produto</string>
-    <string name="cadastrar_novo_recurso">Cadastrar novo Recurso</string>
+    <string name="cadastrar_produto">Cadastrar Produto</string>
     <string name="cadastrar">cadastrar</string>
+
+
+    <string name="cadastrar_novo_recurso">Cadastrar Recurso</string>
+    <string name="cadastrar_recurso_info">Aqui você pode cadastrar um novo Recurso. Preencha os campos abaixo, depois de cadastrado você poderá associar este Recursos a um ou mais Produtos através de um Modelo.</string>
+    <string name="hint_descricao_recurso">adicione aqui uma descrição suscinta deste Recurso</string>
+    <string name="hint_inventario_recurso">insira aqui seu inventário atual do Recurso</string>
+
+    <string name="hint_nome">nome</string>
+    <string name="hint_descricao">descrição</string>
+    <string name="hint_inventario">inventário</string>
+    <string name="unidade_de_medida">Unidade de medida:</string>
 
 </resources>

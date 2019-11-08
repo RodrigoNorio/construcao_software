@@ -7,6 +7,7 @@ public class ModeloRecurso {
     private int id_recurso;
     private String nome;
     private String descricao;
+    private int tipoMedida;
     private int inventario;
 
     public ModeloRecurso() {
