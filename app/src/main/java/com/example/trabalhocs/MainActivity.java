@@ -18,6 +18,7 @@ import androidx.fragment.app.FragmentManager;
 import com.example.trabalhocs.Model.ModeloReceita;
 import com.example.trabalhocs.View.Fragments.FragmentHome;
 import com.example.trabalhocs.View.Fragments.FragmentVendas;
+import com.example.trabalhocs.View.GerenciarDestinos;
 import com.example.trabalhocs.View.GerenciarGrupo;
 import com.example.trabalhocs.View.ListarFontesAdd;
 import com.example.trabalhocs.View.GerenciarReceita;
@@ -96,6 +97,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void gerenciargrupos (View view){
         Intent it = new Intent (MainActivity.this, GerenciarGrupo.class);
+        startActivity(it);
+    }
+    public void gerenciardestino (View view){
+        Intent it = new Intent (MainActivity.this, GerenciarDestinos.class);
         startActivity(it);
     }
 

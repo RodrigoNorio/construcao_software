@@ -158,7 +158,7 @@ public class GerenciarReceita extends AppCompatActivity {
         final FonteCtrl fonteCtrl = new FonteCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarReceita.this));
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         final AlertDialog.Builder alert2 = new AlertDialog.Builder(this);
-        alert.setMessage("Deseja realmente exluir esta fonte?");
+        alert.setMessage("Deseja realmente excluir esta fonte?");
         alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

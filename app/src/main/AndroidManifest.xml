@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".View.GerenciarDestinos"
+            android:label="@string/title_activity_gerenciar_destinos"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".View.GerenciarValores"
             android:label="@string/title_activity_gerenciar_valores"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".View.ListarFontesAdd"
             android:label="@string/title_activity_listar_fontes_add"
