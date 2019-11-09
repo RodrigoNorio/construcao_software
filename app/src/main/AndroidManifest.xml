@@ -27,6 +27,7 @@
             android:name=".View.GerenciarGrupo"
             android:label="@string/title_activity_gerenciargrupo"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".View.CadastrarRecursoActivity" />
     </application>
 
 </manifest>

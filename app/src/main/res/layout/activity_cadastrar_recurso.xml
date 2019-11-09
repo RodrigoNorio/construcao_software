@@ -53,6 +53,8 @@
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="25dp"
+        app:counterEnabled="true"
+        app:counterMaxLength="50"
         android:hint="@string/hint_nome">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -145,8 +147,8 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="@dimen/input_inventario_width"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginLeft="30dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
             android:layout_marginTop="30dp"
             android:hint="@string/hint_inventario"
             app:helperText="@string/hint_inventario_recurso">
@@ -176,6 +178,7 @@
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_cadastrar"
         style="@style/btnConfirmar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

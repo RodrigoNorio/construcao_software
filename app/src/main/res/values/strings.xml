@@ -41,4 +41,25 @@
     <string name="hint_inventario">inventário</string>
     <string name="unidade_de_medida">Unidade de medida:</string>
 
+    <string name="error_nome">insira um nome</string>
+
+    <!-- Titulos Medidas -->
+    <string name="medida_gr">gramas</string>
+    <string name="medida_ml">mililitros</string>
+    <string name="medida_un">unidades</string>
+    <string name="medida_kg">kilos</string>
+    <string name="medida_l">litros</string>
+
+    <string name="abrv_gr">gr</string>
+    <string name="abrv_ml">ml</string>
+    <string name="abrv_un">un</string>
+    <string name="abrv_kg">kg</string>
+    <string name="abrv_l">l</string>
+
+    <string name="erro_un_medida">por favor selecione uma unidade de medida</string>
+    <string name="erro_nome_recurso">por favor insira um nome</string>
+    <string name="error_inventario_vazio">insira um valor de inventário (pode ser 0)</string>
+    <string name="error_inventario_invalido">o valor de inventário precisa ser positivo ou 0</string>
+
+
 </resources>
