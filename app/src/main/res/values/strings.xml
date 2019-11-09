@@ -27,21 +27,24 @@
 
     <string name="nav_vendas">vendas</string>
     <string name="vendas_titulo">Gerenciamento de vendas!</string>
-    <string name="cadastrar_produto">Cadastrar Produto</string>
     <string name="cadastrar">cadastrar</string>
 
+    <string name="cadastrar_produto">Cadastrar Produto</string>
+    <string name="cadastrar_produto_info">Aqui você pode cadastrar um novo Produto. Preencha os campos abaixo, depois de cadastrado você poderá registrar entrada e saída deste Produto.</string>
+    <string name="hint_descricao_produto">adicione aqui uma descrição suscinta do Produto</string>
+    <string name="hint_estoque_produto">insira aqui o estoque atual do Produto</string>
 
     <string name="cadastrar_novo_recurso">Cadastrar Recurso</string>
     <string name="cadastrar_recurso_info">Aqui você pode cadastrar um novo Recurso. Preencha os campos abaixo, depois de cadastrado você poderá associar este Recursos a um ou mais Produtos através de um Modelo.</string>
     <string name="hint_descricao_recurso">adicione aqui uma descrição suscinta deste Recurso</string>
-    <string name="hint_inventario_recurso">insira aqui seu inventário atual do Recurso</string>
+    <string name="hint_estoque_recurso">insira aqui seu estoque atual do Recurso</string>
 
     <string name="hint_nome">nome</string>
     <string name="hint_descricao">descrição</string>
-    <string name="hint_inventario">inventário</string>
+    <string name="hint_estoque">estoque</string>
     <string name="unidade_de_medida">Unidade de medida:</string>
 
-    <string name="error_nome">insira um nome</string>
+
 
     <!-- Titulos Medidas -->
     <string name="medida_gr">gramas</string>
@@ -56,10 +59,18 @@
     <string name="abrv_kg">kg</string>
     <string name="abrv_l">l</string>
 
+    <string name="valor_unitario">Valor\nunitário</string>
+    <string name="reais">R$</string>
+
     <string name="erro_un_medida">por favor selecione uma unidade de medida</string>
     <string name="erro_nome_recurso">por favor insira um nome</string>
-    <string name="error_inventario_vazio">insira um valor de inventário (pode ser 0)</string>
-    <string name="error_inventario_invalido">o valor de inventário precisa ser positivo ou 0</string>
+    <string name="erro_valor_vazio">por favor insira o valor do produto</string>
+    <string name="erro_valor_invalido">o valor do produto não pode ser negativo!</string>
+    <string name="error_estoque_vazio">insira o estoque (pode ser 0)</string>
+    <string name="error_estoque_invalido">o estoque precisa ser positivo ou 0</string>
+
+    <string name="error_nome">insira um nome</string>
+    <string name="erro_valor">insira o valor do produto</string>
 
 
 </resources>

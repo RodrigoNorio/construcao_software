@@ -1,7 +1,5 @@
 package com.example.trabalhocs.View;
 
-import android.animation.ArgbEvaluator;
-import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -36,8 +34,8 @@ public class CadastrarRecursoActivity extends AppCompatActivity {
     @BindView(R.id.spinner_medida)
     MaterialSpinner spinnerMedida;
 
-    @BindView(R.id.et_inventario)
-    TextInputEditText etInventario;
+    @BindView(R.id.et_estoque)
+    TextInputEditText etEstoque;
 
     @BindView(R.id.tv_medida_inventario)
     TextView tvMedidaInventario;
@@ -73,13 +71,11 @@ public class CadastrarRecursoActivity extends AppCompatActivity {
     @OnClick(R.id.btn_cadastrar)
     void onClickBtnCdastrar() {
 
-        if (!isCamposValidos()) {
-            piscarBotaoCadastro();
-
-        } else {
+        if (isCamposValidos()) {
             // TODO: 08/11/2019 implementar lógica do cadastro
             Torradeira.shortToast("cadastrou!!", this);
         }
+
     }
 
     private boolean isCamposValidos() {
@@ -96,35 +92,20 @@ public class CadastrarRecursoActivity extends AppCompatActivity {
             isValido = false;
         }
 
-        if (etInventario.getText().toString().isEmpty()) {
-            Torradeira.longToast(getString(R.string.error_inventario_vazio), this);
+        if (etEstoque.getText().toString().isEmpty()) {
+            Torradeira.longToast(getString(R.string.error_estoque_vazio), this);
             isValido = false;
 
-        } else if (Integer.parseInt(etInventario.getText().toString()) < 0) {
-            Torradeira.longToast(getString(R.string.error_inventario_invalido), this);
+        } else if (Integer.parseInt(etEstoque.getText().toString()) < 0) {
+            Torradeira.longToast(getString(R.string.error_estoque_invalido), this);
             isValido = false;
         }
 
         return isValido;
     }
 
-    private void piscarBotaoCadastro() {
-        btnCadastrar.setEnabled(false);
-
-        ObjectAnimator avermelhar = ObjectAnimator.ofObject(btnCadastrar, "backgroundColor",
-                new ArgbEvaluator(), getResources().getColor(R.color.colorPrimary), getResources().getColor(R.color.vermelho));
-
-        avermelhar.setDuration(300);
-        avermelhar.setStartDelay(50);
-        avermelhar.start();
-
-        ObjectAnimator esverdear = ObjectAnimator.ofObject(btnCadastrar, "backgroundColor",
-                new ArgbEvaluator(), getResources().getColor(R.color.vermelho), getResources().getColor(R.color.colorPrimary));
-
-        avermelhar.setDuration(300);
-        avermelhar.setStartDelay(350);
-        avermelhar.start();
-
-        btnCadastrar.setEnabled(true);
+    @OnClick(R.id.btn_voltar)
+    void onClickBtnVoltar() {
+        onBackPressed();
     }
 }

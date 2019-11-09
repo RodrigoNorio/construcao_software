@@ -45,8 +45,8 @@ public class FragmentVendas extends Fragment {
 
     @OnClick(R.id.btn_cadastrar_produto)
     void clickBtnCadastrarProduto() {
-//        Intent intent = new Intent(getContext(), CadastrarProdutoActivity.class);
-//        startActivity(intent);
+        Intent intent = new Intent(getContext(), CadastrarProdutoActivity.class);
+        startActivity(intent);
     }
 
     @OnClick(R.id.btn_cadastrar_recurso)
