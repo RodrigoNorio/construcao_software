@@ -25,12 +25,31 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <!-- Texto titulo -->
+    <style name="textoSubTitulo" parent="TextAppearance.AppCompat">
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textColor">@color/cinzaClaro</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
     <!-- Texto informacao -->
     <style name="textoInformacao" parent="TextAppearance.AppCompat">
         <item name="android:textAlignment">center</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:textColor">@color/cinzaClaro</item>
         <item name="android:textSize">12sp</item>
+    </style>
+
+    <!-- Botão confirmar GRANDE -->
+    <style name="btnConfirmarGrande" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:background">@drawable/bg_btn_verde</item>
+        <item name="android:width">@dimen/btn_grande_width</item>
+        <item name="android:textColor">@color/branco</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:includeFontPadding">false</item>
     </style>
 
     <!-- Botão confirmar -->
@@ -40,7 +59,18 @@
         <item name="android:textColor">@color/branco</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:gravity">center</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <!-- Botão cancelar -->
+    <style name="btnCancelar" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:background">@drawable/bg_btn_vermelho</item>
+        <item name="android:width">@dimen/btn_width</item>
+        <item name="android:textColor">@color/branco</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 

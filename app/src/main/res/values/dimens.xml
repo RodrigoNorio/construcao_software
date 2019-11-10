@@ -3,7 +3,11 @@
     <dimen name="altura_barra">56dp</dimen>
 
     <dimen name="btn_radius">30dp</dimen>
-    <dimen name="btn_width">180dp</dimen>
+    <dimen name="btn_width">140dp</dimen>
+    <dimen name="btn_height">35dp</dimen>
+
+    <dimen name="btn_grande_radius">30dp</dimen>
+    <dimen name="btn_grande_width">180dp</dimen>
 
     <dimen name="input_nome_width">260dp</dimen>
     <dimen name="input_nome_height">50dp</dimen>

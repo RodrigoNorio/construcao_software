@@ -23,8 +23,6 @@
     <string name="gerenciar_grupo">Gerenciar Grupo</string>
     <string name="nav_financeiro">financeiro</string>
 
-
-
     <string name="nav_vendas">vendas</string>
     <string name="vendas_titulo">Gerenciamento de vendas!</string>
     <string name="cadastrar">cadastrar</string>
@@ -71,6 +69,11 @@
 
     <string name="error_nome">insira um nome</string>
     <string name="erro_valor">insira o valor do produto</string>
-
+    <string name="cancelar">cancelar</string>
+    <string name="registrar">registrar</string>
+    <string name="reg_venda_titulo">registrar venda</string>
+    <string name="venda_subtitulo">selecione os produtos</string>
+    <string name="venda_resumo">resumo da venda</string>
+    <string name="total">TOTAL</string>
 
 </resources>
