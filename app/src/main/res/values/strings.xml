@@ -9,6 +9,7 @@
     <string name="lixo" />
     <string name="editar" />
     <string name="adicionardestino" />
+    <string name="adicionargasto" />
     <string name="gerenciarreceita">Gerenciar Receita</string>
     <string name="gerenciargasto">Gerenciar Gasto</string>
     <string name="digite_o_nome_da_fonte">Digite o nome da fonte</string>
