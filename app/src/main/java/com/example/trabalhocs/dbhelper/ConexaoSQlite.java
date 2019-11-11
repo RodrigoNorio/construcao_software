@@ -83,6 +83,15 @@ public class ConexaoSQlite extends SQLiteOpenHelper {
                         "id_recurso INTEGER NOT NULL,"+
                         "CONSTRAINT fk_id_recurso FOREIGN KEY (id_recurso) REFERENCES recurso (id_recurso));";
 
+        String sqlTabelaGasto =
+                "CREATE TABLE IF NOT EXISTS gasto" +
+                        "(" +
+                        "cod_gasto INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        "valor FLOAT, " +
+                        "data TEXT NOT NULL," +
+                        "cod_destino INTEGER," +
+                        "CONSTRAINT fk_cod_destino FOREIGN KEY (cod_gasto) REFERENCES destino (cod_destino));";
+
 //        String sqlTabelaRecursosProduto =
 //                "CREATE TABLE IF NOT EXISTS recursos_produto " +
 //                        "(" +

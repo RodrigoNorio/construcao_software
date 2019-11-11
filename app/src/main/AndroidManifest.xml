@@ -12,7 +12,7 @@
         <activity
             android:name=".View.GerenciarDestinos"
             android:label="@string/title_activity_gerenciar_destinos"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".View.GerenciarValores"
             android:label="@string/title_activity_gerenciar_valores"

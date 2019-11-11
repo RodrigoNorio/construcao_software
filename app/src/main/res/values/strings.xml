@@ -10,6 +10,7 @@
     <string name="editar" />
     <string name="adicionardestino" />
     <string name="gerenciarreceita">Gerenciar Receita</string>
+    <string name="gerenciargasto">Gerenciar Gasto</string>
     <string name="digite_o_nome_da_fonte">Digite o nome da fonte</string>
     <string name="idfonte">idfonte</string>
     <string name="descricaofonte">descricaofonte</string>
@@ -32,4 +33,5 @@
     <string name="title_activity_gerenciar_valores">GerenciarValores</string>
     <string name="title_activity_gerenciar_destinos">GerenciarDestinos</string>
     <string name="gerenciar_destinos">Gerenciar Destinos</string>
+    <string name="title_activity_gerenciar_gasto">gerenciar_gasto</string>
 </resources>
