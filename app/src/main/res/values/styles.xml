@@ -41,6 +41,14 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <!-- Texto informacao destaque -->
+    <style name="textoInformacaoDestaque" parent="TextAppearance.AppCompat">
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">@color/cinza</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
     <!-- Botão confirmar GRANDE -->
     <style name="btnConfirmarGrande" parent="Widget.AppCompat.Button.Borderless">
         <item name="android:background">@drawable/bg_btn_verde</item>
