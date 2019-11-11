@@ -1,11 +1,15 @@
 package com.example.trabalhocs.DAO;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.trabalhocs.Model.ModeloGasto;
 import com.example.trabalhocs.dbhelper.ConexaoSQlite;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GastoDAO {
 
@@ -96,7 +100,68 @@ public class GastoDAO {
         return true;
     }
 
+    public List<ModeloGasto> search(String keyword, int selecionar) {
+        List<ModeloGasto> contacts = null;
+        try {
+            SQLiteDatabase sqLiteDatabase = this.conexaoSQlite.getReadableDatabase();
 
+            Cursor cursor = sqLiteDatabase.rawQuery("select valor,data, * from gasto where data like ? and cod_destino= '" + selecionar + "'", new String[] { "%" + keyword + "%" });
+            if (cursor.moveToFirst()) {
+                contacts = new ArrayList<ModeloGasto>();
+                do {
+                    ModeloGasto contact = new ModeloGasto();
+                    contact.setValor(cursor.getFloat(0));
+                    contact.setDate(cursor.getString(1));
+                    contacts.add(contact);
+                } while (cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            contacts = null;
+        }
+        return contacts;
+    }
+
+    public List<ModeloGasto> getListaGastoDAO(int selecionar){
+
+        List<ModeloGasto> listaGasto = new ArrayList<>();
+        SQLiteDatabase db = null;
+        Cursor cursor;
+
+        String query = "SELECT * FROM gasto WHERE cod_destino = '" + selecionar + "'";
+
+        try{
+
+            db = this.conexaoSQlite.getReadableDatabase();
+
+            cursor = db.rawQuery(query, null);
+
+            if(cursor.moveToFirst()){
+
+                ModeloGasto gastoTemporario = null;
+
+                do{
+
+                    gastoTemporario = new ModeloGasto();
+                    gastoTemporario.setCodgasto(cursor.getInt(0));
+                    gastoTemporario.setValor(cursor.getFloat(1));
+                    gastoTemporario.setDate(cursor.getString(2));
+                    gastoTemporario.setCod_destino(cursor.getInt(3));
+
+                    listaGasto.add(gastoTemporario);
+
+                }while(cursor.moveToNext());
+            }
+
+        }catch (Exception e){
+            Log.d("Erro Lista Gasto", "Erro ao retornar os Gastos");
+            return null;
+        }finally {
+            if(db != null){
+                db.close();
+            }
+        }
+        return listaGasto;
+    }
 
 
 }
