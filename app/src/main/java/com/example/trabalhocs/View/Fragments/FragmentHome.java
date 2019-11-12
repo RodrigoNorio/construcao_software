@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.example.trabalhocs.MainActivity;
+import com.example.trabalhocs.Model.ModeloGasto;
 import com.example.trabalhocs.Model.ModeloReceita;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.View.GerenciarGrupo;
@@ -25,10 +26,14 @@ import butterknife.ButterKnife;
 
 public class FragmentHome extends Fragment {
     public static String val;
+    public static String valgasto;
 
 
     @BindView(R.id.addreceita)
     Button addreceita;
+
+    @BindView(R.id.addgasto)
+    Button addgasto;
 
 
     public FragmentHome() {
@@ -90,6 +95,49 @@ public class FragmentHome extends Fragment {
                 receitatxt.setText("");
             }
         });
+
+        /*addgasto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final EditText gastotxt;
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), android.R.style.Theme_Material_Light_Dialog_Alert);
+                builder.setMessage("Digite o valor do gasto: ");
+                gastotxt = new EditText(getContext());
+                builder.setView(gastotxt);
+                gastotxt.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+
+                //OK
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        ModeloGasto gastoACadastrar = new ModeloGasto();
+                        valgasto = gastotxt.getText().toString();
+                        gastoACadastrar.setValor(Float.parseFloat(valgasto));
+                        if (gastotxt.getText().length() != 0){
+                            valgasto = gastotxt.getText().toString();
+                            Intent it = new Intent (getContext(), ListarFontesAdd.class);
+                            startActivity(it);
+                        }
+                        else {
+                            Toast.makeText(getContext(), "Preencha o campo corretamente!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+                //CANCEL
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                //CRIAR DIALOG
+                final AlertDialog ad = builder.create();
+                ad.show();
+                receitatxt.setText("");
+            }
+        });*/
 
         return view;
     }
