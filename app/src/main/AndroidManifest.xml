@@ -29,6 +29,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".View.CadastrarRecursoActivity" />
         <activity android:name=".View.CadastrarProdutoActivity" />
+        <activity android:name=".View.RegistrarVendaActivity" />
     </application>
 
 </manifest>

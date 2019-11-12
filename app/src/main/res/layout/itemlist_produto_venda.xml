@@ -13,7 +13,7 @@
         android:layout_marginStart="2dp"
         android:layout_marginLeft="2dp"
         android:gravity="start"
-        android:text="teste de nome de item"
+        android:text="teste de nome de item bem grande Muito grande demais de grande meu pai amado eterno"
         android:textAlignment="textStart"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -71,8 +71,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="5dp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
             android:text="(5205)" />
     </LinearLayout>
 

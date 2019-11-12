@@ -75,5 +75,7 @@
     <string name="venda_subtitulo">selecione os produtos</string>
     <string name="venda_resumo">resumo da venda</string>
     <string name="total">TOTAL</string>
+    <string name="registrar_compra">registrar compra</string>
+    <string name="registrar_venda">registrar venda</string>
 
 </resources>

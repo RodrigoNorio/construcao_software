@@ -2,6 +2,9 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="altura_barra">56dp</dimen>
 
+    <dimen name="fab_compra_offset">55dp</dimen>
+    <dimen name="fab_venda_offset">105dp</dimen>
+
     <dimen name="btn_radius">30dp</dimen>
     <dimen name="btn_width">140dp</dimen>
     <dimen name="btn_height">35dp</dimen>
@@ -22,5 +25,4 @@
 
     <dimen name="input_qtd_venda_width">40dp</dimen>
     <dimen name="input_qtd_venda_height">40dp</dimen>
-
 </resources>
