@@ -19,6 +19,7 @@ import com.example.trabalhocs.Model.ModeloGasto;
 import com.example.trabalhocs.Model.ModeloReceita;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.View.GerenciarGrupo;
+import com.example.trabalhocs.View.ListarDestinoAdd;
 import com.example.trabalhocs.View.ListarFontesAdd;
 
 import butterknife.BindView;
@@ -96,7 +97,7 @@ public class FragmentHome extends Fragment {
             }
         });
 
-        /*addgasto.setOnClickListener(new View.OnClickListener() {
+        addgasto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final EditText gastotxt;
@@ -115,7 +116,7 @@ public class FragmentHome extends Fragment {
                         gastoACadastrar.setValor(Float.parseFloat(valgasto));
                         if (gastotxt.getText().length() != 0){
                             valgasto = gastotxt.getText().toString();
-                            Intent it = new Intent (getContext(), ListarFontesAdd.class);
+                            Intent it = new Intent (getContext(), ListarDestinoAdd.class);
                             startActivity(it);
                         }
                         else {
@@ -135,9 +136,9 @@ public class FragmentHome extends Fragment {
                 //CRIAR DIALOG
                 final AlertDialog ad = builder.create();
                 ad.show();
-                receitatxt.setText("");
+                gastotxt.setText("");
             }
-        });*/
+        });
 
         return view;
     }

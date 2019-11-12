@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".View.ListarDestinoAdd"
+            android:label="@string/title_activity_listar_gastos_add"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".View.GerenciarValoresGasto"
             android:label="@string/title_activity_gerenciar_valoresgasto"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".View.GerenciarGasto"
             android:label="@string/title_activity_gerenciar_gasto"
