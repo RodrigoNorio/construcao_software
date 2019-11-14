@@ -7,10 +7,17 @@ public class ModeloProduto {
     private int id_produto;
     private String nome;
     private String descricao;
-    private int inventario;
+    private int estoque;
     private double valorUnitario;
 
     public ModeloProduto() {
+    }
+
+    public ModeloProduto(String nome, String descricao, int estoque, double valorUnitario) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.estoque = estoque;
+        this.valorUnitario = valorUnitario;
     }
 
     @NonNull
@@ -19,7 +26,7 @@ public class ModeloProduto {
         String retorno = "";
 
         retorno += "Produto # " + id_produto + " " + nome + "\n";
-        retorno += "Em inventário: " + inventario + "\n";
+        retorno += "Estoque: " + estoque + "\n";
         retorno += "Valor Unitário: R$" + valorUnitario;
 
         return retorno;
@@ -45,12 +52,12 @@ public class ModeloProduto {
         this.descricao = descricao;
     }
 
-    public int getInventario() {
-        return inventario;
+    public int getEstoque() {
+        return estoque;
     }
 
-    public void setInventario(int inventario) {
-        this.inventario = inventario;
+    public void setEstoque(int estoque) {
+        this.estoque = estoque;
     }
 
     public double getValorUnitario() {

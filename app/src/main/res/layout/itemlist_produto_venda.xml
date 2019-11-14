@@ -51,10 +51,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_qtd"
+            style="@style/textoInformacaoDestaque"
             android:layout_width="@dimen/input_qtd_venda_width"
             android:layout_height="@dimen/input_qtd_venda_height"
-            style="@style/textoInformacaoDestaque"
-            android:text="999"/>
+            android:inputType="number"
+            android:text="0" />
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/btn_mais"
@@ -67,6 +69,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/tv_estoque"
             style="@style/textoInformacao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
