@@ -19,4 +19,7 @@ public class LoginCtrl {
     public Boolean verificarLogineSenhaCtrl(String login, String senha){
         return this.loginDAO.checarLogineEmailDAO(login,senha);
     }
+    public int retornarcodCtrl(String login, String senha){
+        return this.loginDAO.recuperarcodloginDAO(login,senha);
+    }
 }

@@ -1,10 +1,11 @@
-package com.example.trabalhocs;
+package com.example.trabalhocs.View;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.trabalhocs.Controller.LoginCtrl;
 import com.example.trabalhocs.Model.ModeloLogin;
+import com.example.trabalhocs.R;
 import com.example.trabalhocs.dbhelper.ConexaoSQlite;
 
 import androidx.appcompat.app.AppCompatActivity;

@@ -37,13 +37,17 @@ public class ConexaoSQlite extends SQLiteOpenHelper {
                 "CREATE TABLE IF NOT EXISTS destino" +
                         "(" +
                         "cod_destino INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        "descricao TEXT NOT NULL);";
+                        "descricao TEXT NOT NULL," +
+                        "cod_pessoa INTEGER NOT NULL,"+
+                            "CONSTRAINT fk_cod_pessoa FOREIGN KEY (cod_pessoa) REFERENCES pessoa (cod_pessoa));";
 
         String sqlTabelaFonte =
                 "CREATE TABLE IF NOT EXISTS fonte" +
                         "(" +
                         "cod_fonte INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        "descricao TEXT NOT NULL);";
+                        "descricao TEXT NOT NULL,"+
+                        "cod_pessoa INTEGER NOT NULL,"+
+                            "CONSTRAINT fk_cod_pessoa FOREIGN KEY (cod_pessoa) REFERENCES pessoa (cod_pessoa));";
 
         String sqlTabelaReceita =
                 "CREATE TABLE IF NOT EXISTS receita" +
@@ -52,7 +56,10 @@ public class ConexaoSQlite extends SQLiteOpenHelper {
                         "valor FLOAT, " +
                         "data TEXT NOT NULL," +
                         "cod_fonte INTEGER," +
-                        "CONSTRAINT fk_cod_fonte FOREIGN KEY (cod_fonte) REFERENCES fonte (cod_fonte));";
+                        "cod_pessoa INTEGER NOT NULL,"+
+                            "CONSTRAINT fk_cod_fonte FOREIGN KEY (cod_fonte) REFERENCES fonte (cod_fonte)," +
+                            "CONSTRAINT fk_cod_pessoa FOREIGN KEY (cod_pessoa) REFERENCES pessoa (cod_pessoa));";
+
 
         String sqlTabelaGrupo =
                 "CREATE TABLE IF NOT EXISTS grupos" +
