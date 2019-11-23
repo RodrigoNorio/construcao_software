@@ -32,4 +32,14 @@
     <string name="title_activity_gerenciar_valores">GerenciarValores</string>
     <string name="title_activity_gerenciar_destinos">GerenciarDestinos</string>
     <string name="gerenciar_destinos">Gerenciar Destinos</string>
+    <string name="title_activity_login">Login</string>
+    <string name="login">Login:</string>
+    <string name="senha">Senha:</string>
+    <string name="bem_vindo">Bem Vindo</string>
+    <string name="digite_o_login">Digite o login</string>
+    <string name="digite_a_senha">Digite a senha</string>
+    <string name="title_activity_cadastrar_login">CadastrarLogin</string>
+    <string name="cadastro">Cadastro</string>
+    <string name="digite_a_senha_novamente">Digite a senha novamente:</string>
+    <string name="confirmar">Confirmar:</string>
 </resources>

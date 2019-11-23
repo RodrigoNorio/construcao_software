@@ -26,6 +26,13 @@ public class ConexaoSQlite extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
+        String sqlTabelaPessoa =
+                "CREATE TABLE IF NOT EXISTS pessoa" +
+                        "(" +
+                        "cod_pessoa INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        "usuario TEXT NOT NULL," +
+                        "pass TEXT NOT NULL);";
+
         String sqlTabelaDestino =
                 "CREATE TABLE IF NOT EXISTS destino" +
                         "(" +
@@ -93,6 +100,7 @@ public class ConexaoSQlite extends SQLiteOpenHelper {
 //                        "CONSTRAINT fk_id_produto FOREIGN KEY (id_produto) REFERENCES produto (id_produto)" +
 //                        ");";
 
+        sqLiteDatabase.execSQL(sqlTabelaPessoa);
         sqLiteDatabase.execSQL(sqlTabelaDestino);
         sqLiteDatabase.execSQL(sqlTabelaFonte);
         sqLiteDatabase.execSQL(sqlTabelaReceita);
