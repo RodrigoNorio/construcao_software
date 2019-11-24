@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.trabalhocs.Model.ModeloReceita;
+import com.example.trabalhocs.View.Login;
 import com.example.trabalhocs.dbhelper.ConexaoSQlite;
 
 import java.util.ArrayList;
@@ -15,6 +16,9 @@ public class ReceitaDAO {
 
 
     private final ConexaoSQlite conexaoSQlite;
+
+    Login login = new Login();
+    final int cod_pessoa = Login.codusuario;
 
     public ReceitaDAO(ConexaoSQlite conexaoSQlite) {
         this.conexaoSQlite = conexaoSQlite;
@@ -28,6 +32,7 @@ public class ReceitaDAO {
             values.put("valor",r.getValor());
             values.put("data", r.getDate());
             values.put("cod_fonte", r.getCodfonte());
+            values.put("cod_pessoa", cod_pessoa);
 
             long receitainserida = db.insert("receita", null, values);
 
@@ -52,11 +57,12 @@ public class ReceitaDAO {
             receitaatt.put("valor", r.getValor());
             receitaatt.put("data", r.getDate());
             receitaatt.put("cod_fonte", r.getCodfonte());
+            receitaatt.put("cod_pessoa", cod_pessoa);
 
             int atualizou = db.update("receita",
                     receitaatt,
-                    "cod_receita = ?",
-                    new String[]{String.valueOf(r.getCodreceita())}
+                    "cod_receita = ? AND cod_pessoa = ?",
+                    new String[]{String.valueOf(r.getCodreceita()),String.valueOf(cod_pessoa)}
             );
 
             if (atualizou > 0){
@@ -85,8 +91,8 @@ public class ReceitaDAO {
 
             db.delete(
                     "receita",
-                    "cod_receita = ?",
-                    new String[]{String.valueOf(rcodFonte)}
+                    "cod_receita = ? AND cod_pessoa =?",
+                    new String[]{String.valueOf(rcodFonte), String.valueOf(cod_pessoa)}
             );
 
         }catch(Exception e){
@@ -128,13 +134,13 @@ public class ReceitaDAO {
         SQLiteDatabase db = null;
         Cursor cursor;
 
-        String query = "SELECT * FROM receita WHERE cod_fonte = '" + selecionar + "'";
+        String query = "SELECT * FROM receita WHERE cod_fonte = ?'" + selecionar + "'";
 
         try{
 
             db = this.conexaoSQlite.getReadableDatabase();
 
-            cursor = db.rawQuery(query, null);
+            cursor = db.rawQuery("SELECT * FROM receita WHERE cod_pessoa = ?", new String[] {String.valueOf(cod_pessoa)});
 
             if(cursor.moveToFirst()){
 

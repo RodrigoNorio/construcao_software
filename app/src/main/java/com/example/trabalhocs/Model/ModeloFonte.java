@@ -4,6 +4,7 @@ public class ModeloFonte {
 
     int codfonte;
     String descricao;
+    int cod_pessoa;
 
     public ModeloFonte() {
     }
@@ -24,11 +25,20 @@ public class ModeloFonte {
         this.descricao = descricao;
     }
 
+    public int getCodpessoa() {
+        return cod_pessoa;
+    }
+
+    public void setCod_pessoa(int cod_pessoa) {
+        this.cod_pessoa = cod_pessoa;
+    }
+
     @Override
     public String toString() {
         return "ModeloFonte{" +
                 "codfonte=" + codfonte +
-                ", descricao='" + descricao + '\'' +
+                "descricao=" + descricao +
+                ", cod_pessoa='" + cod_pessoa + '\'' +
                 '}';
     }
 

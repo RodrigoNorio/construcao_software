@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.trabalhocs.Model.ModeloFonte;
+import com.example.trabalhocs.View.Login;
 import com.example.trabalhocs.dbhelper.ConexaoSQlite;
 
 import java.util.ArrayList;
@@ -15,6 +16,9 @@ import java.util.List;
 public class FonteDAO {
 
     private final ConexaoSQlite conexaoSQlite;
+
+    Login login = new Login();
+    final int cod_pessoa = Login.codusuario;
 
     public FonteDAO(ConexaoSQlite conexaoSQlite) {
         this.conexaoSQlite = conexaoSQlite;
@@ -27,6 +31,7 @@ public class FonteDAO {
         try{
             ContentValues values = new ContentValues();
             values.put("descricao",f.getDescricao());
+            values.put("cod_pessoa", cod_pessoa);
 
             long coddescricaoinserida = db.insert("fonte", null, values);
 
@@ -50,11 +55,12 @@ public class FonteDAO {
             ContentValues fontedescricao = new ContentValues();
 
             fontedescricao.put("descricao", f.getDescricao());
+            fontedescricao.put("cod_pessoa", cod_pessoa);
 
             int atualizou = db.update("fonte",
                     fontedescricao,
-                    "cod_fonte = ?",
-                    new String[]{String.valueOf(f.getCodfonte())}
+                    "cod_fonte = ? AND cod_pessoa",
+                    new String[]{String.valueOf(f.getCodfonte()),String.valueOf(cod_pessoa)}
                     );
 
             if (atualizou > 0){
@@ -84,8 +90,8 @@ public class FonteDAO {
 
             db.delete(
                     "fonte",
-                    "cod_fonte = ?",
-                    new String[]{String.valueOf(fcodFonte)}
+                    "cod_fonte = ? AND cod_pessoa = ?",
+                    new String[]{String.valueOf(fcodFonte), String.valueOf(cod_pessoa)}
             );
 
         }catch(Exception e){
@@ -108,8 +114,8 @@ public class FonteDAO {
 
             db.delete(
                     "receita",
-                    "cod_fonte = ?",
-                    new String[]{String.valueOf(fcodFonte)}
+                    "cod_fonte = ? AND cod_pessoa = ?",
+                    new String[]{String.valueOf(fcodFonte), String.valueOf(cod_pessoa)}
             );
 
         }catch(Exception e){
@@ -136,7 +142,7 @@ public class FonteDAO {
 
             db = this.conexaoSQlite.getReadableDatabase();
 
-            cursor = db.rawQuery(query, null);
+            cursor = db.rawQuery("SELECT * FROM fonte WHERE cod_pessoa = ?", new String[] {String.valueOf(cod_pessoa)});
 
             if(cursor.moveToFirst()){
 
