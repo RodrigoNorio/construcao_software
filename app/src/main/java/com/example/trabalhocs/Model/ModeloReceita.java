@@ -6,6 +6,7 @@ public class ModeloReceita {
     float valor;
     String date;
     int cod_fonte;
+    int cod_pessoa;
 
     public int getCodreceita() {
         return codreceita;
@@ -38,13 +39,23 @@ public class ModeloReceita {
     public void setCodfonte(int codfonte) {
         this.cod_fonte = codfonte;
     }
+
+    public int getCodpessoa() {
+        return cod_pessoa;
+    }
+
+    public void setCod_pessoa(int cod_pessoa) {
+        this.cod_pessoa = cod_pessoa;
+    }
+
     @Override
     public String toString() {
         return "ModeloReceita{" +
                 "codreceita=" + codreceita +
                 ", receita'" + valor +
                 ", data='" + date +
-                ", cod_fonte='" + cod_fonte + '\'' +
+                ", cod_fonte='" + cod_fonte +
+                ", cod_pessoa='" + cod_pessoa + '\'' +
                 '}';
     }
 }

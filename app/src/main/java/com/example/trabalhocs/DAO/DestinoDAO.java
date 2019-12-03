@@ -7,6 +7,7 @@ import android.util.Log;
 
 
 import com.example.trabalhocs.Model.ModeloDestino;
+import com.example.trabalhocs.View.Login;
 import com.example.trabalhocs.dbhelper.ConexaoSQlite;
 
 import java.util.ArrayList;
@@ -15,6 +16,9 @@ import java.util.List;
 public class DestinoDAO {
 
     private final ConexaoSQlite conexaoSQlite;
+
+    Login login = new Login();
+    final int cod_pessoa = Login.codusuario;
 
     public DestinoDAO(ConexaoSQlite conexaoSQlite) {
         this.conexaoSQlite = conexaoSQlite;
@@ -27,6 +31,7 @@ public class DestinoDAO {
         try{
             ContentValues values = new ContentValues();
             values.put("descricao",d.getDescricao());
+            values.put("cod_pessoa", cod_pessoa);
 
             long coddescricaoinserida = db.insert("destino", null, values);
 
@@ -50,11 +55,12 @@ public class DestinoDAO {
             ContentValues destinodescricao = new ContentValues();
 
             destinodescricao.put("descricao", d.getDescricao());
+            destinodescricao.put("cod_pessoa", cod_pessoa);
 
             int atualizou = db.update("destino",
                     destinodescricao,
-                    "cod_destino = ?",
-                    new String[]{String.valueOf(d.getCoddestino())}
+                    "cod_destino = ? AND cod_pessoa = ?",
+                    new String[]{String.valueOf(d.getCoddestino()),String.valueOf(cod_pessoa)}
             );
 
             if (atualizou > 0){
@@ -84,8 +90,8 @@ public class DestinoDAO {
 
             db.delete(
                     "destino",
-                    "cod_destino = ?",
-                    new String[]{String.valueOf(fcodDestino)}
+                    "cod_destino = ? and cod_pessoa = ?",
+                    new String[]{String.valueOf(fcodDestino), String.valueOf(cod_pessoa)}
             );
 
         }catch(Exception e){
@@ -108,8 +114,8 @@ public class DestinoDAO {
 
             db.delete(
                     "gastos",
-                    "cod_destino = ?",
-                    new String[]{String.valueOf(fcodDestino)}
+                    "cod_destino = ? and cod_pessoa",
+                    new String[]{String.valueOf(fcodDestino),String.valueOf(cod_pessoa)}
             );
 
         }catch(Exception e){
@@ -136,7 +142,7 @@ public class DestinoDAO {
 
             db = this.conexaoSQlite.getReadableDatabase();
 
-            cursor = db.rawQuery(query, null);
+            cursor = db.rawQuery("SELECT * FROM destino WHERE cod_pessoa = ?", new String[] {String.valueOf(cod_pessoa)});
 
             if(cursor.moveToFirst()){
 

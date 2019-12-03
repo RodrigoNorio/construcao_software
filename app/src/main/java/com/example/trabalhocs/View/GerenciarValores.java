@@ -21,6 +21,8 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,9 +75,15 @@ public class GerenciarValores extends AppCompatActivity {
                 receitaACadastrar.setDate(fontetxtdata.getText().toString());
                 receitaACadastrar.setCodfonte(selecionar);
                 if (fontetxtdata.getText().length() != 0) {
-                    receitaCtrl.atualizarReceitaCtrl(receitaACadastrar);
-                    listarreceitas(selecionar);
-                    Toast.makeText(GerenciarValores.this, "Receita alterada com sucesso!", Toast.LENGTH_SHORT).show();
+                    if (verdata(fontetxtdata.getText().toString()) == true){
+                        receitaCtrl.atualizarReceitaCtrl(receitaACadastrar);
+                        listarreceitas(selecionar);
+                        Toast.makeText(GerenciarValores.this, "Receita alterada com sucesso!", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        Toast.makeText(GerenciarValores.this, "Data invalida!", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                 } else {
                     Toast.makeText(GerenciarValores.this, "Preencha o campo corretamente!", Toast.LENGTH_SHORT).show();
                     alertdialogeeditarreceitadata(cod_receita, selecionar, valor);
@@ -93,6 +101,16 @@ public class GerenciarValores extends AppCompatActivity {
         final AlertDialog ad = builderdata.create();
         ad.show();
         fontetxtdata.setText("");
+    }
+    public boolean verdata(String data) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            sdf.setLenient(false);
+            sdf.parse(data);
+            return true;
+        } catch (ParseException ex) {
+            return false;
+        }
     }
 
     private void alertdialogeeditarreceita(final int cod_receita, final int selecionar) {
@@ -133,7 +151,7 @@ public class GerenciarValores extends AppCompatActivity {
     private void alertdialogexcluirreceita(final int cod_receita, final int selecionar) {
         final ReceitaCtrl receitaCtrl = new ReceitaCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarValores.this));
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setMessage("Deseja realmente exluir esta receita?");
+        alert.setMessage("Deseja realmente excluir esta receita?");
         alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

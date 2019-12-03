@@ -26,17 +26,28 @@ public class ConexaoSQlite extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
+        String sqlTabelaPessoa =
+                "CREATE TABLE IF NOT EXISTS pessoa" +
+                        "(" +
+                        "cod_pessoa INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        "usuario TEXT NOT NULL," +
+                        "pass TEXT NOT NULL);";
+
         String sqlTabelaDestino =
                 "CREATE TABLE IF NOT EXISTS destino" +
                         "(" +
                         "cod_destino INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        "descricao TEXT NOT NULL);";
+                        "descricao TEXT NOT NULL," +
+                        "cod_pessoa INTEGER NOT NULL,"+
+                            "CONSTRAINT fk_cod_pessoa FOREIGN KEY (cod_pessoa) REFERENCES pessoa (cod_pessoa));";
 
         String sqlTabelaFonte =
                 "CREATE TABLE IF NOT EXISTS fonte" +
                         "(" +
                         "cod_fonte INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        "descricao TEXT NOT NULL);";
+                        "descricao TEXT NOT NULL,"+
+                        "cod_pessoa INTEGER NOT NULL,"+
+                            "CONSTRAINT fk_cod_pessoa FOREIGN KEY (cod_pessoa) REFERENCES pessoa (cod_pessoa));";
 
         String sqlTabelaReceita =
                 "CREATE TABLE IF NOT EXISTS receita" +
@@ -45,7 +56,10 @@ public class ConexaoSQlite extends SQLiteOpenHelper {
                         "valor FLOAT, " +
                         "data TEXT NOT NULL," +
                         "cod_fonte INTEGER," +
-                        "CONSTRAINT fk_cod_fonte FOREIGN KEY (cod_fonte) REFERENCES fonte (cod_fonte));";
+                        "cod_pessoa INTEGER NOT NULL,"+
+                            "CONSTRAINT fk_cod_fonte FOREIGN KEY (cod_fonte) REFERENCES fonte (cod_fonte)," +
+                            "CONSTRAINT fk_cod_pessoa FOREIGN KEY (cod_pessoa) REFERENCES pessoa (cod_pessoa));";
+
 
         String sqlTabelaGrupo =
                 "CREATE TABLE IF NOT EXISTS grupos" +
@@ -102,6 +116,7 @@ public class ConexaoSQlite extends SQLiteOpenHelper {
 //                        "CONSTRAINT fk_id_produto FOREIGN KEY (id_produto) REFERENCES produto (id_produto)" +
 //                        ");";
 
+        sqLiteDatabase.execSQL(sqlTabelaPessoa);
         sqLiteDatabase.execSQL(sqlTabelaDestino);
         sqLiteDatabase.execSQL(sqlTabelaFonte);
         sqLiteDatabase.execSQL(sqlTabelaReceita);

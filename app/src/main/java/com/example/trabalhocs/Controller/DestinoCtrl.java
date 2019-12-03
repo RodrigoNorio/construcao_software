@@ -9,7 +9,7 @@ import java.util.List;
 
 public class DestinoCtrl {
 
-    private final com.example.trabalhocs.DAO.DestinoDAO DestinoDAO;
+    private final DestinoDAO DestinoDAO;
 
     public DestinoCtrl(ConexaoSQlite pConexaoSQLite){
         DestinoDAO = new DestinoDAO(pConexaoSQLite);

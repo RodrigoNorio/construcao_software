@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+<<<<<<< HEAD
             android:name=".View.ListarDestinoAdd"
             android:label="@string/title_activity_listar_gastos_add"
             android:theme="@style/AppTheme.NoActionBar"></activity>
@@ -21,6 +22,21 @@
             android:name=".View.GerenciarGasto"
             android:label="@string/title_activity_gerenciar_gasto"
             android:theme="@style/AppTheme.NoActionBar" />
+=======
+            android:name=".View.CadastrarLogin"
+            android:label="@string/title_activity_cadastrar_login"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".View.Login"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+>>>>>>> a97aee6bae48f04d6b8187b3d939198c34672bf2
         <activity
             android:name=".View.GerenciarDestinos"
             android:label="@string/title_activity_gerenciar_destinos"

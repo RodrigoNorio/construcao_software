@@ -27,6 +27,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class ListarFontesAdd extends AppCompatActivity {
@@ -131,14 +133,19 @@ public class ListarFontesAdd extends AppCompatActivity {
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
-                ModeloReceita receitaACadastrar = new ModeloReceita();
-                receitaACadastrar.setValor(valor);
-                receitaACadastrar.setDate(fontetxt.getText().toString());
-                receitaACadastrar.setCodfonte(cod_fonte);
-                receitaCtrl.salvarReceitaCtrl(receitaACadastrar);
-                Toast.makeText(ListarFontesAdd.this, "Valor adicionado com sucesso!", Toast.LENGTH_SHORT).show();
-                finish();
+                if (verdata(fontetxt.getText().toString()) == true){
+                    ModeloReceita receitaACadastrar = new ModeloReceita();
+                    receitaACadastrar.setValor(valor);
+                    receitaACadastrar.setDate(fontetxt.getText().toString());
+                    receitaACadastrar.setCodfonte(cod_fonte);
+                    receitaCtrl.salvarReceitaCtrl(receitaACadastrar);
+                    Toast.makeText(ListarFontesAdd.this, "Valor adicionado com sucesso!", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+                else{
+                    Toast.makeText(ListarFontesAdd.this, "Data invalida!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
             }
         });
 
@@ -152,5 +159,16 @@ public class ListarFontesAdd extends AppCompatActivity {
 
         final AlertDialog ad = builder.create();
         ad.show();
+    }
+
+    public boolean verdata(String data) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            sdf.setLenient(false);
+            sdf.parse(data);
+            return true;
+        } catch (ParseException ex) {
+            return false;
+        }
     }
 }
