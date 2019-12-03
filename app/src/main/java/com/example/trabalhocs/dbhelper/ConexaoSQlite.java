@@ -118,6 +118,7 @@ public class ConexaoSQlite extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL(sqlTabelaPessoa);
         sqLiteDatabase.execSQL(sqlTabelaDestino);
+        sqLiteDatabase.execSQL(sqlTabelaGasto);
         sqLiteDatabase.execSQL(sqlTabelaFonte);
         sqLiteDatabase.execSQL(sqlTabelaReceita);
         sqLiteDatabase.execSQL(sqlTabelaGrupo);
