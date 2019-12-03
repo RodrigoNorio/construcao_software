@@ -67,7 +67,9 @@ public class ConexaoSQlite extends SQLiteOpenHelper {
                         "cod_grupo INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         "cod_destino INTEGER, " +
                         "nome TEXT NOT NULL," +
-                        "CONSTRAINT fk_cod_destino FOREIGN KEY (cod_destino) REFERENCES destino (cod_destino));";
+                        "cod_pessoa INTEGER NOT NULL,"+
+                        "CONSTRAINT fk_cod_destino FOREIGN KEY (cod_destino) REFERENCES destino (cod_destino)," +
+                        "CONSTRAINT fk_cod_pessoa FOREIGN KEY (cod_pessoa) REFERENCES pessoa (cod_pessoa));";
 
         String sqlTabelaProduto =
                 "CREATE TABLE IF NOT EXISTS produto" +
@@ -104,7 +106,12 @@ public class ConexaoSQlite extends SQLiteOpenHelper {
                         "valor FLOAT, " +
                         "data TEXT NOT NULL," +
                         "cod_destino INTEGER," +
-                        "CONSTRAINT fk_cod_destino FOREIGN KEY (cod_gasto) REFERENCES destino (cod_destino));";
+                        "cod_pessoa INTEGER NOT NULL,"+
+                        "CONSTRAINT fk_cod_destino FOREIGN KEY (cod_gasto) REFERENCES destino (cod_destino),"+
+                        "CONSTRAINT fk_cod_pessoa FOREIGN KEY (cod_pessoa) REFERENCES pessoa (cod_pessoa));";
+
+
+
 
 //        String sqlTabelaRecursosProduto =
 //                "CREATE TABLE IF NOT EXISTS recursos_produto " +

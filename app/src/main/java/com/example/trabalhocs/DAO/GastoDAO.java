@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.trabalhocs.Model.ModeloGasto;
+import com.example.trabalhocs.View.Login;
 import com.example.trabalhocs.dbhelper.ConexaoSQlite;
 
 import java.util.ArrayList;
@@ -14,6 +15,9 @@ import java.util.List;
 public class GastoDAO {
 
     private final ConexaoSQlite conexaoSQlite;
+
+    Login login = new Login();
+    final int cod_pessoa = Login.codusuario;
 
     public GastoDAO(ConexaoSQlite conexaoSQlite) {
         this.conexaoSQlite = conexaoSQlite;

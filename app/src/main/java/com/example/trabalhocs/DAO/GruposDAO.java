@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.example.trabalhocs.Model.ModeloGrupo;
 import com.example.trabalhocs.Model.ModeloReceita;
+import com.example.trabalhocs.View.Login;
 import com.example.trabalhocs.dbhelper.ConexaoSQlite;
 
 import java.util.ArrayList;
@@ -17,6 +18,9 @@ import java.util.List;
 public class GruposDAO {
 
     private final ConexaoSQlite conexaoSQlite;
+
+    Login login = new Login();
+    final int cod_pessoa = Login.codusuario;
 
     public GruposDAO(ConexaoSQlite conexaoSQlite) {
         this.conexaoSQlite = conexaoSQlite;
