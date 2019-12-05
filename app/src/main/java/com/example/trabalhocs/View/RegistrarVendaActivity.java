@@ -14,6 +14,9 @@ import com.example.trabalhocs.Adapter.AdapterVendaProduto;
 import com.example.trabalhocs.Controller.VendaController;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.Utils.Utilidades;
+import com.example.trabalhocs.View.Itens.ProdutoVendaItemView;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -48,11 +51,26 @@ public class RegistrarVendaActivity extends AppCompatActivity {
 
     private void config() {
         vendaController = new VendaController(Utilidades.getListaProdutosTeste()); // produtos teste
-        adapterVendaProduto = new AdapterVendaProduto(this, vendaController.getProdutos());
-//        adapterResumoVenda = new AdapterResumoVenda(this, vendaController.getProdutosViews());
+        adapterVendaProduto = new AdapterVendaProduto(this, vendaController);
+        adapterResumoVenda = new AdapterResumoVenda(this, vendaController.getProdutosSelecionadosView());
 
         rvProdutos.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         rvProdutos.setAdapter(adapterVendaProduto);
+    }
+
+    public void atualizarResumo() {
+        List<ProdutoVendaItemView> produtosSelecionados = vendaController.getProdutosSelecionadosView();
+
+        adapterResumoVenda.clear();
+        adapterResumoVenda.addAll(produtosSelecionados);
+
+        double total = 0.0;
+
+        for (ProdutoVendaItemView p : produtosSelecionados) {
+            total += p.getValorVenda();
+        }
+
+        tvValorTotal.setText(Utilidades.formataReais(total));
     }
 
     @OnClick(R.id.btn_confirmar)

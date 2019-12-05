@@ -14,6 +14,7 @@ import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.trabalhocs.Controller.VendaController;
 import com.example.trabalhocs.Model.ModeloProduto;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.Utils.Torradeira;
@@ -30,11 +31,13 @@ public class AdapterVendaProduto extends RecyclerView.Adapter<AdapterVendaProdut
     private List<ModeloProduto> produtos;
     private List<Integer> quantidades;
 
+    private VendaController controller;
     private RecyclerView recyclerView;
 
-    public AdapterVendaProduto(Context context, List<ModeloProduto> produtos) {
+    public AdapterVendaProduto(Context context, VendaController controller) {
         this.context = context;
-        this.produtos = produtos;
+        this.controller = controller;
+        this.produtos = controller.getProdutos();
 
         quantidades = new ArrayList<>();
 
@@ -64,6 +67,9 @@ public class AdapterVendaProduto extends RecyclerView.Adapter<AdapterVendaProdut
         final ModeloProduto produto = produtos.get(position);
         final int qtdAtual = quantidades.get(position);
 
+        holder.btnMenos.setTag(position);
+        holder.btnMais.setTag(position);
+
         holder.tvNome.setText(produto.getNome());
         holder.tvEstoque.setText(String.format("(%d)", produto.getEstoque()));
 
@@ -71,19 +77,24 @@ public class AdapterVendaProduto extends RecyclerView.Adapter<AdapterVendaProdut
 
         holder.btnMenos.setOnClickListener(v -> {
             if (qtdAtual > 0) {
+                int pos = (int) v.getTag();
+
                 int qtdNova = qtdAtual - 1;
-                quantidades.set(position, qtdNova);
+                quantidades.set(pos, qtdNova);
                 holder.etQtd.setText(String.format("%d", qtdNova));
-                recyclerView.post(() -> notifyItemChanged(position));
+                recyclerView.post(() -> notifyItemChanged(pos));
+//                controller.
             }
         });
 
         holder.btnMais.setOnClickListener(v -> {
             if (qtdAtual < produto.getEstoque()) {
+                int pos = (int) v.getTag();
+
                 int qtdNova = qtdAtual + 1;
-                quantidades.set(position, qtdNova);
+                quantidades.set(pos, qtdNova);
                 holder.etQtd.setText(String.format("%d", qtdNova));
-                recyclerView.post(() -> notifyItemChanged(position));
+                recyclerView.post(() -> notifyItemChanged(pos));
             } else {
                 alertaPassouEstoque();
             }
@@ -108,7 +119,7 @@ public class AdapterVendaProduto extends RecyclerView.Adapter<AdapterVendaProdut
                     Torradeira.shortToast("quantidade inválida!", context);
 
                     quantidades.set(position, 0);
-                    recyclerView.post(() -> notifyItemChanged(position));
+//                    recyclerView.post(() -> notifyItemChanged(position));
 
                 } else if (qtdInput > produto.getEstoque()) {
                     holder.etQtd.removeTextChangedListener(this);
@@ -118,18 +129,18 @@ public class AdapterVendaProduto extends RecyclerView.Adapter<AdapterVendaProdut
                     alertaPassouEstoque();
 
                     quantidades.set(position, produto.getEstoque());
-                    recyclerView.post(() -> notifyItemChanged(position));
+//                    recyclerView.post(() -> notifyItemChanged(position));
 
                 } else {
                     quantidades.set(position, qtdInput);
-                    recyclerView.post(() -> notifyItemChanged(position));
+//                    recyclerView.post(() -> notifyItemChanged(position));
                 }
             }
         });
     }
 
     private void alertaPassouEstoque() {
-        Torradeira.shortToast("a quantidade não pode ser maior que o estoque!", context);
+        Torradeira.shortToast("quantidade não pode ser maior que o estoque!", context);
     }
 
     @Override

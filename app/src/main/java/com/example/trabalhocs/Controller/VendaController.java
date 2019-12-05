@@ -21,6 +21,28 @@ public class VendaController {
         }
     }
 
+    public List<ProdutoVendaItemView> getProdutosSelecionadosView() {
+        List<ProdutoVendaItemView> selecionados = new ArrayList<>();
+
+        for (ProdutoVendaItemView p : produtosViews) {
+            if (p.getQuantidade() > 0) selecionados.add(p);
+        }
+
+        return  selecionados;
+    }
+    
+    public void updateLista(ModeloProduto p, int qtd) {
+        int index = 0;
+        
+        for (ProdutoVendaItemView pView : produtosViews) {
+            if (pView.getIdProduto() == p.getId_produto()) {
+                break; // TODO: 14/11/2019 AQUIIII 
+            }
+            
+            index++;
+        }
+    }
+
     public List<ModeloProduto> getProdutos() {
         return produtos;
     }
