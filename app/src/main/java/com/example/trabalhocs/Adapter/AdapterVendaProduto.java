@@ -1,9 +1,10 @@
 package com.example.trabalhocs.Adapter;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.example.trabalhocs.Controller.VendaController;
 import com.example.trabalhocs.Model.ModeloProduto;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.Utils.Torradeira;
+import com.example.trabalhocs.View.Dialogs.DialogVendaProduto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +39,7 @@ public class AdapterVendaProduto extends RecyclerView.Adapter<AdapterVendaProdut
     public AdapterVendaProduto(Context context, VendaController controller) {
         this.context = context;
         this.controller = controller;
-        this.produtos = controller.getProdutos();
+        this.produtos = controller.getProdutosList();
 
         quantidades = new ArrayList<>();
 
@@ -60,13 +62,13 @@ public class AdapterVendaProduto extends RecyclerView.Adapter<AdapterVendaProdut
         this.recyclerView = recyclerView;
     }
 
-
     @SuppressLint("DefaultLocale")
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
         final ModeloProduto produto = produtos.get(position);
         final int qtdAtual = quantidades.get(position);
 
+        holder.tvNome.setTag(position);
         holder.btnMenos.setTag(position);
         holder.btnMais.setTag(position);
 
@@ -75,68 +77,84 @@ public class AdapterVendaProduto extends RecyclerView.Adapter<AdapterVendaProdut
 
         holder.etQtd.setText(String.format("%d", qtdAtual));
 
+        holder.tvNome.setOnClickListener(v -> {
+            int pos = (int) v.getTag();
+            abrirDialogProduto(produtos.get(pos));
+        });
+
         holder.btnMenos.setOnClickListener(v -> {
             if (qtdAtual > 0) {
                 int pos = (int) v.getTag();
+                ModeloProduto produtoAtualizar = produtos.get(pos);
 
                 int qtdNova = qtdAtual - 1;
                 quantidades.set(pos, qtdNova);
                 holder.etQtd.setText(String.format("%d", qtdNova));
                 recyclerView.post(() -> notifyItemChanged(pos));
-//                controller.
+
+                controller.updateMap(produtoAtualizar.getId(), qtdNova);
             }
         });
 
         holder.btnMais.setOnClickListener(v -> {
             if (qtdAtual < produto.getEstoque()) {
                 int pos = (int) v.getTag();
+                ModeloProduto produtoAtualizar = produtos.get(pos);
 
                 int qtdNova = qtdAtual + 1;
                 quantidades.set(pos, qtdNova);
                 holder.etQtd.setText(String.format("%d", qtdNova));
                 recyclerView.post(() -> notifyItemChanged(pos));
+
+                controller.updateMap(produtoAtualizar.getId(), qtdNova);
             } else {
                 alertaPassouEstoque();
             }
         });
 
-        holder.etQtd.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+//        holder.etQtd.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) { }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                int qtdInput = !s.toString().equals("") ? Integer.parseInt(s.toString()) : 0;
+//
+//                if (qtdInput < 0) {
+//                    holder.etQtd.removeTextChangedListener(this);
+//                    holder.etQtd.setText("0");
+//                    holder.etQtd.addTextChangedListener(this);
+//
+//                    Torradeira.shortToast("quantidade inválida!", context);
+//
+//                    quantidades.set(position, 0);
+//                    controller.updateMap(produto.getId(), 0);
+//
+//                } else if (qtdInput > produto.getEstoque()) {
+//                    holder.etQtd.removeTextChangedListener(this);
+//                    holder.etQtd.setText(String.format("%d", produto.getEstoque()));
+//                    holder.etQtd.addTextChangedListener(this);
+//
+//                    alertaPassouEstoque();
+//
+//                    quantidades.set(position, produto.getEstoque());
+//                    controller.updateMap(produto.getId(), produto.getEstoque());
+//
+//                } else {
+//                    quantidades.set(position, qtdInput);
+//                    controller.updateMap(produto.getId(), qtdInput);
+//                }
+//            }
+//        });
+    }
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) { }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                int qtdInput = !s.toString().equals("") ? Integer.parseInt(s.toString()) : 0;
-
-                if (qtdInput < 0) {
-                    holder.etQtd.removeTextChangedListener(this);
-                    holder.etQtd.setText("0");
-                    holder.etQtd.addTextChangedListener(this);
-
-                    Torradeira.shortToast("quantidade inválida!", context);
-
-                    quantidades.set(position, 0);
-//                    recyclerView.post(() -> notifyItemChanged(position));
-
-                } else if (qtdInput > produto.getEstoque()) {
-                    holder.etQtd.removeTextChangedListener(this);
-                    holder.etQtd.setText(String.format("%d", produto.getEstoque()));
-                    holder.etQtd.addTextChangedListener(this);
-
-                    alertaPassouEstoque();
-
-                    quantidades.set(position, produto.getEstoque());
-//                    recyclerView.post(() -> notifyItemChanged(position));
-
-                } else {
-                    quantidades.set(position, qtdInput);
-//                    recyclerView.post(() -> notifyItemChanged(position));
-                }
-            }
-        });
+    private void abrirDialogProduto(ModeloProduto produto) {
+        DialogVendaProduto dialogVendaProduto = new DialogVendaProduto(context, produto);
+        final AlertDialog dialog = dialogVendaProduto.show();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
 
     private void alertaPassouEstoque() {

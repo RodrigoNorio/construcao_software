@@ -9,6 +9,10 @@
     <dimen name="btn_width">140dp</dimen>
     <dimen name="btn_height">35dp</dimen>
 
+    <dimen name="btn_pqno_radius">30dp</dimen>
+    <dimen name="btn_pqno_width">100dp</dimen>
+    <dimen name="btn_pqno_height">25dp</dimen>
+
     <dimen name="btn_grande_radius">30dp</dimen>
     <dimen name="btn_grande_width">180dp</dimen>
 
@@ -23,6 +27,11 @@
 
     <dimen name="input_estoque_width">120dp</dimen>
 
-    <dimen name="input_qtd_venda_width">40dp</dimen>
-    <dimen name="input_qtd_venda_height">40dp</dimen>
+    <dimen name="input_qtd_venda_width">50dp</dimen>
+    <dimen name="input_qtd_venda_height">50dp</dimen>
+
+    <dimen name="dialog_input_qtd_venda_width">120dp</dimen>
+    <dimen name="dialog_input_qtd_venda_height">30dp</dimen>
+
+    <dimen name="dialog_radius">10dp</dimen>
 </resources>

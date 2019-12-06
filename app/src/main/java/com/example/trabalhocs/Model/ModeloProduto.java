@@ -2,9 +2,11 @@ package com.example.trabalhocs.Model;
 
 import androidx.annotation.NonNull;
 
+import com.example.trabalhocs.Utils.Utilidades;
+
 public class ModeloProduto {
 
-    private int id_produto;
+    private int id;
     private String nome;
     private String descricao;
     private int estoque;
@@ -25,15 +27,19 @@ public class ModeloProduto {
     public String toString() {
         String retorno = "";
 
-        retorno += "Produto # " + id_produto + " " + nome + "\n";
+        retorno += "Produto # " + id + " " + nome + "\n";
         retorno += "Estoque: " + estoque + "\n";
         retorno += "Valor Unitário: R$" + valorUnitario;
 
         return retorno;
     }
 
-    public int getId_produto() {
-        return id_produto;
+    public String getValorUnitarioText() {
+        return String.format("R$ %s", Utilidades.formataReais(valorUnitario));
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getNome() {

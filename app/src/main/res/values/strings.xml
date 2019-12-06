@@ -40,9 +40,9 @@
     <string name="hint_nome">nome</string>
     <string name="hint_descricao">descrição</string>
     <string name="hint_estoque">estoque</string>
+    <string name="hint_quantidade">quantidade</string>
+
     <string name="unidade_de_medida">Unidade de medida:</string>
-
-
 
     <!-- Titulos Medidas -->
     <string name="medida_gr">gramas</string>
@@ -71,6 +71,7 @@
     <string name="erro_valor">insira o valor do produto</string>
     <string name="cancelar">cancelar</string>
     <string name="registrar">registrar</string>
+    <string name="adicionar">adicionar</string>
     <string name="reg_venda_titulo">registrar venda</string>
     <string name="venda_subtitulo">selecione os produtos</string>
     <string name="venda_resumo">resumo da venda</string>

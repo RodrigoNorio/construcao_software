@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/bg_inset_round"
+    android:padding="25dp">
+
+    <TextView
+        android:id="@+id/tv_nome"
+        style="@style/textoTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:gravity="start"
+        android:text="nome do produto"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_valor_unitario"
+        style="@style/textoSubTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:gravity="start"
+        android:text="R$ 2,50"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_nome" />
+
+    <TextView
+        android:id="@+id/tv_estoque"
+        style="@style/textoSubTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:gravity="end"
+        android:text="420 unidades em estoque"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_nome" />
+
+    <TextView
+        android:id="@+id/tv_desc"
+        style="@style/textoInformacao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        android:padding="5dp"
+        android:background="@drawable/bg_border_rounded_branco_escuro"
+        android:gravity="start"
+        android:text="uma descrição bem longa do produto pra teste aqui apenas um teste sabe sou um teste assim e tal"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_valor_unitario" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_quantidade"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
+        android:hint="@string/hint_quantidade"
+        app:layout_constraintBottom_toTopOf="@id/btn_cancelar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_desc">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_quantidade"
+            android:layout_width="@dimen/dialog_input_qtd_venda_width"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:inputType="number"
+            android:textColor="@color/cinza" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tv_valor_total"
+        style="@style/textoSubTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="total: R$ 42.502,13"
+        app:layout_constraintStart_toEndOf="@id/input_quantidade"
+        app:layout_constraintTop_toTopOf="@id/input_quantidade"
+        app:layout_constraintBottom_toBottomOf="@id/input_quantidade"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_cancelar"
+        style="@style/btnCancelarPqno"
+        android:layout_width="@dimen/btn_pqno_width"
+        android:layout_height="@dimen/btn_pqno_height"
+        android:text="@string/cancelar"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_confirmar"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_confirmar"
+        style="@style/btnConfirmarPqno"
+        android:layout_width="@dimen/btn_pqno_width"
+        android:layout_height="@dimen/btn_pqno_height"
+        android:text="@string/adicionar"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_cancelar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

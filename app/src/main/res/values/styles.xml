@@ -38,7 +38,7 @@
         <item name="android:textAlignment">center</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:textColor">@color/cinzaClaro</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">13sp</item>
     </style>
 
     <!-- Texto informacao destaque -->
@@ -46,7 +46,7 @@
         <item name="android:textAlignment">center</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:textColor">@color/cinza</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">15sp</item>
     </style>
 
     <!-- Botão confirmar GRANDE -->
@@ -79,6 +79,28 @@
         <item name="android:textAllCaps">true</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">14sp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <!-- Botão confirmar pequeno -->
+    <style name="btnConfirmarPqno" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:background">@drawable/bg_btn_verde</item>
+        <item name="android:width">@dimen/btn_pqno_width</item>
+        <item name="android:textColor">@color/branco</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <!-- Botão cancelar pequeno-->
+    <style name="btnCancelarPqno" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:background">@drawable/bg_btn_vermelho</item>
+        <item name="android:width">@dimen/btn_pqno_width</item>
+        <item name="android:textColor">@color/branco</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">13sp</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 

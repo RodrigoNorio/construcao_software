@@ -1,5 +1,8 @@
 package com.example.trabalhocs.Controller;
 
+import android.util.Log;
+import android.util.SparseArray;
+
 import com.example.trabalhocs.Model.ModeloProduto;
 import com.example.trabalhocs.View.Itens.ProdutoVendaItemView;
 
@@ -8,46 +11,40 @@ import java.util.List;
 
 public class VendaController {
 
-    List<ModeloProduto> produtos;
-    List<ProdutoVendaItemView> produtosViews;
+    List<ModeloProduto> produtosList;
+    SparseArray<ModeloProduto> produtosMapa;
+    SparseArray<ProdutoVendaItemView> produtosViews;
 
     public VendaController(List<ModeloProduto> produtos) {
-        this.produtos = produtos;
-
-        produtosViews = new ArrayList<>();
+        produtosList = produtos;
+        produtosMapa = new SparseArray<>(produtos.size());
+        produtosViews = new SparseArray<>(produtos.size());
 
         for (ModeloProduto p: produtos) {
-            produtosViews.add(new ProdutoVendaItemView(p, 0));
+            produtosMapa.append(p.getId(), p);
+            produtosViews.append(p.getId(), new ProdutoVendaItemView(p, 0));
         }
     }
 
     public List<ProdutoVendaItemView> getProdutosSelecionadosView() {
         List<ProdutoVendaItemView> selecionados = new ArrayList<>();
 
-        for (ProdutoVendaItemView p : produtosViews) {
+        for (int i = 0, tam = produtosViews.size(); i < tam; i++) {
+            ProdutoVendaItemView p = produtosViews.valueAt(i);
             if (p.getQuantidade() > 0) selecionados.add(p);
         }
 
         return  selecionados;
     }
     
-    public void updateLista(ModeloProduto p, int qtd) {
-        int index = 0;
-        
-        for (ProdutoVendaItemView pView : produtosViews) {
-            if (pView.getIdProduto() == p.getId_produto()) {
-                break; // TODO: 14/11/2019 AQUIIII 
-            }
-            
-            index++;
-        }
+    public void updateMap(int produtoId, int qtd) {
+        ProdutoVendaItemView pView = produtosViews.get(produtoId);
+        pView.setQuantidade(qtd);
+        produtosViews.put(produtoId, pView);
+        Log.d("butterfree", "updateMap: " + pView.toString());
     }
 
-    public List<ModeloProduto> getProdutos() {
-        return produtos;
-    }
-
-    public List<ProdutoVendaItemView> getProdutosViews() {
-        return produtosViews;
+    public List<ModeloProduto> getProdutosList() {
+        return produtosList;
     }
 }
