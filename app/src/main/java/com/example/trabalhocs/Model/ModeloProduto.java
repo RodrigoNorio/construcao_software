@@ -35,7 +35,7 @@ public class ModeloProduto {
     }
 
     public String getValorUnitarioText() {
-        return String.format("R$ %s", Utilidades.formataReais(valorUnitario));
+        return Utilidades.formataReais(valorUnitario);
     }
 
     public int getId() {

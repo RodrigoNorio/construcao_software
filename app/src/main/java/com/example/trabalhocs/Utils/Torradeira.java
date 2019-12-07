@@ -3,6 +3,8 @@ package com.example.trabalhocs.Utils;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.example.trabalhocs.R;
+
 public class Torradeira {
 
     private static Toast torrada;
@@ -22,6 +24,15 @@ public class Torradeira {
     public static void shortToast(String msg, Context context) {
         if (torrada != null) torrada.cancel();
         torrada = Toast.makeText(context, msg, Toast.LENGTH_SHORT);
+        torrada.show();
+    }
+
+    /**
+     * toast de erro generico
+     */
+    public static void erroToast( Context context) {
+        if (torrada != null) torrada.cancel();
+        torrada = Toast.makeText(context, context.getResources().getString(R.string.erro_generico), Toast.LENGTH_SHORT);
         torrada.show();
     }
 

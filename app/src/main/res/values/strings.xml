@@ -78,5 +78,6 @@
     <string name="total">TOTAL</string>
     <string name="registrar_compra">registrar compra</string>
     <string name="registrar_venda">registrar venda</string>
+    <string name="erro_generico">eita, algo não funcionou corretamente :(</string>
 
 </resources>

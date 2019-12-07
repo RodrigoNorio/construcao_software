@@ -5,13 +5,13 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,7 +27,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class AdapterVendaProduto extends RecyclerView.Adapter<AdapterVendaProduto.CustomViewHolder> {
+public class AdapterVendaProduto extends RecyclerView.Adapter<AdapterVendaProduto.CustomViewHolder> implements DialogVendaProduto.AddProdutoListener {
 
     private Context context;
     private List<ModeloProduto> produtos;
@@ -75,7 +75,7 @@ public class AdapterVendaProduto extends RecyclerView.Adapter<AdapterVendaProdut
         holder.tvNome.setText(produto.getNome());
         holder.tvEstoque.setText(String.format("(%d)", produto.getEstoque()));
 
-        holder.etQtd.setText(String.format("%d", qtdAtual));
+        holder.tvQtd.setText(String.format("%d", qtdAtual));
 
         holder.tvNome.setOnClickListener(v -> {
             int pos = (int) v.getTag();
@@ -89,7 +89,7 @@ public class AdapterVendaProduto extends RecyclerView.Adapter<AdapterVendaProdut
 
                 int qtdNova = qtdAtual - 1;
                 quantidades.set(pos, qtdNova);
-                holder.etQtd.setText(String.format("%d", qtdNova));
+                holder.tvQtd.setText(String.format("%d", qtdNova));
                 recyclerView.post(() -> notifyItemChanged(pos));
 
                 controller.updateMap(produtoAtualizar.getId(), qtdNova);
@@ -103,7 +103,7 @@ public class AdapterVendaProduto extends RecyclerView.Adapter<AdapterVendaProdut
 
                 int qtdNova = qtdAtual + 1;
                 quantidades.set(pos, qtdNova);
-                holder.etQtd.setText(String.format("%d", qtdNova));
+                holder.tvQtd.setText(String.format("%d", qtdNova));
                 recyclerView.post(() -> notifyItemChanged(pos));
 
                 controller.updateMap(produtoAtualizar.getId(), qtdNova);
@@ -112,7 +112,7 @@ public class AdapterVendaProduto extends RecyclerView.Adapter<AdapterVendaProdut
             }
         });
 
-//        holder.etQtd.addTextChangedListener(new TextWatcher() {
+//        holder.tvQtd.addTextChangedListener(new TextWatcher() {
 //            @Override
 //            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 //
@@ -124,9 +124,9 @@ public class AdapterVendaProduto extends RecyclerView.Adapter<AdapterVendaProdut
 //                int qtdInput = !s.toString().equals("") ? Integer.parseInt(s.toString()) : 0;
 //
 //                if (qtdInput < 0) {
-//                    holder.etQtd.removeTextChangedListener(this);
-//                    holder.etQtd.setText("0");
-//                    holder.etQtd.addTextChangedListener(this);
+//                    holder.tvQtd.removeTextChangedListener(this);
+//                    holder.tvQtd.setText("0");
+//                    holder.tvQtd.addTextChangedListener(this);
 //
 //                    Torradeira.shortToast("quantidade inválida!", context);
 //
@@ -134,9 +134,9 @@ public class AdapterVendaProduto extends RecyclerView.Adapter<AdapterVendaProdut
 //                    controller.updateMap(produto.getId(), 0);
 //
 //                } else if (qtdInput > produto.getEstoque()) {
-//                    holder.etQtd.removeTextChangedListener(this);
-//                    holder.etQtd.setText(String.format("%d", produto.getEstoque()));
-//                    holder.etQtd.addTextChangedListener(this);
+//                    holder.tvQtd.removeTextChangedListener(this);
+//                    holder.tvQtd.setText(String.format("%d", produto.getEstoque()));
+//                    holder.tvQtd.addTextChangedListener(this);
 //
 //                    alertaPassouEstoque();
 //
@@ -152,9 +152,10 @@ public class AdapterVendaProduto extends RecyclerView.Adapter<AdapterVendaProdut
     }
 
     private void abrirDialogProduto(ModeloProduto produto) {
-        DialogVendaProduto dialogVendaProduto = new DialogVendaProduto(context, produto);
+        DialogVendaProduto dialogVendaProduto = new DialogVendaProduto(context, this, produto);
         final AlertDialog dialog = dialogVendaProduto.show();
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        Log.d("rapidash", "abrirDialogProduto: " + dialog);
     }
 
     private void alertaPassouEstoque() {
@@ -166,13 +167,25 @@ public class AdapterVendaProduto extends RecyclerView.Adapter<AdapterVendaProdut
         return produtos != null ? produtos.size() : 0;
     }
 
+    @Override
+    public void addProduto(ModeloProduto produto, int quantidade) {
+        controller.updateMap(produto.getId(), quantidade);
+
+        // TODO: 06/12/2019 atualizar Array de quantidades na posição certa e o adapter tbm sei lá
+//        int pos = 0;
+//        notifyItemChanged(pos);0
+
+
+
+    }
+
     class CustomViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tv_nome)
         TextView tvNome;
 
-        @BindView(R.id.et_qtd)
-        AppCompatEditText etQtd;
+        @BindView(R.id.tv_qtd)
+        TextView tvQtd;
 
         @BindView(R.id.btn_menos)
         AppCompatImageButton btnMenos;

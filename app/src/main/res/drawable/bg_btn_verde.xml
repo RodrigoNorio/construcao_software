@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" >
-        <shape android:padding="@dimen/btn_grande_radius" android:shape="rectangle">
-            <corners android:radius="@dimen/btn_grande_radius"/>
-            <solid android:color="@color/colorAccent"/>
-        </shape>
-    </item>
-    <item>
-        <shape android:padding="@dimen/btn_grande_radius" android:shape="rectangle">
-            <corners android:radius="@dimen/btn_grande_radius"/>
-            <solid android:color="@color/colorPrimary"/>
-        </shape>
-    </item>
-</selector>
+<shape android:padding="@dimen/btn_grande_radius"
+    android:shape="rectangle"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="@dimen/btn_grande_radius"/>
+    <solid android:color="@drawable/selector_cor_btn_confirmar"/>
+</shape>

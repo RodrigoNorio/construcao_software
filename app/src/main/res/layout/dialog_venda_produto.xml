@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
+    android:animateLayoutChanges="true"
     android:background="@drawable/bg_inset_round"
     android:padding="25dp">
 
@@ -84,7 +85,6 @@
             android:layout_width="@dimen/dialog_input_qtd_venda_width"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
             android:inputType="number"
             android:textColor="@color/cinza" />
 
@@ -96,10 +96,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="total: R$ 42.502,13"
-        app:layout_constraintStart_toEndOf="@id/input_quantidade"
-        app:layout_constraintTop_toTopOf="@id/input_quantidade"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/input_quantidade"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/input_quantidade"
+        app:layout_constraintTop_toTopOf="@id/input_quantidade" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_cancelar"
@@ -117,8 +118,9 @@
         style="@style/btnConfirmarPqno"
         android:layout_width="@dimen/btn_pqno_width"
         android:layout_height="@dimen/btn_pqno_height"
-        android:text="@string/adicionar"
         android:layout_marginBottom="5dp"
+        android:enabled="false"
+        android:text="@string/adicionar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn_cancelar" />
