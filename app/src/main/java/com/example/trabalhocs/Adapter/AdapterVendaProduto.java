@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,16 +70,15 @@ public class AdapterVendaProduto extends RecyclerView.Adapter<AdapterVendaProdut
         holder.tvNome.setTag(position);
         holder.btnMenos.setTag(position);
         holder.btnMais.setTag(position);
+        holder.tvQtd.setTag(position);
+        holder.tvEstoque.setTag(position);
 
         holder.tvNome.setText(produto.getNome());
         holder.tvEstoque.setText(String.format("(%d)", produto.getEstoque()));
 
         holder.tvQtd.setText(String.format("%d", qtdAtual));
 
-        holder.tvNome.setOnClickListener(v -> {
-            int pos = (int) v.getTag();
-            abrirDialogProduto(produtos.get(pos));
-        });
+        //Click Listeners
 
         holder.btnMenos.setOnClickListener(v -> {
             if (qtdAtual > 0) {
@@ -112,50 +110,26 @@ public class AdapterVendaProduto extends RecyclerView.Adapter<AdapterVendaProdut
             }
         });
 
-//        holder.tvQtd.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) { }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//                int qtdInput = !s.toString().equals("") ? Integer.parseInt(s.toString()) : 0;
-//
-//                if (qtdInput < 0) {
-//                    holder.tvQtd.removeTextChangedListener(this);
-//                    holder.tvQtd.setText("0");
-//                    holder.tvQtd.addTextChangedListener(this);
-//
-//                    Torradeira.shortToast("quantidade inválida!", context);
-//
-//                    quantidades.set(position, 0);
-//                    controller.updateMap(produto.getId(), 0);
-//
-//                } else if (qtdInput > produto.getEstoque()) {
-//                    holder.tvQtd.removeTextChangedListener(this);
-//                    holder.tvQtd.setText(String.format("%d", produto.getEstoque()));
-//                    holder.tvQtd.addTextChangedListener(this);
-//
-//                    alertaPassouEstoque();
-//
-//                    quantidades.set(position, produto.getEstoque());
-//                    controller.updateMap(produto.getId(), produto.getEstoque());
-//
-//                } else {
-//                    quantidades.set(position, qtdInput);
-//                    controller.updateMap(produto.getId(), qtdInput);
-//                }
-//            }
-//        });
+        holder.tvNome.setOnClickListener(v -> {
+            int pos = (int) v.getTag();
+            abrirDialogProduto(produtos.get(pos), pos, quantidades.get(pos));
+        });
+
+        holder.tvQtd.setOnClickListener(v -> {
+            int pos = (int) v.getTag();
+            abrirDialogProduto(produtos.get(pos), pos, quantidades.get(pos));
+        });
+
+        holder.tvEstoque.setOnClickListener(v -> {
+            int pos = (int) v.getTag();
+            abrirDialogProduto(produtos.get(pos), pos, quantidades.get(pos));
+        });
     }
 
-    private void abrirDialogProduto(ModeloProduto produto) {
-        DialogVendaProduto dialogVendaProduto = new DialogVendaProduto(context, this, produto);
+    private void abrirDialogProduto(ModeloProduto produto, int posicao, int qtdAtual) {
+        DialogVendaProduto dialogVendaProduto = new DialogVendaProduto(context, this, posicao, produto, qtdAtual);
         final AlertDialog dialog = dialogVendaProduto.show();
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        Log.d("rapidash", "abrirDialogProduto: " + dialog);
     }
 
     private void alertaPassouEstoque() {
@@ -168,19 +142,13 @@ public class AdapterVendaProduto extends RecyclerView.Adapter<AdapterVendaProdut
     }
 
     @Override
-    public void addProduto(ModeloProduto produto, int quantidade) {
+    public void addProduto(int posicao, ModeloProduto produto, int quantidade) {
         controller.updateMap(produto.getId(), quantidade);
-
-        // TODO: 06/12/2019 atualizar Array de quantidades na posição certa e o adapter tbm sei lá
-//        int pos = 0;
-//        notifyItemChanged(pos);0
-
-
-
+        quantidades.set(posicao, quantidade);
+        notifyDataSetChanged();
     }
 
     class CustomViewHolder extends RecyclerView.ViewHolder {
-
         @BindView(R.id.tv_nome)
         TextView tvNome;
 

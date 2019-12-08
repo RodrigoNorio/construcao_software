@@ -44,15 +44,19 @@ public class DialogVendaProduto extends AlertDialog.Builder {
     AppCompatButton btnConfirmar;
 
     private AddProdutoListener listener;
-
-    private Context context;
-    private ModeloProduto produto;
     private AlertDialog dialog;
 
-    public DialogVendaProduto(Context context, AddProdutoListener listener, ModeloProduto produto) {
+    private Context context;
+    private int posicao;
+    private ModeloProduto produto;
+
+    public DialogVendaProduto(Context context, AddProdutoListener listener,
+                              int posicao, ModeloProduto produto,
+                              int quantidadeAtual) {
         super(context);
         this.context = context;
         this.listener = listener;
+        this.posicao = posicao;
         this.produto = produto;
 
         LayoutInflater inflater = LayoutInflater.from(context);
@@ -61,7 +65,7 @@ public class DialogVendaProduto extends AlertDialog.Builder {
 
         ButterKnife.bind(this, view);
 
-        config();
+        config(quantidadeAtual);
 
         setView(view);
     }
@@ -73,22 +77,25 @@ public class DialogVendaProduto extends AlertDialog.Builder {
     }
 
     @SuppressLint("DefaultLocale")
-    private void config() {
+    private void config(int quantidadeAtual) {
         tvNome.setText(produto.getNome());
         tvValorUn.setText(produto.getValorUnitarioText());
         tvEstoque.setText(String.format("%d unidades em estoque", produto.getEstoque()));
         tvDesc.setText(produto.getDescricao());
 
+        if (quantidadeAtual > 0) {
+            etQtd.setText(String.format("%d", quantidadeAtual));
+            tvValorTotal.setText(String.format("total: %s", Utilidades.formataReais(produto.getValorUnitario() * quantidadeAtual)));
+            tvValorTotal.setVisibility(View.VISIBLE);
+            btnConfirmar.setEnabled(true);
+        }
+
         etQtd.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
 
             @Override
             public void afterTextChanged(Editable s) {
@@ -104,6 +111,7 @@ public class DialogVendaProduto extends AlertDialog.Builder {
 
                     if (qtdInput > produto.getEstoque()) {
                         Torradeira.shortToast("quantidade não pode ser maior que o estoque!", context);
+                        etQtd.setSelection(s.length());
 
                         etQtd.removeTextChangedListener(this);
                         etQtd.setText(String.format("%d", produto.getEstoque()));
@@ -118,7 +126,6 @@ public class DialogVendaProduto extends AlertDialog.Builder {
                 }
             }
         });
-
     }
 
     @OnClick(R.id.btn_confirmar)
@@ -128,7 +135,7 @@ public class DialogVendaProduto extends AlertDialog.Builder {
             int qtdInput = !etQtd.getText().toString().equals("") ? Integer.parseInt(etQtd.getText().toString()) : 0;
 
             if (qtdInput > 0) {
-                listener.addProduto(produto, qtdInput);
+                listener.addProduto(posicao, produto, qtdInput);
                 dialog.dismiss();
             } else {
                 Torradeira.shortToast("quantidade inválida!", context);
@@ -148,8 +155,6 @@ public class DialogVendaProduto extends AlertDialog.Builder {
     }
 
     public interface AddProdutoListener {
-
-        void addProduto(ModeloProduto produto, int quantidade);
-
+        void addProduto(int posicao, ModeloProduto produto, int quantidade);
     }
 }

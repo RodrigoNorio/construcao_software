@@ -15,7 +15,8 @@ public class ModeloProduto {
     public ModeloProduto() {
     }
 
-    public ModeloProduto(String nome, String descricao, int estoque, double valorUnitario) {
+    public ModeloProduto(int id, String nome, String descricao, int estoque, double valorUnitario) {
+        this.id = id;
         this.nome = nome;
         this.descricao = descricao;
         this.estoque = estoque;

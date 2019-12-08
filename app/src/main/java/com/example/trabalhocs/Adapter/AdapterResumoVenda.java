@@ -1,5 +1,6 @@
 package com.example.trabalhocs.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +32,7 @@ public class AdapterResumoVenda extends ArrayAdapter<ProdutoVendaItemView> {
         this.list = list;
     }
 
+    @SuppressLint("DefaultLocale")
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -48,7 +50,7 @@ public class AdapterResumoVenda extends ArrayAdapter<ProdutoVendaItemView> {
         ProdutoVendaItemView item = list.get(position);
 
         itemHolder.tvNome.setText(item.getNomeProduto());
-        itemHolder.tvQtd.setText("(x" + item.getQuantidade() + ")");
+        itemHolder.tvQtd.setText(String.format("(%s x%d)", Utilidades.formataReais(item.getValorUnitario()), item.getQuantidade()));
         itemHolder.tvValor.setText(Utilidades.formataReais(item.getValorVenda()));
 
         return convertView;

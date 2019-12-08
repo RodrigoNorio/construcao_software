@@ -11,14 +11,20 @@ import java.util.List;
 
 public class VendaController {
 
-    List<ModeloProduto> produtosList;
-    SparseArray<ModeloProduto> produtosMapa;
-    SparseArray<ProdutoVendaItemView> produtosViews;
+    private VendaControllerListener listener;
+    private List<ModeloProduto> produtosList;
+    private List<ProdutoVendaItemView> selecionadosList;
+    private SparseArray<ModeloProduto> produtosMapa;
+    private SparseArray<ProdutoVendaItemView> produtosViews;
 
-    public VendaController(List<ModeloProduto> produtos) {
-        produtosList = produtos;
+    private double total = 0.0;
+
+    public VendaController(VendaControllerListener listener, List<ModeloProduto> produtos) {
+        this.listener = listener;
+        this.produtosList = produtos;
         produtosMapa = new SparseArray<>(produtos.size());
         produtosViews = new SparseArray<>(produtos.size());
+        selecionadosList = new ArrayList<>();
 
         for (ModeloProduto p: produtos) {
             produtosMapa.append(p.getId(), p);
@@ -27,14 +33,7 @@ public class VendaController {
     }
 
     public List<ProdutoVendaItemView> getProdutosSelecionadosView() {
-        List<ProdutoVendaItemView> selecionados = new ArrayList<>();
-
-        for (int i = 0, tam = produtosViews.size(); i < tam; i++) {
-            ProdutoVendaItemView p = produtosViews.valueAt(i);
-            if (p.getQuantidade() > 0) selecionados.add(p);
-        }
-
-        return  selecionados;
+        return  selecionadosList;
     }
     
     public void updateMap(int produtoId, int qtd) {
@@ -42,9 +41,32 @@ public class VendaController {
         pView.setQuantidade(qtd);
         produtosViews.put(produtoId, pView);
         Log.d("butterfree", "updateMap: " + pView.toString());
+
+        total = 0.0;
+
+        selecionadosList = new ArrayList<>();
+
+        for (int i = 0; i < produtosViews.size(); i++) {
+            ProdutoVendaItemView p = produtosViews.valueAt(i);
+            if (p.getQuantidade() > 0) selecionadosList.add(p);
+        }
+
+        for (ProdutoVendaItemView p : selecionadosList) {
+            total += p.getValorVenda();
+        }
+
+        listener.atualizaLista(total);
     }
 
     public List<ModeloProduto> getProdutosList() {
         return produtosList;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public interface VendaControllerListener {
+        void atualizaLista(double total);
     }
 }

@@ -1,11 +1,13 @@
 package com.example.trabalhocs.View;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,6 +15,7 @@ import com.example.trabalhocs.Adapter.AdapterResumoVenda;
 import com.example.trabalhocs.Adapter.AdapterVendaProduto;
 import com.example.trabalhocs.Controller.VendaController;
 import com.example.trabalhocs.R;
+import com.example.trabalhocs.Utils.Torradeira;
 import com.example.trabalhocs.Utils.Utilidades;
 import com.example.trabalhocs.View.Itens.ProdutoVendaItemView;
 
@@ -22,7 +25,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class RegistrarVendaActivity extends AppCompatActivity {
+public class RegistrarVendaActivity extends AppCompatActivity implements VendaController.VendaControllerListener {
 
     @BindView(R.id.rv_produtos)
     RecyclerView rvProdutos;
@@ -34,6 +37,9 @@ public class RegistrarVendaActivity extends AppCompatActivity {
     TextView tvTotal;
     @BindView(R.id.tv_valor_total)
     TextView tvValorTotal;
+
+    @BindView(R.id.btn_confirmar)
+    AppCompatButton btnConfirmar;
 
     private VendaController vendaController;
     private AdapterVendaProduto adapterVendaProduto;
@@ -50,7 +56,8 @@ public class RegistrarVendaActivity extends AppCompatActivity {
     }
 
     private void config() {
-        vendaController = new VendaController(Utilidades.getListaProdutosTeste()); // produtos teste
+
+        vendaController = new VendaController(this, Utilidades.getListaProdutosTeste()); // produtos teste
         adapterVendaProduto = new AdapterVendaProduto(this, vendaController);
         adapterResumoVenda = new AdapterResumoVenda(this, vendaController.getProdutosSelecionadosView());
 
@@ -58,24 +65,37 @@ public class RegistrarVendaActivity extends AppCompatActivity {
         rvProdutos.setAdapter(adapterVendaProduto);
     }
 
-    public void atualizarResumo() {
+    public void atualizarResumo(double total) {
         List<ProdutoVendaItemView> produtosSelecionados = vendaController.getProdutosSelecionadosView();
 
-        adapterResumoVenda.clear();
+        if (!adapterResumoVenda.isEmpty()) adapterResumoVenda.clear();
         adapterResumoVenda.addAll(produtosSelecionados);
+        lvResumo.setAdapter(adapterResumoVenda);
 
-        double total = 0.0;
+        if (total > 0) {
+            tvValorTotal.setText(Utilidades.formataReais(total));
 
-        for (ProdutoVendaItemView p : produtosSelecionados) {
-            total += p.getValorVenda();
+            tvTotal.setVisibility(View.VISIBLE);
+            tvValorTotal.setVisibility(View.VISIBLE);
+
+            btnConfirmar.setEnabled(true);
+
+        }  else {
+            tvTotal.setVisibility(View.GONE);
+            tvValorTotal.setVisibility(View.GONE);
+            btnConfirmar.setEnabled(false);
         }
 
-        tvValorTotal.setText(Utilidades.formataReais(total));
+    }
+
+    @Override
+    public void atualizaLista(double total) {
+        atualizarResumo(total);
     }
 
     @OnClick(R.id.btn_confirmar)
     void onClickBtnConfirmar() {
-        // TODO: 11/11/2019
+        Torradeira.longToast("total da venda: " + tvValorTotal.getText(), this);
     }
 
     @OnClick(R.id.btn_cancelar)
@@ -85,6 +105,6 @@ public class RegistrarVendaActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_ajuda)
     void onClickBtnAjuda() {
-        // TODO: 11/11/2019 add modal ajuda?
+        // TODO: 11/11/2019 add dialog de ajuda
     }
 }

@@ -38,9 +38,9 @@ public class Utilidades {
     public static List<ModeloProduto> getListaProdutosTeste() {
         List<ModeloProduto> list = new ArrayList<>();
 
-        list.add(new ModeloProduto("brownie comum", "um brownie padrão, feito com chocolate meio amargo", 10, 4.2));
-        list.add(new ModeloProduto("blondie", "um brownie branco, feito com chocolate branco", 15, 3.5));
-        list.add(new ModeloProduto("bombom morangão", "um delicioso coberto por uma camada de beijinho e uma crosta de chocolate ao leite", 5, 5.0));
+        list.add(new ModeloProduto(1, "brownie comum", "um brownie padrão, feito com chocolate meio amargo", 10, 4.2));
+        list.add(new ModeloProduto(2, "blondie", "um brownie branco, feito com chocolate branco", 15, 3.5));
+        list.add(new ModeloProduto(3, "bombom morangão", "um delicioso coberto por uma camada de beijinho e uma crosta de chocolate ao leite", 5, 5.0));
 
         return list;
     }
