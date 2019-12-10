@@ -16,6 +16,10 @@
     <dimen name="btn_grande_radius">30dp</dimen>
     <dimen name="btn_grande_width">180dp</dimen>
 
+    <dimen name="btn_largo_radius">30dp</dimen>
+    <dimen name="btn_largo_width">250dp</dimen>
+    <dimen name="btn_largo_height">35dp</dimen>
+
     <dimen name="input_nome_width">260dp</dimen>
     <dimen name="input_nome_height">50dp</dimen>
 

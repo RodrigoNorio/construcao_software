@@ -73,15 +73,26 @@
 
     <string name="error_nome">insira um nome</string>
     <string name="erro_valor">insira o valor do produto</string>
+
     <string name="cancelar">cancelar</string>
     <string name="registrar">registrar</string>
     <string name="adicionar">adicionar</string>
+
     <string name="reg_venda_titulo">registrar venda</string>
     <string name="venda_subtitulo">selecione os produtos</string>
     <string name="venda_resumo">resumo da venda</string>
     <string name="total">TOTAL</string>
+
+    <string name="estoque_titulo">estoque de recursos</string>
+    <string name="estoque_cadastrar">cadastrar novo recurso</string>
+    <string name="estoque_compra">registrar entrada de estoque</string>
+    <string name="nome">nome</string>
+    <string name="quantidade">quantidade em estoque</string>
+
+
     <string name="registrar_compra">registrar compra</string>
     <string name="registrar_venda">registrar venda</string>
+
     <string name="erro_generico">eita, algo não funcionou corretamente :(</string>
 
 </resources>

@@ -49,6 +49,18 @@
         <item name="android:textSize">15sp</item>
     </style>
 
+    <!-- Botão ação LARGO -->
+    <style name="btnAcaoLargo" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:background">@drawable/bg_btn_verde</item>
+        <item name="android:width">@dimen/btn_largo_width</item>
+        <item name="android:textColor">@color/branco</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
     <!-- Botão confirmar GRANDE -->
     <style name="btnConfirmarGrande" parent="Widget.AppCompat.Button.Borderless">
         <item name="android:background">@drawable/bg_btn_verde</item>

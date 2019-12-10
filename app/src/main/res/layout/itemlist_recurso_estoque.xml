@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="3">
+
+        <TextView
+            android:id="@+id/tv_nome"
+            style="@style/textoSubTitulo"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="Um nome de recurso grande"
+            android:textAlignment="textStart" />
+
+        <TextView
+            android:id="@+id/tv_desc"
+            style="@style/textoInformacao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="sou uma descrição bem longa, super longa, muuuito longa assim mesmo pra testar o layout e o teclado"
+            android:textAlignment="textStart" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_estoque"
+        style="@style/textoTitulo"
+        android:layout_width="0dp"
+        android:text="42.500 Un"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+
+</LinearLayout>

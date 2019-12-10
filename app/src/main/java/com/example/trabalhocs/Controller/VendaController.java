@@ -1,6 +1,5 @@
 package com.example.trabalhocs.Controller;
 
-import android.util.Log;
 import android.util.SparseArray;
 
 import com.example.trabalhocs.Model.ModeloProduto;
@@ -40,7 +39,6 @@ public class VendaController {
         ProdutoVendaItemView pView = produtosViews.get(produtoId);
         pView.setQuantidade(qtd);
         produtosViews.put(produtoId, pView);
-        Log.d("butterfree", "updateMap: " + pView.toString());
 
         total = 0.0;
 
