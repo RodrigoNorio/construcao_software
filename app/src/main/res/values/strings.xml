@@ -37,6 +37,10 @@
     <string name="hint_descricao_recurso">adicione aqui uma descrição suscinta deste Recurso</string>
     <string name="hint_estoque_recurso">insira aqui seu estoque atual do Recurso</string>
 
+    <string name="aviso_salvar">tem certeza que quer sair sem finalizar a operação?</string>
+    <string name="aviso_voltar">voltar</string>
+    <string name="aviso_continuar">sim</string>
+
     <string name="hint_nome">nome</string>
     <string name="hint_descricao">descrição</string>
     <string name="hint_estoque">estoque</string>

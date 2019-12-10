@@ -1,5 +1,8 @@
 package com.example.trabalhocs.View;
 
+import android.app.AlertDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
@@ -17,6 +20,7 @@ import com.example.trabalhocs.Controller.VendaController;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.Utils.Torradeira;
 import com.example.trabalhocs.Utils.Utilidades;
+import com.example.trabalhocs.View.Dialogs.DialogAvisoVoltar;
 import com.example.trabalhocs.View.Itens.ProdutoVendaItemView;
 
 import java.util.List;
@@ -44,6 +48,7 @@ public class RegistrarVendaActivity extends AppCompatActivity implements VendaCo
     private VendaController vendaController;
     private AdapterVendaProduto adapterVendaProduto;
     private AdapterResumoVenda adapterResumoVenda;
+    private boolean temItens = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,7 +61,6 @@ public class RegistrarVendaActivity extends AppCompatActivity implements VendaCo
     }
 
     private void config() {
-
         vendaController = new VendaController(this, Utilidades.getListaProdutosTeste()); // produtos teste
         adapterVendaProduto = new AdapterVendaProduto(this, vendaController);
         adapterResumoVenda = new AdapterResumoVenda(this, vendaController.getProdutosSelecionadosView());
@@ -79,11 +83,13 @@ public class RegistrarVendaActivity extends AppCompatActivity implements VendaCo
             tvValorTotal.setVisibility(View.VISIBLE);
 
             btnConfirmar.setEnabled(true);
+            temItens = true;
 
         }  else {
             tvTotal.setVisibility(View.GONE);
             tvValorTotal.setVisibility(View.GONE);
             btnConfirmar.setEnabled(false);
+            temItens = false;
         }
 
     }
@@ -98,13 +104,36 @@ public class RegistrarVendaActivity extends AppCompatActivity implements VendaCo
         Torradeira.longToast("total da venda: " + tvValorTotal.getText(), this);
     }
 
-    @OnClick(R.id.btn_cancelar)
-    void onClickBtnCancelar(){
-        // TODO: 11/11/2019
-    }
-
     @OnClick(R.id.btn_ajuda)
     void onClickBtnAjuda() {
         // TODO: 11/11/2019 add dialog de ajuda
+    }
+
+    @OnClick(R.id.btn_cancelar)
+    void onClickBtnCancelar(){
+        if (temItens) {
+            dialogAvisoSalvar();
+        } else {
+            finish();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        dialogAvisoSalvar();
+    }
+
+    private void dialogAvisoSalvar() {
+        final DialogAvisoVoltar dialogAvisoSalvar = new DialogAvisoVoltar(this);
+        final AlertDialog dialog =  dialogAvisoSalvar.show();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        dialogAvisoSalvar.buttonVoltar.setOnClickListener(v -> dialog.dismiss());
+
+        dialogAvisoSalvar.buttonContinuar.setOnClickListener(v -> {
+            dialog.dismiss();
+
+            finish();
+        });
     }
 }
