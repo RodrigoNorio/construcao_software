@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.View.CadastrarProdutoActivity;
 import com.example.trabalhocs.View.CadastrarRecursoActivity;
+import com.example.trabalhocs.View.EstoqueActivity;
 import com.example.trabalhocs.View.RegistrarVendaActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -214,6 +215,12 @@ public class FragmentVendas extends Fragment {
     @OnClick(R.id.btn_cadastrar_recurso)
     void clickBtnCadastrarRecurso() {
         Intent intent = new Intent(getContext(), CadastrarRecursoActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.btn_estoque_recursos)
+    void onClickBtnEstoqueRecursos() {
+        Intent intent = new Intent(getContext(), EstoqueActivity.class);
         startActivity(intent);
     }
 }

@@ -1,6 +1,10 @@
 package com.example.trabalhocs.Model;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
+
+import com.example.trabalhocs.Utils.Utilidades;
 
 public class ModeloRecurso {
 
@@ -9,6 +13,14 @@ public class ModeloRecurso {
     private String descricao;
     private int tipoMedida;
     private int inventario;
+
+    public ModeloRecurso(int id_recurso, String nome, String descricao, int tipoMedida, int inventario) {
+        this.id_recurso = id_recurso;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.tipoMedida = tipoMedida;
+        this.inventario = inventario;
+    }
 
     public ModeloRecurso() {
     }
@@ -22,6 +34,10 @@ public class ModeloRecurso {
         retorno += "Em inventário: " + inventario;
 
         return retorno;
+    }
+
+    public String getTextoEstoque(Context context) {
+        return inventario + " " + Utilidades.getMedidaAbrev(context, tipoMedida);
     }
 
     public int getId_recurso() {

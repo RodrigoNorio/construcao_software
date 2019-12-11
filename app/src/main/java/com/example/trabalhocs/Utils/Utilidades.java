@@ -3,6 +3,7 @@ package com.example.trabalhocs.Utils;
 import android.content.Context;
 
 import com.example.trabalhocs.Model.ModeloProduto;
+import com.example.trabalhocs.Model.ModeloRecurso;
 import com.example.trabalhocs.R;
 
 import java.text.NumberFormat;
@@ -29,6 +30,38 @@ public class Utilidades {
         return medidasList;
     }
 
+    public static String getMedidaAbrev(Context context, int id) {
+        String abreviacao = "";
+
+        switch (id) {
+            case Constants.TIPO_MEDIDA_GRAMAS:
+                abreviacao = context.getResources().getString(R.string.abrv_gr);
+                break;
+
+            case Constants.TIPO_MEDIDA_MILILITRO:
+                abreviacao = context.getResources().getString(R.string.abrv_ml);
+                break;
+
+            case Constants.TIPO_MEDIDA_UNIDADE:
+                abreviacao = context.getResources().getString(R.string.abrv_un);
+                break;
+
+            case Constants.TIPO_MEDIDA_KILO:
+                abreviacao = context.getResources().getString(R.string.abrv_kg);
+                break;
+
+            case Constants.TIPO_MEDIDA_LITRO:
+                abreviacao = context.getResources().getString(R.string.abrv_l);
+                break;
+
+            default:
+                abreviacao = "";
+                break;
+        }
+
+        return abreviacao;
+    }
+
     public static String formataReais(Double val) {
         NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
         format.setCurrency(Currency.getInstance("BRL"));
@@ -41,6 +74,18 @@ public class Utilidades {
         list.add(new ModeloProduto(1, "brownie comum", "um brownie padrão, feito com chocolate meio amargo", 10, 4.2));
         list.add(new ModeloProduto(2, "blondie", "um brownie branco, feito com chocolate branco", 15, 3.5));
         list.add(new ModeloProduto(3, "bombom morangão", "um delicioso coberto por uma camada de beijinho e uma crosta de chocolate ao leite", 5, 5.0));
+
+        return list;
+    }
+
+    public static List<ModeloRecurso> getListaRecursosTeste() {
+        List<ModeloRecurso> list = new ArrayList<>();
+
+        list.add(new ModeloRecurso(1, "Leite Integral", "Leite de vaca integral", Constants.TIPO_MEDIDA_LITRO, 5));
+        list.add(new ModeloRecurso(2, "Achocolatado", "Achocolatado em pó comum", Constants.TIPO_MEDIDA_GRAMAS, 3000));
+        list.add(new ModeloRecurso(3, "Açucar", "Açucar branco padrão", Constants.TIPO_MEDIDA_KILO, 10));
+        list.add(new ModeloRecurso(4, "Extrato de baunilha", "Extrato liquido de baunilha, usado para perfumar e enriquecer receitas doces", Constants.TIPO_MEDIDA_MILILITRO, 200));
+        list.add(new ModeloRecurso(5, "Ovo", "Ovos de galinha, podem ser brancos os marrons não faz diferença!", Constants.TIPO_MEDIDA_UNIDADE, 24));
 
         return list;
     }

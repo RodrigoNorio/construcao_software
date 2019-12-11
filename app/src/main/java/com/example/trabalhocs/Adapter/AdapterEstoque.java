@@ -37,7 +37,11 @@ public class AdapterEstoque extends RecyclerView.Adapter<AdapterEstoque.CustomVi
 
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
-        // TODO: 10/12/2019 continuar aqui, pegar recurso e fazer o bind etc. 
+        ModeloRecurso recurso = recursos.get(position);
+
+        holder.tvNome.setText(recurso.getNome());
+        holder.tvDesc.setText(recurso.getDescricao());
+        holder.tvEstoque.setText(recurso.getTextoEstoque(context));
     }
 
     @Override

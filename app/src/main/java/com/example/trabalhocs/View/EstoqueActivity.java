@@ -6,10 +6,14 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.trabalhocs.Adapter.AdapterEstoque;
+import com.example.trabalhocs.Controller.EstoqueController;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.Utils.Torradeira;
+import com.example.trabalhocs.Utils.Utilidades;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,6 +30,9 @@ public class EstoqueActivity extends AppCompatActivity {
     @BindView(R.id.btn_compra)
     AppCompatButton btnCompraRecurso;
 
+    private EstoqueController estoqueController;
+    private AdapterEstoque adapterEstoque;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,12 +44,12 @@ public class EstoqueActivity extends AppCompatActivity {
     }
 
     private void config() {
-//        vendaController = new VendaController(this, Utilidades.getListaProdutosTeste()); // produtos teste
-//        adapterVendaProduto = new AdapterVendaProduto(this, vendaController);
-//        adapterResumoVenda = new AdapterResumoVenda(this, vendaController.getProdutosSelecionadosView());
-//
-//        rvProdutos.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
-//        rvProdutos.setAdapter(adapterVendaProduto);
+        estoqueController = new EstoqueController(Utilidades.getListaRecursosTeste()); // produtos teste
+
+        adapterEstoque = new AdapterEstoque(this, estoqueController.getRecursoList());
+
+        rvRecursos.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+        rvRecursos.setAdapter(adapterEstoque);
     }
 
     @OnClick(R.id.btn_compra)

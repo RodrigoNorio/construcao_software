@@ -55,11 +55,11 @@
     <string name="medida_kg">kilos</string>
     <string name="medida_l">litros</string>
 
-    <string name="abrv_gr">gr</string>
-    <string name="abrv_ml">ml</string>
-    <string name="abrv_un">un</string>
-    <string name="abrv_kg">kg</string>
-    <string name="abrv_l">l</string>
+    <string name="abrv_gr">Gr</string>
+    <string name="abrv_ml">Ml</string>
+    <string name="abrv_un">Un</string>
+    <string name="abrv_kg">Kg</string>
+    <string name="abrv_l">L</string>
 
     <string name="valor_unitario">Valor\nunitário</string>
     <string name="reais">R$</string>
