@@ -81,6 +81,10 @@
     <string name="reg_venda_titulo">registrar venda</string>
     <string name="venda_subtitulo">selecione os produtos</string>
     <string name="venda_resumo">resumo da venda</string>
+
+    <string name="reg_compra_titulo">registrar compra de recursos</string>
+    <string name="compra_subtitulo">preencha a lista com quantidade e valor pago</string>
+
     <string name="total">TOTAL</string>
 
     <string name="estoque_titulo">estoque de recursos</string>
