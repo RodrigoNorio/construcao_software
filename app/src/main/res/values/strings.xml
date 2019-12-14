@@ -45,6 +45,7 @@
     <string name="hint_descricao">descrição</string>
     <string name="hint_estoque">estoque</string>
     <string name="hint_quantidade">quantidade</string>
+    <string name="hint_valor_compra">valor</string>
 
     <string name="unidade_de_medida">Unidade de medida:</string>
 
@@ -92,7 +93,7 @@
     <string name="estoque_compra">registrar entrada de estoque</string>
     <string name="nome">nome</string>
     <string name="quantidade">quantidade em estoque</string>
-
+    <string name="estoque_atual">estoque atual:</string>
 
     <string name="registrar_compra">registrar compra</string>
     <string name="registrar_venda">registrar venda</string>

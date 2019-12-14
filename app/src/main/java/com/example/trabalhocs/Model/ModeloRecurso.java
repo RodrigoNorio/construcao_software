@@ -36,8 +36,12 @@ public class ModeloRecurso {
         return retorno;
     }
 
-    public String getTextoEstoque(Context context) {
+    public String getTextoEstoqueAbrev(Context context) {
         return inventario + " " + Utilidades.getMedidaAbrev(context, tipoMedida);
+    }
+
+    public String getTextoEstoque(Context context) {
+        return inventario + " " + Utilidades.getMedidaText(context, tipoMedida);
     }
 
     public int getId_recurso() {
@@ -66,5 +70,9 @@ public class ModeloRecurso {
 
     public void setInventario(int inventario) {
         this.inventario = inventario;
+    }
+
+    public int getTipoMedida() {
+        return tipoMedida;
     }
 }

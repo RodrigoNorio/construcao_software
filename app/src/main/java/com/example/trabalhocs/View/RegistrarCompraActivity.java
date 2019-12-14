@@ -8,9 +8,12 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.trabalhocs.Adapter.AdapterCompraRecurso;
 import com.example.trabalhocs.R;
+import com.example.trabalhocs.Utils.Utilidades;
 import com.example.trabalhocs.View.Dialogs.DialogAvisoVoltar;
 
 import butterknife.BindView;
@@ -20,7 +23,7 @@ import butterknife.OnClick;
 public class RegistrarCompraActivity extends AppCompatActivity {
 
     @BindView(R.id.rv_recursos)
-    RecyclerView rvProdutos;
+    RecyclerView rvRecursos;
 
     @BindView(R.id.btn_confirmar)
     AppCompatButton btnConfirmar;
@@ -31,19 +34,22 @@ public class RegistrarCompraActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_registrar_venda);
+        setContentView(R.layout.activity_registrar_compra);
         ButterKnife.bind(this);
 
         config();
     }
 
     private void config() {
+        AdapterCompraRecurso adapterCompraRecurso = new AdapterCompraRecurso(Utilidades.getListaRecursosTeste(), this);
 
+        rvRecursos.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+        rvRecursos.setAdapter(adapterCompraRecurso);
     }
 
     @OnClick(R.id.btn_confirmar)
     void onClickBtnConfirmar() {
-//        Torradeira.longToast("total da venda: " + tvValorTotal.getText(), this);
+//        Torradeira.longToast("total da compra: " + tvValorTotal.getText(), this);
     }
 
     @OnClick(R.id.btn_ajuda)

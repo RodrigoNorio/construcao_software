@@ -99,7 +99,7 @@ public class DialogVendaProduto extends AlertDialog.Builder {
 
             @Override
             public void afterTextChanged(Editable s) {
-                int qtdInput = !s.toString().equals("") ? Integer.parseInt(s.toString()) : 0;
+                int qtdInput = !s.toString().isEmpty() ? Integer.parseInt(s.toString()) : 0;
 
                 if (qtdInput <= 0) {
 
@@ -132,7 +132,7 @@ public class DialogVendaProduto extends AlertDialog.Builder {
     void onClickBtnConfirmar() {
 
         try {
-            int qtdInput = !etQtd.getText().toString().equals("") ? Integer.parseInt(etQtd.getText().toString()) : 0;
+            int qtdInput = !etQtd.getText().toString().isEmpty() ? Integer.parseInt(etQtd.getText().toString()) : 0;
 
             if (qtdInput > 0) {
                 listener.addProduto(posicao, produto, qtdInput);

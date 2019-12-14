@@ -41,7 +41,7 @@ public class AdapterEstoque extends RecyclerView.Adapter<AdapterEstoque.CustomVi
 
         holder.tvNome.setText(recurso.getNome());
         holder.tvDesc.setText(recurso.getDescricao());
-        holder.tvEstoque.setText(recurso.getTextoEstoque(context));
+        holder.tvEstoque.setText(recurso.getTextoEstoqueAbrev(context));
     }
 
     @Override

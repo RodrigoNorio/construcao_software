@@ -30,6 +30,38 @@ public class Utilidades {
         return medidasList;
     }
 
+    public static String getMedidaText(Context context, int id) {
+        String abreviacao = "";
+
+        switch (id) {
+            case Constants.TIPO_MEDIDA_GRAMAS:
+                abreviacao = context.getResources().getString(R.string.medida_gr);
+                break;
+
+            case Constants.TIPO_MEDIDA_MILILITRO:
+                abreviacao = context.getResources().getString(R.string.medida_ml);
+                break;
+
+            case Constants.TIPO_MEDIDA_UNIDADE:
+                abreviacao = context.getResources().getString(R.string.medida_un);
+                break;
+
+            case Constants.TIPO_MEDIDA_KILO:
+                abreviacao = context.getResources().getString(R.string.medida_kg);
+                break;
+
+            case Constants.TIPO_MEDIDA_LITRO:
+                abreviacao = context.getResources().getString(R.string.medida_l);
+                break;
+
+            default:
+                abreviacao = "";
+                break;
+        }
+
+        return abreviacao;
+    }
+
     public static String getMedidaAbrev(Context context, int id) {
         String abreviacao = "";
 

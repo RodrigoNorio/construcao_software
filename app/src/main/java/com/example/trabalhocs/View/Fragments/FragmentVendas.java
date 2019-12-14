@@ -17,6 +17,7 @@ import com.example.trabalhocs.R;
 import com.example.trabalhocs.View.CadastrarProdutoActivity;
 import com.example.trabalhocs.View.CadastrarRecursoActivity;
 import com.example.trabalhocs.View.EstoqueActivity;
+import com.example.trabalhocs.View.RegistrarCompraActivity;
 import com.example.trabalhocs.View.RegistrarVendaActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -197,7 +198,8 @@ public class FragmentVendas extends Fragment {
 
     @OnClick(R.id.fab_compra)
     void onClickFabCompra() {
-        // TODO: 11/11/2019
+        Intent intent = new Intent(getContext(), RegistrarCompraActivity.class);
+        startActivity(intent);
     }
 
     @OnClick(R.id.fab_menu)
