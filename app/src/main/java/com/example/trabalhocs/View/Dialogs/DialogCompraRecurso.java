@@ -8,10 +8,12 @@ import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.example.trabalhocs.Controller.EstoqueController;
 import com.example.trabalhocs.Model.ModeloRecurso;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.Utils.Torradeira;
 import com.example.trabalhocs.Utils.Utilidades;
+import com.example.trabalhocs.View.Itens.RecursoCompraItemView;
 import com.google.android.material.textfield.TextInputEditText;
 
 import butterknife.BindView;
@@ -50,7 +52,7 @@ public class DialogCompraRecurso extends AlertDialog.Builder {
 
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.dialog_compra_recurso, null);
-        setCancelable(true);
+        setCancelable(false);
 
         ButterKnife.bind(this, view);
 
@@ -75,16 +77,32 @@ public class DialogCompraRecurso extends AlertDialog.Builder {
 
     @OnClick(R.id.btn_confirmar)
     void onClickBtnConfirmar() {
-        Torradeira.shortToast("clicou no confirmar", context);
-        // TODO: 14/12/2019
+       if (etQuantidade.getText().toString().isEmpty()) {
+           Torradeira.longToast("insira uma quantidade",context);
+           return;
+       }
+
+       if (etValor.getText().toString().isEmpty()) {
+           Torradeira.shortToast("insira o valor do item", context);
+           return;
+       }
+
+       try {
+           int quantidade = Integer.parseInt(etQuantidade.getText().toString());
+           double valor = Double.parseDouble(etValor.getText().toString());
+
+           RecursoCompraItemView recursoCompraItemView = new RecursoCompraItemView(recurso, quantidade, valor);
+
+           EstoqueController.getInstance().addRecursoCompra(recursoCompraItemView);
+           dialog.dismiss();
+
+       } catch (Exception e) {
+           Torradeira.erroToast(context);
+       }
     }
 
     @OnClick(R.id.btn_cancelar)
     void onClickBtnCancelar() {
         dialog.dismiss();
-    }
-
-    public interface AddRecursoListener {
-        void addRecurso(ModeloRecurso recurso, int quantidade);
     }
 }

@@ -146,7 +146,6 @@
         android:layout_height="@dimen/btn_pqno_height"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="5dp"
-        android:enabled="false"
         android:text="@string/adicionar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

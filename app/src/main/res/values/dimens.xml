@@ -37,7 +37,5 @@
     <dimen name="dialog_input_qtd_venda_width">120dp</dimen>
     <dimen name="dialog_input_qtd_venda_height">30dp</dimen>
 
-
-
     <dimen name="dialog_radius">10dp</dimen>
 </resources>

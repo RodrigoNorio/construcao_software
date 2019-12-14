@@ -85,6 +85,7 @@
 
     <string name="reg_compra_titulo">registrar compra de recursos</string>
     <string name="compra_subtitulo">preencha a lista com quantidade e valor pago</string>
+    <string name="lista_recursos_titulo">selecione um recurso abaixo</string>
 
     <string name="total">TOTAL</string>
 

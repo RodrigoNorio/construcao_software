@@ -23,12 +23,14 @@ import butterknife.ButterKnife;
 
 public class AdapterCompraRecurso extends RecyclerView.Adapter<AdapterCompraRecurso.CustomViewHolder> {
 
-    private List<ModeloRecurso> recursoList;
     private Context context;
+    private AdapterCompraRecursoListener listener;
+    private List<ModeloRecurso> recursoList;
 
-    public AdapterCompraRecurso(List<ModeloRecurso> recursoList, Context context) {
-        this.recursoList = recursoList;
+    public AdapterCompraRecurso(List<ModeloRecurso> recursoList, AdapterCompraRecursoListener listener, Context context) {
         this.context = context;
+        this.listener = listener;
+        this.recursoList = recursoList;
     }
 
     @NonNull
@@ -46,11 +48,12 @@ public class AdapterCompraRecurso extends RecyclerView.Adapter<AdapterCompraRecu
         holder.tvNome.setText(recurso.getNome());
 
         holder.itemView.setOnClickListener(v -> {
-            abrirDialogProduto(recurso);
+            abrirDialogRecurso(recurso);
+            listener.fecharDialog();
         });
     }
 
-    private void abrirDialogProduto(ModeloRecurso recurso) {
+    private void abrirDialogRecurso(ModeloRecurso recurso) {
         DialogCompraRecurso dialogCompraRecurso = new DialogCompraRecurso(context, recurso);
         final AlertDialog dialog = dialogCompraRecurso.show();
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -69,5 +72,9 @@ public class AdapterCompraRecurso extends RecyclerView.Adapter<AdapterCompraRecu
             super(view);
             ButterKnife.bind(this, view);
         }
+    }
+
+    public interface AdapterCompraRecursoListener {
+        void fecharDialog();
     }
 }
