@@ -9,6 +9,7 @@ import com.example.trabalhocs.Adapter.AdapterListaFonte;
 import com.example.trabalhocs.Controller.FonteCtrl;
 import com.example.trabalhocs.Model.ModeloFonte;
 import com.example.trabalhocs.R;
+import com.example.trabalhocs.Tutorial.Tutorial_Gerenciar_Receita;
 import com.example.trabalhocs.dbhelper.ConexaoSQlite;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -256,6 +257,10 @@ public class GerenciarReceita extends AppCompatActivity {
             this.lsvFontes = (ListView) findViewById(R.id.listarfontes);
             lsvFontes.setAdapter(null);
         }
+    }
+    public void tutorialreceita (View view){
+        Intent it = new Intent (GerenciarReceita.this, Tutorial_Gerenciar_Receita.class);
+        startActivity(it);
     }
 
 }

@@ -9,6 +9,7 @@ import com.example.trabalhocs.Adapter.AdapterListaDestino;
 import com.example.trabalhocs.Controller.DestinoCtrl;
 import com.example.trabalhocs.Model.ModeloDestino;
 import com.example.trabalhocs.R;
+import com.example.trabalhocs.Tutorial.Tutorial_Gerenciar_Destinos;
 import com.example.trabalhocs.dbhelper.ConexaoSQlite;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -254,5 +255,8 @@ public class GerenciarDestinos extends AppCompatActivity {
             lsvDestino.setAdapter(null);
         }
     }
-
+    public void tutorialdestino (View view){
+        Intent it = new Intent (GerenciarDestinos.this, Tutorial_Gerenciar_Destinos.class);
+        startActivity(it);
+    }
 }

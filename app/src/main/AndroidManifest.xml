@@ -10,9 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".Tutorial.Tutorial_Main_Menu"
+            android:label="@string/title_activity_tutorial__main__menu"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Tutorial.Tutorial_Gerenciar_Receita"
+            android:label="@string/title_activity_tutorial__gerenciar__receita"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Tutorial.Tutorial_Gerenciar_Destinos"
+            android:label="@string/title_activity_tutorial__gerenciar__destinos"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".View.CadastrarLogin"
             android:label="@string/title_activity_cadastrar_login"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".View.Login"
             android:label="@string/title_activity_login"

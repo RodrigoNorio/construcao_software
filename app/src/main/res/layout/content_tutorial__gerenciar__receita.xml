@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Tutorial.Tutorial_Gerenciar_Receita"
+    tools:showIn="@layout/activity_tutorial__gerenciar__receita">
+    <Button
+        android:id="@+id/excluirdestinos"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="273dp"
+        android:layout_marginLeft="273dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="48dp"
+        android:background="@mipmap/ic_lixo_foreground"
+        android:text="@string/lixo"
+        app:layout_constraintBottom_toTopOf="@+id/listardestinos"
+        app:layout_constraintEnd_toStartOf="@+id/editardestinos"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/editardestinos"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginBottom="52dp"
+        android:background="@mipmap/ic_editar_foreground"
+        android:text="@string/editar"
+        app:layout_constraintBottom_toTopOf="@+id/listardestinos"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/adicionardestinos"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="332dp"
+        android:layout_marginLeft="332dp"
+        android:layout_marginBottom="28dp"
+        android:background="@mipmap/ic_adicionar_foreground"
+        android:text="@string/adicionardestino"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="85dp"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="85dp"
+        android:layout_marginRight="85dp"
+        android:layout_marginBottom="292dp"
+        android:text="@string/title_activity_gerenciar_receita"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="@android:color/background_dark"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/listardestinos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="50dp"
+        android:src="@mipmap/ic_ballondir_foreground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/todo" />
+
+    <ListView
+        android:id="@+id/listardestinos"
+        android:layout_width="408dp"
+        android:layout_height="261dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        android:listSelector="#59C065"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buscardestinos"
+        app:layout_constraintVertical_bias="0.945"/>
+
+    <SearchView
+        android:id="@+id/buscardestinos"
+        android:layout_width="226dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="151dp"
+        app:layout_constraintBottom_toTopOf="@+id/listardestinos"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/verificardingastos"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginLeft="104dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="132dp"
+        android:background="@mipmap/ic_verfontes_foreground"
+        app:layout_constraintBottom_toTopOf="@+id/listardestinos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/buscardestinos" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="156dp"
+        android:layout_height="119dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="4dp"
+        android:contentDescription="@string/ballon"
+        android:src="@mipmap/ic_ballonesq_foreground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="105dp"
+        android:layout_height="88dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:text="@string/aqui_voc_poder_procurar_a_fonte_que_preferir"
+        app:layout_constraintBottom_toTopOf="@+id/buscardestinos"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginRight="44dp"
+        android:contentDescription="@string/todo"
+        android:src="@mipmap/ic_ballondir_foreground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="98dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginRight="44dp"
+        android:text="@string/neste_local_poss_vel_verificar_as_suas_fonte"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="89dp"
+        android:layout_height="73dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginBottom="80dp"
+        android:text="@string/aqui_poss_vel_adicionar_uma_nova_fonte"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="80dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginEnd="116dp"
+        android:layout_marginRight="116dp"
+        android:text="@string/aqui_poderemos_excluir_uma_fonte"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/verificardingastos" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="95dp"
+        android:layout_height="114dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="112dp"
+        android:layout_marginRight="112dp"
+        android:contentDescription="@string/todo"
+        android:src="@mipmap/ic_ballonbaixodir_foreground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/verificardingastos" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="94dp"
+        android:layout_height="105dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginRight="22dp"
+        android:contentDescription="@string/todo"
+        android:src="@mipmap/ic_ballonbaixodir_foreground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/verificardingastos" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="86dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="93dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:text="@string/aqui_poderemos_editar_uma_fonte"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/verificardingastos" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="117dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="328dp"
+        android:src="@mipmap/ic_ballonesq_foreground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/todo" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="93dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="336dp"
+        android:text="@string/aqui_ser_o_listados_todas_as_fontes_adicionadas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

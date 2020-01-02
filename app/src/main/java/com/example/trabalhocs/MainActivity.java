@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.trabalhocs.Model.ModeloReceita;
+import com.example.trabalhocs.Tutorial.Tutorial_Main_Menu;
 import com.example.trabalhocs.View.Fragments.FragmentHome;
 import com.example.trabalhocs.View.Fragments.FragmentVendas;
 import com.example.trabalhocs.View.GerenciarDestinos;
@@ -103,5 +104,8 @@ public class MainActivity extends AppCompatActivity {
         Intent it = new Intent (MainActivity.this, GerenciarDestinos.class);
         startActivity(it);
     }
-
+    public void tutorialmainmenu (View view){
+        Intent it = new Intent (MainActivity.this, Tutorial_Main_Menu.class);
+        startActivity(it);
+    }
 }
