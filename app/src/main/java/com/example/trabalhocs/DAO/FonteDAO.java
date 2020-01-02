@@ -189,4 +189,15 @@ public class FonteDAO {
         return contacts;
     }
 
+    public String fontetotalDAO(String data1, String data2){
+        SQLiteDatabase db = null;
+        db = this.conexaoSQlite.getWritableDatabase();
+        float total = 0;
+        Cursor cursor = db.rawQuery("SELECT * FROM receita WHERE data >= ? AND  data <= ?", new String[] { data1,data2 });
+        while (cursor.moveToNext()) {
+            total += cursor.getInt(cursor.getColumnIndex("valor"));
+        }
+        return String.valueOf(total);
+    }
+
 }

@@ -15,6 +15,7 @@ import com.example.trabalhocs.dbhelper.ConexaoSQlite;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.text.InputType;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -23,6 +24,8 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +53,13 @@ public class GerenciarReceita extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 alertdialogaddfonte();
+            }
+        });
+        Button btnverificarfontemes = (Button) findViewById(R.id.verificarmes);
+        btnverificarfontemes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertdialogverificarfontemes();
             }
         });
 
@@ -258,6 +268,88 @@ public class GerenciarReceita extends AppCompatActivity {
             lsvFontes.setAdapter(null);
         }
     }
+
+    private void alertdialogverificarfontemes(){
+        final EditText fontetxt,fontetxt2;
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
+        AlertDialog.Builder builder2 = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
+        AlertDialog.Builder builder3 = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
+        builder.setMessage("Digite a data inicial que deseja verificar: ");
+        fontetxt = new EditText(this);
+        fontetxt2 = new EditText(this);
+        fontetxt.setInputType(InputType.TYPE_CLASS_DATETIME);
+        fontetxt2.setInputType(InputType.TYPE_CLASS_DATETIME);
+        builder.setView(fontetxt);
+        final FonteCtrl fonteCtrl = new FonteCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarReceita.this));
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (verdata(fontetxt.getText().toString()) == true){
+                    builder2.setMessage("Digite a data final que deseja verificar: ");
+                    builder2.setView(fontetxt2);
+                    builder2.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            if (verdata(fontetxt2.getText().toString()) == true){
+                                builder3.setMessage("Você depositou " + fonteCtrl.verificartotalFonteCtrl(fontetxt.getText().toString(),
+                                        fontetxt2.getText().toString()) + " reais, durante a data entre " + fontetxt.getText().toString() + " e "
+                                        + fontetxt2.getText().toString());
+                                builder3.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                });
+                                final AlertDialog ad3 = builder3.create();
+                                ad3.show();
+                                fontetxt2.setText("");
+                            }
+                            else{
+                                Toast.makeText(GerenciarReceita.this, "Data invalida!", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                        }
+                    });
+                    //CANCEL
+                    builder2.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    final AlertDialog ad2 = builder2.create();
+                    ad2.show();
+                    fontetxt2.setText("");
+                }
+                else{
+                    Toast.makeText(GerenciarReceita.this, "Data invalida!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            }
+        });
+        //CANCEL
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        final AlertDialog ad = builder.create();
+        ad.show();
+        fontetxt.setText("");
+    }
+
+    private boolean verdata(String data) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            sdf.setLenient(false);
+            sdf.parse(data);
+            return true;
+        } catch (ParseException ex) {
+            return false;
+        }
+    }
+
     public void tutorialreceita (View view){
         Intent it = new Intent (GerenciarReceita.this, Tutorial_Gerenciar_Receita.class);
         startActivity(it);

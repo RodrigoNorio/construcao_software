@@ -140,7 +140,7 @@ public class ReceitaDAO {
 
             db = this.conexaoSQlite.getReadableDatabase();
 
-            cursor = db.rawQuery("SELECT * FROM receita WHERE cod_pessoa = ?", new String[] {String.valueOf(cod_pessoa)});
+            cursor = db.rawQuery("SELECT * FROM receita WHERE cod_pessoa = ? AND cod_fonte = ?", new String[] {String.valueOf(cod_pessoa),String.valueOf(selecionar)});
 
             if(cursor.moveToFirst()){
 
