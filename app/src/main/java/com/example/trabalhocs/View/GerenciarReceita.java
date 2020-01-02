@@ -27,6 +27,7 @@ import android.widget.Toast;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class GerenciarReceita extends AppCompatActivity {
@@ -55,13 +56,13 @@ public class GerenciarReceita extends AppCompatActivity {
                 alertdialogaddfonte();
             }
         });
-        Button btnverificarfontemes = (Button) findViewById(R.id.verificarmes);
+        /*Button btnverificarfontemes = (Button) findViewById(R.id.verificarmes);
         btnverificarfontemes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 alertdialogverificarfontemes();
             }
-        });
+        });*/
 
 
         SearchView searchView = (SearchView) findViewById(R.id.buscarfontes);
@@ -269,7 +270,7 @@ public class GerenciarReceita extends AppCompatActivity {
         }
     }
 
-    private void alertdialogverificarfontemes(){
+    /*private void alertdialogverificarfontemes(){
         final EditText fontetxt,fontetxt2;
         AlertDialog.Builder builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
         AlertDialog.Builder builder2 = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
@@ -290,7 +291,7 @@ public class GerenciarReceita extends AppCompatActivity {
                     builder2.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            if (verdata(fontetxt2.getText().toString()) == true){
+                            if (verdata(fontetxt2.getText().toString()) == true && verificarmenor(fontetxt.getText().toString(), fontetxt2.getText().toString()) == true){
                                 builder3.setMessage("Você depositou " + fonteCtrl.verificartotalFonteCtrl(fontetxt.getText().toString(),
                                         fontetxt2.getText().toString()) + " reais, durante a data entre " + fontetxt.getText().toString() + " e "
                                         + fontetxt2.getText().toString());
@@ -337,7 +338,7 @@ public class GerenciarReceita extends AppCompatActivity {
         final AlertDialog ad = builder.create();
         ad.show();
         fontetxt.setText("");
-    }
+    }*/
 
     private boolean verdata(String data) {
         try {
@@ -348,6 +349,28 @@ public class GerenciarReceita extends AppCompatActivity {
         } catch (ParseException ex) {
             return false;
         }
+    }
+
+
+    private boolean verificarmenor(String data1, String data2){
+        Date d1 = stringToDate(data1);
+        Date d2 = stringToDate(data2);
+        if (d1.compareTo(d2) > 0){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    public Date stringToDate(String data1) {
+        SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
+        f.setLenient(false);
+        java.util.Date d1 = null;
+        try {
+            d1 = f.parse(data1);
+        } catch (ParseException e) {}
+        return d1;
     }
 
     public void tutorialreceita (View view){
