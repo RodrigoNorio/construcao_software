@@ -1,6 +1,7 @@
 package com.example.trabalhocs;
 
 import com.example.trabalhocs.View.CadastrarLogin;
+import com.example.trabalhocs.View.GerenciarDestinos;
 import com.example.trabalhocs.View.GerenciarReceita;
 import com.example.trabalhocs.View.GerenciarValores;
 
@@ -27,6 +28,11 @@ public class TestUnitarioJUnitRenato extends TestCase {
     public void testVerificarUsuarioInserido(){
         GerenciarValores verificarValor = new GerenciarValores();
         boolean resultado = verificarValor.verificarvalor((float) 1);
+        assertTrue(resultado);
+    }
+    public void testVerificarTamanhoString(){
+        GerenciarDestinos verificarString = new GerenciarDestinos();
+        boolean resultado = verificarString.verificartamanhostring("Luz");
         assertTrue(resultado);
     }
 

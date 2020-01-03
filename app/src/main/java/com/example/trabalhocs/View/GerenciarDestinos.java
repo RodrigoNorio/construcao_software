@@ -80,10 +80,17 @@ public class GerenciarDestinos extends AppCompatActivity {
         });
     }
 
+    public boolean verificartamanhostring(String s){
+        if (s.length() > 0 && s.length() < 15){
+            return true;
+        }
+        return false;
+    }
+
     private void alertdialogadddestino() {
         final EditText destinotxt;
         AlertDialog.Builder builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
-        builder.setMessage("Digite o nome do destino: ");
+        builder.setMessage("Digite o nome do destino(até 15 caracteres): ");
         destinotxt = new EditText(this);
         builder.setView(destinotxt);
 
@@ -95,7 +102,7 @@ public class GerenciarDestinos extends AppCompatActivity {
 
                 destinoACadastrar.setDescricao(destinotxt.getText().toString());
 
-                if (destinotxt.getText().length() != 0){
+                if (verificartamanhostring(destinotxt.getText().toString())){
                     DestinoCtrl destinoCtrl = new DestinoCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarDestinos.this));
                     destinoCtrl.salvarDestinoCtrl(destinoACadastrar);
                     Toast.makeText(GerenciarDestinos.this, "Destino cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
@@ -126,7 +133,7 @@ public class GerenciarDestinos extends AppCompatActivity {
         final DestinoCtrl destinoCtrl = new DestinoCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarDestinos.this));
         final EditText destinotxt;
         AlertDialog.Builder builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
-        builder.setMessage("Digite o novo nome do destino: ");
+        builder.setMessage("Digite o novo nome do destino(até 15 caracteres): ");
         destinotxt = new EditText(this);
         builder.setView(destinotxt);
 
@@ -137,7 +144,7 @@ public class GerenciarDestinos extends AppCompatActivity {
                 ModeloDestino destinoACadastrar = new ModeloDestino();
                 destinoACadastrar.setCoddestino(cod_destino);
                 destinoACadastrar.setDescricao(destinotxt.getText().toString());
-                if (destinotxt.getText().length() != 0){
+                if (verificartamanhostring(destinotxt.getText().toString())){
                     destinoCtrl.atualizarDestinoCtrl(destinoACadastrar);
                     Toast.makeText(GerenciarDestinos.this, "Destino alterado com sucesso!", Toast.LENGTH_SHORT).show();
                     listardestinos();

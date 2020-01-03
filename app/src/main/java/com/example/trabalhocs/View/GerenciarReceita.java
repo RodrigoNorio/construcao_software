@@ -83,10 +83,17 @@ public class GerenciarReceita extends AppCompatActivity {
 
     }
 
+    public boolean verificartamanhostring(String s){
+        if (s.length() > 0 && s.length() < 15){
+            return true;
+        }
+        return false;
+    }
+
     private void alertdialogaddfonte() {
         final EditText fontetxt;
         AlertDialog.Builder builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
-        builder.setMessage("Digite o nome da fonte: ");
+        builder.setMessage("Digite o nome da fonte(até 15 caracteres): ");
         fontetxt = new EditText(this);
         builder.setView(fontetxt);
 
@@ -98,7 +105,7 @@ public class GerenciarReceita extends AppCompatActivity {
 
                 fonteACadastrar.setDescricao(fontetxt.getText().toString());
 
-                if (fontetxt.getText().length() != 0){
+                if (verificartamanhostring(fontetxt.getText().toString())){
                     FonteCtrl fonteCtrl = new FonteCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarReceita.this));
                     fonteCtrl.salvarFonteCtrl(fonteACadastrar);
                     Toast.makeText(GerenciarReceita.this, "Fonte cadastrada com sucesso!", Toast.LENGTH_SHORT).show();
@@ -129,7 +136,7 @@ public class GerenciarReceita extends AppCompatActivity {
         final FonteCtrl fonteCtrl = new FonteCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarReceita.this));
         final EditText fontetxt;
         AlertDialog.Builder builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
-        builder.setMessage("Digite o novo nome da fonte: ");
+        builder.setMessage("Digite o novo nome da fonte(até 15 caracteres): ");
         fontetxt = new EditText(this);
         builder.setView(fontetxt);
 
@@ -140,7 +147,7 @@ public class GerenciarReceita extends AppCompatActivity {
                 ModeloFonte fonteACadastrar = new ModeloFonte();
                 fonteACadastrar.setCodfonte(cod_fonte);
                 fonteACadastrar.setDescricao(fontetxt.getText().toString());
-                if (fontetxt.getText().length() != 0){
+                if (verificartamanhostring(fontetxt.getText().toString())){
                     fonteCtrl.atualizarFonteCtrl(fonteACadastrar);
                     Toast.makeText(GerenciarReceita.this, "Fonte alterada com sucesso!", Toast.LENGTH_SHORT).show();
                     listarfontes();
