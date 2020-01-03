@@ -71,7 +71,7 @@ public class GerenciarValores extends AppCompatActivity {
         final ReceitaCtrl receitaCtrl = new ReceitaCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarValores.this));
         final EditText fontetxtdata;
         AlertDialog.Builder builderdata = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
-        builderdata.setMessage("Digite o nova data da receita: ");
+        builderdata.setMessage("Digite a nova data da receita: ");
         fontetxtdata = new EditText(this);
         builderdata.setView(fontetxtdata);
         fontetxtdata.setInputType(InputType.TYPE_CLASS_DATETIME);
@@ -135,9 +135,10 @@ public class GerenciarValores extends AppCompatActivity {
         buildervalor.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                Float v = Float.parseFloat(fontetxtvalor.getText().toString());
                 String valor;
                 valor = fontetxtvalor.getText().toString();
-                if (fontetxtvalor.getText().length() != 0) {
+                if (fontetxtvalor.getText().length() != 0 && verificarvalor(v)) {
                     alertdialogeeditarreceitadata(cod_receita, selecionar, valor);
                 } else {
                     Toast.makeText(GerenciarValores.this, "Preencha o campo corretamente!", Toast.LENGTH_SHORT).show();
@@ -157,7 +158,12 @@ public class GerenciarValores extends AppCompatActivity {
         ad.show();
         fontetxtvalor.setText("");
     }
-
+    public boolean verificarvalor(Float v){
+        if (v >= 0){
+            return true;
+        }
+        return false;
+    }
     private void alertdialogexcluirreceita(final int cod_receita, final int selecionar) {
         final ReceitaCtrl receitaCtrl = new ReceitaCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarValores.this));
         AlertDialog.Builder alert = new AlertDialog.Builder(this);

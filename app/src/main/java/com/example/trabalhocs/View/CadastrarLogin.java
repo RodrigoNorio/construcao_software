@@ -59,8 +59,8 @@ public class CadastrarLogin extends AppCompatActivity {
                 return;
             }
             else{
-                LoginCtrl loginCtrl = new LoginCtrl(ConexaoSQlite.getInstanciaConexao(CadastrarLogin.this));
-                if (loginCtrl.verificarLoginCtrl(login) == true){
+                if (verificarusuario(login) == true){
+                    LoginCtrl loginCtrl = new LoginCtrl(ConexaoSQlite.getInstanciaConexao(CadastrarLogin.this));
                     ModeloLogin loginACadastrar = new ModeloLogin();
                     loginACadastrar.setUsuario(login);
                     loginACadastrar.setPassword(senha);
@@ -73,6 +73,17 @@ public class CadastrarLogin extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    public boolean verificarusuario(String login){
+        LoginCtrl loginCtrl = new LoginCtrl(ConexaoSQlite.getInstanciaConexao(CadastrarLogin.this));
+        if (loginCtrl.verificarLoginCtrl(login) == true){
+            return true;
+        }
+        else {
+            return false;
+        }
+
     }
 
     public boolean verificarsenha (String s1, String s2){
