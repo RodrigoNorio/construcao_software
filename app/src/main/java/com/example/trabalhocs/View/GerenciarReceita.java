@@ -56,13 +56,13 @@ public class GerenciarReceita extends AppCompatActivity {
                 alertdialogaddfonte();
             }
         });
-        /*Button btnverificarfontemes = (Button) findViewById(R.id.verificarmes);
+        Button btnverificarfontemes = (Button) findViewById(R.id.verificarmes);
         btnverificarfontemes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 alertdialogverificarfontemes();
             }
-        });*/
+        });
 
 
         SearchView searchView = (SearchView) findViewById(R.id.buscarfontes);
@@ -270,7 +270,7 @@ public class GerenciarReceita extends AppCompatActivity {
         }
     }
 
-    /*private void alertdialogverificarfontemes(){
+    private void alertdialogverificarfontemes(){
         final EditText fontetxt,fontetxt2;
         AlertDialog.Builder builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
         AlertDialog.Builder builder2 = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
@@ -338,7 +338,7 @@ public class GerenciarReceita extends AppCompatActivity {
         final AlertDialog ad = builder.create();
         ad.show();
         fontetxt.setText("");
-    }*/
+    }
 
     private boolean verdata(String data) {
         try {

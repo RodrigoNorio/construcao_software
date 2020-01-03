@@ -10,7 +10,10 @@ import com.example.trabalhocs.Model.ModeloFonte;
 import com.example.trabalhocs.View.Login;
 import com.example.trabalhocs.dbhelper.ConexaoSQlite;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class FonteDAO {
@@ -189,22 +192,39 @@ public class FonteDAO {
         return contacts;
     }
 
-    /*public String fontetotalDAO(String data1, String data2) {
+    public String fontetotalDAO(String data1, String data2) {
         SQLiteDatabase db = null;
+        Date d1 = stringToDate(data1);
+        Date d2 = stringToDate(data2);
+        Date converter;
         db = this.conexaoSQlite.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT SUM(valor) FROM receita WHERE data = ?", new String[]{data1});
+        float total = 0;
+        //Cursor cursor = db.rawQuery("SELECT data, valor FROM receita WHERE data = ?", new String[]{data1});
+        Cursor cursor = db.rawQuery("SELECT data, valor FROM receita",null);
         if (cursor.getCount() > 0){
             cursor.moveToFirst();
             do{
-
+                converter = stringToDate(cursor.getString(0));
+                if (converter.compareTo(d1) >= 0 && converter.compareTo(d2) <= 0){
+                    total = total + Float.parseFloat(cursor.getString(1));
+                }
             }
-            while(cursor.moveToNext() && cursor != data2);
-            String total = cursor.getString(1);
-            return total;
+            while(cursor.moveToNext() && cursor.getString(0) != data2);
+            return String.valueOf(total);
         }
         else{
             return "0";
         }
-    }*/
+    }
+
+    public Date stringToDate(String data1) {
+        SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
+        f.setLenient(false);
+        java.util.Date d1 = null;
+        try {
+            d1 = f.parse(data1);
+        } catch (ParseException e) {}
+        return d1;
+    }
 
 }

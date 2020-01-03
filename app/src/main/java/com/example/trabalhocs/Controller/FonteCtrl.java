@@ -36,8 +36,8 @@ public class FonteCtrl {
         return this.fonteDAO.search(keyword);
     }
 
-    /*public String verificartotalFonteCtrl(String data1, String data2){
+    public String verificartotalFonteCtrl(String data1, String data2){
         return this.fonteDAO.fontetotalDAO(data1,data2);
-    }*/
+    }
 
 }
