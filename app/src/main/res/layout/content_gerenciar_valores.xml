@@ -52,4 +52,15 @@
         app:layout_constraintBottom_toTopOf="@+id/listagerenciarvalores"
         app:layout_constraintEnd_toStartOf="@+id/excluirval"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/verificarmes"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="26dp"
+        android:background="@mipmap/ic_calendar_foreground"
+        app:layout_constraintBottom_toTopOf="@+id/editarval"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -292,7 +292,7 @@ public class GerenciarReceita extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             if (verdata(fontetxt2.getText().toString()) == true && verificarmenor(fontetxt.getText().toString(), fontetxt2.getText().toString()) == true){
-                                builder3.setMessage("Você depositou " + fonteCtrl.verificartotalFonteCtrl(fontetxt.getText().toString(),
+                                builder3.setMessage("Seu depósito foi de " + fonteCtrl.verificartotalFonteCtrl(fontetxt.getText().toString(),
                                         fontetxt2.getText().toString()) + " reais, durante a data entre " + fontetxt.getText().toString() + " e "
                                         + fontetxt2.getText().toString());
                                 builder3.setPositiveButton("Ok", new DialogInterface.OnClickListener() {

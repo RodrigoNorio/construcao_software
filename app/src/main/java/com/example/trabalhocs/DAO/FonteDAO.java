@@ -177,7 +177,8 @@ public class FonteDAO {
         List<ModeloFonte> contacts = null;
         try {
             SQLiteDatabase sqLiteDatabase = this.conexaoSQlite.getReadableDatabase();
-            Cursor cursor = sqLiteDatabase.rawQuery("select * from fonte where descricao like ?", new String[] { "%" + keyword + "%" });
+            Cursor cursor = sqLiteDatabase.rawQuery("select * from fonte where descricao like ? and cod_pessoa = ?",
+                    new String[] { "%" + keyword + "%",String.valueOf(cod_pessoa)});
             if (cursor.moveToFirst()) {
                 contacts = new ArrayList<ModeloFonte>();
                 do {
@@ -199,8 +200,7 @@ public class FonteDAO {
         Date converter;
         db = this.conexaoSQlite.getWritableDatabase();
         float total = 0;
-        //Cursor cursor = db.rawQuery("SELECT data, valor FROM receita WHERE data = ?", new String[]{data1});
-        Cursor cursor = db.rawQuery("SELECT data, valor FROM receita",null);
+        Cursor cursor = db.rawQuery("SELECT data, valor FROM receita WHERE cod_pessoa = ?",new String[] {String.valueOf(cod_pessoa)});
         if (cursor.getCount() > 0){
             cursor.moveToFirst();
             do{

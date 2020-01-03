@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 
 import com.example.trabalhocs.Adapter.AdapterListaReceita;
+import com.example.trabalhocs.Controller.DestinoCtrl;
 import com.example.trabalhocs.Controller.ReceitaCtrl;
 import com.example.trabalhocs.Model.ModeloReceita;
 import com.example.trabalhocs.R;
@@ -24,6 +25,7 @@ import android.widget.Toast;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class GerenciarValores extends AppCompatActivity {
@@ -40,6 +42,14 @@ public class GerenciarValores extends AppCompatActivity {
         GerenciarReceita GerenciarReceita = new GerenciarReceita();
         final int selecionar = GerenciarReceita.selecionarfonte;
         listarreceitas(selecionar);
+
+        Button btnverificarfontemes = (Button) findViewById(R.id.verificarmes);
+        btnverificarfontemes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertdialogverificarreceitames(selecionar);
+            }
+        });
 
         SearchView searchView = (SearchView) findViewById(R.id.searchdata);
 
@@ -225,5 +235,96 @@ public class GerenciarValores extends AppCompatActivity {
             }
         });
     }
+    private void alertdialogverificarreceitames(int selecionar){
+        final EditText receitatxt,receitatxt2;
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
+        AlertDialog.Builder builder2 = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
+        AlertDialog.Builder builder3 = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
+        builder.setMessage("Digite a data inicial que deseja verificar: ");
+        receitatxt = new EditText(this);
+        receitatxt2 = new EditText(this);
+        receitatxt.setInputType(InputType.TYPE_CLASS_DATETIME);
+        receitatxt2.setInputType(InputType.TYPE_CLASS_DATETIME);
+        builder.setView(receitatxt);
+        final ReceitaCtrl receitaCtrl = new ReceitaCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarValores.this));
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (verdata(receitatxt.getText().toString()) == true){
+                    builder2.setMessage("Digite a data final que deseja verificar: ");
+                    builder2.setView(receitatxt2);
+                    builder2.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            if (verdata(receitatxt2.getText().toString()) == true && verificarmenor(receitatxt.getText().toString(), receitatxt2.getText().toString()) == true){
+                                builder3.setMessage("Seu depósito foi de " + receitaCtrl.verificartotalReceitaCtrl(receitatxt.getText().toString(),
+                                        receitatxt2.getText().toString(), selecionar) + " reais, durante a data entre " + receitatxt.getText().toString() + " e "
+                                        + receitatxt2.getText().toString());
+                                builder3.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                });
+                                final AlertDialog ad3 = builder3.create();
+                                ad3.show();
+                                receitatxt2.setText("");
+                            }
+                            else{
+                                Toast.makeText(GerenciarValores.this, "Data invalida!", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                        }
+                    });
+                    //CANCEL
+                    builder2.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    final AlertDialog ad2 = builder2.create();
+                    ad2.show();
+                    receitatxt2.setText("");
+                }
+                else{
+                    Toast.makeText(GerenciarValores.this, "Data invalida!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            }
+        });
+        //CANCEL
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        final AlertDialog ad = builder.create();
+        ad.show();
+        receitatxt.setText("");
+    }
+
+    private boolean verificarmenor(String data1, String data2){
+        Date d1 = stringToDate(data1);
+        Date d2 = stringToDate(data2);
+        if (d1.compareTo(d2) > 0){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    public Date stringToDate(String data1) {
+        SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
+        f.setLenient(false);
+        java.util.Date d1 = null;
+        try {
+            d1 = f.parse(data1);
+        } catch (ParseException e) {}
+        return d1;
+    }
+
 
 }
