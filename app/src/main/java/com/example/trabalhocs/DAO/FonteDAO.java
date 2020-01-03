@@ -209,7 +209,7 @@ public class FonteDAO {
                     total = total + Float.parseFloat(cursor.getString(1));
                 }
             }
-            while(cursor.moveToNext() && cursor.getString(0) != data2);
+            while(cursor.moveToNext());
             return String.valueOf(total);
         }
         else{
