@@ -54,7 +54,7 @@ public class CadastrarLogin extends AppCompatActivity {
             return;
         }
         else{
-            if(!csenha.equals(senha)){
+            if(verificarsenha(senha,csenha) == false){
                 Toast.makeText(CadastrarLogin.this, "Senhas incompativeis!", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -72,6 +72,15 @@ public class CadastrarLogin extends AppCompatActivity {
                     Toast.makeText(CadastrarLogin.this, "Login já existente!", Toast.LENGTH_SHORT).show();
                 }
             }
+        }
+    }
+
+    public boolean verificarsenha (String s1, String s2){
+        if (s1.equals(s2)){
+            return true;
+        }
+        else{
+            return false;
         }
     }
     public void voltartelalogin (View view){

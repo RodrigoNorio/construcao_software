@@ -340,7 +340,7 @@ public class GerenciarReceita extends AppCompatActivity {
         fontetxt.setText("");
     }
 
-    private boolean verdata(String data) {
+    public boolean verdata(String data) {
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             sdf.setLenient(false);
@@ -352,7 +352,7 @@ public class GerenciarReceita extends AppCompatActivity {
     }
 
 
-    private boolean verificarmenor(String data1, String data2){
+    public boolean verificarmenor(String data1, String data2){
         Date d1 = stringToDate(data1);
         Date d2 = stringToDate(data2);
         if (d1.compareTo(d2) > 0){
