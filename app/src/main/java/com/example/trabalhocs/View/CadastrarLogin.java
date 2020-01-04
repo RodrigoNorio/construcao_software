@@ -24,6 +24,7 @@ public class CadastrarLogin extends AppCompatActivity {
         setContentView(R.layout.activity_cadastrar_login);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
         Button blogin = (Button) findViewById(R.id.okcadastro);
         blogin.setOnClickListener(new View.OnClickListener() {
             @Override
