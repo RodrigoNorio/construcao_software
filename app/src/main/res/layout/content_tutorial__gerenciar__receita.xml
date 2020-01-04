@@ -57,7 +57,7 @@
         android:layout_marginEnd="85dp"
         android:layout_marginRight="85dp"
         android:layout_marginBottom="292dp"
-        android:text="@string/title_activity_gerenciar_receita"
+        android:text="@string/GerenciarFontes"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="@android:color/background_dark"
         android:textSize="30sp"
