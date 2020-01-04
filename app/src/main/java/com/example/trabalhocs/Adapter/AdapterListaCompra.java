@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.trabalhocs.Controller.EstoqueController;
@@ -45,6 +46,8 @@ public class AdapterListaCompra extends RecyclerView.Adapter<AdapterListaCompra.
         holder.tvNome.setText(recursoCompraItemView.getRecurso().getNome());
         holder.tvQuantidade.setText(recursoCompraItemView.getQuantidadeText(context));
         holder.tvValor.setText(recursoCompraItemView.getValorText());
+
+        holder.btnRemover.setOnClickListener(v -> controller.removeRecursoCompra(recursoCompraItemView));
     }
 
     @Override
@@ -61,6 +64,9 @@ public class AdapterListaCompra extends RecyclerView.Adapter<AdapterListaCompra.
 
         @BindView(R.id.tv_valor)
         TextView tvValor;
+
+        @BindView(R.id.btn_remover)
+        AppCompatImageButton btnRemover;
 
         CustomViewHolder(View view) {
             super(view);

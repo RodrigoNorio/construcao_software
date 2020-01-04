@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.trabalhocs.Adapter.AdapterListaCompra;
 import com.example.trabalhocs.Controller.EstoqueController;
 import com.example.trabalhocs.R;
+import com.example.trabalhocs.Utils.Torradeira;
 import com.example.trabalhocs.Utils.Utilidades;
 import com.example.trabalhocs.View.Dialogs.DialogAvisoVoltar;
 import com.example.trabalhocs.View.Dialogs.DialogListaRecursos;
@@ -76,11 +77,15 @@ public class RegistrarCompraActivity extends AppCompatActivity implements Estoqu
         if (listaCompras.isEmpty()) {
             rvListaCompras.setVisibility(View.GONE);
             tvListaVazia.setVisibility(View.VISIBLE);
+            btnConfirmar.setEnabled(false);
+            temItens = false;
+
         } else {
             tvListaVazia.setVisibility(View.GONE);
             rvListaCompras.setVisibility(View.VISIBLE);
+            btnConfirmar.setEnabled(true);
+            temItens = true;
         }
-
     }
 
     private void abrirDialogListaRecursos() {
@@ -96,8 +101,9 @@ public class RegistrarCompraActivity extends AppCompatActivity implements Estoqu
 
     @OnClick(R.id.btn_confirmar)
     void onClickBtnConfirmar() {
-//        Torradeira.longToast("total da compra: " + tvValorTotal.getText(), this);
-    }
+        // TODO: 04/01/2020
+        Torradeira.shortToast("compra registrada!", this);
+        finish();    }
 
     @OnClick(R.id.btn_ajuda)
     void onClickBtnAjuda() {
