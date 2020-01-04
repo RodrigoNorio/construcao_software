@@ -310,7 +310,8 @@ public class GerenciarDestinos extends AppCompatActivity {
                                 destinotxt2.setText("");
                             }
                             else{
-                                Toast.makeText(GerenciarDestinos.this, "Data invalida!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(GerenciarDestinos.this, "Data final menor que a inicial ou inválida!", Toast.LENGTH_SHORT).show();
+                                alertdialogverificardestinomes();
                                 return;
                             }
                         }
@@ -328,6 +329,7 @@ public class GerenciarDestinos extends AppCompatActivity {
                 }
                 else{
                     Toast.makeText(GerenciarDestinos.this, "Data invalida!", Toast.LENGTH_SHORT).show();
+                    alertdialogverificardestinomes();
                     return;
                 }
             }

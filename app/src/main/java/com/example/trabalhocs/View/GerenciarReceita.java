@@ -313,7 +313,8 @@ public class GerenciarReceita extends AppCompatActivity {
                                 fontetxt2.setText("");
                             }
                             else{
-                                Toast.makeText(GerenciarReceita.this, "Data invalida!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(GerenciarReceita.this, "Data final menor que a inicial ou inválida!", Toast.LENGTH_SHORT).show();
+                                alertdialogverificarfontemes();
                                 return;
                             }
                         }
@@ -331,6 +332,7 @@ public class GerenciarReceita extends AppCompatActivity {
                 }
                 else{
                     Toast.makeText(GerenciarReceita.this, "Data invalida!", Toast.LENGTH_SHORT).show();
+                    alertdialogverificarfontemes();
                     return;
                 }
             }
