@@ -39,6 +39,7 @@ public class ListarFontesAdd extends AppCompatActivity {
         setContentView(R.layout.activity_listar_fontes_add);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
         listarfontes();
         Button addfonte = (Button) findViewById(R.id.adicionarfonte3);
         addfonte.setOnClickListener(new View.OnClickListener() {
