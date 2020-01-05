@@ -24,7 +24,7 @@
     <string name="nav_financeiro">financeiro</string>
 
     <string name="nav_vendas">vendas</string>
-    <string name="vendas_titulo">Gerenciamento de vendas!</string>
+    <string name="vendas_titulo">Gerenciamento de vendas</string>
     <string name="cadastrar">cadastrar</string>
 
     <string name="cadastrar_produto">Cadastrar Produto</string>
@@ -100,5 +100,8 @@
     <string name="registrar_venda">registrar venda</string>
 
     <string name="erro_generico">eita, algo não funcionou corretamente :(</string>
+    <string name="desc_registrar_compra">Adicione itens a lista de compras pressionando o botão + abaixo</string>
+    <string name="desc_card_produtos">Parece que não tem nenhum produto cadastrado ainda, clique aqui e cadastre seu primeiro produto!</string>
+    <string name="desc_card_recursos">Parece que não tem nenhum recurso cadastrado ainda, clique aqui e cadastre seu primeiro recurso!</string>
 
 </resources>

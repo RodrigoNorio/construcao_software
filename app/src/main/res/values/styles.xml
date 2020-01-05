@@ -26,6 +26,14 @@
     </style>
 
     <!-- Texto titulo -->
+    <style name="textoSubTituloGrande" parent="TextAppearance.AppCompat">
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textColor">@color/cinzaClaro</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!-- Texto titulo -->
     <style name="textoSubTitulo" parent="TextAppearance.AppCompat">
         <item name="android:textAlignment">textStart</item>
         <item name="android:gravity">start</item>

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:clipChildren="false"
+    android:clipToPadding="false">
 
     <TextView
         android:id="@+id/tv_titulo"
@@ -11,44 +13,190 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:text="@string/vendas_titulo"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
         android:textSize="22sp" />
 
-    <LinearLayout
-        android:id="@+id/ll_btns"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_titulo"
-        app:layout_constraintStart_toStartOf="parent"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_produtos"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="15dp"
+        app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:gravity="center"
-        android:orientation="vertical">
+        app:layout_constraintHeight_percent="0.35"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_titulo"
+        app:layout_constraintWidth_percent="0.9">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_cadastrar_produto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/cadastrar_produto" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_cadastrar_recurso"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/cadastrar_novo_recurso" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="6dp"
+                android:paddingTop="2dp"
+                android:paddingRight="6dp"
+                android:paddingBottom="2dp">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_estoque_recursos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/estoque_titulo" />
+                <TextView
+                    style="@style/textoSubTituloGrande"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="produtos" />
 
-    </LinearLayout>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_forward" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/cinzaClaro" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_produtos"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="6dp"
+                android:paddingTop="2dp"
+                android:paddingRight="6dp"
+                android:paddingBottom="2dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_lista_vazia_produtos"
+                style="@style/textoSubTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:gravity="center"
+                android:text="@string/desc_card_produtos"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_recursos"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="15dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.35"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_produtos"
+        app:layout_constraintWidth_percent="0.9">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="6dp"
+                android:paddingTop="2dp"
+                android:paddingRight="6dp"
+                android:paddingBottom="2dp">
+
+                <TextView
+                    style="@style/textoSubTituloGrande"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="recursos" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_forward" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/cinzaClaro" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_recursos"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="6dp"
+                android:paddingTop="2dp"
+                android:paddingRight="6dp"
+                android:paddingBottom="2dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_lista_vazia_recursos"
+                style="@style/textoSubTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:gravity="center"
+                android:text="@string/desc_card_recursos"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/ll_btns"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tv_titulo"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        android:gravity="center"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <androidx.appcompat.widget.AppCompatButton-->
+<!--            android:id="@+id/btn_cadastrar_produto"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/cadastrar_produto" />-->
+
+<!--        <androidx.appcompat.widget.AppCompatButton-->
+<!--            android:id="@+id/btn_cadastrar_recurso"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:text="@string/cadastrar_novo_recurso" />-->
+
+<!--        <androidx.appcompat.widget.AppCompatButton-->
+<!--            android:id="@+id/btn_estoque_recursos"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:text="@string/estoque_titulo" />-->
+
+<!--    </LinearLayout>-->
 
     <LinearLayout
         android:id="@+id/ll_fab_venda"
@@ -58,7 +206,13 @@
         android:layout_marginRight="26dp"
         android:layout_marginBottom="30dp"
         android:animateLayoutChanges="true"
+        android:background="@drawable/bg_border_rounded_circle"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:elevation="6dp"
         android:orientation="horizontal"
+        android:padding="4dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -68,15 +222,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginStart="6dp"
+            android:layout_marginLeft="6dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:text="@string/registrar_venda"
-            android:visibility="gone" />
+            android:text="@string/registrar_venda" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_venda"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
             android:src="@drawable/ic_vender"
             app:fabSize="mini"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -92,7 +248,13 @@
         android:layout_marginRight="26dp"
         android:layout_marginBottom="30dp"
         android:animateLayoutChanges="true"
+        android:background="@drawable/bg_border_rounded_circle"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:elevation="6dp"
         android:orientation="horizontal"
+        android:padding="4dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -102,15 +264,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginStart="6dp"
+            android:layout_marginLeft="6dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:text="@string/registrar_compra"
-            android:visibility="gone" />
+            android:text="@string/registrar_compra" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_compra"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
             android:layout_gravity="center"
             android:src="@drawable/ic_comprar"
             app:fabSize="mini"
@@ -127,6 +291,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
         android:src="@drawable/ic_fab_menu"
+        android:visibility="visible"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

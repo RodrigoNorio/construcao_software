@@ -10,13 +10,9 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
 import com.example.trabalhocs.R;
-import com.example.trabalhocs.View.CadastrarProdutoActivity;
-import com.example.trabalhocs.View.CadastrarRecursoActivity;
-import com.example.trabalhocs.View.EstoqueActivity;
 import com.example.trabalhocs.View.RegistrarCompraActivity;
 import com.example.trabalhocs.View.RegistrarVendaActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -27,11 +23,11 @@ import butterknife.OnClick;
 
 public class FragmentVendas extends Fragment {
 
-    @BindView(R.id.btn_cadastrar_produto)
-    AppCompatButton btnCadastrarProduto;
-
-    @BindView(R.id.btn_cadastrar_recurso)
-    AppCompatButton btnCadastrarRecurso;
+//    @BindView(R.id.btn_cadastrar_produto)
+//    AppCompatButton btnCadastrarProduto;
+//
+//    @BindView(R.id.btn_cadastrar_recurso)
+//    AppCompatButton btnCadastrarRecurso;
 
     @BindView(R.id.fab_menu)
     FloatingActionButton fabMenu;
@@ -78,15 +74,15 @@ public class FragmentVendas extends Fragment {
 
     private void mostrarMenu() {
 
-        llFabCompra.animate().translationY(-getContext().getResources().getDimension(R.dimen.fab_compra_offset)).setListener(new Animator.AnimatorListener() {
+        llFabCompra.animate().translationY(-getContext().getResources().getDimension(R.dimen.fab_compra_offset)).alpha(1f).setListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
-
+                llFabCompra.setVisibility(View.VISIBLE);
             }
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                tvFabCompra.setVisibility(View.VISIBLE);
+
             }
 
             @Override
@@ -100,15 +96,15 @@ public class FragmentVendas extends Fragment {
             }
         });
 
-        llFabVenda.animate().translationY(-getContext().getResources().getDimension(R.dimen.fab_venda_offset)).setListener(new Animator.AnimatorListener() {
+        llFabVenda.animate().translationY(-getContext().getResources().getDimension(R.dimen.fab_venda_offset)).alpha(1f).setListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
-
+                llFabVenda.setVisibility(View.VISIBLE);
             }
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                tvFabVenda.setVisibility(View.VISIBLE);
+
             }
 
             @Override
@@ -124,10 +120,6 @@ public class FragmentVendas extends Fragment {
 
         isMostrandoMenu = true;
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            fabMenu.setBackgroundColor(getContext().getColor(R.color.vermelho));
-        }
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             fabMenu.setImageDrawable(getContext().getDrawable(R.drawable.ic_fechar));
         }
@@ -135,15 +127,15 @@ public class FragmentVendas extends Fragment {
 
     private void esconderMenu() {
 
-        llFabCompra.animate().translationY(0).setListener(new Animator.AnimatorListener() {
+        llFabCompra.animate().translationY(0).alpha(0f).setListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
-                tvFabCompra.setVisibility(View.GONE);
+
             }
 
             @Override
             public void onAnimationEnd(Animator animation) {
-
+                llFabCompra.setVisibility(View.GONE);
             }
 
             @Override
@@ -157,15 +149,15 @@ public class FragmentVendas extends Fragment {
             }
         });
 
-        llFabVenda.animate().translationY(0).setListener(new Animator.AnimatorListener() {
+        llFabVenda.animate().translationY(0).alpha(0f).setListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
-                tvFabVenda.setVisibility(View.GONE);
+
             }
 
             @Override
             public void onAnimationEnd(Animator animation) {
-
+                llFabVenda.setVisibility(View.GONE);
             }
 
             @Override
@@ -180,10 +172,6 @@ public class FragmentVendas extends Fragment {
         });
 
         isMostrandoMenu = false;
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            fabMenu.setBackgroundColor(getContext().getColor(R.color.colorAccent));
-        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             fabMenu.setImageDrawable(getContext().getDrawable(R.drawable.ic_fab_menu));
@@ -208,21 +196,21 @@ public class FragmentVendas extends Fragment {
         else mostrarMenu();
     }
 
-    @OnClick(R.id.btn_cadastrar_produto)
-    void clickBtnCadastrarProduto() {
-        Intent intent = new Intent(getContext(), CadastrarProdutoActivity.class);
-        startActivity(intent);
-    }
-
-    @OnClick(R.id.btn_cadastrar_recurso)
-    void clickBtnCadastrarRecurso() {
-        Intent intent = new Intent(getContext(), CadastrarRecursoActivity.class);
-        startActivity(intent);
-    }
-
-    @OnClick(R.id.btn_estoque_recursos)
-    void onClickBtnEstoqueRecursos() {
-        Intent intent = new Intent(getContext(), EstoqueActivity.class);
-        startActivity(intent);
-    }
+//    @OnClick(R.id.btn_cadastrar_produto)
+//    void clickBtnCadastrarProduto() {
+//        Intent intent = new Intent(getContext(), CadastrarProdutoActivity.class);
+//        startActivity(intent);
+//    }
+//
+//    @OnClick(R.id.btn_cadastrar_recurso)
+//    void clickBtnCadastrarRecurso() {
+//        Intent intent = new Intent(getContext(), CadastrarRecursoActivity.class);
+//        startActivity(intent);
+//    }
+//
+//    @OnClick(R.id.btn_estoque_recursos)
+//    void onClickBtnEstoqueRecursos() {
+//        Intent intent = new Intent(getContext(), EstoqueActivity.class);
+//        startActivity(intent);
+//    }
 }

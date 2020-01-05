@@ -72,7 +72,7 @@
                 style="@style/textoSubTitulo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Adicione itens a lista de compras pressionando o botão + abaixo"
+                android:text="@string/desc_registrar_compra"
                 android:textAlignment="center"
                 app:layout_constraintBottom_toTopOf="@id/btn_add"
                 app:layout_constraintEnd_toEndOf="parent"
