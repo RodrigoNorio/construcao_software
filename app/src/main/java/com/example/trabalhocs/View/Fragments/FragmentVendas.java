@@ -1,6 +1,7 @@
 package com.example.trabalhocs.View.Fragments;
 
 import android.animation.Animator;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -8,14 +9,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.trabalhocs.Adapter.AdapterEstoqueSimplificado;
+import com.example.trabalhocs.Adapter.AdapterInventarioSimplificado;
+import com.example.trabalhocs.Model.ModeloProduto;
+import com.example.trabalhocs.Model.ModeloRecurso;
 import com.example.trabalhocs.R;
+import com.example.trabalhocs.Utils.Utilidades;
+import com.example.trabalhocs.View.EstoqueActivity;
 import com.example.trabalhocs.View.RegistrarCompraActivity;
 import com.example.trabalhocs.View.RegistrarVendaActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,11 +34,15 @@ import butterknife.OnClick;
 
 public class FragmentVendas extends Fragment {
 
-//    @BindView(R.id.btn_cadastrar_produto)
-//    AppCompatButton btnCadastrarProduto;
-//
-//    @BindView(R.id.btn_cadastrar_recurso)
-//    AppCompatButton btnCadastrarRecurso;
+    @BindView(R.id.tv_lista_vazia_produtos)
+    TextView tvProdutosVazio;
+    @BindView(R.id.lv_produtos)
+    ListView lvProdutos;
+
+    @BindView(R.id.tv_lista_vazia_recursos)
+    TextView tvRecursosVazio;
+    @BindView(R.id.lv_recursos)
+    ListView lvRecursos;
 
     @BindView(R.id.fab_menu)
     FloatingActionButton fabMenu;
@@ -47,6 +62,9 @@ public class FragmentVendas extends Fragment {
     FloatingActionButton fabVenda;
 
     private boolean isMostrandoMenu = false;
+
+    private AdapterEstoqueSimplificado adapterEstoqueSimplificado;
+    private AdapterInventarioSimplificado adapterInventarioSimplificado;
 
     public FragmentVendas() {
         // Required empty public constructor
@@ -69,7 +87,50 @@ public class FragmentVendas extends Fragment {
     }
 
     private void config() {
-        // TODO: 11/11/2019 implementar lógicas do fragment aqui
+        Context context = getContext();
+
+        if (context != null) {
+
+            //Card produtos
+            List<ModeloProduto> listaPreviaProdutos = new ArrayList<>(Utilidades.getListaProdutosTeste()); // TODO: 05/01/2020 mudar aqui
+
+            if (!listaPreviaProdutos.isEmpty()) {
+                if (listaPreviaProdutos.size() > 10) {
+                    listaPreviaProdutos.subList(9,listaPreviaProdutos.size()).clear();
+                }
+
+                adapterInventarioSimplificado = new AdapterInventarioSimplificado(context, listaPreviaProdutos);
+                lvProdutos.setAdapter(adapterInventarioSimplificado);
+
+                tvProdutosVazio.setVisibility(View.GONE);
+                lvProdutos.setVisibility(View.VISIBLE);
+
+            } else {
+                lvProdutos.setVisibility(View.GONE);
+                tvProdutosVazio.setVisibility(View.VISIBLE);
+            }
+
+            //Card recursos
+            List<ModeloRecurso> listaPreviaRecursos = new ArrayList<>(Utilidades.getListaRecursosTeste()); // TODO: 05/01/2020 mudar aqui
+
+            if (!listaPreviaRecursos.isEmpty()) {
+                if (listaPreviaRecursos.size() > 10) {
+                    listaPreviaRecursos.subList(9,listaPreviaRecursos.size()).clear();
+                }
+
+                adapterEstoqueSimplificado = new AdapterEstoqueSimplificado(context, listaPreviaRecursos);
+                lvRecursos.setAdapter(adapterEstoqueSimplificado);
+
+                tvRecursosVazio.setVisibility(View.GONE);
+                lvRecursos.setVisibility(View.VISIBLE);
+
+            } else {
+                lvRecursos.setVisibility(View.GONE);
+                tvRecursosVazio.setVisibility(View.VISIBLE);
+            }
+
+        }
+
     }
 
     private void mostrarMenu() {
@@ -208,9 +269,9 @@ public class FragmentVendas extends Fragment {
 //        startActivity(intent);
 //    }
 //
-//    @OnClick(R.id.btn_estoque_recursos)
-//    void onClickBtnEstoqueRecursos() {
-//        Intent intent = new Intent(getContext(), EstoqueActivity.class);
-//        startActivity(intent);
-//    }
+    @OnClick(R.id.card_recursos)
+    void onClickCardRecursos() {
+        Intent intent = new Intent(getContext(), EstoqueActivity.class);
+        startActivity(intent);
+    }
 }
