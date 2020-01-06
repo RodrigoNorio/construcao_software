@@ -18,6 +18,16 @@ public class VendaController {
 
     private double total = 0.0;
 
+    /**
+     * construtor para o inventário
+     */
+    public VendaController(List<ModeloProduto> produtosList) {
+        this.produtosList = produtosList;
+    }
+
+    /**
+     * construtor para o registro de venda
+     */
     public VendaController(VendaControllerListener listener, List<ModeloProduto> produtos) {
         this.listener = listener;
         this.produtosList = produtos;

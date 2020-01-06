@@ -21,6 +21,7 @@ import com.example.trabalhocs.Model.ModeloRecurso;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.Utils.Utilidades;
 import com.example.trabalhocs.View.EstoqueActivity;
+import com.example.trabalhocs.View.InventarioActivity;
 import com.example.trabalhocs.View.RegistrarCompraActivity;
 import com.example.trabalhocs.View.RegistrarVendaActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -269,6 +270,12 @@ public class FragmentVendas extends Fragment {
 //        startActivity(intent);
 //    }
 //
+    @OnClick(R.id.card_produtos)
+    void onClickCardProdutos() {
+        Intent intent = new Intent(getContext(), InventarioActivity.class);
+        startActivity(intent);
+    }
+
     @OnClick(R.id.card_recursos)
     void onClickCardRecursos() {
         Intent intent = new Intent(getContext(), EstoqueActivity.class);

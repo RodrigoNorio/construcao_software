@@ -32,6 +32,7 @@
         <activity android:name=".View.RegistrarVendaActivity" />
         <activity android:name=".View.EstoqueActivity" />
         <activity android:name=".View.RegistrarCompraActivity" />
+        <activity android:name=".View.InventarioActivity" />
     </application>
 
 </manifest>

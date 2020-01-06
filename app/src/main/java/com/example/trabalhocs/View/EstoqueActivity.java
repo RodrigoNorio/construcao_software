@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,12 +23,6 @@ public class EstoqueActivity extends AppCompatActivity {
     @BindView(R.id.rv_recursos)
     RecyclerView rvRecursos;
 
-    @BindView(R.id.btn_add_novo)
-    AppCompatButton btnCadastroRecurso;
-
-    @BindView(R.id.btn_compra)
-    AppCompatButton btnCompraRecurso;
-
     private EstoqueController estoqueController;
     private AdapterEstoque adapterEstoque;
 
@@ -40,15 +33,14 @@ public class EstoqueActivity extends AppCompatActivity {
         setContentView(R.layout.activity_estoque);
         ButterKnife.bind(this);
 
+        rvRecursos.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+
         config();
     }
 
     private void config() {
-        estoqueController = new EstoqueController(Utilidades.getListaRecursosTeste()); // produtos teste
-
+        estoqueController = new EstoqueController(Utilidades.getListaRecursosTeste());
         adapterEstoque = new AdapterEstoque(this, estoqueController.getRecursoList());
-
-        rvRecursos.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         rvRecursos.setAdapter(adapterEstoque);
     }
 

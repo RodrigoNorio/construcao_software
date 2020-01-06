@@ -27,7 +27,7 @@
     <string name="vendas_titulo">Gerenciamento de vendas</string>
     <string name="cadastrar">cadastrar</string>
 
-    <string name="cadastrar_produto">Cadastrar Produto</string>
+    <string name="cadastrar_produto">Cadastrar novo Produto</string>
     <string name="cadastrar_produto_info">Aqui você pode cadastrar um novo Produto. Preencha os campos abaixo, depois de cadastrado você poderá registrar entrada e saída deste Produto.</string>
     <string name="hint_descricao_produto">adicione aqui uma descrição suscinta do Produto</string>
     <string name="hint_estoque_produto">insira aqui o estoque atual do Produto</string>
@@ -88,6 +88,10 @@
     <string name="lista_recursos_titulo">selecione um recurso abaixo</string>
 
     <string name="total">TOTAL</string>
+
+    <string name="inventario_titulo">inventário de produtos</string>
+    <string name="inventario_quantidade">quantidade disponível</string>
+    <string name="inventario_fabricacao">registrar entrada de produtos</string>
 
     <string name="estoque_titulo">estoque de recursos</string>
     <string name="estoque_cadastrar">cadastrar novo recurso</string>
