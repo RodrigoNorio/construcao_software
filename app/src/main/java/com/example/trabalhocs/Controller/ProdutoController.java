@@ -8,9 +8,11 @@ import com.example.trabalhocs.View.Itens.ProdutoVendaItemView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VendaController {
+public class ProdutoController {
 
-    private VendaControllerListener listener;
+    private VendaControllerListener vendaListener;
+    private CadastrarModeloListener cadastroModeloListener;
+
     private List<ModeloProduto> produtosList;
     private List<ProdutoVendaItemView> selecionadosList;
     private SparseArray<ModeloProduto> produtosMapa;
@@ -21,15 +23,23 @@ public class VendaController {
     /**
      * construtor para o inventário
      */
-    public VendaController(List<ModeloProduto> produtosList) {
+    public ProdutoController(List<ModeloProduto> produtosList) {
         this.produtosList = produtosList;
+    }
+
+    /**
+     * construtor cadastro de modelo de produto
+     */
+    public ProdutoController(CadastrarModeloListener cadastroModeloListener, List<ModeloProduto> produtos) {
+        this.cadastroModeloListener = cadastroModeloListener;
+        this.produtosList = produtos;
     }
 
     /**
      * construtor para o registro de venda
      */
-    public VendaController(VendaControllerListener listener, List<ModeloProduto> produtos) {
-        this.listener = listener;
+    public ProdutoController(VendaControllerListener vendaListener, List<ModeloProduto> produtos) {
+        this.vendaListener = vendaListener;
         this.produtosList = produtos;
         produtosMapa = new SparseArray<>(produtos.size());
         produtosViews = new SparseArray<>(produtos.size());
@@ -63,7 +73,7 @@ public class VendaController {
             total += p.getValorVenda();
         }
 
-        listener.atualizaLista(total);
+        vendaListener.atualizaLista(total);
     }
 
     public List<ModeloProduto> getProdutosList() {
@@ -76,5 +86,9 @@ public class VendaController {
 
     public interface VendaControllerListener {
         void atualizaLista(double total);
+    }
+
+    public interface CadastrarModeloListener {
+        void atualizaProduto(ModeloProduto produto);
     }
 }

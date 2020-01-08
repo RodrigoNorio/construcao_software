@@ -5,37 +5,44 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageButton;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.trabalhocs.Adapter.AdapterListaCompra;
+import com.example.trabalhocs.Controller.ProdutoController;
 import com.example.trabalhocs.Controller.RecursoController;
+import com.example.trabalhocs.Model.ModeloProduto;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.Utils.Constants;
-import com.example.trabalhocs.Utils.Torradeira;
 import com.example.trabalhocs.Utils.Utilidades;
 import com.example.trabalhocs.View.Dialogs.DialogAvisoVoltar;
 import com.example.trabalhocs.View.Dialogs.DialogListaRecursos;
-import com.example.trabalhocs.View.Itens.RecursoCompraItemView;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class RegistrarCompraActivity extends AppCompatActivity implements RecursoController.CompraRecursosListener {
+public class CadastrarModeloProdutoActivity extends AppCompatActivity implements ProdutoController.CadastrarModeloListener, RecursoController.CadastroModeloProdutoListener {
 
-    @BindView(R.id.tv_lista_vazia)
-    TextView tvListaVazia;
+    @BindView(R.id.card_produto)
+    CardView cardProduto;
+    @BindView(R.id.tv_produto)
+    TextView tvProduto;
+    @BindView(R.id.img_trocar)
+    ImageView imgTrocar;
 
-    @BindView(R.id.rv_lista_compras)
+    @BindView(R.id.titulo_card_recursos)
+    TextView tvCardRecursos;
+    @BindView(R.id.card_recursos)
+    CardView cardRecursos;
+
+    @BindView(R.id.rv_lista_ingredientes)
     RecyclerView rvListaCompras;
 
     @BindView(R.id.btn_add)
@@ -45,13 +52,17 @@ public class RegistrarCompraActivity extends AppCompatActivity implements Recurs
     AppCompatButton btnConfirmar;
 
     private RecursoController recursoController;
+    private ProdutoController produtoController;
+
+    private ModeloProduto produto;
     private boolean temItens = false;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_registrar_compra);
+        setContentView(R.layout.activity_cadastrar_modelo);
         ButterKnife.bind(this);
 
         config();
@@ -59,38 +70,37 @@ public class RegistrarCompraActivity extends AppCompatActivity implements Recurs
 
     private void config() {
         recursoController = new RecursoController(this, Utilidades.getListaRecursosTeste());
-        AdapterListaCompra adapterCompraRecurso = new AdapterListaCompra(this, recursoController);
+        produtoController = new ProdutoController(this, Utilidades.getListaProdutosTeste());
 
-        rvListaCompras.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
-        rvListaCompras.setAdapter(adapterCompraRecurso);
-
-        rvListaCompras.setVisibility(View.GONE);
-        tvListaVazia.setVisibility(View.VISIBLE);
     }
 
     @Override
-    public void atualizaListaCompras() {
-        List<RecursoCompraItemView> listaCompras = recursoController.getCompraList();
+    public void atualizaProduto(ModeloProduto produto) {
+        this.produto = produto;
 
-        AdapterListaCompra adapterCompraRecurso = new AdapterListaCompra(this, recursoController);
-        rvListaCompras.setAdapter(adapterCompraRecurso);
+        this.tvCardRecursos.setText(produto.getNome());
+        this.tvCardRecursos.setVisibility(View.VISIBLE);
+        this.imgTrocar.setVisibility(View.VISIBLE);
 
-        if (listaCompras.isEmpty()) {
-            rvListaCompras.setVisibility(View.GONE);
-            tvListaVazia.setVisibility(View.VISIBLE);
-            btnConfirmar.setEnabled(false);
-            temItens = false;
+        this.cardRecursos.setVisibility(View.VISIBLE);
+    }
 
-        } else {
-            tvListaVazia.setVisibility(View.GONE);
-            rvListaCompras.setVisibility(View.VISIBLE);
-            btnConfirmar.setEnabled(true);
-            temItens = true;
-        }
+    private void abrirDialogListaProdutos() {
+        // TODO: 07/01/2020
+    }
+
+    @OnClick(R.id.card_produto)
+    void onClickCardProduto() {
+        abrirDialogListaProdutos();
+    }
+
+    @Override
+    public void atualizaListaIngredientes() {
+
     }
 
     private void abrirDialogListaRecursos() {
-        DialogListaRecursos dialogListaRecursos = new DialogListaRecursos(this, recursoController.getRecursoList(), Constants.COMPRA_RECURSOS);
+        DialogListaRecursos dialogListaRecursos = new DialogListaRecursos(this, recursoController.getRecursoList(), Constants.CADASTRO_MODELO_PRODUTO);
         final AlertDialog dialog = dialogListaRecursos.show();
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
@@ -98,17 +108,6 @@ public class RegistrarCompraActivity extends AppCompatActivity implements Recurs
     @OnClick(R.id.btn_add)
     void onClickBtnAdd() {
         abrirDialogListaRecursos();
-    }
-
-    @OnClick(R.id.btn_confirmar)
-    void onClickBtnConfirmar() {
-        // TODO: 04/01/2020
-        Torradeira.shortToast("compra registrada!", this);
-        finish();    }
-
-    @OnClick(R.id.btn_ajuda)
-    void onClickBtnAjuda() {
-        // TODO: 11/11/2019 add dialog de ajuda
     }
 
     @OnClick(R.id.btn_cancelar)
@@ -138,4 +137,5 @@ public class RegistrarCompraActivity extends AppCompatActivity implements Recurs
             finish();
         });
     }
+
 }

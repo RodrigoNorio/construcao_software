@@ -86,6 +86,12 @@
     <string name="reg_compra_titulo">registrar compra de recursos</string>
     <string name="compra_subtitulo">preencha a lista com quantidade e valor pago</string>
     <string name="lista_recursos_titulo">selecione um recurso abaixo</string>
+    <string name="desc_registrar_compra">Adicione itens a lista de compras pressionando o botão + abaixo</string>
+
+    <string name="cadastrar_modelo_titulo">cadastrar modelo de produto</string>
+    <string name="card_produto_titulo">primeiro escolha um produto</string>
+    <string name="card_recursos_titulo">selecione os ingredientes e quantidades</string>
+    <string name="desc_lista_ingredientes">Adicione recursos e quantidades a lista de ingredientes pressionando o botão + abaixo</string>
 
     <string name="total">TOTAL</string>
 
@@ -104,8 +110,10 @@
     <string name="registrar_venda">registrar venda</string>
 
     <string name="erro_generico">eita, algo não funcionou corretamente :(</string>
-    <string name="desc_registrar_compra">Adicione itens a lista de compras pressionando o botão + abaixo</string>
     <string name="desc_card_produtos">Parece que não tem nenhum produto cadastrado ainda, clique aqui e cadastre seu primeiro produto!</string>
     <string name="desc_card_recursos">Parece que não tem nenhum recurso cadastrado ainda, clique aqui e cadastre seu primeiro recurso!</string>
+    <string name="texto_valor_compra">insira o valor da compra</string>
+    <string name="texto_qtd_compra">insira a quantidade comprada</string>
+    <string name="texto_desc_dialog_modelo_produto">insira a quantidade deste ingrediente \npara uma receita do produto</string>
 
 </resources>

@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.trabalhocs.Controller.EstoqueController;
+import com.example.trabalhocs.Controller.RecursoController;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.View.Itens.RecursoCompraItemView;
 
@@ -22,10 +22,10 @@ import butterknife.ButterKnife;
 public class AdapterListaCompra extends RecyclerView.Adapter<AdapterListaCompra.CustomViewHolder> {
 
     private Context context;
-    private EstoqueController controller;
+    private RecursoController controller;
     private List<RecursoCompraItemView> recursoCompraItemViewList;
 
-    public AdapterListaCompra(Context context, EstoqueController controller) {
+    public AdapterListaCompra(Context context, RecursoController controller) {
         this.context = context;
         this.controller = controller;
         this.recursoCompraItemViewList = controller.getCompraList();

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.trabalhocs.Adapter.AdapterEstoque;
-import com.example.trabalhocs.Controller.EstoqueController;
+import com.example.trabalhocs.Controller.RecursoController;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.Utils.Torradeira;
 import com.example.trabalhocs.Utils.Utilidades;
@@ -23,7 +23,7 @@ public class EstoqueActivity extends AppCompatActivity {
     @BindView(R.id.rv_recursos)
     RecyclerView rvRecursos;
 
-    private EstoqueController estoqueController;
+    private RecursoController recursoController;
     private AdapterEstoque adapterEstoque;
 
     @Override
@@ -39,8 +39,8 @@ public class EstoqueActivity extends AppCompatActivity {
     }
 
     private void config() {
-        estoqueController = new EstoqueController(Utilidades.getListaRecursosTeste());
-        adapterEstoque = new AdapterEstoque(this, estoqueController.getRecursoList());
+        recursoController = new RecursoController(Utilidades.getListaRecursosTeste());
+        adapterEstoque = new AdapterEstoque(this, recursoController.getRecursoList());
         rvRecursos.setAdapter(adapterEstoque);
     }
 

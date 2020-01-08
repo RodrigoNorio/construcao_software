@@ -20,7 +20,6 @@
         app:layout_constraintTop_toTopOf="@id/tv_nome"
         app:layout_constraintWidth_percent="0.15" />
 
-
     <TextView
         android:id="@+id/tv_nome"
         style="@style/textoTitulo"

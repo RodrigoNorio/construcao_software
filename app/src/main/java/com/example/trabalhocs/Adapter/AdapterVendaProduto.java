@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.trabalhocs.Controller.VendaController;
+import com.example.trabalhocs.Controller.ProdutoController;
 import com.example.trabalhocs.Model.ModeloProduto;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.Utils.Torradeira;
@@ -32,10 +32,10 @@ public class AdapterVendaProduto extends RecyclerView.Adapter<AdapterVendaProdut
     private List<ModeloProduto> produtos;
     private List<Integer> quantidades;
 
-    private VendaController controller;
+    private ProdutoController controller;
     private RecyclerView recyclerView;
 
-    public AdapterVendaProduto(Context context, VendaController controller) {
+    public AdapterVendaProduto(Context context, ProdutoController controller) {
         this.context = context;
         this.controller = controller;
         this.produtos = controller.getProdutosList();

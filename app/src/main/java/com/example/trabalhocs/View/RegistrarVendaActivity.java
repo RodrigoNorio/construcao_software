@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.trabalhocs.Adapter.AdapterResumoVenda;
 import com.example.trabalhocs.Adapter.AdapterVendaProduto;
-import com.example.trabalhocs.Controller.VendaController;
+import com.example.trabalhocs.Controller.ProdutoController;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.Utils.Torradeira;
 import com.example.trabalhocs.Utils.Utilidades;
@@ -29,7 +29,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class RegistrarVendaActivity extends AppCompatActivity implements VendaController.VendaControllerListener {
+public class RegistrarVendaActivity extends AppCompatActivity implements ProdutoController.VendaControllerListener {
 
     @BindView(R.id.rv_produtos)
     RecyclerView rvProdutos;
@@ -45,7 +45,7 @@ public class RegistrarVendaActivity extends AppCompatActivity implements VendaCo
     @BindView(R.id.btn_confirmar)
     AppCompatButton btnConfirmar;
 
-    private VendaController vendaController;
+    private ProdutoController produtoController;
     private AdapterVendaProduto adapterVendaProduto;
     private AdapterResumoVenda adapterResumoVenda;
     private boolean temItens = false;
@@ -61,16 +61,16 @@ public class RegistrarVendaActivity extends AppCompatActivity implements VendaCo
     }
 
     private void config() {
-        vendaController = new VendaController(this, Utilidades.getListaProdutosTeste()); // produtos teste
-        adapterVendaProduto = new AdapterVendaProduto(this, vendaController);
-        adapterResumoVenda = new AdapterResumoVenda(this, vendaController.getProdutosSelecionadosView());
+        produtoController = new ProdutoController(this, Utilidades.getListaProdutosTeste()); // produtos teste
+        adapterVendaProduto = new AdapterVendaProduto(this, produtoController);
+        adapterResumoVenda = new AdapterResumoVenda(this, produtoController.getProdutosSelecionadosView());
 
         rvProdutos.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         rvProdutos.setAdapter(adapterVendaProduto);
     }
 
     public void atualizarResumo(double total) {
-        List<ProdutoVendaItemView> produtosSelecionados = vendaController.getProdutosSelecionadosView();
+        List<ProdutoVendaItemView> produtosSelecionados = produtoController.getProdutosSelecionadosView();
 
         if (!adapterResumoVenda.isEmpty()) adapterResumoVenda.clear();
         adapterResumoVenda.addAll(produtosSelecionados);

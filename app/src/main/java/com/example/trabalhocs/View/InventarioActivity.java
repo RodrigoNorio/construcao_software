@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.trabalhocs.Adapter.AdapterInventario;
-import com.example.trabalhocs.Controller.VendaController;
+import com.example.trabalhocs.Controller.ProdutoController;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.Utils.Utilidades;
 
@@ -22,7 +22,7 @@ public class InventarioActivity extends AppCompatActivity {
     @BindView(R.id.rv_produtos)
     RecyclerView rvProdutos;
     
-    VendaController vendaController;
+    ProdutoController produtoController;
     AdapterInventario adapterInventario;
 
     @Override
@@ -38,8 +38,8 @@ public class InventarioActivity extends AppCompatActivity {
     }
     
     private void config() {
-        vendaController = new VendaController(Utilidades.getListaProdutosTeste());
-        adapterInventario = new AdapterInventario(this, vendaController.getProdutosList());
+        produtoController = new ProdutoController(Utilidades.getListaProdutosTeste());
+        adapterInventario = new AdapterInventario(this, produtoController.getProdutosList());
         rvProdutos.setAdapter(adapterInventario);
     }
 

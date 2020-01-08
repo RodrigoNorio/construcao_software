@@ -22,16 +22,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_estoque_atual"
-        style="@style/textoSubTitulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:text="@string/estoque_atual"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_nome" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input_quantidade"
@@ -44,7 +34,7 @@
         android:hint="@string/hint_quantidade"
         app:layout_constraintBottom_toTopOf="@id/tv_texto_estoque"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_estoque_atual">
+        app:layout_constraintTop_toBottomOf="@id/tv_nome">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_quantidade"
@@ -73,58 +63,14 @@
         style="@style/textoInformacao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="13dp"
-        android:layout_marginLeft="13dp"
-        android:text="@string/texto_qtd_compra"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:gravity="start"
+        android:text="@string/texto_desc_dialog_modelo_produto"
+        android:textAlignment="textStart"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/input_quantidade" />
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_valor"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="10dp"
-        android:hint="@string/hint_valor_compra"
-        app:layout_constraintBottom_toTopOf="@id/tv_texto_valor"
-        app:layout_constraintStart_toEndOf="@id/tv_cifrao"
-        app:layout_constraintTop_toBottomOf="@id/tv_texto_estoque">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_valor"
-            android:layout_width="@dimen/dialog_input_qtd_venda_width"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:inputType="number"
-            android:textColor="@color/cinza" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/tv_cifrao"
-        style="@style/textoSubTitulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="9dp"
-        android:layout_marginLeft="9dp"
-        android:text="R$"
-        app:layout_constraintBottom_toBottomOf="@id/input_valor"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/input_valor" />
-
-    <TextView
-        android:id="@+id/tv_texto_valor"
-        style="@style/textoInformacao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="9dp"
-        android:layout_marginLeft="9dp"
-        android:text="@string/texto_valor_compra"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/input_valor" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_cancelar"
@@ -137,7 +83,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btn_confirmar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_texto_valor" />
+        app:layout_constraintTop_toBottomOf="@id/tv_texto_estoque" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_confirmar"
@@ -150,6 +96,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn_cancelar"
-        app:layout_constraintTop_toBottomOf="@id/tv_texto_valor" />
+        app:layout_constraintTop_toBottomOf="@id/tv_texto_estoque" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

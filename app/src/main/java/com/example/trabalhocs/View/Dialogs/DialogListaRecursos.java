@@ -9,7 +9,7 @@ import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.trabalhocs.Adapter.AdapterCompraRecurso;
+import com.example.trabalhocs.Adapter.AdapterListaRecursos;
 import com.example.trabalhocs.Model.ModeloRecurso;
 import com.example.trabalhocs.R;
 
@@ -19,7 +19,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class DialogListaRecursos extends AlertDialog.Builder implements AdapterCompraRecurso.AdapterCompraRecursoListener {
+public class DialogListaRecursos extends AlertDialog.Builder implements AdapterListaRecursos.AdapterCompraRecursoListener {
 
     @BindView(R.id.rv_recursos)
     RecyclerView rvRecursos;
@@ -31,11 +31,13 @@ public class DialogListaRecursos extends AlertDialog.Builder implements AdapterC
 
     private Context context;
     private List<ModeloRecurso> recursoList;
+    private int origemID; //Constants
 
-    public DialogListaRecursos(Context context, List<ModeloRecurso> recursoList) {
+    public DialogListaRecursos(Context context, List<ModeloRecurso> recursoList, int origemID) {
         super(context);
         this.context = context;
         this.recursoList = recursoList;
+        this.origemID = origemID;
 
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.dialog_lista_recursos, null);
@@ -55,10 +57,10 @@ public class DialogListaRecursos extends AlertDialog.Builder implements AdapterC
     }
 
     private void config() {
-        AdapterCompraRecurso adapterCompraRecurso = new AdapterCompraRecurso(recursoList, this, context);
+        AdapterListaRecursos adapterListaRecursos = new AdapterListaRecursos(recursoList, this, context, origemID);
 
         rvRecursos.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
-        rvRecursos.setAdapter(adapterCompraRecurso);
+        rvRecursos.setAdapter(adapterListaRecursos);
     }
 
     @OnClick(R.id.btn_fechar)

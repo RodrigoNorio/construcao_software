@@ -13,4 +13,8 @@ public class Constants {
     public static final int TIPO_MEDIDA_UNIDADE = 3;
     public static final int TIPO_MEDIDA_KILO = 4;
     public static final int TIPO_MEDIDA_LITRO = 5;
+
+    //AdapterListaRecursos
+    public static final int COMPRA_RECURSOS = 1;
+    public static final int CADASTRO_MODELO_PRODUTO = 2;
 }
