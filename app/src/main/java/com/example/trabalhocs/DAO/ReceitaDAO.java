@@ -9,7 +9,10 @@ import com.example.trabalhocs.Model.ModeloReceita;
 import com.example.trabalhocs.View.Login;
 import com.example.trabalhocs.dbhelper.ConexaoSQlite;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ReceitaDAO {
@@ -112,7 +115,8 @@ public class ReceitaDAO {
         try {
             SQLiteDatabase sqLiteDatabase = this.conexaoSQlite.getReadableDatabase();
 
-            Cursor cursor = sqLiteDatabase.rawQuery("select valor,data, * from receita where data like ? and cod_fonte= '" + selecionar + "'", new String[] { "%" + keyword + "%" });
+            Cursor cursor = sqLiteDatabase.rawQuery("select valor,data, * from receita where data like ? and cod_fonte = ? and cod_pessoa = ?",
+                    new String[] { "%" + keyword + "%",String.valueOf(selecionar), String.valueOf(cod_pessoa)});
             if (cursor.moveToFirst()) {
                 contacts = new ArrayList<ModeloReceita>();
                 do {
@@ -140,7 +144,7 @@ public class ReceitaDAO {
 
             db = this.conexaoSQlite.getReadableDatabase();
 
-            cursor = db.rawQuery("SELECT * FROM receita WHERE cod_pessoa = ?", new String[] {String.valueOf(cod_pessoa)});
+            cursor = db.rawQuery("SELECT * FROM receita WHERE cod_pessoa = ? AND cod_fonte = ?", new String[] {String.valueOf(cod_pessoa),String.valueOf(selecionar)});
 
             if(cursor.moveToFirst()){
 
@@ -168,5 +172,40 @@ public class ReceitaDAO {
             }
         }
         return listaReceitas;
+    }
+
+    public String receitatotalDAO(String data1, String data2, int selecionar) {
+        SQLiteDatabase db = null;
+        Date d1 = stringToDate(data1);
+        Date d2 = stringToDate(data2);
+        Date converter;
+        db = this.conexaoSQlite.getWritableDatabase();
+        float total = 0;
+        Cursor cursor = db.rawQuery("SELECT data, valor FROM receita WHERE cod_pessoa = ? AND cod_fonte = ?",
+                new String[] {String.valueOf(cod_pessoa), String.valueOf(selecionar)});
+        if (cursor.getCount() > 0){
+            cursor.moveToFirst();
+            do{
+                converter = stringToDate(cursor.getString(0));
+                if (converter.compareTo(d1) >= 0 && converter.compareTo(d2) <= 0){
+                    total = total + Float.parseFloat(cursor.getString(1));
+                }
+            }
+            while(cursor.moveToNext());
+            return String.valueOf(total);
+        }
+        else{
+            return "0";
+        }
+    }
+
+    public Date stringToDate(String data1) {
+        SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
+        f.setLenient(false);
+        java.util.Date d1 = null;
+        try {
+            d1 = f.parse(data1);
+        } catch (ParseException e) {}
+        return d1;
     }
 }

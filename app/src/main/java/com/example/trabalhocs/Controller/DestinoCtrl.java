@@ -35,4 +35,8 @@ public class DestinoCtrl {
         return this.DestinoDAO.search(keyword);
     }
 
+    public String verificartotalDestinoCtrl(String data1, String data2){
+        return this.DestinoDAO.destinototalDAO(data1,data2);
+    }
+
 }

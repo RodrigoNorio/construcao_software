@@ -18,8 +18,8 @@ public class ReceitaCtrl {
         return this.receitaDAO.salvarReceitaDAO(r);
     }
 
-    public List<ModeloReceita> getListaReceitaCtrl(int selecionada){
-        return this.receitaDAO.getListaReceitaDAO(selecionada);
+    public List<ModeloReceita> getListaReceitaCtrl(int selecionar){
+        return this.receitaDAO.getListaReceitaDAO(selecionar);
     }
 
     public boolean excluirReceitaCtrl(long rcodFonte){
@@ -32,6 +32,10 @@ public class ReceitaCtrl {
 
     public List<ModeloReceita> procurarControler(String keyword, int selecionar){
         return this.receitaDAO.search(keyword, selecionar);
+    }
+
+    public String verificartotalReceitaCtrl(String data1, String data2, int selecionar){
+        return this.receitaDAO.receitatotalDAO(data1,data2, selecionar);
     }
 
 }

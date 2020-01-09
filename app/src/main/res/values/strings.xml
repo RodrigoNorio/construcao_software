@@ -2,7 +2,7 @@
     <string name="app_name">TrabalhoAs</string>
     <string name="action_settings">Settings</string>
     <string name="AdicionarReceita">AdicionarReceita</string>
-    <string name="GerenciarReceita">GerenciarReceita</string>
+    <string name="GerenciarFontes">Gerenciar Fontes</string>
     <string name="menuprincipal">Menu Principal</string>
     <string name="title_activity_gerenciar_despesas">GerenciarDespesas</string>
     <string name="gerenciargastos">Gerenciar Gastos</string>
@@ -47,5 +47,30 @@
     <string name="cadastro">Cadastro</string>
     <string name="digite_a_senha_novamente">Digite a senha novamente:</string>
     <string name="confirmar">Confirmar:</string>
+    <string name="title_activity_tutorial__gerenciar__destinos">Tutorial_Gerenciar_Destinos</string>
+    <string name="ballon">ballon</string>
+    <string name="aqui_voc_poder_procurar_os_destino_que_preferir">Aqui você poderá procurar os destino que preferir.</string>
+    <string name="neste_local_poss_vel_verificar_os_seus_gastos">Neste local é possível verificar os seus gastos.</string>
+    <string name="todo">TODO</string>
+    <string name="aqui_poss_vel_adicionar_um_novo_destino">Aqui é possível adicionar um novo destino.</string>
+    <string name="aqui_poderemos_excluir_um_destino">Aqui poderemos excluir um destino.</string>
+    <string name="aqui_poderemos_editar_um_destino">Aqui poderemos editar um destino.</string>
+    <string name="aqui_ser_o_listados_todos_os_destinos_adicionados">Aqui serão listados todos os destinos adicionados.</string>
+    <string name="title_activity_tutorial__gerenciar__receita">Tutorial_Gerenciar_Receita</string>
+
+    <string name="title_activity_tutorial__main__menu">Tutorial_Main_Menu</string>
+    <string name="aqui_voc_poder_procurar_a_fonte_que_preferir">Aqui você poderá procurar a fonte que preferir.</string>
+    <string name="neste_local_poss_vel_verificar_as_suas_fonte">Neste local é possível verificar as suas fonte.</string>
+    <string name="aqui_poss_vel_adicionar_uma_nova_fonte">Aqui é possível adicionar uma nova fonte.</string>
+    <string name="aqui_poderemos_excluir_uma_fonte">Aqui poderemos excluir uma fonte.</string>
+    <string name="aqui_poderemos_editar_uma_fonte">Aqui poderemos editar uma fonte.</string>
+    <string name="aqui_ser_o_listados_todas_as_fontes_adicionadas">Aqui serão listados todas as fontes adicionadas.</string>
+    <string name="aqui_voc_poder_adicionar_um_novo_gasto">Aqui você poderá adicionar um novo gasto.</string>
+    <string name="aqui_voc_poder_adicionar_uma_nova_receita">Aqui você poderá adicionar uma nova receita.</string>
+    <string name="aqui_voc_ter_acesso_aos_destinos_e_os_gastos_relacionados_a_eles">Aqui você terá acesso aos destinos e os gastos relacionados a eles.</string>
+    <string name="aqui_voc_ter_acesso_as_fontes_e_as_receitas_relacionados_a_elas">Aqui você terá acesso as fontes e as receitas relacionados a elas.</string>
+    <string name="aqui_voc_poder_gerenciar_seus_grupos">Aqui você poderá gerenciar seus grupos.</string>
+    <string name="gerenciar_receitas">Gerenciar Receitas</string>
+
 
 </resources>

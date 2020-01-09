@@ -24,6 +24,7 @@ public class CadastrarLogin extends AppCompatActivity {
         setContentView(R.layout.activity_cadastrar_login);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
         Button blogin = (Button) findViewById(R.id.okcadastro);
         blogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,13 +55,13 @@ public class CadastrarLogin extends AppCompatActivity {
             return;
         }
         else{
-            if(!csenha.equals(senha)){
+            if(verificarsenha(senha,csenha) == false){
                 Toast.makeText(CadastrarLogin.this, "Senhas incompativeis!", Toast.LENGTH_SHORT).show();
                 return;
             }
             else{
-                LoginCtrl loginCtrl = new LoginCtrl(ConexaoSQlite.getInstanciaConexao(CadastrarLogin.this));
-                if (loginCtrl.verificarLoginCtrl(login) == true){
+                if (verificarusuario(login) == true){
+                    LoginCtrl loginCtrl = new LoginCtrl(ConexaoSQlite.getInstanciaConexao(CadastrarLogin.this));
                     ModeloLogin loginACadastrar = new ModeloLogin();
                     loginACadastrar.setUsuario(login);
                     loginACadastrar.setPassword(senha);
@@ -72,6 +73,26 @@ public class CadastrarLogin extends AppCompatActivity {
                     Toast.makeText(CadastrarLogin.this, "Login já existente!", Toast.LENGTH_SHORT).show();
                 }
             }
+        }
+    }
+
+    public boolean verificarusuario(String login){
+        LoginCtrl loginCtrl = new LoginCtrl(ConexaoSQlite.getInstanciaConexao(CadastrarLogin.this));
+        if (loginCtrl.verificarLoginCtrl(login) == true){
+            return true;
+        }
+        else {
+            return false;
+        }
+
+    }
+
+    public boolean verificarsenha (String s1, String s2){
+        if (s1.equals(s2)){
+            return true;
+        }
+        else{
+            return false;
         }
     }
     public void voltartelalogin (View view){

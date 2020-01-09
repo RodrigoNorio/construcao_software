@@ -109,4 +109,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/buscardestinos" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@mipmap/ic_ajuda_foreground"
+        android:onClick="tutorialdestino"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/verificarmes"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginRight="23dp"
+        android:layout_marginBottom="132dp"
+        android:background="@mipmap/ic_calendar_foreground"
+        app:layout_constraintBottom_toTopOf="@+id/listardestinos"
+        app:layout_constraintEnd_toStartOf="@+id/verificardingastos" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
