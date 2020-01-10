@@ -31,6 +31,7 @@ public class GastoDAO {
             values.put("valor",r.getValor());
             values.put("data", r.getDate());
             values.put("cod_destino", r.getCod_destino());
+            values.put("cod_pessoa", cod_pessoa);
 
             long gastoinserido = db.insert("gasto", null, values);
 
@@ -55,11 +56,12 @@ public class GastoDAO {
             gastoatt.put("valor", r.getValor());
             gastoatt.put("data", r.getDate());
             gastoatt.put("cod_destino", r.getCod_destino());
+            gastoatt.put("cod_pessoa", cod_pessoa);
 
-            int atualizou = db.update("receita",
+            int atualizou = db.update("gasto",
                     gastoatt,
-                    "cod_gasto = ?",
-                    new String[]{String.valueOf(r.getCodgasto())}
+                    "cod_gasto = ? AND cod_pessoa = ?",
+                    new String[]{String.valueOf(r.getCodgasto()), String.valueOf(cod_pessoa)}
             );
 
             if (atualizou > 0){
@@ -88,8 +90,8 @@ public class GastoDAO {
 
             db.delete(
                     "gasto",
-                    "cod_gasto = ?",
-                    new String[]{String.valueOf(rcodDestino)}
+                    "cod_gasto = ? AND cod_pessoa = ?",
+                    new String[]{String.valueOf(rcodDestino), String.valueOf(cod_pessoa)}
             );
 
         }catch(Exception e){
@@ -109,7 +111,8 @@ public class GastoDAO {
         try {
             SQLiteDatabase sqLiteDatabase = this.conexaoSQlite.getReadableDatabase();
 
-            Cursor cursor = sqLiteDatabase.rawQuery("select valor,data, * from gasto where data like ? and cod_destino= '" + selecionar + "'", new String[] { "%" + keyword + "%" });
+            Cursor cursor = sqLiteDatabase.rawQuery("select valor,data, * from gasto where data like ? and cod_destino = ? and cod_pessoa = ?",
+                    new String[] { "%" + keyword + "%", String.valueOf(selecionar), String.valueOf(cod_pessoa)});
             if (cursor.moveToFirst()) {
                 contacts = new ArrayList<ModeloGasto>();
                 do {
@@ -137,7 +140,7 @@ public class GastoDAO {
 
             db = this.conexaoSQlite.getReadableDatabase();
 
-            cursor = db.rawQuery(query, null);
+            cursor = db.rawQuery("SELECT * FROM gasto WHERE cod_pessoa = ? AND cod_destino = ?", new String[] {String.valueOf(cod_pessoa), String.valueOf(selecionar)});
 
             if(cursor.moveToFirst()){
 
