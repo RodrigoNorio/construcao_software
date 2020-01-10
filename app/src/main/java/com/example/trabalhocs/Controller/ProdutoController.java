@@ -84,6 +84,10 @@ public class ProdutoController {
         return total;
     }
 
+    public void setaProduto(ModeloProduto produto) {
+        cadastroModeloListener.atualizaProduto(produto);
+    }
+
     public interface VendaControllerListener {
         void atualizaLista(double total);
     }

@@ -43,14 +43,20 @@ public class InventarioActivity extends AppCompatActivity {
         rvProdutos.setAdapter(adapterInventario);
     }
 
-    @OnClick(R.id.btn_fabricacao)
-    void onClickBtnFabricacao() {
-        // TODO: 05/01/2020
-    }
-
     @OnClick(R.id.btn_add_novo)
     void onClickBtnAddNovo() {
         Intent intent = new Intent(this, CadastrarProdutoActivity.class);
         startActivity(intent);
+    }
+
+    @OnClick(R.id.btn_cadastrar_modelo)
+    void onClickBtnCadastrarModeloProduto() {
+        Intent intent = new Intent(this, CadastrarModeloProdutoActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.btn_fabricacao)
+    void onClickBtnFabricacao() {
+        // TODO: 05/01/2020
     }
 }

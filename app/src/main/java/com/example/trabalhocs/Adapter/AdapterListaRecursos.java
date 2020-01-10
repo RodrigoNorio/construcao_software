@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.trabalhocs.Model.ModeloRecurso;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.Utils.Constants;
+import com.example.trabalhocs.View.Dialogs.DialogAdicionarIngrediente;
 import com.example.trabalhocs.View.Dialogs.DialogCompraRecurso;
 
 import java.util.List;
@@ -43,7 +44,7 @@ public class AdapterListaRecursos extends RecyclerView.Adapter<AdapterListaRecur
     @Override
     public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater mInflater = LayoutInflater.from(parent.getContext());
-        View view = mInflater.inflate(R.layout.itemlist_recurso_compra, parent, false);
+        View view = mInflater.inflate(R.layout.itemlist_nome_simples, parent, false);
         return new CustomViewHolder(view);
     }
 
@@ -71,8 +72,8 @@ public class AdapterListaRecursos extends RecyclerView.Adapter<AdapterListaRecur
     }
 
     private void abrirDialogCadastroModelo(ModeloRecurso recurso) {
-        DialogCompraRecurso dialogCompraRecurso = new DialogCompraRecurso(context, recurso);
-        final AlertDialog dialog = dialogCompraRecurso.show();
+        DialogAdicionarIngrediente dialogAdicionarIngrediente = new DialogAdicionarIngrediente(context, recurso);
+        final AlertDialog dialog = dialogAdicionarIngrediente.show();
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
 

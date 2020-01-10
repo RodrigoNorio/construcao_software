@@ -33,7 +33,8 @@
         <activity android:name=".View.EstoqueActivity" />
         <activity android:name=".View.RegistrarCompraActivity" />
         <activity android:name=".View.InventarioActivity" />
-        <activity android:name=".View.CadastrarModeloProdutoActivity" />
+        <activity android:name=".View.CadastrarModeloProdutoActivity"
+            android:windowSoftInputMode="adjustPan"/>
     </application>
 
 </manifest>

@@ -4,8 +4,12 @@ import android.app.AlertDialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -13,16 +17,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.trabalhocs.Adapter.AdapterListaRecursosModeloProduto;
 import com.example.trabalhocs.Controller.ProdutoController;
 import com.example.trabalhocs.Controller.RecursoController;
 import com.example.trabalhocs.Model.ModeloProduto;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.Utils.Constants;
+import com.example.trabalhocs.Utils.Torradeira;
 import com.example.trabalhocs.Utils.Utilidades;
 import com.example.trabalhocs.View.Dialogs.DialogAvisoVoltar;
+import com.example.trabalhocs.View.Dialogs.DialogListaProdutos;
 import com.example.trabalhocs.View.Dialogs.DialogListaRecursos;
+import com.example.trabalhocs.View.Itens.RecursoAdicionarIngredienteItemView;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,8 +53,17 @@ public class CadastrarModeloProdutoActivity extends AppCompatActivity implements
     @BindView(R.id.card_recursos)
     CardView cardRecursos;
 
+    @BindView(R.id.tv_lista_vazia)
+    TextView tvListaVazia;
+
     @BindView(R.id.rv_lista_ingredientes)
     RecyclerView rvListaCompras;
+
+    @BindView(R.id.ll_producao)
+    LinearLayout llProducao;
+
+    @BindView(R.id.et_quantidade)
+    EditText etQuantidade;
 
     @BindView(R.id.btn_add)
     AppCompatImageButton btnAdd;
@@ -72,21 +92,39 @@ public class CadastrarModeloProdutoActivity extends AppCompatActivity implements
         recursoController = new RecursoController(this, Utilidades.getListaRecursosTeste());
         produtoController = new ProdutoController(this, Utilidades.getListaProdutosTeste());
 
+        rvListaCompras.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+
+        etQuantidade.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                verificaCondicaoBotaoCadastrar();
+            }
+        });
     }
 
     @Override
     public void atualizaProduto(ModeloProduto produto) {
         this.produto = produto;
 
-        this.tvCardRecursos.setText(produto.getNome());
+        this.tvProduto.setText(produto.getNome());
         this.tvCardRecursos.setVisibility(View.VISIBLE);
         this.imgTrocar.setVisibility(View.VISIBLE);
 
         this.cardRecursos.setVisibility(View.VISIBLE);
+
+        this.llProducao.setVisibility(View.VISIBLE);
     }
 
     private void abrirDialogListaProdutos() {
-        // TODO: 07/01/2020
+        DialogListaProdutos dialogListaProdutos = new DialogListaProdutos(this, produtoController.getProdutosList(), Constants.CADASTRO_MODELO_PRODUTO, produtoController);
+        final AlertDialog dialog = dialogListaProdutos.show();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
 
     @OnClick(R.id.card_produto)
@@ -96,7 +134,42 @@ public class CadastrarModeloProdutoActivity extends AppCompatActivity implements
 
     @Override
     public void atualizaListaIngredientes() {
+        AdapterListaRecursosModeloProduto adapterListaRecursosModeloProduto = new AdapterListaRecursosModeloProduto(this, recursoController);
+        rvListaCompras.setAdapter(adapterListaRecursosModeloProduto);
 
+        List<RecursoAdicionarIngredienteItemView> listaIngredientes = recursoController.getIngredientesList();
+
+        if (listaIngredientes.isEmpty()) {
+            rvListaCompras.setVisibility(View.GONE);
+            tvListaVazia.setVisibility(View.VISIBLE);
+        } else {
+            tvListaVazia.setVisibility(View.GONE);
+            rvListaCompras.setVisibility(View.VISIBLE);
+        }
+
+        verificaCondicaoBotaoCadastrar();
+    }
+
+    private void verificaCondicaoBotaoCadastrar() {
+        List<RecursoAdicionarIngredienteItemView> listaIngredientes = recursoController.getIngredientesList();
+
+        if (listaIngredientes.isEmpty() || !validaQuantidadeProducao()) {
+            btnConfirmar.setEnabled(false);
+            temItens = false;
+
+        } else if (validaQuantidadeProducao()) {
+            btnConfirmar.setEnabled(true);
+            temItens = true;
+        }
+    }
+
+    private boolean validaQuantidadeProducao() {
+        try {
+            return !etQuantidade.getText().toString().isEmpty() && Integer.parseInt(etQuantidade.getText().toString()) > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     private void abrirDialogListaRecursos() {
@@ -136,6 +209,12 @@ public class CadastrarModeloProdutoActivity extends AppCompatActivity implements
 
             finish();
         });
+    }
+
+    @OnClick(R.id.btn_confirmar)
+    void onClickBtnConfirmar() {
+        Torradeira.shortToast("cadastrou o modelo!", this);
+        // TODO: 09/01/2020
     }
 
 }

@@ -92,6 +92,8 @@
     <string name="card_produto_titulo">primeiro escolha um produto</string>
     <string name="card_recursos_titulo">selecione os ingredientes e quantidades</string>
     <string name="desc_lista_ingredientes">Adicione recursos e quantidades a lista de ingredientes pressionando o botão + abaixo</string>
+    <string name="lista_produtos_titulo">selecione um produto abaixo</string>
+
 
     <string name="total">TOTAL</string>
 
@@ -115,5 +117,7 @@
     <string name="texto_valor_compra">insira o valor da compra</string>
     <string name="texto_qtd_compra">insira a quantidade comprada</string>
     <string name="texto_desc_dialog_modelo_produto">insira a quantidade deste ingrediente \npara uma receita do produto</string>
+    <string name="texto_qtd_producao">Qual a quantidade produzida por esta receita?</string>
+    <string name="unidades">unidades</string>
 
 </resources>
