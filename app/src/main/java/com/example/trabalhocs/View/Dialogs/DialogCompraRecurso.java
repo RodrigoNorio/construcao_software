@@ -2,6 +2,8 @@ package com.example.trabalhocs.View.Dialogs;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -73,32 +75,79 @@ public class DialogCompraRecurso extends AlertDialog.Builder {
         tvEstoqueAtual.setText(String.format("%s %s", context.getResources().getString(R.string.estoque_atual), recurso.getTextoEstoque(context)));
 
         tvMedida.setText(Utilidades.getMedidaText(context, recurso.getTipoMedida()));
+
+        etValor.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                etValor.removeTextChangedListener(this);
+
+                String stringValor = s.toString().replaceAll("[BR$,.\\s]", "");
+
+                double valor = 0.0;
+
+                try {
+                    valor = Double.parseDouble(stringValor);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    Torradeira.erroToast(context);
+                }
+
+                String valorFormatado = Utilidades.formataReais(valor / 100);
+
+                etValor.setText(valorFormatado);
+                etValor.setSelection(valorFormatado.length());
+
+                etValor.addTextChangedListener(this);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
     @OnClick(R.id.btn_confirmar)
     void onClickBtnConfirmar() {
-       if (etQuantidade.getText().toString().isEmpty()) {
-           Torradeira.longToast("insira uma quantidade",context);
-           return;
-       }
-
-       if (etValor.getText().toString().isEmpty()) {
-           Torradeira.shortToast("insira o valor do item", context);
-           return;
-       }
-
        try {
-           int quantidade = Integer.parseInt(etQuantidade.getText().toString());
-           double valor = Double.parseDouble(etValor.getText().toString());
+           if (isCamposValidos()) {
+               int quantidade = Integer.parseInt(etQuantidade.getText().toString());
+               double valor = Utilidades.removeCifraoValor(etValor);
 
-           RecursoCompraItemView recursoCompraItemView = new  RecursoCompraItemView(recurso, quantidade, valor);
+               RecursoCompraItemView recursoCompraItemView = new  RecursoCompraItemView(recurso, quantidade, valor);
 
-           RecursoController.getInstance().addRecursoCompra(recursoCompraItemView);
-           dialog.dismiss();
+               RecursoController.getInstance().addRecursoCompra(recursoCompraItemView);
+               dialog.dismiss();
+           }
 
        } catch (Exception e) {
            Torradeira.erroToast(context);
        }
+    }
+
+    private boolean isCamposValidos() {
+        boolean isValido = true;
+
+        if (etQuantidade.getText().toString().isEmpty()) {
+            Torradeira.longToast("insira uma quantidade",context);
+            isValido = false;
+        }
+
+        if (etValor.getText().toString().isEmpty()) {
+            Torradeira.shortToast("insira o valor do item", context);
+            isValido = false;
+
+        } else if (Utilidades.removeCifraoValor(etValor) < 0) {
+            Torradeira.longToast(context.getString(R.string.erro_valor_invalido), context);
+            isValido = false;
+        }
+
+        return isValido;
     }
 
     @OnClick(R.id.btn_cancelar)

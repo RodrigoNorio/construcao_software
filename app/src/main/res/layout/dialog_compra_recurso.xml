@@ -90,7 +90,7 @@
         android:layout_marginTop="10dp"
         android:hint="@string/hint_valor_compra"
         app:layout_constraintBottom_toTopOf="@id/tv_texto_valor"
-        app:layout_constraintStart_toEndOf="@id/tv_cifrao"
+        app:layout_constraintStart_toStartOf="@id/input_quantidade"
         app:layout_constraintTop_toBottomOf="@id/tv_texto_estoque">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -104,24 +104,12 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/tv_cifrao"
-        style="@style/textoSubTitulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="9dp"
-        android:layout_marginLeft="9dp"
-        android:text="R$"
-        app:layout_constraintBottom_toBottomOf="@id/input_valor"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/input_valor" />
-
-    <TextView
         android:id="@+id/tv_texto_valor"
         style="@style/textoInformacao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="9dp"
-        android:layout_marginLeft="9dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
         android:text="@string/texto_valor_compra"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/input_valor" />

@@ -17,7 +17,7 @@
         app:layout_constraintEnd_toStartOf="@id/tv_de"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.15" />
+        app:layout_constraintWidth_percent="0.21" />
 
     <TextView
         android:id="@+id/tv_de"

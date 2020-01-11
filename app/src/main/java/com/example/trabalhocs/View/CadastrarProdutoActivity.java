@@ -60,21 +60,21 @@ public class CadastrarProdutoActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 etValor.removeTextChangedListener(this);
 
-                String cleanString = s.toString().replaceAll("[BR$,.\\s]", "");
+                String stringValor = s.toString().replaceAll("[BR$,.\\s]", "");
 
-                double parsed = 0.0;
+                double valor = 0.0;
 
                 try {
-                    parsed = Double.parseDouble(cleanString);
+                    valor = Double.parseDouble(stringValor);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                     Torradeira.erroToast(getApplicationContext());
                 }
 
-                String formatted = Utilidades.formataReais(parsed / 100);
+                String valorFormatado = Utilidades.formataReais(valor / 100);
 
-                etValor.setText(formatted);
-                etValor.setSelection(formatted.length());
+                etValor.setText(valorFormatado);
+                etValor.setSelection(valorFormatado.length());
 
                 etValor.addTextChangedListener(this);
             }
