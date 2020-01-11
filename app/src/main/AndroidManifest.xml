@@ -36,6 +36,7 @@
         <activity android:name=".View.CadastrarModeloProdutoActivity"
             android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".View.FabricarProdutoActivity" />
+        <activity android:name=".View.HistoricoActivity" />
     </application>
 
 </manifest>

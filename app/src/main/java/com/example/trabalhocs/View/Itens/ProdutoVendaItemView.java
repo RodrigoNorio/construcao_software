@@ -3,6 +3,7 @@ package com.example.trabalhocs.View.Itens;
 import androidx.annotation.NonNull;
 
 import com.example.trabalhocs.Model.ModeloProduto;
+import com.example.trabalhocs.Utils.Utilidades;
 
 public class ProdutoVendaItemView {
 
@@ -23,6 +24,10 @@ public class ProdutoVendaItemView {
         retorno += "Quantidade: " + quantidade + "\n";
 
         return retorno;
+    }
+
+    public String getTextoHistoricoVenda() {
+        return quantidade + "x " + produto.getNome() + " " + Utilidades.formataReais(produto.getValorUnitario() * quantidade) + "\n";
     }
 
     public String getNomeProduto() {

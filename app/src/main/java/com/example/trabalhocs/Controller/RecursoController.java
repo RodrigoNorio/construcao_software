@@ -42,7 +42,7 @@ public class RecursoController {
     }
 
     /**
-     * construtor registro de venda
+     * construtor registro de compra
      */
     public RecursoController(CompraRecursosListener listener, List<ModeloRecurso> recursoList) {
         this.compraRecursosListener = listener;

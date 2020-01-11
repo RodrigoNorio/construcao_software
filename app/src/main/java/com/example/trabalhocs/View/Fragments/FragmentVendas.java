@@ -22,6 +22,7 @@ import com.example.trabalhocs.R;
 import com.example.trabalhocs.Utils.Utilidades;
 import com.example.trabalhocs.View.EstoqueActivity;
 import com.example.trabalhocs.View.FabricarProdutoActivity;
+import com.example.trabalhocs.View.HistoricoActivity;
 import com.example.trabalhocs.View.InventarioActivity;
 import com.example.trabalhocs.View.RegistrarCompraActivity;
 import com.example.trabalhocs.View.RegistrarVendaActivity;
@@ -316,11 +317,11 @@ public class FragmentVendas extends Fragment {
         else mostrarMenu();
     }
 
-//    @OnClick(R.id.btn_cadastrar_produto)
-//    void clickBtnCadastrarProduto() {
-//        Intent intent = new Intent(getContext(), CadastrarProdutoActivity.class);
-//        startActivity(intent);
-//    }
+    @OnClick(R.id.btn_historico)
+    void clickBtnCadastrarProduto() {
+        Intent intent = new Intent(getContext(), HistoricoActivity.class);
+        startActivity(intent);
+    }
 
     @OnClick(R.id.card_produtos)
     void onClickCardProdutos() {

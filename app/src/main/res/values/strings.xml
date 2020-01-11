@@ -124,5 +124,7 @@
     <string name="texto_qtd_producao">Qual a quantidade produzida por esta receita?</string>
     <string name="unidades">unidades</string>
     <string name="titulo_lista_ingredientes">lista de recursos do modelo:</string>
+    <string name="text_historico_vendas_empty">Você ainda não possui nenhum histórico de vendas. Registre algumas vendas e volte aqui para acompanhar o histórico atualizado</string>
+    <string name="text_historico_compras_empty">Você ainda não possui nenhum histórico de compras. Registre algumas compras e volte aqui para acompanhar o histórico atualizado</string>
 
 </resources>

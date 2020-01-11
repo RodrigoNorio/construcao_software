@@ -17,6 +17,10 @@ public class RecursoCompraItemView {
         this.valor = valor;
     }
 
+    public String getTextoHistoricoCompra(Context context) {
+        return getQuantidadeText(context) + " de " + recurso.getNome() + "\n";
+    }
+
     public String getQuantidadeText(Context context) {
         return quantidade + " " +  Utilidades.getMedidaAbrev(context, recurso.getTipoMedida());
     }

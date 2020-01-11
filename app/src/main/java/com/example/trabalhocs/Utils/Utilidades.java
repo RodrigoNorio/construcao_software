@@ -5,7 +5,9 @@ import android.content.Context;
 import com.example.trabalhocs.Model.ModeloFabricacaoProduto;
 import com.example.trabalhocs.Model.ModeloProduto;
 import com.example.trabalhocs.Model.ModeloRecurso;
+import com.example.trabalhocs.Model.ModeloVenda;
 import com.example.trabalhocs.R;
+import com.example.trabalhocs.View.Itens.ProdutoVendaItemView;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -147,5 +149,18 @@ public class Utilidades {
         }
 
         return  list;
+    }
+
+    public static List<ModeloVenda> getListaModeloVendaTeste() {
+        List<ModeloVenda> list = new ArrayList<>();
+        List<ProdutoVendaItemView> listaProdutosVenda = new ArrayList<>();
+        List<ModeloProduto> listaProdutos = getListaProdutosTeste();
+
+        listaProdutosVenda.add(new ProdutoVendaItemView(listaProdutos.get(0),5));
+        listaProdutosVenda.add(new ProdutoVendaItemView(listaProdutos.get(2),2));
+
+        list.add(new ModeloVenda(1, "15/12/2019 20:30:21", listaProdutosVenda));
+
+        return list;
     }
 }

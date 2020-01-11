@@ -171,6 +171,23 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_historico"
+        style="@style/btnAcaoLargo"
+        android:layout_width="@dimen/btn_largo_width"
+        android:layout_height="@dimen/btn_largo_height"
+        android:drawableStart="@drawable/ic_calendario"
+        android:drawableLeft="@drawable/ic_calendario"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical|start"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:text="histórico de operações"
+        android:textAlignment="textStart"
+        app:layout_constraintBottom_toBottomOf="@id/fab_menu"
+        app:layout_constraintStart_toStartOf="@id/card_recursos"
+        app:layout_constraintTop_toTopOf="@id/fab_menu" />
+
     <LinearLayout
         android:id="@+id/ll_fab_fabricacao"
         android:layout_width="wrap_content"
