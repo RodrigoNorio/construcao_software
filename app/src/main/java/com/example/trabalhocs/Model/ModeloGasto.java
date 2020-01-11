@@ -6,6 +6,7 @@ public class ModeloGasto {
     float valor;
     String date;
     int cod_destino;
+    int cod_pessoa;
 
 
     public int getCodgasto() {
@@ -47,7 +48,8 @@ public class ModeloGasto {
                 "codgasto=" + codgasto +
                 ", gasto'" + valor +
                 ", data='" + date +
-                ", cod_destino='" + cod_destino + '\'' +
+                ", cod_destino='" + cod_destino +
+                ", cod_pessoa='"+ cod_pessoa+ '\'' +
                 '}';
     }
 

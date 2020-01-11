@@ -24,6 +24,8 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,6 +65,17 @@ public class GerenciarValoresGasto extends AppCompatActivity {
 
     }
 
+    public boolean verdata(String data) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            sdf.setLenient(false);
+            sdf.parse(data);
+            return true;
+        } catch (ParseException ex) {
+            return false;
+        }
+    }
+
 
     public void alertdialogeeditargastodata(final int cod_gasto, final int selecionar, final String valor) {
         final GastoCtrl gastoCtrl = new GastoCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarValoresGasto.this));
@@ -82,33 +95,50 @@ public class GerenciarValoresGasto extends AppCompatActivity {
                 gastoACadastrar.setDate(destinotxtdata.getText().toString());
                 gastoACadastrar.setCod_destino(selecionar);
                 if (destinotxtdata.getText().length() != 0) {
-                    gastoCtrl.atualizarGastoCtrl(gastoACadastrar);
-                    listargastos(selecionar);
-                    Toast.makeText(GerenciarValoresGasto.this, "Gasto alterado com sucesso!", Toast.LENGTH_SHORT).show();
+                    if (verdata((destinotxtdata.getText().toString())) == true){
+                        gastoCtrl.atualizarGastoCtrl(gastoACadastrar);
+                        listargastos(selecionar);
+                        Toast.makeText(GerenciarValoresGasto.this, "Gasto alterado com sucesso!", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(GerenciarValoresGasto.this, "Data invalida!", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
                 } else {
                     Toast.makeText(GerenciarValoresGasto.this, "Preencha o campo corretamente!", Toast.LENGTH_SHORT).show();
                     alertdialogeeditargastodata(cod_gasto, selecionar, valor);
                 }
             }
         });
+        //CANCEL
+        builderdata.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        final AlertDialog ad = builderdata.create();
+        ad.show();
+        destinotxtdata.setText("");
 
     }
 
     private void alertdialogeeditargasto(final int cod_gasto, final int selecionar) {
-        final EditText gastotxtvalor;
+        final EditText destinotxtvalor;
         AlertDialog.Builder buildervalor = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
         buildervalor.setMessage("Digite o novo valor da gasto: ");
-        gastotxtvalor = new EditText(this);
-        buildervalor.setView(gastotxtvalor);
-        gastotxtvalor.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+        destinotxtvalor = new EditText(this);
+        buildervalor.setView(destinotxtvalor);
+        destinotxtvalor.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
 
         //OK
         buildervalor.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                Float v = Float.parseFloat(destinotxtvalor.getText().toString());
                 String valor;
-                valor = gastotxtvalor.getText().toString();
-                if (gastotxtvalor.getText().length() != 0) {
+                valor = destinotxtvalor.getText().toString();
+                if (destinotxtvalor.getText().length() !=0 && verificarvalor(v)) {
                     alertdialogeeditargastodata(cod_gasto, selecionar, valor);
                 } else {
                     Toast.makeText(GerenciarValoresGasto.this, "Preencha o campo corretamente!", Toast.LENGTH_SHORT).show();
@@ -126,7 +156,14 @@ public class GerenciarValoresGasto extends AppCompatActivity {
         });
         final AlertDialog ad = buildervalor.create();
         ad.show();
-        gastotxtvalor.setText("");
+        destinotxtvalor.setText("");
+    }
+
+    public boolean verificarvalor(Float v){
+        if (v >= 0){
+            return true;
+        }
+        return false;
     }
 
     private void alertdialogexcluirgasto(final int cod_gasto, final int selecionar) {
@@ -158,14 +195,14 @@ public class GerenciarValoresGasto extends AppCompatActivity {
             lsvGastos.setAdapter(new AdapterListaGasto(getApplicationContext(),gastos));
         }
         else {
-            this.lsvGastos = (ListView) findViewById(R.id.listagerenciarvalores);
+            this.lsvGastos = (ListView) findViewById(R.id.listagerenciarvaloresgasto);
             lsvGastos.setAdapter(null);
         }
     }
 
     public void listargastos(final int selecionar){
 
-        //BUSCAR TODOS AS RECEITAS DO BANCO
+        //BUSCAR TODOS OS GASTOS DO BANCO
 
         final GastoCtrl gastoCtrl = new GastoCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarValoresGasto.this));
 

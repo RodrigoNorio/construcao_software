@@ -73,7 +73,12 @@ public class GerenciarGasto extends AppCompatActivity {
 
     }
 
-
+    public boolean verificartamanhostring(String s){
+        if (s.length() > 0 && s.length() < 15){
+            return true;
+        }
+        return false;
+    }
 
     private void alertdialogadddestino() {
         final EditText destinotxt;
@@ -118,7 +123,7 @@ public class GerenciarGasto extends AppCompatActivity {
     }
 
     private void alertdialogeeditardestino(final int cod_destino) {
-        final DestinoCtrl fonteCtrl = new DestinoCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarGasto.this));
+        final DestinoCtrl destinoCtrl = new DestinoCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarGasto.this));
         final EditText destinotxt;
         AlertDialog.Builder builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
         builder.setMessage("Digite o novo nome do destino: ");
@@ -132,8 +137,8 @@ public class GerenciarGasto extends AppCompatActivity {
                 ModeloDestino destinoACadastrar = new ModeloDestino();
                 destinoACadastrar.setCoddestino(cod_destino);
                 destinoACadastrar.setDescricao(destinotxt.getText().toString());
-                if (destinotxt.getText().length() != 0){
-                    fonteCtrl.atualizarDestinoCtrl(destinoACadastrar);
+                if (verificartamanhostring(destinotxt.getText().toString())){
+                    destinoCtrl.atualizarDestinoCtrl(destinoACadastrar);
                     Toast.makeText(GerenciarGasto.this, "Destino alterado com sucesso!", Toast.LENGTH_SHORT).show();
                     listardestinos();
                 }
@@ -159,7 +164,7 @@ public class GerenciarGasto extends AppCompatActivity {
     }
 
     private void alertdialogexcluirdestino(final int cod_destino) {
-        final DestinoCtrl fonteCtrl = new DestinoCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarGasto.this));
+        final DestinoCtrl destinoCtrl = new DestinoCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarGasto.this));
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         final AlertDialog.Builder alert2 = new AlertDialog.Builder(this);
         alert.setMessage("Deseja realmente excluir este destino?");
@@ -170,7 +175,7 @@ public class GerenciarGasto extends AppCompatActivity {
                 alert2.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        fonteCtrl.excluirDestinoCtrl(cod_destino);
+                        destinoCtrl.excluirDestinoCtrl(cod_destino);
                         Toast.makeText(GerenciarGasto.this, "Destino removido com sucesso!",Toast.LENGTH_SHORT).show();;
                         listardestinos();
                     }
