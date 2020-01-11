@@ -61,14 +61,22 @@ public class RecursoController {
         if (compraRecursosListener != null) compraRecursosListener.atualizaListaCompras();
     }
 
+    /**
+     * Usado no DialogFabricacaoProduto
+     */
+    public void addListaRecursoIngrediente(List<RecursoAdicionarIngredienteItemView> ingredientes) {
+        if (ingredientesList == null) ingredientesList = new ArrayList<>();
+        ingredientesList.addAll(ingredientes);
+    }
+
     public void addRecursoIngrediente(RecursoAdicionarIngredienteItemView recursoAdicionarIngredienteItemView) {
         ingredientesList.add(recursoAdicionarIngredienteItemView);
-        if (ingredientesList != null) cadastroModeloProdutoListener.atualizaListaIngredientes();
+        if (cadastroModeloProdutoListener != null) cadastroModeloProdutoListener.atualizaListaIngredientes();
     }
 
     public void removeRecursoIngrediente(RecursoAdicionarIngredienteItemView recursoAdicionarIngredienteItemView) {
         ingredientesList.remove(recursoAdicionarIngredienteItemView);
-        if (ingredientesList != null) cadastroModeloProdutoListener.atualizaListaIngredientes();
+        if (cadastroModeloProdutoListener != null) cadastroModeloProdutoListener.atualizaListaIngredientes();
     }
 
     public List<ModeloRecurso> getRecursoList() {

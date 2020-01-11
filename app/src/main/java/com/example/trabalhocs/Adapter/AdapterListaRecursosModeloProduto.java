@@ -24,11 +24,13 @@ public class AdapterListaRecursosModeloProduto extends RecyclerView.Adapter<Adap
     private Context context;
     private RecursoController controller;
     private List<RecursoAdicionarIngredienteItemView> recursoAdicionarIngredienteItemViews;
+    private boolean podeRemover;
 
-    public AdapterListaRecursosModeloProduto(Context context, RecursoController controller) {
+    public AdapterListaRecursosModeloProduto(Context context, RecursoController controller, boolean podeRemover) {
         this.context = context;
         this.controller = controller;
-        this.recursoAdicionarIngredienteItemViews = controller.getIngredientesList();
+        this.podeRemover = podeRemover;
+         this.recursoAdicionarIngredienteItemViews = controller.getIngredientesList();
     }
 
     @NonNull
@@ -46,7 +48,12 @@ public class AdapterListaRecursosModeloProduto extends RecyclerView.Adapter<Adap
         holder.tvNome.setText(recursoAdicionarIngredienteItemView.getRecurso().getNome());
         holder.tvQuantidade.setText(recursoAdicionarIngredienteItemView.getQuantidadeText(context));
 
-        holder.btnRemover.setOnClickListener(v -> controller.removeRecursoIngrediente(recursoAdicionarIngredienteItemView));
+        if (podeRemover) {
+            holder.btnRemover.setOnClickListener(v -> controller.removeRecursoIngrediente(recursoAdicionarIngredienteItemView));
+            holder.btnRemover.setVisibility(View.VISIBLE);
+        } else {
+            holder.btnRemover.setVisibility(View.GONE);
+        }
     }
 
     @Override

@@ -109,7 +109,7 @@
     <string name="estoque_compra">registrar entrada de estoque</string>
     <string name="nome">nome</string>
     <string name="quantidade">quantidade em estoque</string>
-    <string name="estoque_atual">estoque atual:</string>
+    <string name="estoque_atual">Estoque atual:</string>
 
     <string name="fabricar_produtos">fabricar produtos</string>
     <string name="registrar_compra">registrar compra</string>
@@ -123,5 +123,6 @@
     <string name="texto_desc_dialog_modelo_produto">insira a quantidade deste ingrediente \npara uma receita do produto</string>
     <string name="texto_qtd_producao">Qual a quantidade produzida por esta receita?</string>
     <string name="unidades">unidades</string>
+    <string name="titulo_lista_ingredientes">lista de recursos do modelo:</string>
 
 </resources>

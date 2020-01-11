@@ -19,11 +19,17 @@ public class ModeloFabricacaoProduto {
     public String getListaIngredientesSimplificada() {
         String lista = "";
 
-        for (Map.Entry<ModeloRecurso, Integer> entrada : mapIngredientes.entrySet()) {
-            lista = lista.concat(entrada.getKey().getNome() + ", ");
-        }
+        try {
+            for (Map.Entry<ModeloRecurso, Integer> entrada : mapIngredientes.entrySet()) {
+                lista = lista.concat(entrada.getKey().getNome() + ", ");
+            }
 
-        lista = lista.substring(0, lista.length() - 2);
+            lista = lista.substring(0, lista.length() - 2);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            lista = "erro!";
+        }
 
         return lista;
     }

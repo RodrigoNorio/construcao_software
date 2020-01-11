@@ -134,7 +134,7 @@ public class CadastrarModeloProdutoActivity extends AppCompatActivity implements
 
     @Override
     public void atualizaListaIngredientes() {
-        AdapterListaRecursosModeloProduto adapterListaRecursosModeloProduto = new AdapterListaRecursosModeloProduto(this, recursoController);
+        AdapterListaRecursosModeloProduto adapterListaRecursosModeloProduto = new AdapterListaRecursosModeloProduto(this, recursoController, true);
         rvListaCompras.setAdapter(adapterListaRecursosModeloProduto);
 
         List<RecursoAdicionarIngredienteItemView> listaIngredientes = recursoController.getIngredientesList();

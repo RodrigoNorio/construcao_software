@@ -1,7 +1,10 @@
 package com.example.trabalhocs.Adapter;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.trabalhocs.Model.ModeloFabricacaoProduto;
 import com.example.trabalhocs.R;
+import com.example.trabalhocs.View.Dialogs.DialogFabricacaoProduto;
 
 import java.util.List;
 
@@ -46,6 +50,13 @@ public class AdapterModeloFabricacaoProduto extends RecyclerView.Adapter<Adapter
         holder.tvListaIngredientes.setText(modeloFabricacaoProduto.getListaIngredientesSimplificada());
         holder.tvProducao.setText(String.format("Produz %d unidades", modeloFabricacaoProduto.getQuantidade()));
 
+        holder.itemView.setOnClickListener(v -> abrirDialogFabricao(modeloFabricacaoProduto));
+    }
+
+    private void abrirDialogFabricao(ModeloFabricacaoProduto modeloFabricacaoProduto) {
+        DialogFabricacaoProduto dialogFabricacaoProduto = new DialogFabricacaoProduto(context, modeloFabricacaoProduto);
+        final AlertDialog dialog = dialogFabricacaoProduto.show();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
 
     @Override
