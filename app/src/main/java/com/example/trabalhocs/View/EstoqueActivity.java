@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.trabalhocs.Adapter.AdapterEstoque;
 import com.example.trabalhocs.Controller.RecursoController;
 import com.example.trabalhocs.R;
-import com.example.trabalhocs.Utils.Torradeira;
 import com.example.trabalhocs.Utils.Utilidades;
 
 import butterknife.BindView;
@@ -46,12 +45,18 @@ public class EstoqueActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_compra)
     void onClickBtnCompra() {
-        Torradeira.longToast("clicou no botão de compra!", this);
+        Intent intent = new Intent(this, RegistrarCompraActivity.class);
+        startActivity(intent);
     }
 
     @OnClick(R.id.btn_add_novo)
     void onClickBtnAddNovo() {
         Intent intent = new Intent(this, CadastrarRecursoActivity.class);
         startActivity(intent);
+    }
+
+    @OnClick(R.id.btn_voltar)
+    void onClickBtnVoltar() {
+        onBackPressed();
     }
 }

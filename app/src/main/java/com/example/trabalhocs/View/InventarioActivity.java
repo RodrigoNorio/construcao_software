@@ -57,6 +57,12 @@ public class InventarioActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_fabricacao)
     void onClickBtnFabricacao() {
-        // TODO: 05/01/2020
+        Intent intent = new Intent(this, FabricarProdutoActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.btn_voltar)
+    void onClickBtnVoltar() {
+        onBackPressed();
     }
 }

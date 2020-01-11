@@ -2,12 +2,14 @@ package com.example.trabalhocs.Utils;
 
 import android.content.Context;
 
+import com.example.trabalhocs.Model.ModeloCompra;
 import com.example.trabalhocs.Model.ModeloFabricacaoProduto;
 import com.example.trabalhocs.Model.ModeloProduto;
 import com.example.trabalhocs.Model.ModeloRecurso;
 import com.example.trabalhocs.Model.ModeloVenda;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.View.Itens.ProdutoVendaItemView;
+import com.example.trabalhocs.View.Itens.RecursoCompraItemView;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -162,5 +164,21 @@ public class Utilidades {
         list.add(new ModeloVenda(1, "15/12/2019 20:30:21", listaProdutosVenda));
 
         return list;
+    }
+
+    public static List<ModeloCompra> getListaModeloCompraTeste() {
+        List<ModeloCompra> list = new ArrayList<>();
+
+        List<ModeloRecurso> recursosTeste = getListaRecursosTeste();
+        int[] quantidades = {1, 500, 1, 10, 14};
+
+        List<RecursoCompraItemView> listaRecursosCompra = new ArrayList<>();
+
+        listaRecursosCompra.add(new RecursoCompraItemView(recursosTeste.get(0), 1, 3.45));
+        listaRecursosCompra.add(new RecursoCompraItemView(recursosTeste.get(1), 200, 10));
+
+        list.add(new ModeloCompra(1, "15/12/2019 08:02:56", listaRecursosCompra));
+
+        return  list;
     }
 }

@@ -15,8 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.trabalhocs.Adapter.AdapterHistoricoCompras;
 import com.example.trabalhocs.Controller.HistoricoController;
 import com.example.trabalhocs.R;
-
-import java.util.ArrayList;
+import com.example.trabalhocs.Utils.Utilidades;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,7 +55,7 @@ public class FragmentHistoricoCompras extends FragmentConfiguravel {
     private void setup() {
         rvHistorico.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
 
-        controller.setComprasList(new ArrayList<>()); //teste
+        controller.setComprasList(Utilidades.getListaModeloCompraTeste()); //teste
 
         if (controller.isComprasListEmpty()) {
             rvHistorico.setVisibility(View.GONE);

@@ -91,7 +91,7 @@ public class DialogCompraRecurso extends AlertDialog.Builder {
            int quantidade = Integer.parseInt(etQuantidade.getText().toString());
            double valor = Double.parseDouble(etValor.getText().toString());
 
-           RecursoCompraItemView recursoCompraItemView = new RecursoCompraItemView(recurso, quantidade, valor);
+           RecursoCompraItemView recursoCompraItemView = new  RecursoCompraItemView(recurso, quantidade, valor);
 
            RecursoController.getInstance().addRecursoCompra(recursoCompraItemView);
            dialog.dismiss();

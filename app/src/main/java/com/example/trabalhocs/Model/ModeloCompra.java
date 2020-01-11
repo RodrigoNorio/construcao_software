@@ -14,10 +14,17 @@ public class ModeloCompra {
     private List<RecursoCompraItemView> listaCompra;
     private double valor;
 
-    public ModeloCompra(int id, String dateTime, List<RecursoCompraItemView> listaCompra, double valor) {
+    public ModeloCompra(int id, String dateTime, List<RecursoCompraItemView> listaCompra) {
         this.id = id;
         this.dateTime = dateTime;
         this.listaCompra = listaCompra;
+
+        double valor = 0;
+
+        for (RecursoCompraItemView recurso : listaCompra) {
+            valor += recurso.getValor();
+        }
+
         this.valor = valor;
     }
 

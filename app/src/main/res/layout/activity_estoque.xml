@@ -5,28 +5,43 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/tv_titulo"
-        style="@style/textoTitulo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="5dp"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/ll_header"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/estoque_titulo" />
-
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/btn_ajuda"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_ajuda"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btn_voltar"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_voltar" />
+
+        <TextView
+            android:id="@+id/tv_titulo"
+            style="@style/textoTitulo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/estoque_titulo" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btn_ajuda"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_ajuda" />
+
+    </LinearLayout>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_estoque"
@@ -37,7 +52,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.75"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_titulo"
+        app:layout_constraintTop_toBottomOf="@id/ll_header"
         app:layout_constraintWidth_percent="0.94">
 
         <androidx.constraintlayout.widget.ConstraintLayout

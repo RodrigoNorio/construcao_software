@@ -104,7 +104,8 @@ public class RegistrarCompraActivity extends AppCompatActivity implements Recurs
     void onClickBtnConfirmar() {
         // TODO: 04/01/2020
         Torradeira.shortToast("compra registrada!", this);
-        finish();    }
+        finish();
+    }
 
     @OnClick(R.id.btn_ajuda)
     void onClickBtnAjuda() {
