@@ -33,7 +33,7 @@
     <string name="hint_estoque_produto">insira aqui o estoque atual do Produto</string>
 
     <string name="cadastrar_novo_recurso">Cadastrar Recurso</string>
-    <string name="cadastrar_recurso_info">Aqui você pode cadastrar um novo Recurso. Preencha os campos abaixo, depois de cadastrado você poderá associar este Recursos a um ou mais Produtos através de um Modelo.</string>
+    <string name="cadastrar_recurso_info">Aqui você pode cadastrar um novo Recurso. Preencha os campos abaixo, depois de cadastrado você poderá associar este Recurso a um ou mais Produtos através de Modelos.</string>
     <string name="hint_descricao_recurso">adicione aqui uma descrição suscinta deste Recurso</string>
     <string name="hint_estoque_recurso">insira aqui seu estoque atual do Recurso</string>
 

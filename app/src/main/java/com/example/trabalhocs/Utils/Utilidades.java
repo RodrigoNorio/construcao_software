@@ -1,6 +1,7 @@
 package com.example.trabalhocs.Utils;
 
 import android.content.Context;
+import android.widget.EditText;
 
 import com.example.trabalhocs.Model.ModeloCompra;
 import com.example.trabalhocs.Model.ModeloFabricacaoProduto;
@@ -105,6 +106,14 @@ public class Utilidades {
         NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
         format.setCurrency(Currency.getInstance("BRL"));
         return format.format(val);
+    }
+
+    public static Double removeCifraoValor(EditText editText) {
+        if (!editText.getText().toString().equals("")) {
+            return Double.valueOf(editText.getText().toString().replaceAll("\\D", "").replace(".", "").replace(",", ".")) / 100;
+        }
+
+        return 0.0;
     }
 
     public static List<ModeloProduto> getListaProdutosTeste() {

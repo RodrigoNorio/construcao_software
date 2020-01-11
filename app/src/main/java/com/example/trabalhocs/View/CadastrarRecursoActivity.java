@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.example.trabalhocs.Model.ModeloRecurso;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.Utils.Constants;
 import com.example.trabalhocs.Utils.Torradeira;
@@ -43,7 +44,7 @@ public class CadastrarRecursoActivity extends AppCompatActivity {
     @BindView(R.id.btn_cadastrar)
     AppCompatButton btnCadastrar;
 
-    int positionMedidaSelecionada = -1;
+    int positionMedidaSelecionada = Constants.SELECAO_VAZIA;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -66,16 +67,31 @@ public class CadastrarRecursoActivity extends AppCompatActivity {
                     positionMedidaSelecionada = position;
                     if (tvMedidaInventario.getVisibility() == View.INVISIBLE) tvMedidaInventario.setVisibility(View.VISIBLE);
                 });
+
+        positionMedidaSelecionada = spinnerMedida.getSelectedIndex();
     }
 
     @OnClick(R.id.btn_cadastrar)
     void onClickBtnCdastrar() {
+        try {
 
-        if (isCamposValidos()) {
-            // TODO: 08/11/2019 implementar lógica do cadastro
-            Torradeira.shortToast("cadastrou!!", this);
+            if (isCamposValidos()) {
+                
+                String nome = etNome.getText().toString();
+                String descricao = etDescricao.getText().toString();
+                int quantidade = Integer.parseInt(etEstoque.getText().toString());
+
+                ModeloRecurso novoRecurso = new ModeloRecurso(13, nome, descricao, positionMedidaSelecionada, quantidade);
+
+                // TODO: 11/01/2020 Salvar no recurso no banco
+                
+                Torradeira.shortToast("cadastrou: " + novoRecurso.toString(), this);
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            Torradeira.erroToast(this);
         }
-
     }
 
     private boolean isCamposValidos() {

@@ -1,13 +1,17 @@
 package com.example.trabalhocs.View;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.example.trabalhocs.Model.ModeloProduto;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.Utils.Torradeira;
+import com.example.trabalhocs.Utils.Utilidades;
 import com.google.android.material.textfield.TextInputEditText;
 
 import butterknife.BindView;
@@ -41,16 +45,68 @@ public class CadastrarProdutoActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_cadastrar_produto);
         ButterKnife.bind(this);
+
+        config();
+    }
+
+    private void config() {
+        etValor.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                etValor.removeTextChangedListener(this);
+
+                String cleanString = s.toString().replaceAll("[BR$,.\\s]", "");
+
+                double parsed = 0.0;
+
+                try {
+                    parsed = Double.parseDouble(cleanString);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                    Torradeira.erroToast(getApplicationContext());
+                }
+
+                String formatted = Utilidades.formataReais(parsed / 100);
+
+                etValor.setText(formatted);
+                etValor.setSelection(formatted.length());
+
+                etValor.addTextChangedListener(this);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
     @OnClick(R.id.btn_cadastrar)
     void onClickBtnCdastrar() {
+        try {
+            if (isCamposValidos()) {
 
-        if (isCamposValidos()) {
-            // TODO: 08/11/2019 implementar lógica do cadastro
-            Torradeira.shortToast("cadastrou!!", this);
+                String nome = etNome.getText().toString();
+                String descricao = etDescricao.getText().toString();
+                int estoque = Integer.parseInt(etEstoque.getText().toString());
+                double valor = Utilidades.removeCifraoValor(etValor);
+
+                ModeloProduto novoProduto = new ModeloProduto(13, nome, descricao, estoque, valor);
+
+                // TODO: 11/01/2020 Salvar o novo produto no banco 
+
+                Torradeira.shortToast("cadastrou: " + novoProduto.toString(), this);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Torradeira.erroToast(this);
         }
-
     }
 
     private boolean isCamposValidos() {
@@ -67,7 +123,7 @@ public class CadastrarProdutoActivity extends AppCompatActivity {
             Torradeira.longToast(getString(R.string.erro_valor_vazio), this);
             isValido = false;
 
-        } else if (Integer.parseInt(etValor.getText().toString()) < 0) {
+        } else if (Utilidades.removeCifraoValor(etValor) < 0) {
             Torradeira.longToast(getString(R.string.erro_valor_invalido), this);
             isValido = false;
         }
