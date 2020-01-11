@@ -4,6 +4,7 @@
 
     <dimen name="fab_compra_offset">55dp</dimen>
     <dimen name="fab_venda_offset">110dp</dimen>
+    <dimen name="fab_fabricacao_offset">165dp</dimen>
 
     <dimen name="btn_radius">30dp</dimen>
     <dimen name="btn_width">140dp</dimen>

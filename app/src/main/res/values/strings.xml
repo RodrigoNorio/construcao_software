@@ -94,6 +94,9 @@
     <string name="desc_lista_ingredientes">Adicione recursos e quantidades a lista de ingredientes pressionando o botão + abaixo</string>
     <string name="lista_produtos_titulo">selecione um produto abaixo</string>
 
+    <string name="fabricar_produtos_titulo">Fabricar Produtos</string>
+    <string name="fabricacao_subtitulo">Escolha um modelo de fabricação de produto para registrar a fabricação</string>
+    <string name="text_fabricacao_produto_lista_vazia">a lista de modelos de fabricação de produto está vazia, cadastre um novo modelo utilizando o botão acima</string>
 
     <string name="total">TOTAL</string>
 
@@ -108,6 +111,7 @@
     <string name="quantidade">quantidade em estoque</string>
     <string name="estoque_atual">estoque atual:</string>
 
+    <string name="fabricar_produtos">fabricar produtos</string>
     <string name="registrar_compra">registrar compra</string>
     <string name="registrar_venda">registrar venda</string>
 

@@ -2,6 +2,7 @@ package com.example.trabalhocs.Utils;
 
 import android.content.Context;
 
+import com.example.trabalhocs.Model.ModeloFabricacaoProduto;
 import com.example.trabalhocs.Model.ModeloProduto;
 import com.example.trabalhocs.Model.ModeloRecurso;
 import com.example.trabalhocs.R;
@@ -9,8 +10,10 @@ import com.example.trabalhocs.R;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Currency;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 /**
  * @author Bruno Cesar
@@ -120,5 +123,29 @@ public class Utilidades {
         list.add(new ModeloRecurso(5, "Ovo", "Ovos de galinha, podem ser brancos os marrons não faz diferença!", Constants.TIPO_MEDIDA_UNIDADE, 24));
 
         return list;
+    }
+
+    public static List<ModeloFabricacaoProduto> getListaModeloFabricacaoProdutoTeste(Context context) {
+        List<ModeloFabricacaoProduto> list = new ArrayList<>();
+
+        try {
+            ModeloProduto produtoTeste = new ModeloProduto(1, "brownie comum", "um brownie padrão, feito com chocolate meio amargo", 10, 4.2);
+            Map<ModeloRecurso, Integer> mapIngredientesTeste = new HashMap<>();
+
+            List<ModeloRecurso> ingredientesTeste = getListaRecursosTeste();
+            int[] quantidades = {1, 500, 1, 10, 14};
+
+            for (int i = 0; i < quantidades.length; i++) {
+                mapIngredientesTeste.put(ingredientesTeste.get(i), quantidades[i]);
+            }
+
+            list.add(new ModeloFabricacaoProduto(1, produtoTeste, mapIngredientesTeste, 30));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Torradeira.shortToast("Algo deu errado!", context);
+        }
+
+        return  list;
     }
 }

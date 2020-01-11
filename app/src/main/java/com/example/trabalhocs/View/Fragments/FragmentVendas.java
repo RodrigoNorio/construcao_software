@@ -21,6 +21,7 @@ import com.example.trabalhocs.Model.ModeloRecurso;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.Utils.Utilidades;
 import com.example.trabalhocs.View.EstoqueActivity;
+import com.example.trabalhocs.View.FabricarProdutoActivity;
 import com.example.trabalhocs.View.InventarioActivity;
 import com.example.trabalhocs.View.RegistrarCompraActivity;
 import com.example.trabalhocs.View.RegistrarVendaActivity;
@@ -61,6 +62,13 @@ public class FragmentVendas extends Fragment {
     TextView tvFabVenda;
     @BindView(R.id.fab_venda)
     FloatingActionButton fabVenda;
+
+    @BindView(R.id.ll_fab_fabricacao)
+    LinearLayout llFabFabricacao;
+    @BindView(R.id.tv_fab_fabricacao)
+    TextView tvFabFabricacao;
+    @BindView(R.id.fab_fabricacao)
+    FloatingActionButton fabFabricacao;
 
     private boolean isMostrandoMenu = false;
 
@@ -180,6 +188,28 @@ public class FragmentVendas extends Fragment {
             }
         });
 
+        llFabFabricacao.animate().translationY(-getContext().getResources().getDimension(R.dimen.fab_fabricacao_offset)).alpha(1f).setListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+                llFabFabricacao.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
+
         isMostrandoMenu = true;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -233,11 +263,39 @@ public class FragmentVendas extends Fragment {
             }
         });
 
+        llFabFabricacao.animate().translationY(0).alpha(0f).setListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                llFabFabricacao.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
+
         isMostrandoMenu = false;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             fabMenu.setImageDrawable(getContext().getDrawable(R.drawable.ic_fab_menu));
         }
+    }
+
+    @OnClick(R.id.fab_fabricacao)
+    void onClickFabFabricacao() {
+        Intent intent = new Intent(getContext(), FabricarProdutoActivity.class);
+        startActivity(intent);
     }
 
     @OnClick(R.id.fab_venda)
@@ -263,13 +321,7 @@ public class FragmentVendas extends Fragment {
 //        Intent intent = new Intent(getContext(), CadastrarProdutoActivity.class);
 //        startActivity(intent);
 //    }
-//
-//    @OnClick(R.id.btn_cadastrar_recurso)
-//    void clickBtnCadastrarRecurso() {
-//        Intent intent = new Intent(getContext(), CadastrarRecursoActivity.class);
-//        startActivity(intent);
-//    }
-//
+
     @OnClick(R.id.card_produtos)
     void onClickCardProdutos() {
         Intent intent = new Intent(getContext(), InventarioActivity.class);

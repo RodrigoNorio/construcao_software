@@ -35,6 +35,7 @@
         <activity android:name=".View.InventarioActivity" />
         <activity android:name=".View.CadastrarModeloProdutoActivity"
             android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".View.FabricarProdutoActivity" />
     </application>
 
 </manifest>
