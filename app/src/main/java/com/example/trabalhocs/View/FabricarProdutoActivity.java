@@ -88,4 +88,10 @@ public class FabricarProdutoActivity extends AppCompatActivity {
     void onClickBtnVoltar() {
         onBackPressed();
     }
+
+    @Override
+    public void onBackPressed() {
+        setResult(RESULT_OK);
+        finish();
+    }
 }

@@ -71,6 +71,14 @@ public class RecursoController {
         }
     }
 
+    public void efetivarFabricacaoProduto() {
+        for (RecursoAdicionarIngredienteItemView item : ingredientesList) {
+            ModeloRecurso recurso = ModeloRecurso.findById(ModeloRecurso.class, item.getRecurso().getId());
+            recurso.decrementarInventario(item.getQuantidade());
+            recurso.save();
+        }
+    }
+
     /**
      * Usado no DialogFabricacaoProduto
      */

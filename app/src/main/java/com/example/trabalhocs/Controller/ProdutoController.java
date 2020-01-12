@@ -2,6 +2,7 @@ package com.example.trabalhocs.Controller;
 
 import android.util.SparseArray;
 
+import com.example.trabalhocs.Model.ModeloFabricacaoProduto;
 import com.example.trabalhocs.Model.ModeloProduto;
 import com.example.trabalhocs.View.Itens.ProdutoVendaItemView;
 
@@ -82,6 +83,12 @@ public class ProdutoController {
             produto.decrementarEstoque(item.getQuantidade());
             produto.save();
         }
+    }
+
+    public void efetivarFabricacaoProduto(ModeloFabricacaoProduto modeloFabricacaoProduto) {
+        ModeloProduto produto = ModeloProduto.findById(ModeloProduto.class, modeloFabricacaoProduto.getProduto().getId());
+        produto.incrementarEstoque(modeloFabricacaoProduto.getQuantidade());
+        produto.save();
     }
 
     public boolean isProdutoListEmpty() {

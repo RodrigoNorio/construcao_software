@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.trabalhocs.Adapter.AdapterListaRecursosModeloProduto;
+import com.example.trabalhocs.Controller.ProdutoController;
 import com.example.trabalhocs.Controller.RecursoController;
 import com.example.trabalhocs.Model.ModeloFabricacaoProduto;
 import com.example.trabalhocs.Model.ModeloProduto;
@@ -49,6 +50,7 @@ public class DialogFabricacaoProduto extends AlertDialog.Builder {
     private Context context;
     private ModeloFabricacaoProduto modeloFabricacaoProduto;
     private RecursoController recursoController;
+    private ProdutoController produtoController;
     private AdapterListaRecursosModeloProduto adapterListaRecursosModeloProduto;
 
     public DialogFabricacaoProduto(Context context, ModeloFabricacaoProduto modeloFabricacaoProduto) {
@@ -100,11 +102,15 @@ public class DialogFabricacaoProduto extends AlertDialog.Builder {
 
         rvListaIngredientes.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
         rvListaIngredientes.setAdapter(adapterListaRecursosModeloProduto);
+
+        produtoController = new ProdutoController();
     }
 
     @OnClick(R.id.btn_confirmar)
     void onClickBtnConfirmar() {
-        // TODO: 11/01/2020
+        recursoController.efetivarFabricacaoProduto();
+        produtoController.efetivarFabricacaoProduto(modeloFabricacaoProduto);
+
         String msg = "Fabricação de " + modeloFabricacaoProduto.getQuantidade() + " unidades de " + modeloFabricacaoProduto.getProduto().getNome() + " registrada com sucesso!";
         Torradeira.longToast(msg, context);
         dialog.dismiss();
