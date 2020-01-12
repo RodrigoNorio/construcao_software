@@ -23,10 +23,9 @@
     <string name="title_activity_gerenciar_receita">GerenciarReceita</string>
     <string name="gerenciar_grupo">Gerenciar Grupo</string>
     <string name="nav_financeiro">financeiro</string>
+
     <string name="nav_vendas">vendas</string>
-    <string name="vendas_titulo">Gerenciamento de vendas!</string>
-    <string name="cadastrar_produto">Cadastrar novo Produto</string>
-    <string name="cadastrar_novo_recurso">Cadastrar novo Recurso</string>
+    <string name="vendas_titulo">Gerenciamento de vendas</string>
     <string name="cadastrar">cadastrar</string>
     <string name="title_activity_listar_fontes_add">ListarFontesAdd</string>
     <string name="title_activity_gerenciar_valores">GerenciarValores</string>
@@ -66,5 +65,113 @@
     <string name="aqui_voc_ter_acesso_as_fontes_e_as_receitas_relacionados_a_elas">Aqui você terá acesso as fontes e as receitas relacionados a elas.</string>
     <string name="aqui_voc_poder_gerenciar_seus_grupos">Aqui você poderá gerenciar seus grupos.</string>
     <string name="gerenciar_receitas">Gerenciar Receitas</string>
+
+    <string name="cadastrar_produto">Cadastrar novo Produto</string>
+    <string name="cadastrar_produto_info">Aqui você pode cadastrar um novo Produto. Preencha os campos abaixo, depois de cadastrado você poderá registrar entrada e saída deste Produto.</string>
+    <string name="hint_descricao_produto">adicione aqui uma descrição suscinta do Produto</string>
+    <string name="hint_estoque_produto">insira aqui o estoque atual do Produto</string>
+
+    <string name="cadastrar_novo_recurso">Cadastrar Recurso</string>
+    <string name="cadastrar_recurso_info">Aqui você pode cadastrar um novo Recurso. Preencha os campos abaixo, depois de cadastrado você poderá associar este Recurso a um ou mais Produtos através de Modelos.</string>
+    <string name="hint_descricao_recurso">adicione aqui uma descrição suscinta deste Recurso</string>
+    <string name="hint_estoque_recurso">insira aqui seu estoque atual do Recurso</string>
+
+    <string name="aviso_salvar">tem certeza que quer sair sem finalizar a operação?</string>
+    <string name="aviso_voltar">voltar</string>
+    <string name="aviso_continuar">sim</string>
+
+    <string name="hint_nome">nome</string>
+    <string name="hint_descricao">descrição</string>
+    <string name="hint_estoque">estoque</string>
+    <string name="hint_quantidade">quantidade</string>
+    <string name="hint_valor_compra">valor</string>
+
+    <string name="unidade_de_medida">Unidade de medida:</string>
+
+    <!-- Titulos Medidas -->
+    <string name="medida_gr">gramas</string>
+    <string name="medida_ml">mililitros</string>
+    <string name="medida_un">unidades</string>
+
+    <string name="abrv_gr">Gr</string>
+    <string name="abrv_ml">Ml</string>
+    <string name="abrv_un">Un</string>
+    <string name="abrv_kg">Kg</string>
+    <string name="abrv_l">L</string>
+
+    <string name="valor_unitario">Valor\nunitário</string>
+    <string name="reais">R$</string>
+
+    <string name="erro_un_medida">por favor selecione uma unidade de medida</string>
+    <string name="erro_nome_recurso">por favor insira um nome</string>
+    <string name="erro_valor_vazio">por favor insira o valor do produto</string>
+    <string name="erro_valor_invalido">o valor do produto não pode ser negativo!</string>
+    <string name="error_estoque_vazio">insira o estoque (pode ser 0)</string>
+    <string name="error_estoque_invalido">o estoque precisa ser positivo ou 0</string>
+
+    <string name="error_nome">insira um nome</string>
+    <string name="erro_valor">insira o valor do produto</string>
+
+    <string name="cancelar">cancelar</string>
+    <string name="registrar">registrar</string>
+    <string name="adicionar">adicionar</string>
+
+    <string name="reg_venda_titulo">registrar venda</string>
+    <string name="venda_subtitulo">selecione os produtos</string>
+    <string name="venda_resumo">resumo da venda</string>
+
+    <string name="reg_compra_titulo">registrar compra de recursos</string>
+    <string name="compra_subtitulo">preencha a lista com quantidade e valor pago</string>
+    <string name="lista_recursos_titulo">selecione um recurso abaixo</string>
+    <string name="desc_registrar_compra">Adicione itens a lista de compras pressionando o botão + abaixo</string>
+
+    <string name="cadastrar_modelo_titulo">cadastrar modelo de produto</string>
+    <string name="card_produto_titulo">primeiro escolha um produto</string>
+    <string name="card_recursos_titulo">selecione os ingredientes e quantidades</string>
+    <string name="desc_lista_ingredientes">Adicione recursos e quantidades a lista de ingredientes pressionando o botão + abaixo</string>
+    <string name="lista_produtos_titulo">selecione um produto abaixo</string>
+
+    <string name="fabricar_produtos_titulo">Fabricar Produtos</string>
+    <string name="fabricacao_subtitulo">Escolha um modelo de fabricação de produto para registrar a fabricação</string>
+    <string name="text_fabricacao_produto_lista_vazia">a lista de modelos de fabricação de produto está vazia, cadastre um novo modelo utilizando o botão acima</string>
+
+    <string name="total">TOTAL</string>
+
+    <string name="inventario_titulo">inventário de produtos</string>
+    <string name="inventario_quantidade">quantidade disponível</string>
+    <string name="inventario_fabricacao">registrar entrada de produtos</string>
+
+    <string name="estoque_titulo">estoque de recursos</string>
+    <string name="estoque_cadastrar">cadastrar novo recurso</string>
+    <string name="estoque_compra">registrar entrada de estoque</string>
+    <string name="nome">nome</string>
+    <string name="quantidade">quantidade em estoque</string>
+    <string name="estoque_atual">Estoque atual:</string>
+
+    <string name="fabricar_produtos">fabricar produtos</string>
+    <string name="registrar_compra">registrar compra</string>
+    <string name="registrar_venda">registrar venda</string>
+
+    <string name="erro_generico">eita, algo não funcionou corretamente :(</string>
+    <string name="desc_card_produtos">Parece que não tem nenhum produto cadastrado ainda, clique aqui e cadastre seu primeiro produto!</string>
+    <string name="desc_card_recursos">Parece que não tem nenhum recurso cadastrado ainda, clique aqui e cadastre seu primeiro recurso!</string>
+    <string name="texto_valor_compra">insira o valor da compra</string>
+    <string name="texto_qtd_compra">insira a quantidade comprada</string>
+    <string name="texto_desc_dialog_modelo_produto">insira a quantidade deste ingrediente \npara uma receita do produto</string>
+    <string name="texto_qtd_producao">Qual a quantidade produzida por esta receita?</string>
+    <string name="unidades">unidades</string>
+    <string name="titulo_lista_ingredientes">lista de recursos do modelo:</string>
+    <string name="text_historico_vendas_empty">Você ainda não possui nenhum histórico de vendas. Registre algumas vendas e volte aqui para acompanhar o histórico atualizado</string>
+    <string name="text_historico_compras_empty">Você ainda não possui nenhum histórico de compras. Registre algumas compras e volte aqui para acompanhar o histórico atualizado</string>
+    <string name="titulo_histórico">Histórico de operações</string>
+    <string name="configuracoes">configurações</string>
+    <string name="texto_desc_configs">Atenção! Os botões abaixo alteram o banco de dados do aplicativo permanentemente!</string>
+    <string name="btn_limpar_bd">limpar o banco de dados</string>
+    <string name="btn_dados_teste">inserir dados de teste</string>
+    <string name="texto_lista_recurso_vazia">Você ainda não possui nenhum recurso cadastrado, utilize o botão abaixo para cadastrar um novo recurso</string>
+    <string name="texto_lista_produto_vazia">Você ainda não possui nenhum produto cadastrado, utilize o botão abaixo para cadastrar um novo produto</string>
+    <string name="cadastro_sucesso">cadastro realizado com sucesso</string>
+    <string name="compra_sucesso">compra registrada com sucesso!</string>
+    <string name="venda_sucesso">venda registrada com sucesso!</string>
 
 </resources>

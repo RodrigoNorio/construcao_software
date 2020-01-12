@@ -3,7 +3,6 @@ package com.example.trabalhocs.DAO;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.view.Display;
 
 import com.example.trabalhocs.Model.ModeloLogin;
 import com.example.trabalhocs.dbhelper.ConexaoSQlite;

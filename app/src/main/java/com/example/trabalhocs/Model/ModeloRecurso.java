@@ -1,30 +1,43 @@
 package com.example.trabalhocs.Model;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 
-public class ModeloRecurso {
+import com.example.trabalhocs.Utils.Utilidades;
+import com.orm.SugarRecord;
 
-    private int id_recurso;
+public class ModeloRecurso extends SugarRecord {
+
     private String nome;
     private String descricao;
+    private int tipoMedida;
     private int inventario;
 
     public ModeloRecurso() {
     }
 
-    @NonNull
-    @Override
-    public String toString() {
-        String retorno = "";
-
-        retorno += "Recurso # " + id_recurso + " " + nome + "\n";
-        retorno += "Em inventário: " + inventario;
-
-        return retorno;
+    public ModeloRecurso(String nome, String descricao, int tipoMedida, int inventario) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.tipoMedida = tipoMedida;
+        this.inventario = inventario;
     }
 
-    public int getId_recurso() {
-        return id_recurso;
+    public void incrementarInventario(int quantidade) {
+        this.inventario += quantidade;
+    }
+
+    public void decrementarInventario(int quantidade) {
+        this.inventario -= quantidade;
+    }
+
+    public String getTextoEstoqueAbrev(Context context) {
+        return inventario + " " + Utilidades.getMedidaAbrev(context, tipoMedida);
+    }
+
+    public String getTextoEstoque(Context context) {
+        return inventario + " " + Utilidades.getMedidaText(context, tipoMedida);
     }
 
     public String getNome() {
@@ -49,5 +62,20 @@ public class ModeloRecurso {
 
     public void setInventario(int inventario) {
         this.inventario = inventario;
+    }
+
+    public int getTipoMedida() {
+        return tipoMedida;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        String retorno = "";
+
+        retorno += "Recurso # " + getId()  + " " + nome + "\n";
+        retorno += "Em inventário: " + inventario;
+
+        return retorno;
     }
 }

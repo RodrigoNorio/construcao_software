@@ -14,10 +14,8 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.trabalhocs.MainActivity;
 import com.example.trabalhocs.Model.ModeloReceita;
 import com.example.trabalhocs.R;
-import com.example.trabalhocs.View.GerenciarGrupo;
 import com.example.trabalhocs.View.ListarFontesAdd;
 
 import butterknife.BindView;

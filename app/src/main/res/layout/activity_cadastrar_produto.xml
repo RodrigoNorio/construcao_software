@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:id="@+id/ll_header"
@@ -13,35 +15,189 @@
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/btn_voltar"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_voltar" />
 
         <TextView
             android:id="@+id/tv_titulo"
+            style="@style/textoTitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/cadastrar_produto" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_info"
+        style="@style/textoInformacao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_header"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:text="@string/cadastrar_produto_info"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_nome"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="@dimen/input_nome_width"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_info"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="25dp"
+        app:counterEnabled="true"
+        app:counterMaxLength="50"
+        android:hint="@string/hint_nome">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_nome"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/input_nome_height"
+            android:inputType="text"
+            android:textColor="@color/cinza" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_descricao"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="@dimen/input_desc_width"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/input_nome"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:hint="@string/hint_descricao"
+        android:minHeight="@dimen/input_desc_height"
+        app:helperText="@string/hint_descricao_produto">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_descricao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:minHeight="@dimen/input_desc_height"
+            android:textColor="@color/cinza"
+            android:textSize="13sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_valor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/input_descricao"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="27dp"
+        android:layout_marginLeft="27dp"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/textoInformacao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:gravity="start"
-            android:text="@string/cadastrar_produto"
+            android:text="@string/valor_unitario"
             android:textAlignment="textStart"
-            android:textColor="@color/colorPrimary"
-            android:textSize="22sp" />
+            android:textSize="18sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_valor"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="@dimen/input_valor_width"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_valor"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/input_valor_height"
+                android:inputType="number"
+                android:textColor="@color/cinza" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/separador"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/ll_valor"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/cinzaClaro" />
+
+    <LinearLayout
+        android:id="@+id/ll_estoque"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/separador"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_inventario"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="@dimen/input_estoque_width"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="15dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_estoque"
+            app:helperText="@string/hint_estoque_produto">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_estoque"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start|top"
+                android:inputType="number"
+                android:textColor="@color/cinza"
+                android:textSize="13sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tv_medida_inventario"
+            style="@style/textoInformacao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="@string/medida_un"
+            android:textSize="18sp" />
 
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_cadastrar"
+        style="@style/btnConfirmarGrande"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
-        android:background="@color/colorPrimary"
-        android:padding="15dp"
-        android:text="@string/cadastrar"
-        android:textColor="@color/branco"
-        android:textSize="16sp" />
+        android:layout_marginBottom="40dp"
+        android:text="@string/cadastrar" />
 
 </RelativeLayout>
