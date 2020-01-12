@@ -20,6 +20,7 @@ import com.example.trabalhocs.Model.ModeloProduto;
 import com.example.trabalhocs.Model.ModeloRecurso;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.Utils.Utilidades;
+import com.example.trabalhocs.View.ConfiguracoesActivity;
 import com.example.trabalhocs.View.EstoqueActivity;
 import com.example.trabalhocs.View.FabricarProdutoActivity;
 import com.example.trabalhocs.View.HistoricoActivity;
@@ -317,8 +318,14 @@ public class FragmentVendas extends Fragment {
         else mostrarMenu();
     }
 
+    @OnClick(R.id.btn_configuracoes)
+    void onClickBtnConfiguracoes() {
+        Intent intent = new Intent(getContext(), ConfiguracoesActivity.class);
+        startActivity(intent);
+    }
+
     @OnClick(R.id.btn_historico)
-    void clickBtnCadastrarProduto() {
+    void onClickBtnHistorico() {
         Intent intent = new Intent(getContext(), HistoricoActivity.class);
         startActivity(intent);
     }

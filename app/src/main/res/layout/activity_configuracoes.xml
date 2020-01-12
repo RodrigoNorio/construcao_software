@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/ll_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btn_voltar"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_voltar" />
+
+        <TextView
+            android:id="@+id/tv_titulo"
+            style="@style/textoTitulo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/configuracoes" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_info"
+        style="@style/textoInformacao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_header"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="30dp"
+        android:text="@string/texto_desc_configs"
+        app:layout_constraintTop_toBottomOf="@id/ll_header" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_dados_teste"
+        style="@style/btnAcaoLargo"
+        android:layout_width="@dimen/btn_largo_width"
+        android:layout_height="@dimen/btn_largo_height"
+        android:layout_marginTop="30dp"
+        android:text="@string/btn_dados_teste"
+        app:layout_constraintTop_toBottomOf="@id/tv_info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_limpar_bd"
+        style="@style/btnCancelar"
+        android:layout_width="@dimen/btn_largo_width"
+        android:layout_height="@dimen/btn_largo_height"
+        android:layout_marginTop="20dp"
+        android:text="@string/btn_limpar_bd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_dados_teste" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

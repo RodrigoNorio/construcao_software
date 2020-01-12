@@ -127,5 +127,9 @@
     <string name="text_historico_vendas_empty">Você ainda não possui nenhum histórico de vendas. Registre algumas vendas e volte aqui para acompanhar o histórico atualizado</string>
     <string name="text_historico_compras_empty">Você ainda não possui nenhum histórico de compras. Registre algumas compras e volte aqui para acompanhar o histórico atualizado</string>
     <string name="titulo_histórico">Histórico de operações</string>
+    <string name="configuracoes">configurações</string>
+    <string name="texto_desc_configs">Atenção! Os botões abaixo alteram o banco de dados do aplicativo permanentemente!</string>
+    <string name="btn_limpar_bd">limpar o banco de dados</string>
+    <string name="btn_dados_teste">inserir dados de teste</string>
 
 </resources>
