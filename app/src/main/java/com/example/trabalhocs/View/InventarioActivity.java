@@ -2,6 +2,8 @@ package com.example.trabalhocs.View;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.trabalhocs.Adapter.AdapterInventario;
 import com.example.trabalhocs.Controller.ProdutoController;
 import com.example.trabalhocs.R;
-import com.example.trabalhocs.Utils.Utilidades;
+import com.example.trabalhocs.Utils.Constants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,6 +21,8 @@ import butterknife.OnClick;
 
 public class InventarioActivity extends AppCompatActivity {
 
+    @BindView(R.id.tv_lista_vazia)
+    TextView tvListaVazia;
     @BindView(R.id.rv_produtos)
     RecyclerView rvProdutos;
     
@@ -38,15 +42,34 @@ public class InventarioActivity extends AppCompatActivity {
     }
     
     private void config() {
-        produtoController = new ProdutoController(Utilidades.getListaProdutosTeste());
-        adapterInventario = new AdapterInventario(this, produtoController.getProdutosList());
-        rvProdutos.setAdapter(adapterInventario);
+        produtoController = new ProdutoController();
+
+        if (produtoController.isProdutoListEmpty()) {
+            rvProdutos.setVisibility(View.GONE);
+            tvListaVazia.setVisibility(View.VISIBLE);
+
+        } else {
+            adapterInventario = new AdapterInventario(this, produtoController.getProdutosList());
+            rvProdutos.setAdapter(adapterInventario);
+
+            tvListaVazia.setVisibility(View.GONE);
+            rvProdutos.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == Constants.CADASTRAR_NOVO_PRODUTO && resultCode == RESULT_OK) {
+            config();
+        }
     }
 
     @OnClick(R.id.btn_add_novo)
     void onClickBtnAddNovo() {
         Intent intent = new Intent(this, CadastrarProdutoActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, Constants.CADASTRAR_NOVO_PRODUTO);
     }
 
     @OnClick(R.id.btn_cadastrar_modelo)

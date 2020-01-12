@@ -21,7 +21,6 @@ import com.example.trabalhocs.Model.ModeloProduto;
 import com.example.trabalhocs.Model.ModeloRecurso;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.Utils.Constants;
-import com.example.trabalhocs.Utils.Utilidades;
 import com.example.trabalhocs.View.ConfiguracoesActivity;
 import com.example.trabalhocs.View.EstoqueActivity;
 import com.example.trabalhocs.View.FabricarProdutoActivity;
@@ -31,14 +30,11 @@ import com.example.trabalhocs.View.RegistrarCompraActivity;
 import com.example.trabalhocs.View.RegistrarVendaActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
-import static android.app.Activity.RESULT_OK;
 
 public class FragmentVendas extends Fragment {
 
@@ -107,7 +103,7 @@ public class FragmentVendas extends Fragment {
         if (context != null) {
 
             //Card produtos
-            List<ModeloProduto> listaPreviaProdutos = new ArrayList<>(Utilidades.getListaProdutosTeste()); // TODO: 05/01/2020 mudar aqui
+            List<ModeloProduto> listaPreviaProdutos = ModeloProduto.listAll(ModeloProduto.class);
 
             if (!listaPreviaProdutos.isEmpty()) {
                 if (listaPreviaProdutos.size() > 10) {
@@ -151,10 +147,7 @@ public class FragmentVendas extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == Constants.CONFIGURACOES && resultCode == RESULT_OK) {
-            config();
-        }
+        config();
     }
 
     private void mostrarMenu() {
@@ -346,12 +339,12 @@ public class FragmentVendas extends Fragment {
     @OnClick(R.id.card_produtos)
     void onClickCardProdutos() {
         Intent intent = new Intent(getContext(), InventarioActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, Constants.PRODUTOS);
     }
 
     @OnClick(R.id.card_recursos)
     void onClickCardRecursos() {
         Intent intent = new Intent(getContext(), EstoqueActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, Constants.RECURSOS);
     }
 }

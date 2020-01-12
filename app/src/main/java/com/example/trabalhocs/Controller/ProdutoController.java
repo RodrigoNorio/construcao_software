@@ -23,29 +23,29 @@ public class ProdutoController {
     /**
      * construtor para o inventário
      */
-    public ProdutoController(List<ModeloProduto> produtosList) {
-        this.produtosList = produtosList;
+    public ProdutoController() {
+        this.produtosList = ModeloProduto.listAll(ModeloProduto.class);
     }
 
     /**
      * construtor cadastro de modelo de produto
      */
-    public ProdutoController(CadastrarModeloListener cadastroModeloListener, List<ModeloProduto> produtos) {
+    public ProdutoController(CadastrarModeloListener cadastroModeloListener) {
         this.cadastroModeloListener = cadastroModeloListener;
-        this.produtosList = produtos;
+        this.produtosList = ModeloProduto.listAll(ModeloProduto.class);
     }
 
     /**
      * construtor para o registro de venda
      */
-    public ProdutoController(VendaControllerListener vendaListener, List<ModeloProduto> produtos) {
+    public ProdutoController(VendaControllerListener vendaListener) {
         this.vendaListener = vendaListener;
-        this.produtosList = produtos;
-        produtosMapa = new SparseArray<>(produtos.size());
-        produtosViews = new SparseArray<>(produtos.size());
+        this.produtosList = ModeloProduto.listAll(ModeloProduto.class);
+        produtosMapa = new SparseArray<>(produtosList.size());
+        produtosViews = new SparseArray<>(produtosList.size());
         selecionadosList = new ArrayList<>();
 
-        for (ModeloProduto p: produtos) {
+        for (ModeloProduto p: produtosList) {
             produtosMapa.append(p.getId().intValue(), p);
             produtosViews.append(p.getId().intValue(), new ProdutoVendaItemView(p, 0));
         }
@@ -74,6 +74,10 @@ public class ProdutoController {
         }
 
         vendaListener.atualizaLista(total);
+    }
+
+    public boolean isProdutoListEmpty() {
+        return produtosList.isEmpty();
     }
 
     public List<ModeloProduto> getProdutosList() {

@@ -98,9 +98,12 @@ public class CadastrarProdutoActivity extends AppCompatActivity {
 
                 ModeloProduto novoProduto = new ModeloProduto(nome, descricao, estoque, valor);
 
-                // TODO: 11/01/2020 Salvar o novo produto no banco 
+                novoProduto.save();
 
-                Torradeira.shortToast("cadastrou: " + novoProduto.toString(), this);
+                Torradeira.shortToast(getString(R.string.cadastro_sucesso), this);
+
+                setResult(RESULT_OK);
+                finish();
             }
 
         } catch (Exception e) {
@@ -143,5 +146,11 @@ public class CadastrarProdutoActivity extends AppCompatActivity {
     @OnClick(R.id.btn_voltar)
     void onClickBtnVoltar() {
         onBackPressed();
+    }
+
+    @Override
+    public void onBackPressed() {
+        setResult(RESULT_CANCELED);
+        finish();
     }
 }

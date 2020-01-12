@@ -27,7 +27,6 @@ import com.example.trabalhocs.Model.ModeloProduto;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.Utils.Constants;
 import com.example.trabalhocs.Utils.Torradeira;
-import com.example.trabalhocs.Utils.Utilidades;
 import com.example.trabalhocs.View.Dialogs.DialogAvisoVoltar;
 import com.example.trabalhocs.View.Dialogs.DialogListaProdutos;
 import com.example.trabalhocs.View.Dialogs.DialogListaRecursos;
@@ -90,7 +89,7 @@ public class CadastrarModeloProdutoActivity extends AppCompatActivity implements
 
     private void config() {
         recursoController = new RecursoController(this);
-        produtoController = new ProdutoController(this, Utilidades.getListaProdutosTeste());
+        produtoController = new ProdutoController(this);
 
         rvListaCompras.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
 

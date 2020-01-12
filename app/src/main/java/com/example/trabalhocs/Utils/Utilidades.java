@@ -116,14 +116,16 @@ public class Utilidades {
         return 0.0;
     }
 
-    public static List<ModeloProduto> getListaProdutosTeste() {
+    public static void geraProdutosTeste() {
         List<ModeloProduto> list = new ArrayList<>();
 
-        list.add(new ModeloProduto("brownie comum", "um brownie padrão, feito com chocolate meio amargo", 10, 4.2));
-        list.add(new ModeloProduto("blondie", "um brownie branco, feito com chocolate branco", 15, 3.5));
-        list.add(new ModeloProduto("bombom morangão", "um delicioso coberto por uma camada de beijinho e uma crosta de chocolate ao leite", 5, 5.0));
+        list.add(new ModeloProduto("brownie comum", "um brownie padrão, feito com chocolate meio amargo", 10, 3.5));
+        list.add(new ModeloProduto("brigadeiro de pote", "o clássico brigadeiro num potinho", 15, 4.5));
+        list.add(new ModeloProduto("bombom morangão", "um delicioso morango coberto por uma camada de beijinho e uma crosta de chocolate ao leite", 5, 5.0));
 
-        return list;
+        for (ModeloProduto produto : list) {
+            produto.save();
+        }
     }
 
     public static void geraRecursosTeste() {
@@ -138,6 +140,10 @@ public class Utilidades {
         for (ModeloRecurso recurso: list) {
             recurso.save();
         }
+    }
+
+    public static void limpaDadosProdutos() {
+        ModeloProduto.deleteAll(ModeloProduto.class);
     }
 
     public static void limpaDadosRecursos() {
@@ -173,7 +179,7 @@ public class Utilidades {
 
         try {
             List<ProdutoVendaItemView> listaProdutosVenda = new ArrayList<>();
-            List<ModeloProduto> listaProdutos = getListaProdutosTeste();
+            List<ModeloProduto> listaProdutos = ModeloProduto.listAll(ModeloProduto.class);
 
             listaProdutosVenda.add(new ProdutoVendaItemView(listaProdutos.get(0),5));
             listaProdutosVenda.add(new ProdutoVendaItemView(listaProdutos.get(2),2));

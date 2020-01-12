@@ -61,7 +61,7 @@ public class RegistrarVendaActivity extends AppCompatActivity implements Produto
     }
 
     private void config() {
-        produtoController = new ProdutoController(this, Utilidades.getListaProdutosTeste()); // produtos teste
+        produtoController = new ProdutoController(this);
         adapterVendaProduto = new AdapterVendaProduto(this, produtoController);
         adapterResumoVenda = new AdapterResumoVenda(this, produtoController.getProdutosSelecionadosView());
 

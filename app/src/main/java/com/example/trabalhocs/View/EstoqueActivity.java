@@ -55,7 +55,6 @@ public class EstoqueActivity extends AppCompatActivity {
             tvListaVazia.setVisibility(View.GONE);
             rvRecursos.setVisibility(View.VISIBLE);
         }
-
     }
 
     @Override

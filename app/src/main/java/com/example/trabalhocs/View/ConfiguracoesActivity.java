@@ -26,6 +26,7 @@ public class ConfiguracoesActivity extends AppCompatActivity {
     void onClickBtnDadosTeste() {
         // TODO: 11/01/2020
 
+        Utilidades.geraProdutosTeste();
         Utilidades.geraRecursosTeste();
         Torradeira.shortToast("O banco de dados foi atualizado com dados de teste!", this);
     }
@@ -34,6 +35,7 @@ public class ConfiguracoesActivity extends AppCompatActivity {
     void onClickBtnLimparBd() {
         // TODO: 11/01/2020
 
+        Utilidades.limpaDadosProdutos();
         Utilidades.limpaDadosRecursos();
         Torradeira.shortToast("Todos os dados do banco de dados foram apagados!", this);
     }
