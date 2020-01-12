@@ -1,5 +1,7 @@
 package com.example.trabalhocs.Controller;
 
+import android.content.Context;
+
 import com.example.trabalhocs.Model.ModeloCompra;
 import com.example.trabalhocs.Model.ModeloVenda;
 
@@ -36,8 +38,14 @@ public class HistoricoController {
         this.vendasList.addAll(vendasList);
     }
 
-    public void setComprasList(List<ModeloCompra> comprasList) {
-        this.comprasList.addAll(comprasList);
+    public void updateComprasList(Context context) {
+        List<ModeloCompra> compras = ModeloCompra.listAll(ModeloCompra.class);
+
+        for (ModeloCompra compra : compras) {
+            compra.configuraListaCompra(context);
+        }
+
+        this.comprasList = compras;
     }
 
     public List<ModeloVenda> getVendasList() {

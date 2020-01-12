@@ -187,25 +187,24 @@ public class Utilidades {
         return list;
     }
 
-    public static List<ModeloCompra> getListaModeloCompraTeste() {
-        List<ModeloCompra> list = new ArrayList<>();
-
+    public static void geraModeloCompraTeste(Context context) {
         try {
             List<ModeloRecurso> recursosTeste = ModeloRecurso.listAll(ModeloRecurso.class);
-            int[] quantidades = {1, 500, 1, 10, 14};
+            Collections.reverse(recursosTeste);
 
             List<RecursoCompraItemView> listaRecursosCompra = new ArrayList<>();
 
-            listaRecursosCompra.add(new RecursoCompraItemView(recursosTeste.get(0), 1, 3.45));
-            listaRecursosCompra.add(new RecursoCompraItemView(recursosTeste.get(1), 200, 10));
+            listaRecursosCompra.add(new RecursoCompraItemView(recursosTeste.get(0), 12, 7.35));
+            listaRecursosCompra.add(new RecursoCompraItemView(recursosTeste.get(1), 50, 10));
 
-            list.add(new ModeloCompra(1, "15/12/2019 08:02:56", listaRecursosCompra));
+            ModeloCompra compra = new ModeloCompra("15/12/2019 08:02:56", listaRecursosCompra);
+
+            compra.save();
 
         } catch (Exception e) {
             e.printStackTrace();
+            Torradeira.shortToast("Algo deu errado!", context);
         }
-
-        return  list;
     }
 
     public static void limpaDadosProdutos() {
@@ -218,5 +217,9 @@ public class Utilidades {
 
     public static void limpaDadosModelosFabricacao() {
         ModeloFabricacaoProduto.deleteAll(ModeloFabricacaoProduto.class);
+    }
+
+    public static void limpaDadosCompras() {
+        ModeloCompra.deleteAll(ModeloCompra.class);
     }
 }

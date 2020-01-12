@@ -63,6 +63,14 @@ public class RecursoController {
         if (compraRecursosListener != null) compraRecursosListener.atualizaListaCompras();
     }
 
+    public void efetivarCompra() {
+        for (RecursoCompraItemView item: compraList) {
+            ModeloRecurso recurso = ModeloRecurso.findById(ModeloRecurso.class, item.getRecurso().getId());
+            recurso.incrementarInventario(item.getQuantidade());
+            recurso.save();
+        }
+    }
+
     /**
      * Usado no DialogFabricacaoProduto
      */

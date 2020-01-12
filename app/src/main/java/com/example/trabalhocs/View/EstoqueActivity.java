@@ -61,7 +61,7 @@ public class EstoqueActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == Constants.CADASTRAR_NOVO_RECURSO && resultCode == RESULT_OK) {
+        if ((requestCode == Constants.CADASTRAR_NOVO_RECURSO || requestCode == Constants.REGISTRAR_COMPRA) && resultCode == RESULT_OK) {
             config();
         }
     }
@@ -69,7 +69,7 @@ public class EstoqueActivity extends AppCompatActivity {
     @OnClick(R.id.btn_compra)
     void onClickBtnCompra() {
         Intent intent = new Intent(this, RegistrarCompraActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, Constants.REGISTRAR_COMPRA);
     }
 
     @OnClick(R.id.btn_add_novo)

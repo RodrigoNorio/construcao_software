@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.trabalhocs.Adapter.AdapterListaCompra;
 import com.example.trabalhocs.Controller.RecursoController;
+import com.example.trabalhocs.Model.ModeloCompra;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.Utils.Constants;
 import com.example.trabalhocs.Utils.Torradeira;
@@ -23,7 +24,11 @@ import com.example.trabalhocs.View.Dialogs.DialogAvisoVoltar;
 import com.example.trabalhocs.View.Dialogs.DialogListaRecursos;
 import com.example.trabalhocs.View.Itens.RecursoCompraItemView;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -101,8 +106,18 @@ public class RegistrarCompraActivity extends AppCompatActivity implements Recurs
 
     @OnClick(R.id.btn_confirmar)
     void onClickBtnConfirmar() {
-        // TODO: 04/01/2020
-        Torradeira.shortToast("compra registrada!", this);
+
+        Date horaAgora = Calendar.getInstance().getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy  HH:mm:ss", Locale.getDefault());
+        String horaFormatada = sdf.format(horaAgora);
+
+        ModeloCompra compra = new ModeloCompra(horaFormatada, recursoController.getCompraList());
+        compra.save();
+
+        recursoController.efetivarCompra();
+
+        Torradeira.shortToast(getString(R.string.compra_sucesso), this);
+        setResult(RESULT_OK);
         finish();
     }
 
@@ -134,7 +149,7 @@ public class RegistrarCompraActivity extends AppCompatActivity implements Recurs
 
         dialogAvisoSalvar.buttonContinuar.setOnClickListener(v -> {
             dialog.dismiss();
-
+            setResult(RESULT_CANCELED);
             finish();
         });
     }

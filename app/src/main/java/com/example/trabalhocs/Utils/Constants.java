@@ -27,4 +27,6 @@ public class Constants {
     public static final int RECURSOS = 5;
     public static final int CONFIGURACOES = 6;
 
+    public static final int REGISTRAR_COMPRA = 7;
+
 }

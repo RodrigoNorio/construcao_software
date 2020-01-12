@@ -24,15 +24,12 @@ public class ModeloRecurso extends SugarRecord {
         this.inventario = inventario;
     }
 
-    @NonNull
-    @Override
-    public String toString() {
-        String retorno = "";
+    public void incrementarInventario(int quantidade) {
+        this.inventario += quantidade;
+    }
 
-        retorno += "Recurso # " + getId()  + " " + nome + "\n";
-        retorno += "Em inventário: " + inventario;
-
-        return retorno;
+    public void decrementarInventario(int quantidade) {
+        this.inventario -= quantidade;
     }
 
     public String getTextoEstoqueAbrev(Context context) {
@@ -69,5 +66,16 @@ public class ModeloRecurso extends SugarRecord {
 
     public int getTipoMedida() {
         return tipoMedida;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        String retorno = "";
+
+        retorno += "Recurso # " + getId()  + " " + nome + "\n";
+        retorno += "Em inventário: " + inventario;
+
+        return retorno;
     }
 }

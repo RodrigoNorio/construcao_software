@@ -315,7 +315,7 @@ public class FragmentVendas extends Fragment {
     @OnClick(R.id.fab_compra)
     void onClickFabCompra() {
         Intent intent = new Intent(getContext(), RegistrarCompraActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, Constants.REGISTRAR_COMPRA);
     }
 
     @OnClick(R.id.fab_menu)

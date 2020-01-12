@@ -29,6 +29,7 @@ public class ConfiguracoesActivity extends AppCompatActivity {
         Utilidades.geraProdutosTeste();
         Utilidades.geraRecursosTeste();
         Utilidades.geraModeloFabricacaoProdutoTeste(this);
+        Utilidades.geraModeloCompraTeste(this);
         Torradeira.shortToast("O banco de dados foi atualizado com dados de teste!", this);
     }
 
@@ -39,6 +40,7 @@ public class ConfiguracoesActivity extends AppCompatActivity {
         Utilidades.limpaDadosProdutos();
         Utilidades.limpaDadosRecursos();
         Utilidades.limpaDadosModelosFabricacao();
+        Utilidades.limpaDadosCompras();
         Torradeira.shortToast("Todos os dados do banco de dados foram apagados!", this);
     }
 
