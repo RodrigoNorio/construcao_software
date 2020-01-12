@@ -33,8 +33,6 @@ public class Utilidades {
         medidasList.add(context.getResources().getString(R.string.medida_gr));
         medidasList.add(context.getResources().getString(R.string.medida_ml));
         medidasList.add(context.getResources().getString(R.string.medida_un));
-        medidasList.add(context.getResources().getString(R.string.medida_kg));
-        medidasList.add(context.getResources().getString(R.string.medida_l));
 
         return medidasList;
     }
@@ -53,14 +51,6 @@ public class Utilidades {
 
             case Constants.TIPO_MEDIDA_UNIDADE:
                 abreviacao = context.getResources().getString(R.string.medida_un);
-                break;
-
-            case Constants.TIPO_MEDIDA_KILO:
-                abreviacao = context.getResources().getString(R.string.medida_kg);
-                break;
-
-            case Constants.TIPO_MEDIDA_LITRO:
-                abreviacao = context.getResources().getString(R.string.medida_l);
                 break;
 
             default:
@@ -85,14 +75,6 @@ public class Utilidades {
 
             case Constants.TIPO_MEDIDA_UNIDADE:
                 abreviacao = context.getResources().getString(R.string.abrv_un);
-                break;
-
-            case Constants.TIPO_MEDIDA_KILO:
-                abreviacao = context.getResources().getString(R.string.abrv_kg);
-                break;
-
-            case Constants.TIPO_MEDIDA_LITRO:
-                abreviacao = context.getResources().getString(R.string.abrv_l);
                 break;
 
             default:
@@ -132,9 +114,9 @@ public class Utilidades {
     public static void geraRecursosTeste() {
         List<ModeloRecurso> list = new ArrayList<>();
 
-        list.add(new ModeloRecurso("Leite Integral", "Leite de vaca integral", Constants.TIPO_MEDIDA_LITRO, 5));
+        list.add(new ModeloRecurso("Leite Integral", "Leite de vaca integral", Constants.TIPO_MEDIDA_MILILITRO, 5000));
         list.add(new ModeloRecurso("Achocolatado", "Achocolatado em pó comum", Constants.TIPO_MEDIDA_GRAMAS, 3000));
-        list.add(new ModeloRecurso("Açucar", "Açucar branco padrão", Constants.TIPO_MEDIDA_KILO, 10));
+        list.add(new ModeloRecurso("Açucar", "Açucar branco padrão", Constants.TIPO_MEDIDA_GRAMAS, 10000));
         list.add(new ModeloRecurso("Extrato de baunilha", "Extrato liquido de baunilha, usado para perfumar e enriquecer receitas doces", Constants.TIPO_MEDIDA_MILILITRO, 200));
         list.add(new ModeloRecurso("Ovo", "Ovos de galinha, podem ser brancos os marrons não faz diferença!", Constants.TIPO_MEDIDA_UNIDADE, 24));
 

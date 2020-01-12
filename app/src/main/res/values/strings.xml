@@ -53,8 +53,6 @@
     <string name="medida_gr">gramas</string>
     <string name="medida_ml">mililitros</string>
     <string name="medida_un">unidades</string>
-    <string name="medida_kg">kilos</string>
-    <string name="medida_l">litros</string>
 
     <string name="abrv_gr">Gr</string>
     <string name="abrv_ml">Ml</string>
