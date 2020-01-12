@@ -58,5 +58,4 @@ public class AdapterListaFonte extends BaseAdapter {
 
         return v;
     }
-
 }

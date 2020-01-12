@@ -16,6 +16,48 @@
         <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.example.trabalhocs" />
 
         <activity
+            android:name=".Tutorial.Tutorial_Main_Menu"
+            android:label="@string/title_activity_tutorial__main__menu"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Tutorial.Tutorial_Gerenciar_Receita"
+            android:label="@string/title_activity_tutorial__gerenciar__receita"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Tutorial.Tutorial_Gerenciar_Destinos"
+            android:label="@string/title_activity_tutorial__gerenciar__destinos"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".View.CadastrarLogin"
+            android:label="@string/title_activity_cadastrar_login"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".View.Login"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".View.GerenciarDestinos"
+            android:label="@string/title_activity_gerenciar_destinos"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".View.GerenciarValores"
+            android:label="@string/title_activity_gerenciar_valores"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".View.ListarFontesAdd"
+            android:label="@string/title_activity_listar_fontes_add"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".View.GerenciarReceita"
+            android:label="@string/title_activity_gerenciar_receita"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
@@ -25,10 +67,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".View.GerenciarReceita"
-            android:label="@string/title_activity_gerenciar_receita"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".View.GerenciarGrupo"
             android:label="@string/title_activity_gerenciargrupo"

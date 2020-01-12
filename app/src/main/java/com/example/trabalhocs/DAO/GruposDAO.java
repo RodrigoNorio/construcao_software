@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.example.trabalhocs.Model.ModeloFonte;
 import com.example.trabalhocs.Model.ModeloGrupo;
 import com.example.trabalhocs.dbhelper.ConexaoSQlite;
 
@@ -27,7 +26,7 @@ public class GruposDAO {
 
         try{
             ContentValues values = new ContentValues();
-            values.put("descricao",f.getNome());
+            values.put("nome",f.getNome());
 
             long grupoadd = db.insert("grupos", null, values);
 
@@ -45,13 +44,13 @@ public class GruposDAO {
 
 
 
-    public List<ModeloFonte> getListaGrupoDAO(){
+    public List<ModeloGrupo> getListaGrupoDAO(){
 
-        List<ModeloFonte> listaFontes = new ArrayList<>();
+        List<ModeloGrupo> listaGrupos = new ArrayList<>();
         SQLiteDatabase db = null;
         Cursor cursor;
 
-        String query = "SELECT *FROM fonte;";
+        String query = "SELECT *FROM grupos;";
 
         try{
 
@@ -61,28 +60,74 @@ public class GruposDAO {
 
             if(cursor.moveToFirst()){
 
-                ModeloFonte fonteTemporaria = null;
+                ModeloGrupo grupoTemporario = null;
 
                 do{
 
-                    fonteTemporaria = new ModeloFonte();
-                    fonteTemporaria.setCodfonte(cursor.getInt(0));
-                    fonteTemporaria.setDescricao(cursor.getString(1));
+                    grupoTemporario = new ModeloGrupo();
+                    grupoTemporario.setCod_grupo(cursor.getInt(0));
+                    grupoTemporario.setNome(cursor.getString(2));
 
-                    listaFontes.add(fonteTemporaria);
+                    listaGrupos.add(grupoTemporario);
 
                 }while(cursor.moveToNext());
             }
 
         }catch (Exception e){
-            Log.d("Erro Lista Fontes", "Erro ao retornar as fontes");
+            Log.d("Erro Lista Grupo", "Erro ao retornar os grupos");
             return null;
         }finally {
             if(db != null){
                 db.close();
             }
         }
-        return listaFontes;
+        return listaGrupos;
     }
+
+    public boolean excluirGrupoDAO (long rcodGrupo){
+        SQLiteDatabase db = null;
+
+        try{
+            db = this.conexaoSQlite.getWritableDatabase();
+
+            db.delete(
+                    "grupos",
+                    "cod_grupo = ?",
+                    new String[]{String.valueOf(rcodGrupo)}
+            );
+
+        }catch(Exception e){
+            Log.d("GrupoDAO", "Não foi possivel deletar Grupo");
+            return false;
+        }
+        finally {
+            if(db != null){
+                db.close();
+            }
+        }
+        return true;
+    }
+
+    public List<ModeloGrupo> search(String keyword) {
+        List<ModeloGrupo> contacts = null;
+        try {
+            SQLiteDatabase sqLiteDatabase = this.conexaoSQlite.getReadableDatabase();
+
+            Cursor cursor = sqLiteDatabase.rawQuery("select * from grupos where nome like ?", new String[] { "%" + keyword + "%" });
+            if (cursor.moveToFirst()) {
+                contacts = new ArrayList<ModeloGrupo>();
+                do {
+                    ModeloGrupo contact = new ModeloGrupo();
+                    //contact.setNome(cursor.getFloat(2));
+                    contact.setNome(cursor.getString(2));
+                    contacts.add(contact);
+                } while (cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            contacts = null;
+        }
+        return contacts;
+    }
+
 
 }

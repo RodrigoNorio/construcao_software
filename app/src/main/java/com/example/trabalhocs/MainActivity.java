@@ -1,14 +1,20 @@
 package com.example.trabalhocs;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.trabalhocs.Tutorial.Tutorial_Main_Menu;
 import com.example.trabalhocs.View.Fragments.FragmentHome;
 import com.example.trabalhocs.View.Fragments.FragmentVendas;
+import com.example.trabalhocs.View.GerenciarDestinos;
+import com.example.trabalhocs.View.GerenciarGrupo;
+import com.example.trabalhocs.View.GerenciarReceita;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.orm.SugarContext;
 
@@ -28,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     private final FragmentHome fragmentHome = new FragmentHome();
     private final FragmentVendas fragmentVendas = new FragmentVendas();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +65,6 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setSelectedItemId(R.id.nav_home);
     }
 
-
-
     /**
      * Carrega os fragments e exibe o fragment principal primeiro
      */
@@ -78,6 +83,24 @@ public class MainActivity extends AppCompatActivity {
     private void switchFragment(Fragment fragment) {
         fragmentManager.beginTransaction().hide(fragmentAtivo).show(fragment).commit();
         fragmentAtivo = fragment;
+    }
+
+    public void gerenciarreceitas (View view){
+        Intent it = new Intent (MainActivity.this, GerenciarReceita.class);
+        startActivity(it);
+    }
+
+    public void gerenciargrupos (View view){
+        Intent it = new Intent (MainActivity.this, GerenciarGrupo.class);
+        startActivity(it);
+    }
+    public void gerenciardestino (View view){
+        Intent it = new Intent (MainActivity.this, GerenciarDestinos.class);
+        startActivity(it);
+    }
+    public void tutorialmainmenu (View view){
+        Intent it = new Intent (MainActivity.this, Tutorial_Main_Menu.class);
+        startActivity(it);
     }
 
     @Override

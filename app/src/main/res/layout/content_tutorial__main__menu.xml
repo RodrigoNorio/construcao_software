@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Tutorial.Tutorial_Main_Menu"
+    tools:showIn="@layout/activity_tutorial__main__menu">
+
+    <Button
+        android:id="@+id/gerenciardestino"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="240dp"
+        android:layout_marginLeft="240dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="430dp"
+        android:layout_marginRight="80dp"
+        android:background="@mipmap/ic_gerenciar_destinos_foreground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addreceita" />
+    <Button
+        android:id="@+id/gerenciarreceita"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="240dp"
+        android:layout_marginLeft="240dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:background="@mipmap/ic_verificar_foreground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addreceita" />
+
+    <TextView
+        android:id="@+id/menuprincipal"
+        android:layout_width="204dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginLeft="176dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="94dp"
+        android:layout_marginRight="94dp"
+        android:layout_marginBottom="598dp"
+        android:text="@string/menuprincipal"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/addreceita"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="240dp"
+        android:layout_marginLeft="240dp"
+        android:layout_marginTop="114dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:background="@mipmap/ic_addreceita_foreground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menuprincipal" />
+
+
+    <Button
+        android:id="@+id/gerenciargrupo"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="240dp"
+        android:layout_marginLeft="240dp"
+        android:layout_marginTop="172dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:background="@mipmap/ic_grupo_foreground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addreceita" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="124dp"
+        android:layout_height="112dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:contentDescription="@string/todo"
+        android:src="@mipmap/ic_ballonbaixoesq_foreground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addreceita" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="140dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginLeft="112dp"
+        android:layout_marginTop="78dp"
+        android:contentDescription="@string/todo"
+        android:src="@mipmap/ic_ballonbaixoesq_foreground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addreceita" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:src="@mipmap/ic_ballonesq_foreground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menuprincipal"
+        android:contentDescription="@string/todo" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="21dp"
+        android:src="@mipmap/ic_ballondir_foreground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menuprincipal"
+        android:contentDescription="@string/todo" />
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="140dp"
+        android:layout_height="126dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginLeft="124dp"
+        android:layout_marginTop="136dp"
+        android:contentDescription="@string/todo"
+        android:src="@mipmap/ic_ballondir_foreground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menuprincipal" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="96dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/aqui_voc_poder_adicionar_um_novo_gasto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menuprincipal" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="107dp"
+        android:layout_height="101dp"
+        android:layout_marginStart="132dp"
+        android:layout_marginLeft="132dp"
+        android:layout_marginTop="120dp"
+        android:text="@string/aqui_voc_ter_acesso_aos_destinos_e_os_gastos_relacionados_a_eles"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addreceita" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="107dp"
+        android:layout_height="89dp"
+        android:layout_marginStart="142dp"
+        android:layout_marginLeft="142dp"
+        android:layout_marginTop="144dp"
+        android:text="@string/aqui_voc_ter_acesso_as_fontes_e_as_receitas_relacionados_a_elas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menuprincipal" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="95dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="248dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:text="@string/aqui_voc_poder_gerenciar_seus_grupos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addreceita" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="103dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:text="@string/aqui_voc_poder_adicionar_uma_nova_receita"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menuprincipal" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
