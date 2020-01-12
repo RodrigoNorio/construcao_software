@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.trabalhocs.Adapter.AdapterHistoricoVendas;
 import com.example.trabalhocs.Controller.HistoricoController;
 import com.example.trabalhocs.R;
-import com.example.trabalhocs.Utils.Utilidades;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -55,7 +54,7 @@ public class FragmentHistoricoVendas extends FragmentConfiguravel {
     private void setup() {
         rvHistorico.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
 
-        controller.setVendasList(Utilidades.getListaModeloVendaTeste()); //teste
+        controller.setVendasList(context);
 
         if (controller.isVendasListEmpty()) {
             rvHistorico.setVisibility(View.GONE);

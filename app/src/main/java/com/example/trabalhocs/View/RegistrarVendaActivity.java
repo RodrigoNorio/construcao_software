@@ -17,13 +17,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.trabalhocs.Adapter.AdapterResumoVenda;
 import com.example.trabalhocs.Adapter.AdapterVendaProduto;
 import com.example.trabalhocs.Controller.ProdutoController;
+import com.example.trabalhocs.Model.ModeloVenda;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.Utils.Torradeira;
 import com.example.trabalhocs.Utils.Utilidades;
 import com.example.trabalhocs.View.Dialogs.DialogAvisoVoltar;
 import com.example.trabalhocs.View.Itens.ProdutoVendaItemView;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -101,7 +106,19 @@ public class RegistrarVendaActivity extends AppCompatActivity implements Produto
 
     @OnClick(R.id.btn_confirmar)
     void onClickBtnConfirmar() {
-        Torradeira.longToast("total da venda: " + tvValorTotal.getText(), this);
+
+        Date horaAgora = Calendar.getInstance().getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy  HH:mm:ss", Locale.getDefault());
+        String horaFormatada = sdf.format(horaAgora);
+
+        ModeloVenda venda = new ModeloVenda(horaFormatada, produtoController.getProdutosSelecionadosView());
+        venda.save();
+
+        produtoController.efetivarVenda();
+
+        Torradeira.shortToast(getString(R.string.venda_sucesso), this);
+        setResult(RESULT_OK);
+        finish();
     }
 
     @OnClick(R.id.btn_ajuda)
@@ -132,7 +149,7 @@ public class RegistrarVendaActivity extends AppCompatActivity implements Produto
 
         dialogAvisoSalvar.buttonContinuar.setOnClickListener(v -> {
             dialog.dismiss();
-
+            setResult(RESULT_CANCELED);
             finish();
         });
     }

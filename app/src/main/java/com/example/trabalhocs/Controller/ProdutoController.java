@@ -76,6 +76,14 @@ public class ProdutoController {
         vendaListener.atualizaLista(total);
     }
 
+    public void efetivarVenda() {
+        for (ProdutoVendaItemView item : selecionadosList) {
+            ModeloProduto produto = ModeloProduto.findById(ModeloProduto.class, item.getIdProduto());
+            produto.decrementarEstoque(item.getQuantidade());
+            produto.save();
+        }
+    }
+
     public boolean isProdutoListEmpty() {
         return produtosList.isEmpty();
     }

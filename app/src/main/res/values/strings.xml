@@ -135,5 +135,6 @@
     <string name="texto_lista_produto_vazia">Você ainda não possui nenhum produto cadastrado, utilize o botão abaixo para cadastrar um novo produto</string>
     <string name="cadastro_sucesso">cadastro realizado com sucesso</string>
     <string name="compra_sucesso">compra registrada com sucesso!</string>
+    <string name="venda_sucesso">venda registrada com sucesso!</string>
 
 </resources>

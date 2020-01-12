@@ -24,23 +24,23 @@ public class ConfiguracoesActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_dados_teste)
     void onClickBtnDadosTeste() {
-        // TODO: 11/01/2020
-
         Utilidades.geraProdutosTeste();
         Utilidades.geraRecursosTeste();
         Utilidades.geraModeloFabricacaoProdutoTeste(this);
         Utilidades.geraModeloCompraTeste(this);
+        Utilidades.geraModeloVendaTeste(this);
+
         Torradeira.shortToast("O banco de dados foi atualizado com dados de teste!", this);
     }
 
     @OnClick(R.id.btn_limpar_bd)
     void onClickBtnLimparBd() {
-        // TODO: 11/01/2020
-
         Utilidades.limpaDadosProdutos();
         Utilidades.limpaDadosRecursos();
         Utilidades.limpaDadosModelosFabricacao();
         Utilidades.limpaDadosCompras();
+        Utilidades.limpaDadosVendas();
+
         Torradeira.shortToast("Todos os dados do banco de dados foram apagados!", this);
     }
 

@@ -63,28 +63,6 @@
             android:paddingEnd="6dp"
             android:paddingBottom="0dp">
 
-            <TextView
-                android:id="@+id/tv_nome"
-                style="@style/textoInformacaoDestaque"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:text="@string/nome"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_estoque"
-                style="@style/textoInformacaoDestaque"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:layout_marginRight="5dp"
-                android:text="@string/inventario_quantidade"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_produtos"
                 android:layout_width="match_parent"
@@ -95,7 +73,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_nome"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="RtlSymmetry" />
 
             <TextView

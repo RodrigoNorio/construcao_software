@@ -168,23 +168,23 @@ public class Utilidades {
         }
     }
 
-    public static List<ModeloVenda> getListaModeloVendaTeste() {
-        List<ModeloVenda> list = new ArrayList<>();
-
+    public static void geraModeloVendaTeste(Context context) {
         try {
             List<ProdutoVendaItemView> listaProdutosVenda = new ArrayList<>();
-            List<ModeloProduto> listaProdutos = ModeloProduto.listAll(ModeloProduto.class);
 
-            listaProdutosVenda.add(new ProdutoVendaItemView(listaProdutos.get(0),5));
-            listaProdutosVenda.add(new ProdutoVendaItemView(listaProdutos.get(2),2));
+            List<ModeloProduto> produtosTeste = ModeloProduto.listAll(ModeloProduto.class);
+            Collections.reverse(produtosTeste);
 
-            list.add(new ModeloVenda(1, "15/12/2019 20:30:21", listaProdutosVenda));
+            listaProdutosVenda.add(new ProdutoVendaItemView(produtosTeste.get(0),5));
+            listaProdutosVenda.add(new ProdutoVendaItemView(produtosTeste.get(1),2));
+
+            ModeloVenda venda = new ModeloVenda("15/12/2019 20:30:21", listaProdutosVenda);
+            venda.save();
 
         } catch (Exception e) {
             e.printStackTrace();
+            Torradeira.shortToast("Algo deu errado!", context);
         }
-
-        return list;
     }
 
     public static void geraModeloCompraTeste(Context context) {
@@ -221,5 +221,9 @@ public class Utilidades {
 
     public static void limpaDadosCompras() {
         ModeloCompra.deleteAll(ModeloCompra.class);
+    }
+
+    public static void limpaDadosVendas() {
+        ModeloVenda.deleteAll(ModeloVenda.class);
     }
 }

@@ -34,6 +34,14 @@ public class ModeloProduto extends SugarRecord {
         return retorno;
     }
 
+    public void incrementarEstoque(int quantidade) {
+        this.estoque += quantidade;
+    }
+
+    public void decrementarEstoque(int quantidade) {
+        this.estoque -= quantidade;
+    }
+
     public String getValorUnitarioText() {
         return Utilidades.formataReais(valorUnitario);
     }

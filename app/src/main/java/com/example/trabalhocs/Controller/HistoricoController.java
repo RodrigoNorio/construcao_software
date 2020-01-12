@@ -34,8 +34,14 @@ public class HistoricoController {
         return comprasList.isEmpty();
     }
 
-    public void setVendasList(List<ModeloVenda> vendasList) {
-        this.vendasList.addAll(vendasList);
+    public void setVendasList(Context context) {
+        List<ModeloVenda> vendas = ModeloVenda.listAll(ModeloVenda.class);
+
+        for (ModeloVenda venda : vendas) {
+            venda.configuraListaProdutos(context);
+        }
+
+        this.vendasList.addAll(vendas);
     }
 
     public void updateComprasList(Context context) {
