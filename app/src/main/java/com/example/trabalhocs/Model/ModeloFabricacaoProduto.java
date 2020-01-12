@@ -1,19 +1,71 @@
 package com.example.trabalhocs.Model;
 
+import android.content.Context;
+
+import com.example.trabalhocs.Utils.Torradeira;
+import com.orm.SugarRecord;
+import com.orm.dsl.Ignore;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class ModeloFabricacaoProduto {
+public class ModeloFabricacaoProduto extends SugarRecord {
 
-    private int id;
+    @Ignore
+    private Map<ModeloRecurso, Integer> mapIngredientes = null;
+
+    private String recursosIds;
+    private String quantidadesIngredientes;
+
     private ModeloProduto produto;
-    private Map<ModeloRecurso, Integer> mapIngredientes;
     private int quantidade;
 
-    public ModeloFabricacaoProduto(int id, ModeloProduto produto, Map<ModeloRecurso, Integer> mapIngredientes, int quantidade) {
-        this.id = id;
+    public ModeloFabricacaoProduto() {
+    }
+
+    public ModeloFabricacaoProduto(ModeloProduto produto, Map<ModeloRecurso, Integer> mapIngredientes, int quantidade) {
         this.produto = produto;
         this.mapIngredientes = mapIngredientes;
         this.quantidade = quantidade;
+
+        recursosIds = "";
+        quantidadesIngredientes = "";
+
+        try {
+            for (Map.Entry<ModeloRecurso, Integer> entrada : mapIngredientes.entrySet()) {
+                recursosIds = recursosIds.concat(entrada.getKey().getId() + " ");
+                quantidadesIngredientes = quantidadesIngredientes.concat(entrada.getValue() + " ");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void configuraMapaIngredientes(Context context) {
+        try {
+            List<String> recursosIdsList = Arrays.asList(recursosIds.split(" "));
+            List<String> quantidadesList = Arrays.asList(quantidadesIngredientes.split(" "));
+
+            List<ModeloRecurso> ingredientes = new ArrayList<>();
+
+            for (String id : recursosIdsList) {
+                ingredientes.add(ModeloRecurso.findById(ModeloRecurso.class, Long.parseLong(id)));
+            }
+
+            mapIngredientes = new HashMap<>();
+
+            for (int i = 0; i < ingredientes.size(); i++) {
+                mapIngredientes.put(ingredientes.get(i), Integer.valueOf(quantidadesList.get(i)));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Torradeira.erroToast(context);
+        }
     }
     
     public String getListaIngredientesSimplificada() {
@@ -32,10 +84,6 @@ public class ModeloFabricacaoProduto {
         }
 
         return lista;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public ModeloProduto getProduto() {

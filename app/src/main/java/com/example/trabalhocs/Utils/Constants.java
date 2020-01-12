@@ -21,9 +21,10 @@ public class Constants {
     //RequestCodes
     public static final int CADASTRAR_NOVO_RECURSO = 1;
     public static final int CADASTRAR_NOVO_PRODUTO = 2;
+    public static final int CADASTRAR_NOVO_MODELO_FABRICACAO = 3;
 
-    public static final int PRODUTOS = 3;
-    public static final int RECURSOS = 4;
-    public static final int CONFIGURACOES = 5;
+    public static final int PRODUTOS = 4;
+    public static final int RECURSOS = 5;
+    public static final int CONFIGURACOES = 6;
 
 }

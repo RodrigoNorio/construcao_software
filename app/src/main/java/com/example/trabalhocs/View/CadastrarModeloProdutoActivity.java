@@ -23,7 +23,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.trabalhocs.Adapter.AdapterListaRecursosModeloProduto;
 import com.example.trabalhocs.Controller.ProdutoController;
 import com.example.trabalhocs.Controller.RecursoController;
+import com.example.trabalhocs.Model.ModeloFabricacaoProduto;
 import com.example.trabalhocs.Model.ModeloProduto;
+import com.example.trabalhocs.Model.ModeloRecurso;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.Utils.Constants;
 import com.example.trabalhocs.Utils.Torradeira;
@@ -32,7 +34,9 @@ import com.example.trabalhocs.View.Dialogs.DialogListaProdutos;
 import com.example.trabalhocs.View.Dialogs.DialogListaRecursos;
 import com.example.trabalhocs.View.Itens.RecursoAdicionarIngredienteItemView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -75,7 +79,6 @@ public class CadastrarModeloProdutoActivity extends AppCompatActivity implements
 
     private ModeloProduto produto;
     private boolean temItens = false;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -171,6 +174,31 @@ public class CadastrarModeloProdutoActivity extends AppCompatActivity implements
         }
     }
 
+    @OnClick(R.id.btn_confirmar)
+    void onClickBtnConfirmar() {
+
+        try {
+            List<RecursoAdicionarIngredienteItemView> listaIngredientes = recursoController.getIngredientesList();
+
+            Map<ModeloRecurso, Integer> mapIngredientesTeste = new HashMap<>();
+
+            for (RecursoAdicionarIngredienteItemView ingrediente : listaIngredientes) {
+                mapIngredientesTeste.put(ingrediente.getRecurso(), ingrediente.getQuantidade());
+            }
+
+            ModeloFabricacaoProduto modelo = new ModeloFabricacaoProduto(produto, mapIngredientesTeste, Integer.parseInt(etQuantidade.getText().toString()));
+            modelo.save();
+
+            Torradeira.shortToast(getString(R.string.cadastro_sucesso), this);
+            setResult(RESULT_OK);
+            finish();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Torradeira.erroToast(this);
+        }
+    }
+
     private void abrirDialogListaRecursos() {
         DialogListaRecursos dialogListaRecursos = new DialogListaRecursos(this, recursoController.getRecursoList(), Constants.CADASTRO_MODELO_PRODUTO);
         final AlertDialog dialog = dialogListaRecursos.show();
@@ -205,15 +233,8 @@ public class CadastrarModeloProdutoActivity extends AppCompatActivity implements
 
         dialogAvisoSalvar.buttonContinuar.setOnClickListener(v -> {
             dialog.dismiss();
-
+            setResult(RESULT_CANCELED);
             finish();
         });
     }
-
-    @OnClick(R.id.btn_confirmar)
-    void onClickBtnConfirmar() {
-        Torradeira.shortToast("cadastrou o modelo!", this);
-        // TODO: 09/01/2020
-    }
-
 }

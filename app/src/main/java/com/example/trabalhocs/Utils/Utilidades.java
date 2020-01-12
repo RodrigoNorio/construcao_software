@@ -14,6 +14,7 @@ import com.example.trabalhocs.View.Itens.RecursoCompraItemView;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Currency;
 import java.util.HashMap;
 import java.util.List;
@@ -119,9 +120,9 @@ public class Utilidades {
     public static void geraProdutosTeste() {
         List<ModeloProduto> list = new ArrayList<>();
 
-        list.add(new ModeloProduto("brownie comum", "um brownie padrão, feito com chocolate meio amargo", 10, 3.5));
         list.add(new ModeloProduto("brigadeiro de pote", "o clássico brigadeiro num potinho", 15, 4.5));
         list.add(new ModeloProduto("bombom morangão", "um delicioso morango coberto por uma camada de beijinho e uma crosta de chocolate ao leite", 5, 5.0));
+        list.add(new ModeloProduto("brownie comum", "um brownie padrão, feito com chocolate meio amargo", 10, 3.5));
 
         for (ModeloProduto produto : list) {
             produto.save();
@@ -142,36 +143,29 @@ public class Utilidades {
         }
     }
 
-    public static void limpaDadosProdutos() {
-        ModeloProduto.deleteAll(ModeloProduto.class);
-    }
-
-    public static void limpaDadosRecursos() {
-        ModeloRecurso.deleteAll(ModeloRecurso.class);
-    }
-
-    public static List<ModeloFabricacaoProduto> getListaModeloFabricacaoProdutoTeste(Context context) {
-        List<ModeloFabricacaoProduto> list = new ArrayList<>();
-
+    public static void geraModeloFabricacaoProdutoTeste(Context context) {
         try {
-            ModeloProduto produtoTeste = new ModeloProduto("brownie comum", "um brownie padrão, feito com chocolate meio amargo", 10, 4.2);
+
+            List<ModeloProduto> produtoList = ModeloProduto.listAll(ModeloProduto.class);
+            ModeloProduto produtoTeste = produtoList.get(produtoList.size() - 1);
+
             Map<ModeloRecurso, Integer> mapIngredientesTeste = new HashMap<>();
 
             List<ModeloRecurso> ingredientesTeste = ModeloRecurso.listAll(ModeloRecurso.class);
-            int[] quantidades = {1, 500, 1, 10, 14};
+            Collections.reverse(ingredientesTeste);
+            int[] quantidades = {14, 10, 1, 500, 1};
 
             for (int i = 0; i < quantidades.length; i++) {
                 mapIngredientesTeste.put(ingredientesTeste.get(i), quantidades[i]);
             }
 
-            list.add(new ModeloFabricacaoProduto(1, produtoTeste, mapIngredientesTeste, 30));
+            ModeloFabricacaoProduto modelo =  new ModeloFabricacaoProduto(produtoTeste, mapIngredientesTeste, 30);
+            modelo.save();
 
         } catch (Exception e) {
             e.printStackTrace();
             Torradeira.shortToast("Algo deu errado!", context);
         }
-
-        return  list;
     }
 
     public static List<ModeloVenda> getListaModeloVendaTeste() {
@@ -212,5 +206,17 @@ public class Utilidades {
         }
 
         return  list;
+    }
+
+    public static void limpaDadosProdutos() {
+        ModeloProduto.deleteAll(ModeloProduto.class);
+    }
+
+    public static void limpaDadosRecursos() {
+        ModeloRecurso.deleteAll(ModeloRecurso.class);
+    }
+
+    public static void limpaDadosModelosFabricacao() {
+        ModeloFabricacaoProduto.deleteAll(ModeloFabricacaoProduto.class);
     }
 }
