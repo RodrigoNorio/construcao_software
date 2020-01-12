@@ -93,7 +93,7 @@ public class DialogFabricacaoProduto extends AlertDialog.Builder {
             ingredientes.add(new RecursoAdicionarIngredienteItemView(entrada.getKey(), entrada.getValue()));
         }
 
-        recursoController = new RecursoController(recursoList);
+        recursoController = new RecursoController();
         recursoController.addListaRecursoIngrediente(ingredientes);
 
         adapterListaRecursosModeloProduto = new AdapterListaRecursosModeloProduto(context, recursoController, false);

@@ -19,7 +19,6 @@ import com.example.trabalhocs.Controller.RecursoController;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.Utils.Constants;
 import com.example.trabalhocs.Utils.Torradeira;
-import com.example.trabalhocs.Utils.Utilidades;
 import com.example.trabalhocs.View.Dialogs.DialogAvisoVoltar;
 import com.example.trabalhocs.View.Dialogs.DialogListaRecursos;
 import com.example.trabalhocs.View.Itens.RecursoCompraItemView;
@@ -58,7 +57,7 @@ public class RegistrarCompraActivity extends AppCompatActivity implements Recurs
     }
 
     private void config() {
-        recursoController = new RecursoController(this, Utilidades.getListaRecursosTeste());
+        recursoController = new RecursoController(this);
         AdapterListaCompra adapterCompraRecurso = new AdapterListaCompra(this, recursoController);
 
         rvListaCompras.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));

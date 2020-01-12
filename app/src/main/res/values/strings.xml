@@ -131,5 +131,7 @@
     <string name="texto_desc_configs">Atenção! Os botões abaixo alteram o banco de dados do aplicativo permanentemente!</string>
     <string name="btn_limpar_bd">limpar o banco de dados</string>
     <string name="btn_dados_teste">inserir dados de teste</string>
+    <string name="texto_lista_recurso_vazia">Você ainda não possui nenhum recurso cadastrado, utilize o botão abaixo para cadastrar um novo recurso</string>
+    <string name="cadastro_sucesso">cadastro realizado com sucesso</string>
 
 </resources>

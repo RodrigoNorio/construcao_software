@@ -89,7 +89,7 @@ public class CadastrarModeloProdutoActivity extends AppCompatActivity implements
     }
 
     private void config() {
-        recursoController = new RecursoController(this, Utilidades.getListaRecursosTeste());
+        recursoController = new RecursoController(this);
         produtoController = new ProdutoController(this, Utilidades.getListaProdutosTeste());
 
         rvListaCompras.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));

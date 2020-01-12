@@ -34,7 +34,7 @@ public class ProdutoVendaItemView {
         return produto.getNome();
     }
 
-    public int getIdProduto() {
+    public long getIdProduto() {
         return produto.getId();
     }
 

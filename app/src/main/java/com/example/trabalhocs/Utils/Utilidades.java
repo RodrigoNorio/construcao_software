@@ -119,33 +119,39 @@ public class Utilidades {
     public static List<ModeloProduto> getListaProdutosTeste() {
         List<ModeloProduto> list = new ArrayList<>();
 
-        list.add(new ModeloProduto(1, "brownie comum", "um brownie padrão, feito com chocolate meio amargo", 10, 4.2));
-        list.add(new ModeloProduto(2, "blondie", "um brownie branco, feito com chocolate branco", 15, 3.5));
-        list.add(new ModeloProduto(3, "bombom morangão", "um delicioso coberto por uma camada de beijinho e uma crosta de chocolate ao leite", 5, 5.0));
+        list.add(new ModeloProduto("brownie comum", "um brownie padrão, feito com chocolate meio amargo", 10, 4.2));
+        list.add(new ModeloProduto("blondie", "um brownie branco, feito com chocolate branco", 15, 3.5));
+        list.add(new ModeloProduto("bombom morangão", "um delicioso coberto por uma camada de beijinho e uma crosta de chocolate ao leite", 5, 5.0));
 
         return list;
     }
 
-    public static List<ModeloRecurso> getListaRecursosTeste() {
+    public static void geraRecursosTeste() {
         List<ModeloRecurso> list = new ArrayList<>();
 
-        list.add(new ModeloRecurso(1, "Leite Integral", "Leite de vaca integral", Constants.TIPO_MEDIDA_LITRO, 5));
-        list.add(new ModeloRecurso(2, "Achocolatado", "Achocolatado em pó comum", Constants.TIPO_MEDIDA_GRAMAS, 3000));
-        list.add(new ModeloRecurso(3, "Açucar", "Açucar branco padrão", Constants.TIPO_MEDIDA_KILO, 10));
-        list.add(new ModeloRecurso(4, "Extrato de baunilha", "Extrato liquido de baunilha, usado para perfumar e enriquecer receitas doces", Constants.TIPO_MEDIDA_MILILITRO, 200));
-        list.add(new ModeloRecurso(5, "Ovo", "Ovos de galinha, podem ser brancos os marrons não faz diferença!", Constants.TIPO_MEDIDA_UNIDADE, 24));
+        list.add(new ModeloRecurso("Leite Integral", "Leite de vaca integral", Constants.TIPO_MEDIDA_LITRO, 5));
+        list.add(new ModeloRecurso("Achocolatado", "Achocolatado em pó comum", Constants.TIPO_MEDIDA_GRAMAS, 3000));
+        list.add(new ModeloRecurso("Açucar", "Açucar branco padrão", Constants.TIPO_MEDIDA_KILO, 10));
+        list.add(new ModeloRecurso("Extrato de baunilha", "Extrato liquido de baunilha, usado para perfumar e enriquecer receitas doces", Constants.TIPO_MEDIDA_MILILITRO, 200));
+        list.add(new ModeloRecurso("Ovo", "Ovos de galinha, podem ser brancos os marrons não faz diferença!", Constants.TIPO_MEDIDA_UNIDADE, 24));
 
-        return list;
+        for (ModeloRecurso recurso: list) {
+            recurso.save();
+        }
+    }
+
+    public static void limpaDadosRecursos() {
+        ModeloRecurso.deleteAll(ModeloRecurso.class);
     }
 
     public static List<ModeloFabricacaoProduto> getListaModeloFabricacaoProdutoTeste(Context context) {
         List<ModeloFabricacaoProduto> list = new ArrayList<>();
 
         try {
-            ModeloProduto produtoTeste = new ModeloProduto(1, "brownie comum", "um brownie padrão, feito com chocolate meio amargo", 10, 4.2);
+            ModeloProduto produtoTeste = new ModeloProduto("brownie comum", "um brownie padrão, feito com chocolate meio amargo", 10, 4.2);
             Map<ModeloRecurso, Integer> mapIngredientesTeste = new HashMap<>();
 
-            List<ModeloRecurso> ingredientesTeste = getListaRecursosTeste();
+            List<ModeloRecurso> ingredientesTeste = ModeloRecurso.listAll(ModeloRecurso.class);
             int[] quantidades = {1, 500, 1, 10, 14};
 
             for (int i = 0; i < quantidades.length; i++) {
@@ -164,13 +170,19 @@ public class Utilidades {
 
     public static List<ModeloVenda> getListaModeloVendaTeste() {
         List<ModeloVenda> list = new ArrayList<>();
-        List<ProdutoVendaItemView> listaProdutosVenda = new ArrayList<>();
-        List<ModeloProduto> listaProdutos = getListaProdutosTeste();
 
-        listaProdutosVenda.add(new ProdutoVendaItemView(listaProdutos.get(0),5));
-        listaProdutosVenda.add(new ProdutoVendaItemView(listaProdutos.get(2),2));
+        try {
+            List<ProdutoVendaItemView> listaProdutosVenda = new ArrayList<>();
+            List<ModeloProduto> listaProdutos = getListaProdutosTeste();
 
-        list.add(new ModeloVenda(1, "15/12/2019 20:30:21", listaProdutosVenda));
+            listaProdutosVenda.add(new ProdutoVendaItemView(listaProdutos.get(0),5));
+            listaProdutosVenda.add(new ProdutoVendaItemView(listaProdutos.get(2),2));
+
+            list.add(new ModeloVenda(1, "15/12/2019 20:30:21", listaProdutosVenda));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return list;
     }
@@ -178,15 +190,20 @@ public class Utilidades {
     public static List<ModeloCompra> getListaModeloCompraTeste() {
         List<ModeloCompra> list = new ArrayList<>();
 
-        List<ModeloRecurso> recursosTeste = getListaRecursosTeste();
-        int[] quantidades = {1, 500, 1, 10, 14};
+        try {
+            List<ModeloRecurso> recursosTeste = ModeloRecurso.listAll(ModeloRecurso.class);
+            int[] quantidades = {1, 500, 1, 10, 14};
 
-        List<RecursoCompraItemView> listaRecursosCompra = new ArrayList<>();
+            List<RecursoCompraItemView> listaRecursosCompra = new ArrayList<>();
 
-        listaRecursosCompra.add(new RecursoCompraItemView(recursosTeste.get(0), 1, 3.45));
-        listaRecursosCompra.add(new RecursoCompraItemView(recursosTeste.get(1), 200, 10));
+            listaRecursosCompra.add(new RecursoCompraItemView(recursosTeste.get(0), 1, 3.45));
+            listaRecursosCompra.add(new RecursoCompraItemView(recursosTeste.get(1), 200, 10));
 
-        list.add(new ModeloCompra(1, "15/12/2019 08:02:56", listaRecursosCompra));
+            list.add(new ModeloCompra(1, "15/12/2019 08:02:56", listaRecursosCompra));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return  list;
     }

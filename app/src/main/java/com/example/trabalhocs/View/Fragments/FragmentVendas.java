@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.trabalhocs.Adapter.AdapterEstoqueSimplificado;
@@ -19,6 +20,7 @@ import com.example.trabalhocs.Adapter.AdapterInventarioSimplificado;
 import com.example.trabalhocs.Model.ModeloProduto;
 import com.example.trabalhocs.Model.ModeloRecurso;
 import com.example.trabalhocs.R;
+import com.example.trabalhocs.Utils.Constants;
 import com.example.trabalhocs.Utils.Utilidades;
 import com.example.trabalhocs.View.ConfiguracoesActivity;
 import com.example.trabalhocs.View.EstoqueActivity;
@@ -35,6 +37,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static android.app.Activity.RESULT_OK;
 
 public class FragmentVendas extends Fragment {
 
@@ -122,7 +126,7 @@ public class FragmentVendas extends Fragment {
             }
 
             //Card recursos
-            List<ModeloRecurso> listaPreviaRecursos = new ArrayList<>(Utilidades.getListaRecursosTeste()); // TODO: 05/01/2020 mudar aqui
+            List<ModeloRecurso> listaPreviaRecursos = ModeloRecurso.listAll(ModeloRecurso.class);
 
             if (!listaPreviaRecursos.isEmpty()) {
                 if (listaPreviaRecursos.size() > 10) {
@@ -142,6 +146,15 @@ public class FragmentVendas extends Fragment {
 
         }
 
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == Constants.CONFIGURACOES && resultCode == RESULT_OK) {
+            config();
+        }
     }
 
     private void mostrarMenu() {
@@ -321,7 +334,7 @@ public class FragmentVendas extends Fragment {
     @OnClick(R.id.btn_configuracoes)
     void onClickBtnConfiguracoes() {
         Intent intent = new Intent(getContext(), ConfiguracoesActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, Constants.CONFIGURACOES);
     }
 
     @OnClick(R.id.btn_historico)

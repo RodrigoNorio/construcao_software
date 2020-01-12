@@ -5,24 +5,23 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 
 import com.example.trabalhocs.Utils.Utilidades;
+import com.orm.SugarRecord;
 
-public class ModeloRecurso {
+public class ModeloRecurso extends SugarRecord {
 
-    private int id_recurso;
     private String nome;
     private String descricao;
     private int tipoMedida;
     private int inventario;
 
-    public ModeloRecurso(int id_recurso, String nome, String descricao, int tipoMedida, int inventario) {
-        this.id_recurso = id_recurso;
+    public ModeloRecurso() {
+    }
+
+    public ModeloRecurso(String nome, String descricao, int tipoMedida, int inventario) {
         this.nome = nome;
         this.descricao = descricao;
         this.tipoMedida = tipoMedida;
         this.inventario = inventario;
-    }
-
-    public ModeloRecurso() {
     }
 
     @NonNull
@@ -30,7 +29,7 @@ public class ModeloRecurso {
     public String toString() {
         String retorno = "";
 
-        retorno += "Recurso # " + id_recurso + " " + nome + "\n";
+        retorno += "Recurso # " + getId()  + " " + nome + "\n";
         retorno += "Em inventário: " + inventario;
 
         return retorno;
@@ -42,10 +41,6 @@ public class ModeloRecurso {
 
     public String getTextoEstoque(Context context) {
         return inventario + " " + Utilidades.getMedidaText(context, tipoMedida);
-    }
-
-    public int getId_recurso() {
-        return id_recurso;
     }
 
     public String getNome() {

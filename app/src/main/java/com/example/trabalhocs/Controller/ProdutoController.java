@@ -46,8 +46,8 @@ public class ProdutoController {
         selecionadosList = new ArrayList<>();
 
         for (ModeloProduto p: produtos) {
-            produtosMapa.append(p.getId(), p);
-            produtosViews.append(p.getId(), new ProdutoVendaItemView(p, 0));
+            produtosMapa.append(p.getId().intValue(), p);
+            produtosViews.append(p.getId().intValue(), new ProdutoVendaItemView(p, 0));
         }
     }
 
@@ -55,10 +55,10 @@ public class ProdutoController {
         return  selecionadosList;
     }
     
-    public void updateMap(int produtoId, int qtd) {
-        ProdutoVendaItemView pView = produtosViews.get(produtoId);
+    public void updateMap(Long produtoId, int qtd) {
+        ProdutoVendaItemView pView = produtosViews.get(produtoId.intValue());
         pView.setQuantidade(qtd);
-        produtosViews.put(produtoId, pView);
+        produtosViews.put(produtoId.intValue(), pView);
 
         total = 0.0;
 

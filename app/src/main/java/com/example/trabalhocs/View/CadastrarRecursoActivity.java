@@ -81,11 +81,14 @@ public class CadastrarRecursoActivity extends AppCompatActivity {
                 String descricao = etDescricao.getText().toString();
                 int quantidade = Integer.parseInt(etEstoque.getText().toString());
 
-                ModeloRecurso novoRecurso = new ModeloRecurso(13, nome, descricao, positionMedidaSelecionada, quantidade);
+                ModeloRecurso novoRecurso = new ModeloRecurso(nome, descricao, positionMedidaSelecionada, quantidade);
 
-                // TODO: 11/01/2020 Salvar no recurso no banco
+                novoRecurso.save();
                 
-                Torradeira.shortToast("cadastrou: " + novoRecurso.toString(), this);
+                Torradeira.shortToast(getString(R.string.cadastro_sucesso), this);
+
+                setResult(RESULT_OK);
+                finish();
             }
             
         } catch (Exception e) {
@@ -123,5 +126,11 @@ public class CadastrarRecursoActivity extends AppCompatActivity {
     @OnClick(R.id.btn_voltar)
     void onClickBtnVoltar() {
         onBackPressed();
+    }
+
+    @Override
+    public void onBackPressed() {
+        setResult(RESULT_CANCELED);
+        finish();
     }
 }

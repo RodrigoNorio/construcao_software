@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentManager;
 import com.example.trabalhocs.View.Fragments.FragmentHome;
 import com.example.trabalhocs.View.Fragments.FragmentVendas;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.orm.SugarContext;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        SugarContext.init(this);
+
         setupFragments();
 
         // Configura a barra de navegação
@@ -55,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setSelectedItemId(R.id.nav_home);
     }
 
+
+
     /**
      * Carrega os fragments e exibe o fragment principal primeiro
      */
@@ -75,4 +80,9 @@ public class MainActivity extends AppCompatActivity {
         fragmentAtivo = fragment;
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SugarContext.terminate();
+    }
 }

@@ -96,7 +96,7 @@ public class CadastrarProdutoActivity extends AppCompatActivity {
                 int estoque = Integer.parseInt(etEstoque.getText().toString());
                 double valor = Utilidades.removeCifraoValor(etValor);
 
-                ModeloProduto novoProduto = new ModeloProduto(13, nome, descricao, estoque, valor);
+                ModeloProduto novoProduto = new ModeloProduto(nome, descricao, estoque, valor);
 
                 // TODO: 11/01/2020 Salvar o novo produto no banco 
 

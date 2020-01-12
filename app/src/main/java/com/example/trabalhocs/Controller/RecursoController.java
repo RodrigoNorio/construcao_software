@@ -24,17 +24,17 @@ public class RecursoController {
     /**
      * construtor estoque activity
      */
-    public RecursoController(List<ModeloRecurso> recursoList) {
-        this.recursoList = recursoList;
+    public RecursoController() {
+        this.recursoList = ModeloRecurso.listAll(ModeloRecurso.class);
         recursoController = this;
     }
 
     /**
      * construtor cadastro de modelo de produto
      */
-    public RecursoController(CadastroModeloProdutoListener listener, List<ModeloRecurso> recursoList) {
+    public RecursoController(CadastroModeloProdutoListener listener) {
         this.cadastroModeloProdutoListener = listener;
-        this.recursoList = recursoList;
+        this.recursoList = ModeloRecurso.listAll(ModeloRecurso.class);
 
         ingredientesList = new ArrayList<>();
 
@@ -44,10 +44,12 @@ public class RecursoController {
     /**
      * construtor registro de compra
      */
-    public RecursoController(CompraRecursosListener listener, List<ModeloRecurso> recursoList) {
+    public RecursoController(CompraRecursosListener listener) {
         this.compraRecursosListener = listener;
-        this.recursoList = recursoList;
+        this.recursoList = ModeloRecurso.listAll(ModeloRecurso.class);
+
         compraList = new ArrayList<>();
+
         recursoController = this;
     }
 
@@ -77,6 +79,10 @@ public class RecursoController {
     public void removeRecursoIngrediente(RecursoAdicionarIngredienteItemView recursoAdicionarIngredienteItemView) {
         ingredientesList.remove(recursoAdicionarIngredienteItemView);
         if (cadastroModeloProdutoListener != null) cadastroModeloProdutoListener.atualizaListaIngredientes();
+    }
+
+    public boolean isRecursoListEmpty() {
+        return recursoList.isEmpty();
     }
 
     public List<ModeloRecurso> getRecursoList() {

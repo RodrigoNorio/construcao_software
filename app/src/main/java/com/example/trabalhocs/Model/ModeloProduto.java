@@ -3,10 +3,10 @@ package com.example.trabalhocs.Model;
 import androidx.annotation.NonNull;
 
 import com.example.trabalhocs.Utils.Utilidades;
+import com.orm.SugarRecord;
 
-public class ModeloProduto {
+public class ModeloProduto extends SugarRecord {
 
-    private int id;
     private String nome;
     private String descricao;
     private int estoque;
@@ -15,8 +15,7 @@ public class ModeloProduto {
     public ModeloProduto() {
     }
 
-    public ModeloProduto(int id, String nome, String descricao, int estoque, double valorUnitario) {
-        this.id = id;
+    public ModeloProduto(String nome, String descricao, int estoque, double valorUnitario) {
         this.nome = nome;
         this.descricao = descricao;
         this.estoque = estoque;
@@ -28,7 +27,7 @@ public class ModeloProduto {
     public String toString() {
         String retorno = "";
 
-        retorno += "Produto # " + id + " " + nome + "\n";
+        retorno += "Produto # " + getId()  + " " + nome + "\n";
         retorno += "Estoque: " + estoque + "\n";
         retorno += "Valor Unitário: R$" + valorUnitario;
 
@@ -37,10 +36,6 @@ public class ModeloProduto {
 
     public String getValorUnitarioText() {
         return Utilidades.formataReais(valorUnitario);
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getNome() {

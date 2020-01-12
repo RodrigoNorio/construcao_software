@@ -17,4 +17,9 @@ public class Constants {
     //AdapterListaRecursos
     public static final int COMPRA_RECURSOS = 1;
     public static final int CADASTRO_MODELO_PRODUTO = 2;
+
+    //RequestCodes
+    public static final int CADASTRAR_NOVO_RECURSO = 1;
+    public static final int CONFIGURACOES = 2;
+
 }
