@@ -77,4 +77,13 @@ public class ModeloProduto extends SugarRecord {
     public void setValorUnitario(double valorUnitario) {
         this.valorUnitario = valorUnitario;
     }
+
+    public boolean testeProdutoValido() {
+        if (this.getNome().isEmpty()) return false;
+        if (this.getDescricao() == null) return  false;
+        if (this.getEstoque() < 0) return false;
+        if (this.valorUnitario <= 0) return false;
+
+        return  true;
+    }
 }

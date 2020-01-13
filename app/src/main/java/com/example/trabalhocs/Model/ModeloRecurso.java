@@ -4,6 +4,7 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
+import com.example.trabalhocs.Utils.Constants;
 import com.example.trabalhocs.Utils.Utilidades;
 import com.orm.SugarRecord;
 
@@ -77,5 +78,18 @@ public class ModeloRecurso extends SugarRecord {
         retorno += "Em inventário: " + inventario;
 
         return retorno;
+    }
+
+    public boolean testeRecursoValido() {
+        boolean validade = true;
+
+        if (this.getNome().isEmpty()) validade = false;
+        if (this.getInventario() < 0) validade = false;
+
+        if (this.getTipoMedida() != Constants.TIPO_MEDIDA_GRAMAS &&
+            this.getTipoMedida() != Constants.TIPO_MEDIDA_MILILITRO &&
+            this.getTipoMedida() != Constants.TIPO_MEDIDA_UNIDADE) validade = false;
+
+        return  validade;
     }
 }

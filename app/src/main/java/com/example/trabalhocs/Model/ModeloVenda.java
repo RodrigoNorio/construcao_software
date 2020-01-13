@@ -103,4 +103,17 @@ public class ModeloVenda extends SugarRecord {
     public double getTotal() {
         return total;
     }
+
+    public boolean testeVendaValida() {
+        if (this.getListaProdutos() == null) return  false;
+
+        for (ProdutoVendaItemView produto : this.getListaProdutos()) {
+            if (!produto.getProduto().testeProdutoValido()) return false;
+        }
+
+        if (this.getDateTime().isEmpty()) return  false;
+        if (this.total <= 0) return false;
+
+        return  true;
+    }
 }
