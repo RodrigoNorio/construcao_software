@@ -38,7 +38,7 @@ public class Utilidades {
     }
 
     public static String getMedidaText(Context context, int id) {
-        String abreviacao = "";
+        String abreviacao;
 
         switch (id) {
             case Constants.TIPO_MEDIDA_GRAMAS:
@@ -62,7 +62,7 @@ public class Utilidades {
     }
 
     public static String getMedidaAbrev(Context context, int id) {
-        String abreviacao = "";
+        String abreviacao;
 
         switch (id) {
             case Constants.TIPO_MEDIDA_GRAMAS:

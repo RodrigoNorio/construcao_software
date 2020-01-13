@@ -97,4 +97,20 @@ public class ModeloFabricacaoProduto extends SugarRecord {
     public int getQuantidade() {
         return quantidade;
     }
+
+    public boolean testeModeloFabricacaoProdutoValido() {
+        if (this.getMapIngredientes() == null) return false;
+
+        for (Map.Entry<ModeloRecurso, Integer> entrada : this.getMapIngredientes().entrySet()) {
+            if (!entrada.getKey().testeRecursoValido()) return  false;
+        }
+
+        if (this.getProduto() == null || !this.getProduto().testeProdutoValido()) return false;
+
+        if (this.getQuantidade() < 0) return false;
+
+        if (recursosIds.isEmpty() || quantidadesIngredientes.isEmpty()) return false;
+
+        return  true;
+    }
 }

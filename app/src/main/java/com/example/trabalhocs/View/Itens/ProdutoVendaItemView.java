@@ -38,6 +38,10 @@ public class ProdutoVendaItemView {
         return produto.getId();
     }
 
+    public ModeloProduto getProduto() {
+        return produto;
+    }
+
     public double getValorVenda() {
         return produto.getValorUnitario() * quantidade;
     }

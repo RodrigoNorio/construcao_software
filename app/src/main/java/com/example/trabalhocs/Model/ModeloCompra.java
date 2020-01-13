@@ -94,4 +94,17 @@ public class ModeloCompra extends SugarRecord {
     public List<RecursoCompraItemView> getListaCompra() {
         return listaCompra;
     }
+
+    public boolean testeVendaValida() {
+        if (this.getListaCompra() == null) return  false;
+
+        for (RecursoCompraItemView recurso : this.getListaCompra()) {
+            if (!recurso.getRecurso().testeRecursoValido()) return false;
+        }
+
+        if (this.getDateTime().isEmpty()) return  false;
+        if (this.valorCompra <= 0) return false;
+
+        return  true;
+    }
 }
