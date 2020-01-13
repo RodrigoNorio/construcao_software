@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="4dp">
+
+    <TextView
+        android:id="@+id/tv_nome"
+        style="@style/textoInformacao"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:gravity="start"
+        android:text="teste de nome de item bem grande Muito grande demais de grande meu pai amado eterno"
+        android:textAlignment="textStart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.6" />
+
+<!--    <TextView-->
+<!--        app:layout_constraintStart_toEndOf="@id/tv_nome"-->
+<!--        app:layout_constraintEnd_toStartOf="@id/ll_inputs"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintWidth_percent="0.2"-->
+<!--        android:text="R$ 155,50"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content" />-->
+
+    <LinearLayout
+        android:id="@+id/ll_inputs"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.4">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btn_menos"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_remover"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_qtd"
+            style="@style/textoInformacaoDestaque"
+            android:layout_width="@dimen/input_qtd_venda_width"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="999" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btn_mais"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_adicionar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_estoque"
+            style="@style/textoInformacao"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginStart="2dp"
+            android:layout_marginLeft="2dp"
+            android:text="(5205)" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

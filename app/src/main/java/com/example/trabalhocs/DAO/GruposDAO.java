@@ -6,10 +6,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-
 import com.example.trabalhocs.Model.ModeloGrupo;
+
 import com.example.trabalhocs.Model.ModeloReceita;
 import com.example.trabalhocs.View.Login;
+
 import com.example.trabalhocs.dbhelper.ConexaoSQlite;
 
 import java.util.ArrayList;

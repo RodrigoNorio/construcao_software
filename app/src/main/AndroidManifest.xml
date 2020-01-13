@@ -9,6 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <meta-data android:name="DATABASE" android:value="componente_vendas.db" />
+        <meta-data android:name="VERSION" android:value="4" />
+        <meta-data android:name="QUERY_LOG" android:value="true" />
+        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.example.trabalhocs" />
+
         <activity
             android:name=".Tutorial.Tutorial_Main_Menu"
             android:label="@string/title_activity_tutorial__main__menu"
@@ -73,6 +79,17 @@
             android:name=".View.GerenciarGrupo"
             android:label="@string/title_activity_gerenciargrupo"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".View.CadastrarRecursoActivity" />
+        <activity android:name=".View.CadastrarProdutoActivity" />
+        <activity android:name=".View.RegistrarVendaActivity" />
+        <activity android:name=".View.EstoqueActivity" />
+        <activity android:name=".View.RegistrarCompraActivity" />
+        <activity android:name=".View.InventarioActivity" />
+        <activity android:name=".View.CadastrarModeloProdutoActivity"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".View.FabricarProdutoActivity" />
+        <activity android:name=".View.HistoricoActivity" />
+        <activity android:name=".View.ConfiguracoesActivity" />
     </application>
 
 </manifest>

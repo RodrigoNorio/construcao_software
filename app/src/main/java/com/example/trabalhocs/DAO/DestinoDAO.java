@@ -5,7 +5,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-
 import com.example.trabalhocs.Model.ModeloDestino;
 import com.example.trabalhocs.View.Login;
 import com.example.trabalhocs.dbhelper.ConexaoSQlite;

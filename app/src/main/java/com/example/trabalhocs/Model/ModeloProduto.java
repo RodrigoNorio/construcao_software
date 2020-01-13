@@ -2,15 +2,24 @@ package com.example.trabalhocs.Model;
 
 import androidx.annotation.NonNull;
 
-public class ModeloProduto {
+import com.example.trabalhocs.Utils.Utilidades;
+import com.orm.SugarRecord;
 
-    private int id_produto;
+public class ModeloProduto extends SugarRecord {
+
     private String nome;
     private String descricao;
-    private int inventario;
+    private int estoque;
     private double valorUnitario;
 
     public ModeloProduto() {
+    }
+
+    public ModeloProduto(String nome, String descricao, int estoque, double valorUnitario) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.estoque = estoque;
+        this.valorUnitario = valorUnitario;
     }
 
     @NonNull
@@ -18,15 +27,23 @@ public class ModeloProduto {
     public String toString() {
         String retorno = "";
 
-        retorno += "Produto # " + id_produto + " " + nome + "\n";
-        retorno += "Em inventário: " + inventario + "\n";
+        retorno += "Produto # " + getId()  + " " + nome + "\n";
+        retorno += "Estoque: " + estoque + "\n";
         retorno += "Valor Unitário: R$" + valorUnitario;
 
         return retorno;
     }
 
-    public int getId_produto() {
-        return id_produto;
+    public void incrementarEstoque(int quantidade) {
+        this.estoque += quantidade;
+    }
+
+    public void decrementarEstoque(int quantidade) {
+        this.estoque -= quantidade;
+    }
+
+    public String getValorUnitarioText() {
+        return Utilidades.formataReais(valorUnitario);
     }
 
     public String getNome() {
@@ -45,12 +62,12 @@ public class ModeloProduto {
         this.descricao = descricao;
     }
 
-    public int getInventario() {
-        return inventario;
+    public int getEstoque() {
+        return estoque;
     }
 
-    public void setInventario(int inventario) {
-        this.inventario = inventario;
+    public void setEstoque(int estoque) {
+        this.estoque = estoque;
     }
 
     public double getValorUnitario() {
@@ -59,5 +76,14 @@ public class ModeloProduto {
 
     public void setValorUnitario(double valorUnitario) {
         this.valorUnitario = valorUnitario;
+    }
+
+    public boolean testeProdutoValido() {
+        if (this.getNome().isEmpty()) return false;
+        if (this.getDescricao() == null) return  false;
+        if (this.getEstoque() < 0) return false;
+        if (this.valorUnitario <= 0) return false;
+
+        return  true;
     }
 }

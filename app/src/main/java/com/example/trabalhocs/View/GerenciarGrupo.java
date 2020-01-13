@@ -3,21 +3,6 @@ package com.example.trabalhocs.View;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-
-import com.example.trabalhocs.Adapter.AdapterListaFonte;
-import com.example.trabalhocs.Adapter.AdapterListaGrupo;
-import com.example.trabalhocs.Controller.FonteCtrl;
-import com.example.trabalhocs.Controller.GrupoCtrl;
-import com.example.trabalhocs.Model.ModeloFonte;
-import com.example.trabalhocs.Model.ModeloGrupo;
-import com.example.trabalhocs.R;
-import com.example.trabalhocs.dbhelper.ConexaoSQlite;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -25,6 +10,15 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import com.example.trabalhocs.Adapter.AdapterListaGrupo;
+import com.example.trabalhocs.Controller.GrupoCtrl;
+import com.example.trabalhocs.Model.ModeloGrupo;
+import com.example.trabalhocs.R;
+import com.example.trabalhocs.dbhelper.ConexaoSQlite;
 
 import java.util.ArrayList;
 import java.util.List;

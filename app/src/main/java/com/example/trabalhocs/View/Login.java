@@ -2,19 +2,18 @@ package com.example.trabalhocs.View;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.trabalhocs.Controller.LoginCtrl;
 import com.example.trabalhocs.MainActivity;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.dbhelper.ConexaoSQlite;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class Login extends AppCompatActivity {
     public static int codusuario;

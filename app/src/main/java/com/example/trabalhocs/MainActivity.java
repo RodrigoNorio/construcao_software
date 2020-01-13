@@ -1,29 +1,22 @@
 package com.example.trabalhocs;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.InputType;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.example.trabalhocs.Model.ModeloReceita;
 import com.example.trabalhocs.Tutorial.Tutorial_Main_Menu;
 import com.example.trabalhocs.View.Fragments.FragmentHome;
 import com.example.trabalhocs.View.Fragments.FragmentVendas;
 import com.example.trabalhocs.View.GerenciarDestinos;
 import com.example.trabalhocs.View.GerenciarGrupo;
-import com.example.trabalhocs.View.ListarFontesAdd;
 import com.example.trabalhocs.View.GerenciarReceita;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.orm.SugarContext;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -49,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        SugarContext.init(this);
+
         setupFragments();
 
         // Configura a barra de navegação
@@ -68,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
 
         // O fragment principal é exibido inicialmente
         navigationView.setSelectedItemId(R.id.nav_home);
-
     }
 
     /**
@@ -107,5 +101,11 @@ public class MainActivity extends AppCompatActivity {
     public void tutorialmainmenu (View view){
         Intent it = new Intent (MainActivity.this, Tutorial_Main_Menu.class);
         startActivity(it);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SugarContext.terminate();
     }
 }
