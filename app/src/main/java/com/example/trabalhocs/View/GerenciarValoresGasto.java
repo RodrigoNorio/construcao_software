@@ -39,14 +39,12 @@ public class GerenciarValoresGasto extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gerenciar_valoresgasto);
-        //Toolbar toolbar = findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-
         GerenciarGasto GerenciarGasto = new GerenciarGasto();
         final int selecionar = GerenciarGasto.selecionardestino;
         listargastos(selecionar);
 
-        SearchView searchView = (SearchView) findViewById(R.id.searchdata);
+        SearchView searchView = (SearchView) findViewById(R.id.searchdatagasto);
+
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

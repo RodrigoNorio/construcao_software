@@ -64,6 +64,14 @@ public class GerenciarDestinos extends AppCompatActivity {
             }
         });
 
+        /*Button btnverificardingastos = (Button) findViewById(R.id.verificardingastos);
+        btnverificardingastos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertdialogverificardin();
+            }
+        });*/
+
         SearchView searchView = (SearchView) findViewById(R.id.buscardestinos);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -205,11 +213,11 @@ public class GerenciarDestinos extends AppCompatActivity {
         alert.create().show();
     }
 
-    /*private void alertdialogverificardin(final int cod_destino){
+    private void alertdialogverificardin(final int cod_destino){
         selecionardestino = cod_destino;
-        Intent it = new Intent (GerenciarDestinos.this, GerenciarGastos.class);
+        Intent it = new Intent (GerenciarDestinos.this, GerenciarValoresGasto.class);
         startActivity(it);
-    }*/
+    }
 
     public void listardestinos(){
 
@@ -254,7 +262,7 @@ public class GerenciarDestinos extends AppCompatActivity {
                 btnverificar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        //alertdialogverificardin(cod_destino);
+                        alertdialogverificardin(cod_destino);
                     }
                 });
             }
