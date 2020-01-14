@@ -4,6 +4,7 @@ public class ModeloGrupo {
     int cod_grupo;
     int cod_destino;
     String nome;
+    int cod_pessoa;
 
     public ModeloGrupo() {
     }
@@ -33,6 +34,13 @@ public class ModeloGrupo {
         this.cod_destino = cod_destino;
     }
 
+    public int getCod_pessoa() {
+        return cod_pessoa;
+    }
+
+    public void setCod_pessoa(int cod_pessoa) {
+        this.cod_pessoa = cod_pessoa;
+    }
 
 
     @Override
@@ -40,7 +48,8 @@ public class ModeloGrupo {
         return "ModeloGrupo{" +
                 "cod_grupo=" + cod_grupo +
                 "cod_destino=" +cod_destino+
-                ", nome='" + nome + '\'' +
+                ", nome='" + nome +
+                ", cod_pessoa='" + cod_pessoa +'\'' +
                 '}';
     }
 

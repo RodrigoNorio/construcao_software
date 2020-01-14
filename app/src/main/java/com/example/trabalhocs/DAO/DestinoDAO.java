@@ -84,7 +84,7 @@ public class DestinoDAO {
     }
 
     public boolean excluirDestinoDAO (long fcodDestino){
-        //exluirDadosGastosDAO(fcodDestino);                   //COMENTADO PQ NAO EXISTE OS GASTOS AINDA
+        exluirDadosGastosDAO(fcodDestino);                   //COMENTADO PQ NAO EXISTE OS GASTOS AINDA
         SQLiteDatabase db = null;
 
         try{

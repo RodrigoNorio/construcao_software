@@ -2,6 +2,7 @@ package com.example.trabalhocs.View;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -36,7 +37,8 @@ public class GerenciarGrupo extends AppCompatActivity {
         setContentView(R.layout.activity_gerenciargrupo);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        getSupportActionBar().setTitle("");
+        ConexaoSQlite conexaoSQlite = ConexaoSQlite.getInstanciaConexao(this);
         listargrupos();
         Button btngrupo = (Button) findViewById(R.id.adicionargrupo);
         btngrupo.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +67,12 @@ public class GerenciarGrupo extends AppCompatActivity {
 
     }
 
-
+    public boolean verificartamanhostring(String s){
+        if (s.length() > 0 && s.length() < 15){
+            return true;
+        }
+        return false;
+    }
 
     public void addgruponome(){
         final EditText grupo_nome;
@@ -82,7 +89,7 @@ public class GerenciarGrupo extends AppCompatActivity {
 
                 grupocadastrar.setNome(grupo_nome.getText().toString());
 
-                if (grupo_nome.getText().length() != 0){
+                if (verificartamanhostring(grupo_nome.getText().toString())){
                     GrupoCtrl grupoCtrl = new GrupoCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarGrupo.this));
                     grupoCtrl.salvarGruposDAOCtrl(grupocadastrar);
                     Toast.makeText(GerenciarGrupo.this, "Grupo cadastrada com sucesso!", Toast.LENGTH_SHORT).show();
@@ -128,12 +135,12 @@ public class GerenciarGrupo extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, final int posicao, long id) {
 
                 adapterListaGrupo.select(posicao);
-
-                ModeloGrupo grupoSelecionado = (ModeloGrupo) adapterListaGrupo.getItem(posicao);
-                final int cod_grupo = grupoSelecionado.getCod_grupo();
+                ModeloGrupo grupoSelecionada = (ModeloGrupo) adapterListaGrupo.getItem(posicao);
+                final int cod_grupo = posicao;
 
                 Button btnexcluir = findViewById(R.id.excluirgrupo);
-
+                Button btneditar = findViewById(R.id.editargrupo);
+                Button btnverificar = findViewById(R.id.verificargrupo);
 
 
                 btnexcluir.setOnClickListener(new View.OnClickListener() {
@@ -142,11 +149,64 @@ public class GerenciarGrupo extends AppCompatActivity {
                         alertdialogexcluirgrupo(cod_grupo);
                     }
                 });
+                /*btneditar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertdialogeeditargrupo(cod_grupo);
+                    }
+                });*/
+                btnverificar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent it = new Intent (GerenciarGrupo.this, GerenciarValoresGrupo.class);
+                        startActivity(it);
+                    }
+                });
 
             }
         });
     }
 
+    /*private void alertdialogeeditargrupo(final int cod_fonte) {
+        final GrupoCtrl grupoCtrl = new GrupoCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarGrupo.this));
+        final EditText fontetxt;
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
+        builder.setMessage("Digite o novo nome da fonte(até 15 caracteres): ");
+        fontetxt = new EditText(this);
+        builder.setView(fontetxt);
+
+        //OK
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ModeloFonte fonteACadastrar = new ModeloFonte();
+                fonteACadastrar.setCodfonte(cod_fonte);
+                fonteACadastrar.setDescricao(fontetxt.getText().toString());
+                if (verificartamanhostring(fontetxt.getText().toString())){
+                    fonteCtrl.atualizarFonteCtrl(fonteACadastrar);
+                    Toast.makeText(GerenciarReceita.this, "Fonte alterada com sucesso!", Toast.LENGTH_SHORT).show();
+                    listarfontes();
+                }
+                else {
+                    Toast.makeText(GerenciarReceita.this, "Preencha o campo corretamente!", Toast.LENGTH_SHORT).show();
+                    alertdialogeeditarfonte(cod_fonte);
+                }
+            }
+        });
+
+        //CANCEL
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        //CRIAR DIALOG
+        final AlertDialog ad = builder.create();
+        ad.show();
+        fontetxt.setText("");
+    }*/
 
     private void alertdialogexcluirgrupo(final int cod_grupo) {
         final GrupoCtrl grupoCtrl = new GrupoCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarGrupo.this));
@@ -183,7 +243,6 @@ public class GerenciarGrupo extends AppCompatActivity {
         alert.create().show();
     }
 
-
     private void searchContact(String keyword) {
         final GrupoCtrl grupoCtrl = new GrupoCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarGrupo.this));
         List<ModeloGrupo> grupos = (List<ModeloGrupo>) grupoCtrl.procurarControler(keyword);
@@ -196,5 +255,7 @@ public class GerenciarGrupo extends AppCompatActivity {
             lsvGrupo.setAdapter(null);
         }
     }
+
+
 
 }

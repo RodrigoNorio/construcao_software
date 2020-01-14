@@ -236,6 +236,7 @@ public class GerenciarReceita extends AppCompatActivity {
 
                 ModeloFonte fonteSelecionada = (ModeloFonte) adapterListaFonte.getItem(posicao);
                 final int cod_fonte = fonteSelecionada.getCodfonte();
+                System.out.println(cod_fonte);
 
                 Button btnexcluir = findViewById(R.id.excluirfonte);
                 Button btneditar = findViewById(R.id.editarfonte);

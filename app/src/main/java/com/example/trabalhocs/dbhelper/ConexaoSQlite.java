@@ -67,7 +67,9 @@ public class ConexaoSQlite extends SQLiteOpenHelper {
                         "cod_grupo INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         "cod_destino INTEGER, " +
                         "nome TEXT NOT NULL," +
-                        "CONSTRAINT fk_cod_destino FOREIGN KEY (cod_destino) REFERENCES destino (cod_destino));";
+                        "cod_pessoa INTEGER NOT NULL,"+
+                        "CONSTRAINT fk_cod_destino FOREIGN KEY (cod_destino) REFERENCES destino (cod_destino)," +
+                        "CONSTRAINT fk_cod_pessoa FOREIGN KEY (cod_pessoa) REFERENCES pessoa (cod_pessoa));";
 
         String sqlTabelaProduto =
                 "CREATE TABLE IF NOT EXISTS produto" +
@@ -97,6 +99,22 @@ public class ConexaoSQlite extends SQLiteOpenHelper {
                         "id_recurso INTEGER NOT NULL,"+
                         "CONSTRAINT fk_id_recurso FOREIGN KEY (id_recurso) REFERENCES recurso (id_recurso));";
 
+        String sqlTabelaGasto =
+                "CREATE TABLE IF NOT EXISTS gasto" +
+                        "(" +
+                        "cod_gasto INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        "valor FLOAT, " +
+                        "data TEXT NOT NULL," +
+                        "cod_destino INTEGER," +
+                        "cod_pessoa INTEGER NOT NULL,"+
+                        "CONSTRAINT fk_cod_destino FOREIGN KEY (cod_gasto) REFERENCES destino (cod_destino),"+
+                        "CONSTRAINT fk_cod_pessoa FOREIGN KEY (cod_pessoa) REFERENCES pessoa (cod_pessoa));";
+
+
+
+
+
+
 //        String sqlTabelaRecursosProduto =
 //                "CREATE TABLE IF NOT EXISTS recursos_produto " +
 //                        "(" +
@@ -109,6 +127,7 @@ public class ConexaoSQlite extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL(sqlTabelaPessoa);
         sqLiteDatabase.execSQL(sqlTabelaDestino);
+        sqLiteDatabase.execSQL(sqlTabelaGasto);
         sqLiteDatabase.execSQL(sqlTabelaFonte);
         sqLiteDatabase.execSQL(sqlTabelaReceita);
         sqLiteDatabase.execSQL(sqlTabelaGrupo);

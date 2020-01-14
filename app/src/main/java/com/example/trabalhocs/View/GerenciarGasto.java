@@ -1,10 +1,21 @@
 package com.example.trabalhocs.View;
 
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.InputType;
+
+import com.example.trabalhocs.Adapter.AdapterListaDestino;
+import com.example.trabalhocs.Controller.DestinoCtrl;
+import com.example.trabalhocs.Model.ModeloDestino;
+import com.example.trabalhocs.R;
+import com.example.trabalhocs.dbhelper.ConexaoSQlite;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -13,23 +24,10 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import com.example.trabalhocs.Adapter.AdapterListaDestino;
-import com.example.trabalhocs.Controller.DestinoCtrl;
-import com.example.trabalhocs.Model.ModeloDestino;
-import com.example.trabalhocs.R;
-import com.example.trabalhocs.Tutorial.Tutorial_Gerenciar_Destinos;
-import com.example.trabalhocs.dbhelper.ConexaoSQlite;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-public class GerenciarDestinos extends AppCompatActivity {
+public class GerenciarGasto extends AppCompatActivity {
 
     private ListView lsvDestino;
     private List<ModeloDestino> destinoList;
@@ -39,7 +37,7 @@ public class GerenciarDestinos extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gerenciar_destinos);
+        setContentView(R.layout.activity_gerenciar_gasto);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
@@ -47,6 +45,7 @@ public class GerenciarDestinos extends AppCompatActivity {
         ConexaoSQlite conexaoSQlite = ConexaoSQlite.getInstanciaConexao(this);
 
         listardestinos();
+
         Button btndestino = (Button) findViewById(R.id.adicionardestinos);
         btndestino.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,23 +53,10 @@ public class GerenciarDestinos extends AppCompatActivity {
                 alertdialogadddestino();
             }
         });
-        Button btnverificardestinomes = (Button) findViewById(R.id.verificarmes);
-        btnverificardestinomes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertdialogverificardestinomes();
-            }
-        });
 
-        /*Button btnverificardingastos = (Button) findViewById(R.id.verificardingastos);
-        btnverificardingastos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertdialogverificardin();
-            }
-        });*/
 
         SearchView searchView = (SearchView) findViewById(R.id.buscardestinos);
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -84,6 +70,7 @@ public class GerenciarDestinos extends AppCompatActivity {
                 return true;
             }
         });
+
     }
 
     public boolean verificartamanhostring(String s){
@@ -96,7 +83,7 @@ public class GerenciarDestinos extends AppCompatActivity {
     private void alertdialogadddestino() {
         final EditText destinotxt;
         AlertDialog.Builder builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
-        builder.setMessage("Digite o nome do destino(até 15 caracteres): ");
+        builder.setMessage("Digite o nome do destino: ");
         destinotxt = new EditText(this);
         builder.setView(destinotxt);
 
@@ -108,14 +95,14 @@ public class GerenciarDestinos extends AppCompatActivity {
 
                 destinoACadastrar.setDescricao(destinotxt.getText().toString());
 
-                if (verificartamanhostring(destinotxt.getText().toString())){
-                    DestinoCtrl destinoCtrl = new DestinoCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarDestinos.this));
+                if (destinotxt.getText().length() != 0){
+                    DestinoCtrl destinoCtrl = new DestinoCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarGasto.this));
                     destinoCtrl.salvarDestinoCtrl(destinoACadastrar);
-                    Toast.makeText(GerenciarDestinos.this, "Destino cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(GerenciarGasto.this, "Destino cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
                     listardestinos();
                 }
                 else {
-                    Toast.makeText(GerenciarDestinos.this, "Preencha o campo corretamente!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(GerenciarGasto.this, "Preencha o campo corretamente!", Toast.LENGTH_SHORT).show();
                     alertdialogadddestino();
                 }
             }
@@ -136,10 +123,10 @@ public class GerenciarDestinos extends AppCompatActivity {
     }
 
     private void alertdialogeeditardestino(final int cod_destino) {
-        final DestinoCtrl destinoCtrl = new DestinoCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarDestinos.this));
+        final DestinoCtrl destinoCtrl = new DestinoCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarGasto.this));
         final EditText destinotxt;
         AlertDialog.Builder builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
-        builder.setMessage("Digite o novo nome do destino(até 15 caracteres): ");
+        builder.setMessage("Digite o novo nome do destino: ");
         destinotxt = new EditText(this);
         builder.setView(destinotxt);
 
@@ -152,11 +139,11 @@ public class GerenciarDestinos extends AppCompatActivity {
                 destinoACadastrar.setDescricao(destinotxt.getText().toString());
                 if (verificartamanhostring(destinotxt.getText().toString())){
                     destinoCtrl.atualizarDestinoCtrl(destinoACadastrar);
-                    Toast.makeText(GerenciarDestinos.this, "Destino alterado com sucesso!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(GerenciarGasto.this, "Destino alterado com sucesso!", Toast.LENGTH_SHORT).show();
                     listardestinos();
                 }
                 else {
-                    Toast.makeText(GerenciarDestinos.this, "Preencha o campo corretamente!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(GerenciarGasto.this, "Preencha o campo corretamente!", Toast.LENGTH_SHORT).show();
                     alertdialogeeditardestino(cod_destino);
                 }
             }
@@ -177,19 +164,19 @@ public class GerenciarDestinos extends AppCompatActivity {
     }
 
     private void alertdialogexcluirdestino(final int cod_destino) {
-        final DestinoCtrl destinoCtrl = new DestinoCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarDestinos.this));
+        final DestinoCtrl destinoCtrl = new DestinoCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarGasto.this));
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         final AlertDialog.Builder alert2 = new AlertDialog.Builder(this);
         alert.setMessage("Deseja realmente excluir este destino?");
         alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                alert2.setMessage("Se você excluir este destino, todas os gastos relacionadas irão ser excluidos, REALMENTE DESEJA EXCLUIR ESTE DESTINO?");
+                alert2.setMessage("Se você excluir este destino, todos os gastos relacionadas irão ser excluidas, REALMENTE DESEJA EXCLUIR ESTE DESTINO?");
                 alert2.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         destinoCtrl.excluirDestinoCtrl(cod_destino);
-                        Toast.makeText(GerenciarDestinos.this, "Destino removida com sucesso!",Toast.LENGTH_SHORT).show();;
+                        Toast.makeText(GerenciarGasto.this, "Destino removido com sucesso!",Toast.LENGTH_SHORT).show();;
                         listardestinos();
                     }
                 });
@@ -211,9 +198,9 @@ public class GerenciarDestinos extends AppCompatActivity {
         alert.create().show();
     }
 
-    private void alertdialogverificardin(final int cod_destino){
+    private void alertdialogverificargasto(final int cod_destino){
         selecionardestino = cod_destino;
-        Intent it = new Intent (GerenciarDestinos.this, GerenciarValoresGasto.class);
+        Intent it = new Intent (GerenciarGasto.this, GerenciarValores.class);
         startActivity(it);
     }
 
@@ -221,14 +208,14 @@ public class GerenciarDestinos extends AppCompatActivity {
 
         //BUSCAR TODOS OS DESTINOS DO BANCO
 
-        final DestinoCtrl destinoCtrl = new DestinoCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarDestinos.this));
+        final DestinoCtrl destinoCtrl = new DestinoCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarGasto.this));
 
         this.destinoList = new ArrayList<>();
         destinoList = destinoCtrl.getListaDestinoCtrl();
 
         this.lsvDestino = (ListView) findViewById(R.id.listardestinos);
 
-        this.adapterListaDestino = new AdapterListaDestino(GerenciarDestinos.this, destinoList);
+        this.adapterListaDestino = new AdapterListaDestino(GerenciarGasto.this, destinoList);
 
         this.lsvDestino.setAdapter(this.adapterListaDestino);
 
@@ -260,7 +247,7 @@ public class GerenciarDestinos extends AppCompatActivity {
                 btnverificar.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        alertdialogverificardin(cod_destino);
+                        alertdialogverificargasto(cod_destino);
                     }
                 });
             }
@@ -268,7 +255,7 @@ public class GerenciarDestinos extends AppCompatActivity {
     }
 
     private void searchContact(String keyword) {
-        final DestinoCtrl destinoCtrl = new DestinoCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarDestinos.this));
+        final DestinoCtrl destinoCtrl = new DestinoCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarGasto.this));
         List<ModeloDestino> destinos = (List<ModeloDestino>) destinoCtrl.procurarControler(keyword);
         if (destinos != null) {
             this.lsvDestino = (ListView) findViewById(R.id.listardestinos);
@@ -280,111 +267,6 @@ public class GerenciarDestinos extends AppCompatActivity {
         }
     }
 
-    private void alertdialogverificardestinomes(){
-        final EditText destinotxt,destinotxt2;
-        AlertDialog.Builder builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
-        AlertDialog.Builder builder2 = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
-        AlertDialog.Builder builder3 = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
-        builder.setMessage("Digite a data inicial que deseja verificar: ");
-        destinotxt = new EditText(this);
-        destinotxt2 = new EditText(this);
-        destinotxt.setInputType(InputType.TYPE_CLASS_DATETIME);
-        destinotxt2.setInputType(InputType.TYPE_CLASS_DATETIME);
-        builder.setView(destinotxt);
-        final DestinoCtrl destinoCtrl = new DestinoCtrl(ConexaoSQlite.getInstanciaConexao(GerenciarDestinos.this));
-        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (verdata(destinotxt.getText().toString()) == true){
-                    builder2.setMessage("Digite a data final que deseja verificar: ");
-                    builder2.setView(destinotxt2);
-                    builder2.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            if (verdata(destinotxt2.getText().toString()) == true && verificarmenor(destinotxt.getText().toString(), destinotxt2.getText().toString()) == true){
-                                builder3.setMessage("Seu gasto foi de " + destinoCtrl.verificartotalDestinoCtrl(destinotxt.getText().toString(),
-                                        destinotxt2.getText().toString()) + " reais, durante a data entre " + destinotxt.getText().toString() + " e "
-                                        + destinotxt2.getText().toString());
-                                builder3.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        dialog.dismiss();
-                                    }
-                                });
-                                final AlertDialog ad3 = builder3.create();
-                                ad3.show();
-                                destinotxt2.setText("");
-                            }
-                            else{
-                                Toast.makeText(GerenciarDestinos.this, "Data final menor que a inicial ou inválida!", Toast.LENGTH_SHORT).show();
-                                return;
-                            }
-                        }
-                    });
-                    //CANCEL
-                    builder2.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
-                    final AlertDialog ad2 = builder2.create();
-                    ad2.show();
-                    destinotxt2.setText("");
-                }
-                else{
-                    Toast.makeText(GerenciarDestinos.this, "Data invalida!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-            }
-        });
-        //CANCEL
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        final AlertDialog ad = builder.create();
-        ad.show();
-        destinotxt.setText("");
-    }
-
-    private boolean verdata(String data) {
-        try {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            sdf.setLenient(false);
-            sdf.parse(data);
-            return true;
-        } catch (ParseException ex) {
-            return false;
-        }
-    }
 
 
-    private boolean verificarmenor(String data1, String data2){
-        Date d1 = stringToDate(data1);
-        Date d2 = stringToDate(data2);
-        if (d1.compareTo(d2) > 0){
-            return false;
-        }
-        else{
-            return true;
-        }
-    }
-
-    public Date stringToDate(String data1) {
-        SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
-        f.setLenient(false);
-        java.util.Date d1 = null;
-        try {
-            d1 = f.parse(data1);
-        } catch (ParseException e) {}
-        return d1;
-    }
-
-    public void tutorialdestino (View view){
-        Intent it = new Intent (GerenciarDestinos.this, Tutorial_Gerenciar_Destinos.class);
-        startActivity(it);
-    }
 }
