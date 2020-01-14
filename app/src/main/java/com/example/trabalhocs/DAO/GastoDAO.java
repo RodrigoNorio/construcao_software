@@ -33,6 +33,7 @@ public class GastoDAO {
             values.put("cod_destino", r.getCod_destino());
             values.put("cod_pessoa", cod_pessoa);
 
+
             long gastoinserido = db.insert("gasto", null, values);
 
             return gastoinserido;
@@ -57,6 +58,7 @@ public class GastoDAO {
             gastoatt.put("data", r.getDate());
             gastoatt.put("cod_destino", r.getCod_destino());
             gastoatt.put("cod_pessoa", cod_pessoa);
+
 
             int atualizou = db.update("gasto",
                     gastoatt,
@@ -93,6 +95,7 @@ public class GastoDAO {
                     "cod_gasto = ? AND cod_pessoa = ?",
                     new String[]{String.valueOf(rcodDestino), String.valueOf(cod_pessoa)}
             );
+
 
         }catch(Exception e){
             Log.d("GASTODAO", "Não foi possivel deletar Gasto");

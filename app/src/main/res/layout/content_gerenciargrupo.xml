@@ -39,6 +39,7 @@
         android:listSelector="#59C065"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buscargrupo"
         app:layout_constraintVertical_bias="0.945" />
@@ -70,6 +71,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/editargrupo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginBottom="52dp"
+        android:background="@mipmap/ic_editar_foreground"
+        android:text="@string/editar"
+        app:layout_constraintBottom_toTopOf="@+id/listargrupos"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
     <Button
         android:id="@+id/excluirgrupo"
@@ -85,5 +98,20 @@
         app:layout_constraintBottom_toTopOf="@+id/listargrupos"
         app:layout_constraintEnd_toStartOf="@+id/editarfonte"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/verificargrupo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginLeft="104dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="132dp"
+        android:background="@mipmap/ic_verfontes_foreground"
+        app:layout_constraintBottom_toTopOf="@+id/listargrupos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/buscargrupo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

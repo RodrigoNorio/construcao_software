@@ -113,6 +113,8 @@ public class ConexaoSQlite extends SQLiteOpenHelper {
 
 
 
+
+
 //        String sqlTabelaRecursosProduto =
 //                "CREATE TABLE IF NOT EXISTS recursos_produto " +
 //                        "(" +

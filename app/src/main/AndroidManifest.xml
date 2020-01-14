@@ -9,16 +9,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".View.GerenciarValoresGrupo"
+            android:label="@string/title_activity_gerenciar_valores_grupo"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".View.ListarGruposAdd"
+            android:label="@string/title_activity_listar_grupos_add"
+            android:theme="@style/AppTheme.NoActionBar" />
 
-        <meta-data android:name="DATABASE" android:value="componente_vendas.db" />
-        <meta-data android:name="VERSION" android:value="4" />
-        <meta-data android:name="QUERY_LOG" android:value="true" />
-        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.example.trabalhocs" />
+        <meta-data
+            android:name="DATABASE"
+            android:value="componente_vendas.db" />
+        <meta-data
+            android:name="VERSION"
+            android:value="4" />
+        <meta-data
+            android:name="QUERY_LOG"
+            android:value="true" />
+        <meta-data
+            android:name="DOMAIN_PACKAGE_NAME"
+            android:value="com.example.trabalhocs" />
 
         <activity
             android:name=".Tutorial.Tutorial_Main_Menu"
             android:label="@string/title_activity_tutorial__main__menu"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Tutorial.Tutorial_Gerenciar_Receita"
             android:label="@string/title_activity_tutorial__gerenciar__receita"
@@ -85,8 +101,9 @@
         <activity android:name=".View.EstoqueActivity" />
         <activity android:name=".View.RegistrarCompraActivity" />
         <activity android:name=".View.InventarioActivity" />
-        <activity android:name=".View.CadastrarModeloProdutoActivity"
-            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".View.CadastrarModeloProdutoActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".View.FabricarProdutoActivity" />
         <activity android:name=".View.HistoricoActivity" />
         <activity android:name=".View.ConfiguracoesActivity" />

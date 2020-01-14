@@ -180,6 +180,8 @@
     <string name="cadastro_sucesso">cadastro realizado com sucesso</string>
     <string name="compra_sucesso">compra registrada com sucesso!</string>
     <string name="venda_sucesso">venda registrada com sucesso!</string>
+    <string name="title_activity_listar_grupos_add">listar_grupos_add</string>
+    <string name="title_activity_gerenciar_valores_grupo">GerenciarValoresGrupo</string>
 
 
 </resources>
