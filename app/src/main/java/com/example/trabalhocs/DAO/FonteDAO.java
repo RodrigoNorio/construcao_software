@@ -62,7 +62,7 @@ public class FonteDAO {
 
             int atualizou = db.update("fonte",
                     fontedescricao,
-                    "cod_fonte = ? AND cod_pessoa",
+                    "cod_fonte = ? AND cod_pessoa = ?",
                     new String[]{String.valueOf(f.getCodfonte()),String.valueOf(cod_pessoa)}
                     );
 
