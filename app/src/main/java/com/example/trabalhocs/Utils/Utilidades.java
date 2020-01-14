@@ -102,9 +102,10 @@ public class Utilidades {
     public static void geraProdutosTeste() {
         List<ModeloProduto> list = new ArrayList<>();
 
+        list.add(new ModeloProduto("bolo de cenoura", "um bolo verdadeiramente brasileiro! Com cobertura de brigadeiro", 15, 15.0));
         list.add(new ModeloProduto("brigadeiro de pote", "o clássico brigadeiro num potinho", 15, 4.5));
         list.add(new ModeloProduto("bombom morangão", "um delicioso morango coberto por uma camada de beijinho e uma crosta de chocolate ao leite", 5, 5.0));
-        list.add(new ModeloProduto("brownie comum", "um brownie padrão, feito com chocolate meio amargo", 10, 3.5));
+        list.add(new ModeloProduto("brownie", "um brownie padrão, feito com chocolate", 10, 3.5));
 
         for (ModeloProduto produto : list) {
             produto.save();
@@ -114,11 +115,15 @@ public class Utilidades {
     public static void geraRecursosTeste() {
         List<ModeloRecurso> list = new ArrayList<>();
 
-        list.add(new ModeloRecurso("Leite Integral", "Leite de vaca integral", Constants.TIPO_MEDIDA_MILILITRO, 5000));
-        list.add(new ModeloRecurso("Achocolatado", "Achocolatado em pó comum", Constants.TIPO_MEDIDA_GRAMAS, 3000));
-        list.add(new ModeloRecurso("Açucar", "Açucar branco padrão", Constants.TIPO_MEDIDA_GRAMAS, 10000));
+        list.add(new ModeloRecurso("Leite Integral", "Leite de vaca integral, com 3% de gordura", Constants.TIPO_MEDIDA_MILILITRO, 5000));
+        list.add(new ModeloRecurso("Morango", "Morangos de tamanhos e formatos variados", Constants.TIPO_MEDIDA_UNIDADE, 85));
+        list.add(new ModeloRecurso("Manteiga", "Manteiga cremosa", Constants.TIPO_MEDIDA_GRAMAS, 270));
+        list.add(new ModeloRecurso("Leite Desnatado", "Leite de vaca desnatado, com 1% de gordura", Constants.TIPO_MEDIDA_MILILITRO, 5000));
+        list.add(new ModeloRecurso("Farinha de trigo", "Leite de vaca integral, com 3% de gordura", Constants.TIPO_MEDIDA_GRAMAS, 10000));
+        list.add(new ModeloRecurso("Achocolatado", "Achocolatado em pó comum, é bem doce.", Constants.TIPO_MEDIDA_GRAMAS, 3000));
+        list.add(new ModeloRecurso("Açucar Refinado", "Açucar branco refinado padrão", Constants.TIPO_MEDIDA_GRAMAS, 10000));
         list.add(new ModeloRecurso("Extrato de baunilha", "Extrato liquido de baunilha, usado para perfumar e enriquecer receitas doces", Constants.TIPO_MEDIDA_MILILITRO, 200));
-        list.add(new ModeloRecurso("Ovo", "Ovos de galinha, podem ser brancos os marrons não faz diferença!", Constants.TIPO_MEDIDA_UNIDADE, 24));
+        list.add(new ModeloRecurso("Ovo", "Ovos de galinha, podem ser brancos ou marrons, não faz diferença!", Constants.TIPO_MEDIDA_UNIDADE, 24));
 
         for (ModeloRecurso recurso: list) {
             recurso.save();
@@ -135,13 +140,13 @@ public class Utilidades {
 
             List<ModeloRecurso> ingredientesTeste = ModeloRecurso.listAll(ModeloRecurso.class);
             Collections.reverse(ingredientesTeste);
-            int[] quantidades = {14, 10, 1, 500, 1};
+            int[] quantidades = {14, 10, 500, 500, 250};
 
             for (int i = 0; i < quantidades.length; i++) {
                 mapIngredientesTeste.put(ingredientesTeste.get(i), quantidades[i]);
             }
 
-            ModeloFabricacaoProduto modelo =  new ModeloFabricacaoProduto(produtoTeste, mapIngredientesTeste, 30);
+            ModeloFabricacaoProduto modelo =  new ModeloFabricacaoProduto(produtoTeste, mapIngredientesTeste, 20);
             modelo.save();
 
         } catch (Exception e) {
