@@ -54,13 +54,13 @@ public class GerenciarDestinos extends AppCompatActivity {
                 alertdialogadddestino();
             }
         });
-        Button btnverificardestinomes = (Button) findViewById(R.id.verificarmes);
+       /* Button btnverificardestinomes = (Button) findViewById(R.id.verificarmes);
         btnverificardestinomes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 alertdialogverificardestinomes();
             }
-        });
+        });*/
 
         /*Button btnverificardingastos = (Button) findViewById(R.id.verificardingastos);
         btnverificardingastos.setOnClickListener(new View.OnClickListener() {
