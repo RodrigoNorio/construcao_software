@@ -19,8 +19,10 @@ import com.example.trabalhocs.Adapter.AdapterVendaProduto;
 import com.example.trabalhocs.Controller.ProdutoController;
 import com.example.trabalhocs.Model.ModeloVenda;
 import com.example.trabalhocs.R;
+import com.example.trabalhocs.Utils.Constants;
 import com.example.trabalhocs.Utils.Torradeira;
 import com.example.trabalhocs.Utils.Utilidades;
+import com.example.trabalhocs.View.Dialogs.DialogAjuda;
 import com.example.trabalhocs.View.Dialogs.DialogAvisoVoltar;
 import com.example.trabalhocs.View.Itens.ProdutoVendaItemView;
 
@@ -123,7 +125,9 @@ public class RegistrarVendaActivity extends AppCompatActivity implements Produto
 
     @OnClick(R.id.btn_ajuda)
     void onClickBtnAjuda() {
-        // TODO: 11/11/2019 add dialog de ajuda
+        final DialogAjuda dialogAjuda = new DialogAjuda(this, Constants.AJUDA_VENDA);
+        final AlertDialog dialog = dialogAjuda.show();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
 
     @OnClick(R.id.btn_cancelar)
