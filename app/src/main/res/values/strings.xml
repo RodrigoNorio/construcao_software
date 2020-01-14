@@ -174,4 +174,27 @@
     <string name="compra_sucesso">compra registrada com sucesso!</string>
     <string name="venda_sucesso">venda registrada com sucesso!</string>
 
+    <!-- Dialogs de ajuda -->
+
+    <string name="ajuda_titulo_compra">Registrar a entrada de recursos</string>
+    <string name="ajuda_descricao_compra">Nesta tela você pode registrar a entrada de estoque dos seus recursos cadastrados. Basta utilizar o botão + para selecionar o recurso e preencher a quantidade comprada e o valor pago, quando terminar basta clicar em registrar para efetivar sua compra. O sistema automaticamente irá atualizar o estoque de seus recursos e salvar sua compra no histórico.</string>
+
+    <string name="ajuda_titulo_historico">Acompanhar os históricos</string>
+    <string name="ajuda_descricao_historico">Aqui você pode verificar o seu histórico de operações de compra de recursos e venda de produtos registrados no sistema. Basta clicar no texto "vendas" ou "compras" para selecionar qual histórico deseja visualizar.</string>
+
+    <string name="ajuda_titulo_inventario">Sua lista de produtos</string>
+    <string name="ajuda_descricao_inventario">Nesta tela você tem acesso a sua lista completa de produtos cadastrados no sistema e pode verificar a quantidade de cada um em estoque! Além disso alguns botões importantes se encontram aqui: o cadastro de novos produtos; o cadastro de modelo de fabricação de produtos e a operação de registrar entrada de produtos.</string>
+
+    <string name="ajuda_titulo_cadastrar_modelo">Cadastrando modelos de fabricação</string>
+    <string name="ajuda_descricao_cadastrar_modelo">Para cadastrar um novo modelo de fabricação primeiro escolha um produto, depois preencha a lista de ingredientes e quantidades associadas a este modelo de fabricação. Por fim preencha a quantidade de unidades do produto que este modelo de fabricação produz e clique em cadastrar!</string>
+
+    <string name="ajuda_titulo_fabricar_produtos">Registrar a entrada de produtos</string>
+    <string name="ajuda_descricao_fabricar_produtos">Para registrar a entrada de produtos e abastecer seus estoques basta selecionar um modelo de fabricação (ou cadastrar um novo) e efetivar a fabricação de estoque de seus produtos! Lembre-se que esta ação irá consumir o estoque de recursos associados aos produtos, conforme o modelo de fabricação selecionado.</string>
+
+    <string name="ajuda_titulo_recursos">Seus recursos</string>
+    <string name="ajuda_descricao_recursos">Aqui você pode verificar o estoque de todos os seus recursos cadastrados, acompanhe a quantidade em estoque para não deixar faltar nada. Nesta tela também estão disponíveis os botões para cadastrar novos recursos e registrar compras.</string>
+
+    <string name="ajuda_titulo_venda">Registre a venda de seus produtos!</string>
+    <string name="ajuda_descricao_venda">Primeiro selecione a quantidade de cada produto na venda: você pode utilizar os botões de + e - para adicionar e remover, respectivamente, ou pode clicar no nome do produto e inserir a quantidade da venda manualmente. Depois de escolher tudo verifique no resumo da venda se está tudo certo e clique em registrar para efetivar a venda! O sistema automaticamente irá atualizar o estoque de seus produtos e salvar sua venda no histórico.</string>
+
 </resources>

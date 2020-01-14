@@ -208,4 +208,60 @@ public class Utilidades {
     public static void limpaDadosVendas() {
         ModeloVenda.deleteAll(ModeloVenda.class);
     }
+
+    public static String getTituloAjuda(Context context, int ajudaID) {
+        switch (ajudaID) {
+            case Constants.AJUDA_COMPRA:
+                return context.getResources().getString(R.string.ajuda_titulo_compra);
+
+            case Constants.AJUDA_HISTORICO:
+                return context.getResources().getString(R.string.ajuda_titulo_historico);
+
+            case Constants.AJUDA_INVENTARIO:
+                return context.getResources().getString(R.string.ajuda_titulo_inventario);
+
+            case Constants.AJUDA_CADASTRAR_MODELO:
+                return context.getResources().getString(R.string.ajuda_titulo_cadastrar_modelo);
+
+            case Constants.AJUDA_FABRICAR_PRODUTOS:
+                return context.getResources().getString(R.string.ajuda_titulo_fabricar_produtos);
+
+            case Constants.AJUDA_ESTOQUE_RECURSOS:
+                return context.getResources().getString(R.string.ajuda_titulo_recursos);
+
+            case Constants.AJUDA_VENDA:
+                return context.getResources().getString(R.string.ajuda_titulo_venda);
+
+            default:
+                return "ajuda";
+        }
+    }
+
+    public static String getConteudoAjuda(Context context, int ajudaID) {
+        switch (ajudaID) {
+            case Constants.AJUDA_COMPRA:
+                return context.getResources().getString(R.string.ajuda_descricao_compra);
+
+            case Constants.AJUDA_HISTORICO:
+                return context.getResources().getString(R.string.ajuda_descricao_historico);
+
+            case Constants.AJUDA_INVENTARIO:
+                return context.getResources().getString(R.string.ajuda_descricao_inventario);
+
+            case Constants.AJUDA_CADASTRAR_MODELO:
+                return context.getResources().getString(R.string.ajuda_descricao_cadastrar_modelo);
+
+            case Constants.AJUDA_FABRICAR_PRODUTOS:
+                return context.getResources().getString(R.string.ajuda_descricao_fabricar_produtos);
+
+            case Constants.AJUDA_ESTOQUE_RECURSOS:
+                return context.getResources().getString(R.string.ajuda_descricao_recursos);
+
+            case Constants.AJUDA_VENDA:
+                return context.getResources().getString(R.string.ajuda_descricao_venda);
+
+            default:
+                return "descrição da ajuda";
+        }
+    }
 }

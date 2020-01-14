@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/bg_inset_round"
+    android:padding="25dp">
+
+    <TextView
+        android:id="@+id/tv_titulo_ajuda"
+        style="@style/textoTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:layout_marginBottom="10dp"
+        android:text="ajuda" />
+
+    <TextView
+        android:id="@+id/tv_ajuda_texto"
+        style="@style/textoSubTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_titulo_ajuda"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        android:text="oi eu sou um texto de ajuda, teste! Na verdade sou bem grandão então tipo se eu continuar escrevendo vai continuar crecendo"
+        android:textAlignment="center" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_ajuda_texto"
+        android:layout_centerHorizontal="true"
+        android:text="@string/Ok"
+        android:textColor="@color/colorPrimary" />
+
+</RelativeLayout>

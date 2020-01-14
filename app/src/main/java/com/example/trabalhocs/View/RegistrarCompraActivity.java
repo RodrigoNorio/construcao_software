@@ -20,6 +20,7 @@ import com.example.trabalhocs.Model.ModeloCompra;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.Utils.Constants;
 import com.example.trabalhocs.Utils.Torradeira;
+import com.example.trabalhocs.View.Dialogs.DialogAjuda;
 import com.example.trabalhocs.View.Dialogs.DialogAvisoVoltar;
 import com.example.trabalhocs.View.Dialogs.DialogListaRecursos;
 import com.example.trabalhocs.View.Itens.RecursoCompraItemView;
@@ -123,7 +124,9 @@ public class RegistrarCompraActivity extends AppCompatActivity implements Recurs
 
     @OnClick(R.id.btn_ajuda)
     void onClickBtnAjuda() {
-        // TODO: 11/11/2019 add dialog de ajuda
+        final DialogAjuda dialogAjuda = new DialogAjuda(this, Constants.AJUDA_COMPRA);
+        final AlertDialog dialog = dialogAjuda.show();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
 
     @OnClick(R.id.btn_cancelar)

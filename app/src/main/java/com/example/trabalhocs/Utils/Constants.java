@@ -29,4 +29,14 @@ public class Constants {
     public static final int REGISTRAR_VENDA = 8;
     public static final int REGISTRAR_FABRICACAO_PRODUTO = 9;
 
+    //AjudaCodes
+    public static final int AJUDA_COMPRA = 1;
+    public static final int AJUDA_HISTORICO = 2;
+    public static final int AJUDA_INVENTARIO = 3;
+    public static final int AJUDA_CADASTRAR_MODELO = 4;
+    public static final int AJUDA_FABRICAR_PRODUTOS = 5;
+    public static final int AJUDA_ESTOQUE_RECURSOS = 6;
+    public static final int AJUDA_VENDA = 7;
+
+
 }

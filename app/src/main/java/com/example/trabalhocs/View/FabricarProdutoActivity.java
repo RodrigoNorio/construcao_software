@@ -1,6 +1,9 @@
 package com.example.trabalhocs.View;
 
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -16,6 +19,7 @@ import com.example.trabalhocs.Adapter.AdapterModeloFabricacaoProduto;
 import com.example.trabalhocs.Controller.ModeloFabricacaoController;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.Utils.Constants;
+import com.example.trabalhocs.View.Dialogs.DialogAjuda;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -80,8 +84,10 @@ public class FabricarProdutoActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.btn_ajuda)
-    void onClickBtnAjuda(){
-        // TODO: 10/01/2020
+    void onClickBtnAjuda() {
+        final DialogAjuda dialogAjuda = new DialogAjuda(this, Constants.AJUDA_FABRICAR_PRODUTOS);
+        final AlertDialog dialog = dialogAjuda.show();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
 
     @OnClick(R.id.btn_voltar)

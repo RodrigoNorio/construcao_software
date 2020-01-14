@@ -29,6 +29,7 @@ import com.example.trabalhocs.Model.ModeloRecurso;
 import com.example.trabalhocs.R;
 import com.example.trabalhocs.Utils.Constants;
 import com.example.trabalhocs.Utils.Torradeira;
+import com.example.trabalhocs.View.Dialogs.DialogAjuda;
 import com.example.trabalhocs.View.Dialogs.DialogAvisoVoltar;
 import com.example.trabalhocs.View.Dialogs.DialogListaProdutos;
 import com.example.trabalhocs.View.Dialogs.DialogListaRecursos;
@@ -236,5 +237,12 @@ public class CadastrarModeloProdutoActivity extends AppCompatActivity implements
             setResult(RESULT_CANCELED);
             finish();
         });
+    }
+
+    @OnClick(R.id.btn_ajuda)
+    void onClickBtnAjuda() {
+        final DialogAjuda dialogAjuda = new DialogAjuda(this, Constants.AJUDA_CADASTRAR_MODELO);
+        final AlertDialog dialog = dialogAjuda.show();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
 }

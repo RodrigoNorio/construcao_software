@@ -1,6 +1,9 @@
 package com.example.trabalhocs.View;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -10,6 +13,8 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.trabalhocs.Adapter.TabAdapter;
 import com.example.trabalhocs.Controller.HistoricoController;
 import com.example.trabalhocs.R;
+import com.example.trabalhocs.Utils.Constants;
+import com.example.trabalhocs.View.Dialogs.DialogAjuda;
 import com.example.trabalhocs.View.Fragments.FragmentHistoricoCompras;
 import com.example.trabalhocs.View.Fragments.FragmentHistoricoVendas;
 import com.google.android.material.tabs.TabLayout;
@@ -60,8 +65,10 @@ public class HistoricoActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.btn_ajuda)
-    void onClickBtnAjuda(){
-        // TODO: 11/01/2020  
+    void onClickBtnAjuda() {
+        final DialogAjuda dialogAjuda = new DialogAjuda(this, Constants.AJUDA_HISTORICO);
+        final AlertDialog dialog = dialogAjuda.show();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
 
     @OnClick(R.id.btn_voltar)
